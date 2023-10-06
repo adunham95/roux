@@ -107,7 +107,7 @@ export default function NavBar() {
               </div>
             </div>
             <nav
-              className="hidden lg:flex lg:space-x-8 lg:pt-2"
+              className="hidden lg:flex lg:space-x-2 lg:pt-2"
               aria-label="Global"
             >
               {navigation.map((item) => (
@@ -118,7 +118,7 @@ export default function NavBar() {
                     item.current
                       ? 'border-brand hover:bg-brand-50'
                       : 'border-b-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300',
-                    'inline-flex items-center border-b-2 px-2 py-3 font-medium rounded-t',
+                    'inline-flex items-center border-b-2 px-3 py-2 font-medium rounded-t',
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
