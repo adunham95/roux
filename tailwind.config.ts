@@ -29,7 +29,7 @@ const config: Config = {
           DEFAULT: '#649dad',
         },
         surface: {
-          DEFAULT: '#e6e6e6',
+          DEFAULT: '#f2f2f2',
         },
       },
     },

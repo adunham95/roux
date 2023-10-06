@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Team', href: '#', current: false },
   { name: 'Projects', href: '#', current: false },
   { name: 'Calendar', href: '#', current: false },
+  { name: 'New Recipe', href: '/new-recipe', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -27,7 +28,7 @@ function classNames(...classes: string[]) {
 
 export default function NavBar() {
   return (
-    <Disclosure as="header" className="bg-white shadow">
+    <Disclosure as="header" className="bg-surface shadow">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
