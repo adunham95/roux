@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
+import { Button } from './buttons/button';
 
 const user = {
   name: 'Tom Cook',
@@ -115,18 +116,10 @@ export default function NavBar() {
                   </>
                 ) : (
                   <>
-                    <button
-                      type="button"
-                      className="rounded-md bg-brand px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-                    >
-                      Log In
-                    </button>
-                    <button
-                      type="button"
-                      className="ml-1 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-brand shadow-sm ring-1 ring-inset ring-brand hover:bg-gray-50"
-                    >
+                    <Button>Login</Button>
+                    <Button variant="outline" className="ml-1">
                       Create Account
-                    </button>
+                    </Button>
                   </>
                 )}
               </div>
