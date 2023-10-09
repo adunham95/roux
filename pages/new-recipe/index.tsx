@@ -11,6 +11,7 @@ import TextArea from '@/components/inputs/text-area';
 import TextInput from '@/components/inputs/text-input';
 import { IIngredientItem } from '@/types/ingredinetItem';
 import { IInstructionItem } from '@/types/instructionItem';
+import { generateID } from '@/utils/generateID';
 import React, { useState } from 'react';
 
 const NewRecipe = () => {
@@ -20,9 +21,11 @@ const NewRecipe = () => {
   const [ingredients, setIngredients] = useState<IIngredientItem[]>([]);
   const [instructions, setInstruction] = useState<IInstructionItem[]>([]);
 
+  console.log(ingredients);
+
   function addNewIngredient() {
     const newItem = {
-      id: `${ingredients.length + 1}`,
+      id: generateID(),
       count: 0,
       foodID: '',
       type: '',
@@ -32,7 +35,7 @@ const NewRecipe = () => {
 
   function addNewInstruction() {
     const newItem = {
-      id: `${instructions.length + 1}`,
+      id: generateID(),
       order: instructions.length,
       description: `Instruction ${instructions.length + 1}`,
     };
@@ -170,10 +173,14 @@ function NewIngredientItem({
   ingredient,
   index = 0,
   onChange,
+  onDelete,
+  onCopy,
 }: {
   ingredient: IIngredientItem;
   index?: number;
   onChange: () => void;
+  onDelete?: (id: string) => void;
+  onCopy?: (id: string) => void;
 }) {
   return (
     <div className="col-span-full  group">
@@ -257,8 +264,12 @@ function NewIngredientItem({
 
 function NewInstructionItem({
   instruction,
+  onDelete,
+  onCopy,
 }: {
   instruction: IInstructionItem;
+  onDelete?: (id: string) => void;
+  onCopy?: (id: string) => void;
 }) {
   return (
     <div className="col-span-full  group">
