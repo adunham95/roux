@@ -60,6 +60,7 @@
             "when": "multiline"
           }
         ],
+        "@next/next/no-img-element": 0,
         "react/jsx-indent-props": [
           2,
           2
