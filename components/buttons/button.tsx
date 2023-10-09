@@ -1,16 +1,17 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface IProps {
+export interface IButtonProps {
   type?: 'button' | 'submit';
   className?: string;
   children: React.ReactNode;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'filled' | 'outline' | 'text';
   color?: 'brand' | 'success' | 'danger' | 'warning';
+  onClick?: () => void;
 }
 
-export const Button = (props: IProps) => {
+export const Button = (props: IButtonProps) => {
   const {
     className,
     children,
@@ -18,6 +19,7 @@ export const Button = (props: IProps) => {
     variant = 'filled',
     color = 'brand',
     type = 'button',
+    onClick,
   } = props;
 
   function getSize() {
@@ -49,7 +51,11 @@ export const Button = (props: IProps) => {
   }
 
   return (
-    <button type={type} className={twMerge(getSize(), getVariant(), className)}>
+    <button
+      onClick={onClick}
+      type={type}
+      className={twMerge(getSize(), getVariant(), className)}
+    >
       {children}
     </button>
   );
