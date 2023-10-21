@@ -1,9 +1,6 @@
-import { IFood } from './ingredient';
-
-interface IIngredientItem {
+export interface IIngredientItem {
   id: string;
-  foodID: string;
-  food?: IFood;
+  food: string;
   count: number;
   type: string;
 }
