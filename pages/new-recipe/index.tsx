@@ -21,8 +21,6 @@ const NewRecipe = () => {
   const [ingredients, setIngredients] = useState<IIngredientItem[]>([]);
   const [instructions, setInstructions] = useState<IInstructionItem[]>([]);
 
-  console.log(ingredients);
-
   function addNewIngredient() {
     const newItem = {
       id: generateID(),
@@ -74,19 +72,19 @@ const NewRecipe = () => {
     }
   }
 
-  // function copyInstruction(id: string) {
-  //   const index = ingredients.findIndex((ing) => ing.id === id);
-  //   if (index >= 0) {
-  //     setIngredients([
-  //       ...ingredients,
-  //       { ...ingredients[index], id: generateID() },
-  //     ]);
-  //   }
-  // }
+  function copyInstruction(id: string) {
+    const index = instructions.findIndex((ing) => ing.id === id);
+    if (index >= 0) {
+      setInstructions([
+        ...instructions,
+        { ...instructions[index], id: generateID() },
+      ]);
+    }
+  }
 
-  // function deleteInstruction(id: string) {
-  //   setIngredients([...ingredients.filter((ing) => ing.id !== id)]);
-  // }
+  function deleteInstruction(id: string) {
+    setInstructions([...instructions.filter((ing) => ing.id !== id)]);
+  }
 
   return (
     <DefaultLayout>
@@ -202,6 +200,8 @@ const NewRecipe = () => {
                       key={inst.id}
                       instruction={inst}
                       onChange={updateInstruction}
+                      onCopy={copyInstruction}
+                      onDelete={deleteInstruction}
                     />
                   ))}
                   <Button
