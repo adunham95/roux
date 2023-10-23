@@ -9,32 +9,9 @@ const RecipeForm = dynamic(
 );
 
 const NewRecipe = () => {
-  // function updateInstruction(item: IInstructionItem) {
-  //   const ing = [...instructions];
-  //   const found = ing.findIndex(({ id }) => id === item.id);
-  //   if (found >= 0) {
-  //     ing[found] = item;
-  //     setInstructions(ing);
-  //   }
-  // }
-
-  // function copyInstruction(id: string) {
-  //   const index = instructions.findIndex((ing) => ing.id === id);
-  //   if (index >= 0) {
-  //     setInstructions([
-  //       ...instructions,
-  //       { ...instructions[index], id: generateID() },
-  //     ]);
-  //   }
-  // }
-
-  // function deleteInstruction(id: string) {
-  //   setInstructions([...instructions.filter((ing) => ing.id !== id)]);
-  // }
-
   return (
     <SidecarLayout
-      sideCar={<Sidecar />}
+      sideCar={<Sidecar className="pt-2" />}
       sideCarStyle="w-full md:ml-4 md:max-w-sm"
       heroImg="/images/foods.jpg"
       heroTitle="New Recipe"
