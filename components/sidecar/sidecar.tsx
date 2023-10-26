@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Accordion from '../accordian';
+import { Button } from '../buttons/button';
 
 interface ISidecarElement {
   key: string;
@@ -14,10 +15,20 @@ interface ISidecarProps {
   subTitle?: string;
   defaultOpen?: string;
   options: ISidecarElement[];
+  cta?: string;
+  ctaOnClick?: () => void;
 }
 
 const Sidecar = (props: ISidecarProps) => {
-  const { className, title, subTitle, options, defaultOpen = '' } = props;
+  const {
+    className,
+    title,
+    subTitle,
+    options,
+    defaultOpen = '',
+    cta,
+    ctaOnClick = () => null,
+  } = props;
   return (
     <div
       className={twMerge(
@@ -55,6 +66,13 @@ const Sidecar = (props: ISidecarProps) => {
           }
         })}
       </div>
+      {cta && (
+        <div className="p-1">
+          <Button size="lg" className="w-full" onClick={ctaOnClick}>
+            {cta}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

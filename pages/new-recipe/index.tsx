@@ -15,6 +15,7 @@ const NewRecipe = () => {
         <Sidecar
           className="pt-2"
           defaultOpen="details"
+          cta="Save Recipe"
           options={[
             {
               title: 'Details',
