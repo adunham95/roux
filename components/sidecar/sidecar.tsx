@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Accordion from '../accordian';
 
+interface ISidecarElement {
+  key: string;
+  title: string;
+  child: React.ReactNode;
+  display?: 'accordion' | 'inline';
+}
 interface ISidecarProps {
   className?: string;
   title?: string;
   subTitle?: string;
-  defaultOpen?: number;
+  defaultOpen?: string;
+  options: ISidecarElement[];
 }
 
 const Sidecar = (props: ISidecarProps) => {
-  const { className, title, subTitle } = props;
+  const { className, title, subTitle, options, defaultOpen = '' } = props;
   return (
-    <div className={twMerge('shadow-lg rounded-md bg-gray-100', className)}>
+    <div
+      className={twMerge(
+        'shadow-lg rounded-md bg-gray-100 sticky top-2',
+        className,
+      )}
+    >
       {(title || subTitle) && (
         <div className="p-2">
           {title && (
@@ -25,9 +37,24 @@ const Sidecar = (props: ISidecarProps) => {
           )}
         </div>
       )}
-      <Accordion title="What is life?">
-        <h1>Open</h1>
-      </Accordion>
+      <div className="divide-y divide-gray-300">
+        {options.map((elm) => {
+          switch (elm.display) {
+            case 'accordion':
+              return (
+                <Accordion
+                  key={elm.key}
+                  title={elm.title}
+                  defaultOpen={elm.key === defaultOpen}
+                >
+                  {elm.child}
+                </Accordion>
+              );
+            default:
+              return <Fragment key={elm.key}>{elm.child}</Fragment>;
+          }
+        })}
+      </div>
     </div>
   );
 };

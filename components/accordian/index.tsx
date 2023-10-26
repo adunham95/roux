@@ -10,7 +10,7 @@ const Accordion = (props: IAccordionProps) => {
   const { title, children, defaultOpen = false } = props;
   const [expanded, setExpanded] = useState(defaultOpen);
   return (
-    <div className="px-2 pb-2">
+    <div className="px-2 py-2">
       <dt>
         <button
           type="button"
@@ -49,7 +49,7 @@ const Accordion = (props: IAccordionProps) => {
         </button>
       </dt>
       {expanded && <dd className={'my-1 pr-6'}>{children}</dd>}
-      <div className="w-full border-t border-gray-300"></div>
+      {/* <div className="w-full border-t border-gray-300"></div> */}
     </div>
   );
 };

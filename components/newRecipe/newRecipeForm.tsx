@@ -26,6 +26,9 @@ const NewRecipeForm = (props: IProps) => {
     updateIngredientItem,
     updateInstructionItem,
   } = useNewRecipe();
+
+  console.log({ instructions, ingredients });
+
   return (
     <form>
       <div className="space-y-12">
@@ -118,6 +121,7 @@ const NewRecipeForm = (props: IProps) => {
               {instructions.map((inst) => (
                 <NewInstructionItem
                   key={inst.id}
+                  availableIngredients={ingredients}
                   instruction={inst}
                   onChange={updateInstructionItem}
                   onCopy={() => updateInstructionItem(inst, 'copy')}
