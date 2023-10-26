@@ -1,66 +1,78 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { twMerge } from 'tailwind-merge';
+import Accordion from '../accordian';
+import { Button } from '../buttons/button';
 
-interface ISidecarProps {}
+interface ISidecarElement {
+  key: string;
+  title: string;
+  child: React.ReactNode;
+  display?: 'accordion' | 'inline';
+}
+interface ISidecarProps {
+  className?: string;
+  title?: string;
+  subTitle?: string;
+  defaultOpen?: string;
+  options: ISidecarElement[];
+  cta?: string;
+  ctaOnClick?: () => void;
+}
 
 const Sidecar = (props: ISidecarProps) => {
-  const {} = props;
+  const {
+    className,
+    title,
+    subTitle,
+    options,
+    defaultOpen = '',
+    cta,
+    ctaOnClick = () => null,
+  } = props;
   return (
-    <div className="pt-6">
-      <dt>
-        {/* <!-- Expand/collapse question button --> */}
-        <button
-          type="button"
-          className="flex w-full items-start justify-between text-left text-gray-900"
-          aria-controls="faq-0"
-          aria-expanded="false"
-        >
-          <span className="text-base font-semibold leading-7">
-            What&#039;s the best thing about Switzerland?
-          </span>
-          <span className="ml-6 flex h-7 items-center">
-            {/* <!--
-          Icon when question is collapsed.
-
-          Item expanded: "hidden", Item collapsed: ""
-        --> */}
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v12m6-6H6"
-              />
-            </svg>
-            {/* <!--
-          Icon when question is expanded.
-
-          Item expanded: "", Item collapsed: "hidden"
-        --> */}
-            <svg
-              className="hidden h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
-            </svg>
-          </span>
-        </button>
-      </dt>
-      <dd className="mt-2 pr-12" id="faq-0">
-        <p className="text-base leading-7 text-gray-600">
-          I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
-        </p>
-      </dd>
+    <div
+      className={twMerge(
+        'shadow-lg rounded-md bg-gray-100 sticky top-2',
+        className,
+      )}
+    >
+      {(title || subTitle) && (
+        <div className="p-2">
+          {title && (
+            <h2 className="text-xl font-bold leading-7 tracking-tight text-gray-900">
+              {title}
+            </h2>
+          )}
+          {subTitle && (
+            <p className="text-base leading-1 text-gray-600">{subTitle}</p>
+          )}
+        </div>
+      )}
+      <div className="divide-y divide-gray-300">
+        {options.map((elm) => {
+          switch (elm.display) {
+            case 'accordion':
+              return (
+                <Accordion
+                  key={elm.key}
+                  title={elm.title}
+                  defaultOpen={elm.key === defaultOpen}
+                >
+                  {elm.child}
+                </Accordion>
+              );
+            default:
+              return <Fragment key={elm.key}>{elm.child}</Fragment>;
+          }
+        })}
+      </div>
+      {cta && (
+        <div className="p-1">
+          <Button size="lg" className="w-full" onClick={ctaOnClick}>
+            {cta}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

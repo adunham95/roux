@@ -1,45 +1,53 @@
 import SidecarLayout from '@/components/Layouts/SidecarLayout';
+import { RecipeMetaData } from '@/components/sidecar/elements/RecipeMetaData';
+import { SidecarIngredientList } from '@/components/sidecar/elements/IngredientList';
 import Sidecar from '@/components/sidecar/sidecar';
-import dynamic from 'next/dynamic';
 import React from 'react';
-
-const RecipeForm = dynamic(
-  () => import('@/components/newRecipe/newRecipeForm'),
-  { ssr: false },
-);
+import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
+import { useNewRecipe } from '@/stores/newRecipeStore';
+import SidecarInstructionList from '@/components/sidecar/elements/InstructionList';
 
 const NewRecipe = () => {
-  // function updateInstruction(item: IInstructionItem) {
-  //   const ing = [...instructions];
-  //   const found = ing.findIndex(({ id }) => id === item.id);
-  //   if (found >= 0) {
-  //     ing[found] = item;
-  //     setInstructions(ing);
-  //   }
-  // }
-
-  // function copyInstruction(id: string) {
-  //   const index = instructions.findIndex((ing) => ing.id === id);
-  //   if (index >= 0) {
-  //     setInstructions([
-  //       ...instructions,
-  //       { ...instructions[index], id: generateID() },
-  //     ]);
-  //   }
-  // }
-
-  // function deleteInstruction(id: string) {
-  //   setInstructions([...instructions.filter((ing) => ing.id !== id)]);
-  // }
-
+  const { name, description, ingredients, instructions } = useNewRecipe();
   return (
     <SidecarLayout
-      sideCar={<Sidecar />}
+      sideCar={
+        <Sidecar
+          className="pt-2"
+          defaultOpen="details"
+          cta="Save Recipe"
+          options={[
+            {
+              title: 'Details',
+              key: 'details',
+              display: 'accordion',
+              child: <RecipeMetaData name={name} description={description} />,
+            },
+            {
+              title: 'Ingredients',
+              key: 'ingredients',
+              display: 'accordion',
+              child: <SidecarIngredientList ingredients={ingredients} />,
+            },
+            {
+              title: 'Instructions',
+              key: 'instructions',
+              display: 'accordion',
+              child: (
+                <SidecarInstructionList
+                  ingredients={ingredients}
+                  instructions={instructions}
+                />
+              ),
+            },
+          ]}
+        />
+      }
       sideCarStyle="w-full md:ml-4 md:max-w-sm"
       heroImg="/images/foods.jpg"
       heroTitle="New Recipe"
     >
-      <RecipeForm />
+      <NewRecipeForm />
     </SidecarLayout>
   );
 };

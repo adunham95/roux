@@ -1,20 +1,35 @@
 import { IInstructionItem } from '@/types/instructionItem';
 import TextArea from '../inputs/text-area';
 import IconButton from '../buttons/iconButton';
+import { IIngredientItem } from '@/types/ingredinetItem';
+import { ChipToggle } from '../chipToggle/chipToggle';
 
 export function NewInstructionItem({
   instruction,
+  availableIngredients,
   onChange,
   onDelete,
   onCopy,
 }: {
   instruction: IInstructionItem;
+  availableIngredients: IIngredientItem[];
   onChange: (instruction: IInstructionItem) => void;
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
 }) {
-  function handleChange(value: string, key: string) {
+  function handleChange(value: unknown, key: string) {
     onChange({ ...instruction, [key]: value });
+  }
+
+  function handleChecked(checked: boolean, id: string) {
+    if (checked) {
+      handleChange([...instruction.ingredients, id], 'ingredients');
+    } else {
+      handleChange(
+        instruction.ingredients.filter((ing) => ing !== id),
+        'ingredients',
+      );
+    }
   }
   return (
     <div className="col-span-full  group">
@@ -73,6 +88,17 @@ export function NewInstructionItem({
           </div>
         }
       />
+      <div className="flex pt-1 overflow-x-scroll hide-scrollbars">
+        {availableIngredients.map((ing) => (
+          <ChipToggle
+            key={ing.id}
+            id={`${instruction.id}-${ing.id}`}
+            label={ing.food}
+            checked={instruction.ingredients.includes(ing.id)}
+            onChange={(checked) => handleChecked(checked, ing.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
