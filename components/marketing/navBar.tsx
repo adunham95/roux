@@ -4,9 +4,14 @@ import { twMerge } from 'tailwind-merge';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MobileButton } from '../nav/mobileButton';
+import dynamic from 'next/dynamic';
+
+const AccountNav = dynamic(() => import('../nav/accountNav'), {
+  ssr: false,
+});
 
 const navigation = [
-  { name: 'Product', href: '/product' },
+  { name: 'Product', href: '/dashboard' },
   { name: 'About', href: '/about' },
   { name: 'Pricing', href: '/pricing' },
 ];
@@ -14,10 +19,8 @@ const navigation = [
 export const MarketingNavBar = () => {
   const [open, setOpen] = useState(false);
   const { pathname } = useRouter();
-  //   const isLoggedIn = false;
 
   function isCurrent(path: string) {
-    console.log({ path, pathname });
     return path === pathname;
   }
 
@@ -49,19 +52,8 @@ export const MarketingNavBar = () => {
             </Link>
           ))}
         </div>
-        <div className="flex flex-1 items-center justify-end gap-x-6">
-          <a
-            href="#"
-            className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
-          >
-            Log in
-          </a>
-          <a
-            href="#"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Sign up
-          </a>
+        <div className="flex-1 items-center justify-end  hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
+          <AccountNav />
         </div>
         <div className="flex lg:hidden">
           <MobileButton open={open} onClick={() => setOpen(!open)} />

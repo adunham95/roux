@@ -11,7 +11,9 @@ export const AppHead = (props: IProps) => {
   return (
     <Head>
       <title>
-        {GLOBALS.appName} | {pageName ? pageName : 'Recipe Remix'}
+        {pageName
+          ? `${GLOBALS.appName} | ${pageName}`
+          : `${GLOBALS.appName} | Recipe Remix`}
       </title>
     </Head>
   );
