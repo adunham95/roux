@@ -12,7 +12,7 @@ const AccountNav = dynamic(() => import('./nav/accountNav'), {
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
-  { name: 'New Recipe', href: '/new-recipe' },
+  { name: 'New Recipe', href: '/recipe/new' },
 ];
 
 function classNames(...classes: string[]) {

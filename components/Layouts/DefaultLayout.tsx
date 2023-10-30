@@ -9,6 +9,7 @@ export interface IDefaultLayoutProps {
   mainClass?: string;
   heroImg?: string;
   heroTitle?: string;
+  heroSlot?: React.ReactNode;
 }
 
 export const DefaultLayout = (props: IDefaultLayoutProps) => {
@@ -32,6 +33,7 @@ export const DefaultLayout = (props: IDefaultLayoutProps) => {
           )}
         </div>
       )}
+      {props.heroSlot}
       <main className={`${props.mainClass}`}>
         <>{props.children}</>
       </main>
