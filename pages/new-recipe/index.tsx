@@ -11,6 +11,7 @@ const NewRecipe = () => {
   const { name, description, ingredients, instructions } = useNewRecipe();
   return (
     <SidecarLayout
+      pageName="New Recipe"
       sideCar={
         <Sidecar
           className="pt-2"

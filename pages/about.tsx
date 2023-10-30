@@ -1,7 +1,7 @@
 import MarketingLayout from '@/components/Layouts/MarketingLayout';
 import React from 'react';
 
-const Index = () => {
+const About = () => {
   return (
     <MarketingLayout>
       <div></div>
@@ -9,4 +9,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default About;
