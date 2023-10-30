@@ -14,8 +14,8 @@ export const MarketingHero = (props: IMarketingHero) => {
   const { title, subtitle, ctaLink, ctaTitle, secondaryLink, secondaryTitle } =
     props;
   return (
-    <div className="relative isolate pt-14">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10">
+    <div className="relative isolate md:pt-14">
+      <div className="mx-auto max-w-7xl px-6 py-12 sm:py-32 lg:flex lg:items-center lg:gap-x-10">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
           <h1 className="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             {title}

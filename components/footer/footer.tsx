@@ -1,25 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { Button } from '../buttons/button';
 
 const navigation = {
   solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
+    { name: 'Personal Cookbook', href: '#' },
+    { name: 'Recipe History', href: '#' },
+    { name: 'Meal Planning', href: '#' },
   ],
   support: [
     { name: 'Pricing', href: '#' },
     { name: 'Documentation', href: '#' },
     { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' },
   ],
   company: [
-    { name: 'About', href: '#' },
+    { name: 'About', href: '/about' },
     { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
+    // { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
-    { name: 'Partners', href: '#' },
+    // { name: 'Partners', href: '#' },
   ],
   legal: [
     { name: 'Claim', href: '#' },
@@ -184,11 +183,11 @@ const Footer = () => {
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-sm font-semibold leading-6 text-gray-900">
-              Subscribe to our newsletter
+              Sign up for our beta announcement
             </h3>
             <p className="mt-2 text-sm leading-6 text-gray-600">
-              The latest news, articles, and resources, sent to your inbox
-              weekly.
+              We&apos;re gearing up for our beta launch, and we want you to be
+              among the first to experience it
             </p>
           </div>
           <form className="mt-6 sm:flex sm:max-w-md lg:mt-0">
@@ -205,12 +204,9 @@ const Footer = () => {
               placeholder="Enter your email"
             />
             <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-              <button
-                type="submit"
-                className="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Subscribe
-              </button>
+              <Button type="submit" className="w-full">
+                Sign Up
+              </Button>
             </div>
           </form>
         </div>
@@ -220,7 +216,7 @@ const Footer = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-400 hover:text-gray-500"
+                className="text-gray-400 hover:text-brand"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -228,7 +224,8 @@ const Footer = () => {
             ))}
           </div>
           <p className="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-            &copy; 2020 Your Company, Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} Your Company, Inc. All rights
+            reserved.
           </p>
         </div>
       </div>

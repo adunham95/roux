@@ -31,12 +31,12 @@ export const MarketingFeature = (props: IMarketingFeatureProps) => {
         <p className="mt-6 text-lg leading-8 text-gray-600">{subTitle}</p>
       </div>
       <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-4 lg:gap-y-16 lg:max-w-none lg:grid-cols-3">
           {features.map((feat) => (
             <div className="flex flex-col" key={feat.id}>
-              <dt className="gap-x-3 text-base font-semibold leading-7 text-gray-900">
+              <dt className="gap-x-3 text-base font-semibold leading-7 text-gray-900 flex lg:block items-baseline">
                 {feat.emoji && (
-                  <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-brand">
+                  <div className="mb-2 lg:mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-brand">
                     {feat.emoji}
                   </div>
                 )}
