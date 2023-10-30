@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppHead } from '../appHead';
 import NavBar from '../navbar';
+import Image from 'next/image';
 
 export interface IDefaultLayoutProps {
   pageName?: string;
@@ -19,8 +20,10 @@ export const DefaultLayout = (props: IDefaultLayoutProps) => {
       {!props.hideNav && <NavBar />}
       {props.heroImg && (
         <div className="relative mb-5 isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
-          <img
+          <Image
             src={props.heroImg}
+            alt="Hero Image"
+            fill
             className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
           />
           <div className="absolute inset-0 -z-10 h-full w-full object-cover object-top bg-gray-500 opacity-70"></div>

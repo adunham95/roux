@@ -1,4 +1,5 @@
 import { AppHead } from '@/components/appHead';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function FourOhFour() {
@@ -6,7 +7,7 @@ export default function FourOhFour() {
     <>
       <AppHead pageName="Page Not Found" />
       <main className="relative isolate min-h-full">
-        <img
+        <Image
           src="/images/cutting-board-2.jpg"
           alt=""
           className="absolute inset-0 -z-10 h-full w-full object-cover object-top"

@@ -1,6 +1,7 @@
 import NoHeaderLayout from '@/components/Layouts/NoHeaderLayout';
 import { Button } from '@/components/buttons/button';
 import TextInput from '@/components/inputs/text-input';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 const Login = () => {
@@ -89,7 +90,8 @@ const Login = () => {
           </div>
         </div>
         <div className="relative hidden w-0 flex-1 lg:block">
-          <img
+          <Image
+            fill
             className="absolute inset-0 h-full w-full object-cover object-bottom"
             src="/images/cooking.jpg"
             alt=""

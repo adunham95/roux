@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -66,7 +67,7 @@ export const MarketingHero = (props: IMarketingHero) => {
               transform="translate(24 24)"
               clipPath="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
             >
-              <img src="/images/screenshot.png" alt="" />
+              <Image src="/images/screenshot.png" alt="App Screenshot" fill />
             </foreignObject>
           </svg>
         </div>
