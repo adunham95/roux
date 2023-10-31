@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 mongoose.Promise = global.Promise;
 
-const UserSchema = new Schema({
+const ProductsSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -30,6 +30,7 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.index({ name: 'text' });
+ProductsSchema.index({ name: 'text' });
 
-export default mongoose.models.User || mongoose.model('User', UserSchema);
+export default mongoose.models.Product ||
+  mongoose.model('Product', ProductsSchema);

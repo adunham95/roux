@@ -1,53 +1,69 @@
-interface IUser {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  username: string;
-  image: string;
-}
+import Product from '@/db/models/products';
+
+interface IProductInput {}
 
 const resolvers = {
   Query: {
-    users: async () => {
+    // products
+    getProducts: async () => {
       try {
-        const response = await fetch(process.env.URL_API || '');
-        const data = await response.json();
+        const products = await Product.find({});
 
-        return data.users.map((u: IUser) => {
-          return {
-            id: u.id,
-            firstName: u.firstName,
-            lastName: u.lastName,
-            email: u.email,
-            username: u.username,
-            image: u.image,
-          };
-        });
-      } catch (error) {
-        throw new Error('Something went wrong');
+        return products;
+      } catch (err) {
+        console.log(err);
       }
     },
-    searchUser: async (parent: unknown, { value }: { value: string }) => {
-      try {
-        const response = await fetch(
-          `${process.env.URL_API}/search?q=${value}`,
-        );
-        const data = await response.json();
+    getProduct: async (_: unknown, { id }: { id: string }) => {
+      const product = await Product.findById(id);
 
-        return data.users.map((u: IUser) => {
-          return {
-            id: u.id,
-            firstName: u.firstName,
-            lastName: u.lastName,
-            email: u.email,
-            username: u.username,
-            image: u.image,
-          };
-        });
-      } catch (error) {
-        throw new Error('Something went wrong');
+      if (!product) {
+        throw new Error('Product not found');
       }
+
+      return product;
+    },
+  },
+
+  Mutation: {
+    // products
+    newProduct: async (_: unknown, { input }: { input: IProductInput }) => {
+      try {
+        const product = new Product(input);
+
+        const result = await product.save();
+
+        return result;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    updateProduct: async (
+      _: unknown,
+      { id, input }: { id: string; input: IProductInput },
+    ) => {
+      let product = await Product.findById(id);
+
+      if (!product) {
+        throw new Error('Product not found');
+      }
+
+      product = await Product.findOneAndUpdate({ _id: id }, input, {
+        new: true,
+      });
+
+      return product;
+    },
+    deleteProduct: async (_: unknown, { id }: { id: string }) => {
+      const product = await Product.findById(id);
+
+      if (!product) {
+        throw new Error('Producto no encontrado');
+      }
+
+      await Product.findOneAndDelete({ _id: id });
+
+      return 'Producto eliminado';
     },
   },
 };
