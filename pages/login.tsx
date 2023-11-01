@@ -1,12 +1,19 @@
 import NoHeaderLayout from '@/components/Layouts/NoHeaderLayout';
 import { Button } from '@/components/buttons/button';
 import TextInput from '@/components/inputs/text-input';
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    signIn('credentials', { email, password, callbackUrl: '/dashboard' });
+  }
+
   return (
     <NoHeaderLayout pageName="Login" containerClassName="h-full">
       <div className="flex min-h-full flex-1">
@@ -34,7 +41,7 @@ const Login = () => {
 
             <div className="mt-10">
               <div>
-                <form action="#" method="POST" className="space-y-6">
+                <form onSubmit={onSubmit} className="space-y-6">
                   <div>
                     <TextInput
                       label="Email Address"
@@ -82,7 +89,9 @@ const Login = () => {
                   </div>
 
                   <div>
-                    <Button className="w-full">Sign In</Button>
+                    <Button type="submit" className="w-full">
+                      Sign In
+                    </Button>
                   </div>
                 </form>
               </div>
