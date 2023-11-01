@@ -4,32 +4,42 @@ const { Schema } = mongoose;
 
 mongoose.Promise = global.Promise;
 
-const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
+const UserSchema = new Schema(
+  {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  productionCapacity: {
-    type: Number,
-    required: true,
-    trim: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-    trim: true,
-  },
-  description: {
-    type: String,
-    trim: true,
-  },
-  createAt: {
-    type: Date,
-    defalut: Date.now(),
-  },
+  { timestamps: true },
+);
+
+// Duplicate the ID field.
+UserSchema.virtual('id').get(function () {
+  return this._id.toHexString();
 });
 
-UserSchema.index({ name: 'text' });
+// Ensure virtual fields are serialised.
+UserSchema.set('toJSON', {
+  virtuals: true,
+});
+UserSchema.set('toObject', {
+  virtuals: true,
+});
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);

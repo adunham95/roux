@@ -11,7 +11,6 @@ connectDb();
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
-  //   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 const handler = startServerAndCreateNextHandler(apolloServer, {

@@ -1,4 +1,5 @@
 import Product from '@/db/models/products';
+import createUser from './mutations/createUser';
 
 interface IProductInput {}
 
@@ -65,6 +66,7 @@ const resolvers = {
 
       return 'Producto eliminado';
     },
+    createUser: createUser,
   },
 };
 
