@@ -2,7 +2,8 @@ import { Menu, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Button } from '../buttons/button';
-import { BellIcon } from '@heroicons/react/24/outline';
+import { BellIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { signOut, useSession } from 'next-auth/react';
 
 const user = {
   name: 'Tom Cook',
@@ -14,30 +15,36 @@ const user = {
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
 ];
 
 interface IProps {}
 
 const AccountNav = (props: IProps) => {
   const {} = props;
-  const isLoggedIn = false;
-  if (!isLoggedIn) {
+  const { status, data: session } = useSession();
+  const isLoggedIn = status === 'authenticated';
+  console.log(session);
+  if (isLoggedIn && session) {
     return (
       <>
         <button
           type="button"
-          className="relative flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+          className="relative flex-shrink-0 rounded-full  p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
         >
           <span className="absolute -inset-1.5" />
           <span className="sr-only">View notifications</span>
           <BellIcon className="h-6 w-6" aria-hidden="true" />
         </button>
 
+        <div
+          className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200"
+          aria-hidden="true"
+        />
+
         {/* Profile dropdown */}
         <Menu as="div" className="relative ml-4 flex-shrink-0">
           <div>
-            <Menu.Button className="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2">
+            <Menu.Button className="relative flex rounded-full  focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 items-center p-1">
               <span className="absolute -inset-1.5" />
               <span className="sr-only">Open user menu</span>
               <img
@@ -45,6 +52,18 @@ const AccountNav = (props: IProps) => {
                 src={user.imageUrl}
                 alt=""
               />
+              <span className="hidden lg:flex lg:items-center">
+                <span
+                  className="ml-4 text-sm font-semibold leading-6 text-gray-900"
+                  aria-hidden="true"
+                >
+                  {session.user.firstName} {session.user.lastName}
+                </span>
+                <ChevronDownIcon
+                  className="ml-2 h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </span>
             </Menu.Button>
           </div>
           <Transition
@@ -72,6 +91,14 @@ const AccountNav = (props: IProps) => {
                   )}
                 </Menu.Item>
               ))}
+              <Menu.Item>
+                <button
+                  onClick={() => signOut()}
+                  className="block px-4 py-2 text-sm text-gray-700"
+                >
+                  Sign Out
+                </button>
+              </Menu.Item>
             </Menu.Items>
           </Transition>
         </Menu>
@@ -80,7 +107,7 @@ const AccountNav = (props: IProps) => {
   }
   return (
     <>
-      <Button>Login</Button>
+      <Button href="/login">Login</Button>
       <Button variant="outline" className="ml-1">
         Create Account
       </Button>

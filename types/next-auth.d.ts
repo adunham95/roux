@@ -10,5 +10,6 @@ interface IAuthUser extends User {
 declare module 'next-auth' {
   interface Session {
     accessToken?: Account.accessToken;
+    user: IAuthUser;
   }
 }

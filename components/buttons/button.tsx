@@ -1,18 +1,21 @@
+import Link from 'next/link';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export interface IButtonProps {
+  href?: string;
   type?: 'button' | 'submit';
   className?: string;
   children: React.ReactNode;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'filled' | 'outline' | 'text';
+  variant?: 'filled' | 'outline' | 'text' | 'empty';
   color?: 'brand' | 'success' | 'danger' | 'warning';
   onClick?: () => void;
 }
 
 export const Button = (props: IButtonProps) => {
   const {
+    href,
     className,
     children,
     size,
@@ -39,6 +42,8 @@ export const Button = (props: IButtonProps) => {
 
   function getVariant() {
     switch (variant) {
+      case 'empty':
+        return '';
       case 'filled':
         return `font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${colorItems[color].background} ${colorItems[color].hover} ${colorItems[color].focusOutline}`;
       case 'text':
@@ -48,6 +53,14 @@ export const Button = (props: IButtonProps) => {
       default:
         return '';
     }
+  }
+
+  if (href) {
+    return (
+      <Link href={href} className={twMerge(getSize(), getVariant(), className)}>
+        {children}
+      </Link>
+    );
   }
 
   return (
