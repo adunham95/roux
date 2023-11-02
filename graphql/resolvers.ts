@@ -2,6 +2,8 @@ import Product from '@/db/models/products';
 import createUser from './mutations/createUser';
 import updateUser from './mutations/updateUser';
 import getUserById from './queries/getUserById';
+import generateBetaTokens from './mutations/generateBetaTokens';
+import getAllBetaTokens from './queries/getBetaTokens';
 
 interface IProductInput {}
 
@@ -27,6 +29,7 @@ const resolvers = {
       return product;
     },
     getUserById,
+    getAllBetaTokens,
   },
 
   Mutation: {
@@ -71,6 +74,7 @@ const resolvers = {
     },
     createUser,
     updateUser,
+    generateBetaTokens,
   },
 };
 

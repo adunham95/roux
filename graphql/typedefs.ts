@@ -3,6 +3,12 @@ import { createUserTypeDefs } from './mutations/createUser';
 import { updateUserTypeDefs } from './mutations/updateUser';
 
 const typeDefs = gql`
+  #BetaToken
+  type BetaToken {
+    id: ID!
+    token: String!
+    redeemed: Boolean
+  }
   # User
   type User {
     id: ID
@@ -34,12 +40,19 @@ const typeDefs = gql`
   ${updateUserTypeDefs}
 
   type Query {
+    #Products
     getProducts: [Product]
     getProduct(id: ID!): Product
+    #Users
     getUserById(id: ID!): User
+    #BetaTokens
+    getAllBetaTokens: [BetaToken]
   }
 
   type Mutation {
+    #BetaTokens
+    generateBetaTokens(count: Int): [BetaToken]
+    #Users
     createUser(input: CreateUserInput): User
     updateUser(input: UpdateUserInput): User
     #Products
