@@ -11,6 +11,7 @@ const typeDefs = gql`
     email: String
     createdAt: String
     updatedAt: String
+    status: String
   }
 
   # Products
@@ -35,6 +36,7 @@ const typeDefs = gql`
   type Query {
     getProducts: [Product]
     getProduct(id: ID!): Product
+    getUserById(id: ID!): User
   }
 
   type Mutation {

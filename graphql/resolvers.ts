@@ -1,6 +1,7 @@
 import Product from '@/db/models/products';
 import createUser from './mutations/createUser';
 import updateUser from './mutations/updateUser';
+import getUserById from './queries/getUserById';
 
 interface IProductInput {}
 
@@ -25,6 +26,7 @@ const resolvers = {
 
       return product;
     },
+    getUserById,
   },
 
   Mutation: {
@@ -67,8 +69,8 @@ const resolvers = {
 
       return 'Producto eliminado';
     },
-    createUser: createUser,
-    updateUser: updateUser,
+    createUser,
+    updateUser,
   },
 };
 

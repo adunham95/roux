@@ -17,6 +17,7 @@ export const updateUserTypeDefs = gql`
     lastName: String
     email: String
     password: String
+    status: String
   }
 `;
 
