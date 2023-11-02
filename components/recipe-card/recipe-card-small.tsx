@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface IRecipeCardSmallProps {
   imgSrc: string;
@@ -20,6 +21,12 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
           fill
           className="object-cover overflow-hidden rounded"
         />
+        <div className="absolute top-0 flex justify-end w-full p-2">
+          <RecipeBadge className="bg-green-500" />
+          <RecipeBadge className="bg-amber-500" />
+          <RecipeBadge className="bg-blue-500" />
+          <RecipeBadge />
+        </div>
       </div>
       <div className="mt-4 flex justify-between">
         <div>
@@ -32,5 +39,21 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
     </div>
   );
 };
+
+interface IRecipeBadgeProps {
+  className?: string;
+}
+
+function RecipeBadge(props: IRecipeBadgeProps) {
+  const { className = '' } = props;
+  return (
+    <div
+      className={twMerge(
+        'h-2 w-2 opacity-50 bg-gray-500 mr-1 mb-1 rounded-full z-10 group-hover:h-7 group-hover:w-7 group-hover:opacity-100 transition-all',
+        className,
+      )}
+    ></div>
+  );
+}
 
 export default RecipeCardSmall;
