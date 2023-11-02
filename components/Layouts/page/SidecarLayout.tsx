@@ -1,6 +1,6 @@
 import React from 'react';
 import { DefaultLayout, IDefaultLayoutProps } from './DefaultLayout';
-import { Container } from '../container';
+import { Container } from '../../container';
 
 interface ISidecarLayoutProps extends IDefaultLayoutProps {
   sideCar?: React.ReactNode;

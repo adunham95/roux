@@ -1,4 +1,4 @@
-import MarketingLayout from '@/components/Layouts/MarketingLayout';
+import MarketingLayout from '@/components/Layouts/page/MarketingLayout';
 import React from 'react';
 
 const About = () => {

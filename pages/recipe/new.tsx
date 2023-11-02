@@ -1,4 +1,4 @@
-import SidecarLayout from '@/components/Layouts/SidecarLayout';
+import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import { RecipeMetaData } from '@/components/sidecar/elements/RecipeMetaData';
 import { SidecarIngredientList } from '@/components/sidecar/elements/IngredientList';
 import Sidecar from '@/components/sidecar/sidecar';

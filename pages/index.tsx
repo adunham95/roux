@@ -1,4 +1,4 @@
-import MarketingLayout from '@/components/Layouts/MarketingLayout';
+import MarketingLayout from '@/components/Layouts/page/MarketingLayout';
 import Footer from '@/components/footer/footer';
 import { MarketingCallToAction } from '@/components/marketing/cta';
 import { MarketingFeature } from '@/components/marketing/feature';

@@ -1,4 +1,4 @@
-import NoHeaderLayout from '@/components/Layouts/NoHeaderLayout';
+import NoHeaderLayout from '@/components/Layouts/page/NoHeaderLayout';
 import { Button } from '@/components/buttons/button';
 import TextInput from '@/components/inputs/text-input';
 import { signIn } from 'next-auth/react';

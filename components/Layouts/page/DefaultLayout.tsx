@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppHead } from '../appHead';
-import NavBar from '../navbar';
+import { AppHead } from '../../appHead';
+import NavBar from '../../navbar';
 import Image from 'next/image';
 
 export interface IDefaultLayoutProps {

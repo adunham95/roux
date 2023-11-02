@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppHead } from '../appHead';
-import { MarketingNavBar } from '../marketing/navBar';
+import { AppHead } from '../../appHead';
+import { MarketingNavBar } from '../../marketing/navBar';
 
 interface IProps {
   pageName?: string;

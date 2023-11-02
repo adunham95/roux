@@ -1,4 +1,4 @@
-import { DefaultLayout } from '@/components/Layouts/DefaultLayout';
+import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Container } from '@/components/container';
 import RecipeCardSmall from '@/components/recipe-card/recipe-card-small';
 

@@ -1,4 +1,4 @@
-import { DefaultLayout } from '@/components/Layouts/DefaultLayout';
+import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { ActivityFeed } from '@/components/activityFeed/activityFeed';
 import { Container } from '@/components/container';
 import React from 'react';
