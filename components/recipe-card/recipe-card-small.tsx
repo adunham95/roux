@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { Popover } from 'react-tiny-popover';
 
 interface IRecipeCardSmallProps {
   imgSrc: string;
@@ -24,8 +25,8 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
         <div className="absolute top-0 flex justify-end w-full p-2">
           <RecipeBadge className="bg-green-500" />
           <RecipeBadge className="bg-amber-500" />
-          <RecipeBadge className="bg-blue-500" />
-          <RecipeBadge />
+          <RecipeBadge className="bg-blue-500" title="Original" />
+          <RecipeBadge title="Remixed x22" />
         </div>
       </div>
       <div className="mt-4 flex justify-between">
@@ -42,18 +43,35 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
 
 interface IRecipeBadgeProps {
   className?: string;
+  title?: string;
 }
 
 function RecipeBadge(props: IRecipeBadgeProps) {
-  const { className = '' } = props;
-  return (
-    <div
-      className={twMerge(
-        'h-2 w-2 opacity-50 bg-gray-500 mr-1 mb-1 rounded-full z-10 group-hover:h-7 group-hover:w-7 group-hover:opacity-100 transition-all',
-        className,
-      )}
-    ></div>
-  );
+  const { className = '', title } = props;
+  const defaultClass =
+    'h-2 w-2 opacity-50 bg-gray-500 mr-1 mb-1 rounded-full z-10 group-hover:h-7 group-hover:w-7 group-hover:opacity-100 transition-all';
+  const [isPopoverOpen, setPopoverOpen] = useState(false);
+  if (title) {
+    return (
+      <Popover
+        isOpen={isPopoverOpen}
+        positions={['bottom', 'right', 'left', 'top']}
+        padding={2}
+        content={
+          <div className="p-1 bg-gray-400 text-white rounded text-sm">
+            {title}
+          </div>
+        }
+      >
+        <div
+          onMouseEnter={() => setPopoverOpen(true)}
+          onMouseLeave={() => setPopoverOpen(false)}
+          className={twMerge(defaultClass, className)}
+        ></div>
+      </Popover>
+    );
+  }
+  return <div className={twMerge(defaultClass, className)}></div>;
 }
 
 export default RecipeCardSmall;
