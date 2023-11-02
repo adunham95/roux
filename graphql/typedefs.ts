@@ -1,5 +1,6 @@
 import { gql } from 'graphql-tag';
 import { createUserTypeDefs } from './mutations/createUser';
+import { updateUserTypeDefs } from './mutations/updateUser';
 
 const typeDefs = gql`
   # User
@@ -8,7 +9,8 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    createAt: String
+    createdAt: String
+    updatedAt: String
   }
 
   # Products
@@ -28,6 +30,7 @@ const typeDefs = gql`
   }
 
   ${createUserTypeDefs}
+  ${updateUserTypeDefs}
 
   type Query {
     getProducts: [Product]
@@ -36,6 +39,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(input: CreateUserInput): User
+    updateUser(input: UpdateUserInput): User
     #Products
     newProduct(input: ProductInput): Product
     updateProduct(id: ID!, input: ProductInput): Product
