@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import InputWrapper, { IDefaultInputWrapperProps } from './inputWrapper';
+import { useSearchParams } from 'next/navigation';
 
 interface ITextInputProps extends IDefaultInputWrapperProps {
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   value: string;
-  onChange: (text: string, name: string, e: React.ChangeEvent) => void;
+  onChange: (text: string, name: string, e?: React.ChangeEvent) => void;
   inputClassName?: string;
   ariaDescription?: string;
   autoComplete?: string;
@@ -25,6 +26,14 @@ const TextInput = (props: ITextInputProps) => {
     value,
     autoComplete,
   } = props;
+  const searchParams = useSearchParams();
+  const queryValue = searchParams.get(id);
+  useEffect(() => {
+    if (queryValue) {
+      onChange(queryValue, name || id);
+    }
+  }, [queryValue]);
+
   return (
     <InputWrapper {...props}>
       <input
