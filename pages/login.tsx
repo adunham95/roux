@@ -2,6 +2,7 @@ import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import TextInput from '@/components/inputs/text-input';
 import { signIn } from 'next-auth/react';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Login = () => {
@@ -22,9 +23,12 @@ const Login = () => {
         </h2>
         <p className="mt-2 text-sm leading-6 text-gray-500">
           Not a member?{' '}
-          <a href="#" className="font-semibold text-brand hover:text-brand-500">
-            Start a 14 day free trial
-          </a>
+          <Link
+            href="/sign-up"
+            className="font-semibold text-brand hover:text-brand-500"
+          >
+            Create an account
+          </Link>
         </p>
       </div>
 
