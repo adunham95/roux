@@ -108,7 +108,7 @@ const AccountNav = (props: IProps) => {
   return (
     <>
       <Button href="/login">Login</Button>
-      <Button variant="outline" className="ml-1">
+      <Button href="/sign-up" variant="outline" className="ml-1">
         Create Account
       </Button>
     </>

@@ -2,26 +2,33 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import type { Session } from 'next-auth';
 import { SessionProvider, useSession } from 'next-auth/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 interface MyAppProps extends Omit<AppProps, 'Component'> {
   Component: AppProps['Component'] & { auth: boolean };
   session: Session;
 }
 
+const queryClient = new QueryClient();
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: MyAppProps) {
   return (
-    <SessionProvider session={session}>
-      {Component.auth ? (
-        <Auth>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider session={session}>
+        {Component.auth ? (
+          <Auth>
+            <Component {...pageProps} />
+          </Auth>
+        ) : (
           <Component {...pageProps} />
-        </Auth>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </SessionProvider>
+        )}
+        <ReactQueryDevtools initialIsOpen={false} />
+      </SessionProvider>
+    </QueryClientProvider>
   );
 }
 

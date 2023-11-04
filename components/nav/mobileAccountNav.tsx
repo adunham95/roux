@@ -80,12 +80,12 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
       >
         Log in
       </Link>
-      <a
-        href="#"
+      <Link
+        href="/sign-up"
         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
       >
         Create Account
-      </a>
+      </Link>
     </div>
   );
 };
