@@ -1,4 +1,4 @@
 export const GLOBALS = {
-  appName: 'Roux',
-  companyName: 'Roux',
+  appName: 'Kitchendry',
+  companyName: 'Kitchendry',
 };

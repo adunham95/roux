@@ -28,8 +28,8 @@ export default function Document() {
           color="#649dad"
         />
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <meta name="apple-mobile-web-app-title" content="Roux" />
-        <meta name="application-name" content="Roux" />
+        <meta name="apple-mobile-web-app-title" content="Kitchendry" />
+        <meta name="application-name" content="Kitchendry" />
         <meta name="msapplication-TileColor" content="#649dad" />
         <meta
           name="msapplication-config"

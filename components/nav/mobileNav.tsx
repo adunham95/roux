@@ -23,7 +23,7 @@ export const MobileNav = (props: IProps) => {
       <div className="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div className="flex justify-between gap-x-6">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Roux</span>
+            <span className="sr-only">Kitchendry</span>
             <img className="h-8 w-auto" src="/icon-wide.png" alt="" />
           </a>
           <button
