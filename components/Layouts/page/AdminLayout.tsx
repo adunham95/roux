@@ -16,50 +16,44 @@ import { twMerge } from 'tailwind-merge';
 import { AppHead } from '@/components/appHead';
 import AccountNav from '@/components/nav/accountNav';
 import { Container } from '@/components/container';
+import { useRouter } from 'next/router';
 
 const navigation = [
-  { name: 'Dashboard', href: '/console', icon: HomeIcon, current: true },
+  { name: 'Dashboard', href: '/console', icon: HomeIcon },
   {
     name: 'Memberships',
     href: '/console/memberships',
     icon: UsersIcon,
-    current: false,
   },
   {
     name: 'Teams',
     href: '/console/teams',
     icon: UserGroupIcon,
-    current: false,
   },
   {
     name: 'Users',
     href: '/console/users',
     icon: UserCircleIcon,
-    current: false,
   },
   {
     name: 'Collections',
     href: '/console/collections',
     icon: CircleStackIcon,
-    current: false,
   },
   {
     name: 'Membership Tiers',
     href: '/console/tiers',
     icon: Squares2X2Icon,
-    current: false,
   },
   {
     name: 'Challenges',
     href: '/console/challenges',
     icon: FolderIcon,
-    current: false,
   },
   {
     name: 'Reports',
     href: '/console/reports',
     icon: ChartBarIcon,
-    current: false,
   },
 ];
 
@@ -71,6 +65,11 @@ interface IProps {
 export const AdminLayout = (props: IProps) => {
   const { pageName, children } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { pathname } = useRouter();
+
+  function isCurrent(path: string) {
+    return path === pathname;
+  }
   return (
     <>
       <AppHead pageName={pageName} />
@@ -145,7 +144,7 @@ export const AdminLayout = (props: IProps) => {
                                 <a
                                   href={item.href}
                                   className={twMerge(
-                                    item.current
+                                    isCurrent(item.href)
                                       ? 'bg-brand-700 text-white'
                                       : 'text-brand-200 hover:text-white hover:bg-brand-700',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
@@ -153,7 +152,7 @@ export const AdminLayout = (props: IProps) => {
                                 >
                                   <item.icon
                                     className={twMerge(
-                                      item.current
+                                      isCurrent(item.href)
                                         ? 'text-white'
                                         : 'text-brand-200 group-hover:text-white',
                                       'h-6 w-6 shrink-0',
@@ -195,7 +194,7 @@ export const AdminLayout = (props: IProps) => {
                         <a
                           href={item.href}
                           className={twMerge(
-                            item.current
+                            isCurrent(item.href)
                               ? 'bg-brand-700 text-white'
                               : 'text-brand-200 hover:text-white hover:bg-brand-700',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
