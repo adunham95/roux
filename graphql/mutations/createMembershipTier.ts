@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 
 export interface IMembershipTierInput {
   tierName: string;
+  tierDescription: string;
   features?: string[];
   maxTeamSize: number;
   maxRecipeCount: number;
@@ -27,6 +28,7 @@ export const createMembershipTierTypeDefs = gql`
 
   input CreateMembershipTierInput {
     tierName: String!
+    tierDescription: String
     features: [CreateMembershipFeaturePermission]
     maxTeamSize: Int!
     maxRecipeCount: Int!

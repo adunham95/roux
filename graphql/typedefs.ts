@@ -17,6 +17,7 @@ const typeDefs = gql`
   type MembershipTier {
     id: ID!
     tierName: String
+    tierDescription: String
     features: [MembershipTierFeatures]
     maxTeamSize: Int
     maxRecipeCount: Int

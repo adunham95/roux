@@ -16,6 +16,7 @@ const MembershipFeaturesSchema = new Schema({
 
 const MembershipTierSchema = new Schema({
   tierName: String,
+  tierDescription: String,
   features: [MembershipFeaturesSchema],
   maxTeamSize: {
     type: Number,
