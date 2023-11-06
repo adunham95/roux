@@ -51,7 +51,7 @@ export default function NavBar() {
               </div>
             </div>
             <nav
-              className="hidden lg:flex lg:space-x-2 lg:pt-2"
+              className="hidden lg:flex lg:space-x-2 lg:pt-2 justify-center"
               aria-label="Global"
             >
               {navigation.map((item) => (
