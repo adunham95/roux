@@ -10,8 +10,7 @@ async function getMembershipTiers(
     if (onlyVisible) {
       return MembershipTier.find({ visible: true });
     } else {
-      const data = MembershipTier.find({});
-      console.log('data', data);
+      const data = MembershipTier.find({}, null, { sort: { monthlyCost: 1 } });
       return data;
     }
   } catch (error) {
