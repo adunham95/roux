@@ -5,6 +5,7 @@ import getUserById from './queries/getUserById';
 import generateBetaTokens from './mutations/generateBetaTokens';
 import getAllBetaTokens from './queries/getBetaTokens';
 import createMembershipTier from './mutations/createMembershipTier';
+import getMembershipTiers from './queries/getMembershipTiers';
 
 interface IProductInput {}
 
@@ -31,6 +32,7 @@ const resolvers = {
     },
     getUserById,
     getAllBetaTokens,
+    getMembershipTiers,
   },
 
   Mutation: {

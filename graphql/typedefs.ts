@@ -64,6 +64,8 @@ const typeDefs = gql`
   ${createMembershipTierTypeDefs}
 
   type Query {
+    #MembershipTier
+    getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Products
     getProducts: [Product]
     getProduct(id: ID!): Product
