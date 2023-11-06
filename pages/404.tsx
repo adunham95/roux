@@ -8,6 +8,7 @@ export default function FourOhFour() {
       <AppHead pageName="Page Not Found" />
       <main className="relative isolate min-h-full">
         <Image
+          priority
           fill
           src="/images/cutting-board-2.jpg"
           alt=""
