@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppHead } from '../../appHead';
 import { MarketingNavBar } from '../../marketing/navBar';
+import Footer from '@/components/footer/footer';
 
 interface IProps {
   pageName?: string;
@@ -14,6 +15,7 @@ const MarketingLayout = (props: IProps) => {
       <AppHead pageName={props.pageName} />
       <MarketingNavBar />
       <main className={props.containerClassName}>{props.children}</main>
+      <Footer />
     </>
   );
 };

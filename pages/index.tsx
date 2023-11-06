@@ -1,5 +1,4 @@
 import MarketingLayout from '@/components/Layouts/page/MarketingLayout';
-import Footer from '@/components/footer/footer';
 import { MarketingCallToAction } from '@/components/marketing/cta';
 import { MarketingFeature } from '@/components/marketing/feature';
 import { HeroV2 } from '@/components/marketing/hero_v2';
@@ -69,7 +68,6 @@ const Index = () => {
           secondaryLink="/"
           secondaryTitle="Learn More"
         />
-        <Footer />
       </>
     </MarketingLayout>
   );
