@@ -2,13 +2,15 @@ import React, { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
-  CalendarIcon,
-  ChartPieIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
   HomeIcon,
-  UsersIcon,
   XMarkIcon,
+  UserCircleIcon,
+  UsersIcon,
+  UserGroupIcon,
+  ChartBarIcon,
+  CircleStackIcon,
+  FolderIcon,
+  Squares2X2Icon,
 } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
 import { AppHead } from '@/components/appHead';
@@ -16,12 +18,49 @@ import AccountNav from '@/components/nav/accountNav';
 import { Container } from '@/components/container';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+  { name: 'Dashboard', href: '/console', icon: HomeIcon, current: true },
+  {
+    name: 'Memberships',
+    href: '/console/memberships',
+    icon: UsersIcon,
+    current: false,
+  },
+  {
+    name: 'Teams',
+    href: '/console/teams',
+    icon: UserGroupIcon,
+    current: false,
+  },
+  {
+    name: 'Users',
+    href: '/console/users',
+    icon: UserCircleIcon,
+    current: false,
+  },
+  {
+    name: 'Collections',
+    href: '/console/collections',
+    icon: CircleStackIcon,
+    current: false,
+  },
+  {
+    name: 'Membership Tiers',
+    href: '/console/tiers',
+    icon: Squares2X2Icon,
+    current: false,
+  },
+  {
+    name: 'Challenges',
+    href: '/console/challenges',
+    icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: 'Reports',
+    href: '/console/reports',
+    icon: ChartBarIcon,
+    current: false,
+  },
 ];
 
 interface IProps {
