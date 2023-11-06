@@ -17,14 +17,16 @@ const SignUp = () => {
   return (
     <SplitImageLayout pageName="Sign Up">
       <div>
-        <img
-          className="h-10 w-auto"
-          src="/icon-wide.png"
-          alt="Kitchendry logo"
-        />
-        <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Create your account
-        </h2>
+        <Link href="/">
+          <img
+            className="h-10 w-auto"
+            src="/icon-wide.png"
+            alt="Kitchendry logo"
+          />
+          <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Create your account
+          </h2>
+        </Link>
       </div>
 
       <div className="mt-10">

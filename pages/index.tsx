@@ -57,13 +57,14 @@ const Index = () => {
             },
           ]}
         />
+        {/* <MarketingTimeline /> */}
         <MarketingCallToAction
           title="Ready to reimagine"
           subtitle="your cooking journey?"
           description={
             "Your kitchen adventures are about to get a whole lot tastier. Sign up and let's whip up something amazing together. Your kitchen, your rules"
           }
-          ctaLink="/signup"
+          ctaLink="/sign-up"
           ctaTitle="Sign Up"
           secondaryLink="/"
           secondaryTitle="Learn More"

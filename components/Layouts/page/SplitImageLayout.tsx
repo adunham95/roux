@@ -22,6 +22,7 @@ const SplitImageLayout = (props: ISplitImageLayoutProps) => {
           </div>
           <div className="relative hidden w-0 flex-1 lg:block">
             <Image
+              priority
               fill
               className="absolute inset-0 h-full w-full object-cover object-bottom"
               src="/images/cooking.jpg"
