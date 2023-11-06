@@ -11,7 +11,7 @@ const typeDefs = gql`
     default: Boolean
   }
   type MembershipTierFeatures {
-    tile: String
+    title: String
     description: String
   }
   type MembershipTier {
