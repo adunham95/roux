@@ -1,5 +1,6 @@
 import { Button } from '@/components/buttons/button';
 import React, { FormEvent } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface IProps {
   title: string;
@@ -7,10 +8,11 @@ interface IProps {
   children: React.ReactNode;
   onCancel?: () => void;
   onSubmit?: () => void;
+  className?: string;
 }
 
 export const TwoColumnCard = (props: IProps) => {
-  const { title, subTitle, children, onCancel, onSubmit } = props;
+  const { title, subTitle, children, onCancel, onSubmit, className } = props;
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -18,7 +20,12 @@ export const TwoColumnCard = (props: IProps) => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
+    <div
+      className={twMerge(
+        'grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3',
+        className,
+      )}
+    >
       <div className="px-4 sm:px-0">
         <div className="sticky top-0">
           <h2 className="text-base font-semibold leading-7 text-gray-900 ">
@@ -35,7 +42,7 @@ export const TwoColumnCard = (props: IProps) => {
         className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
       >
         <div className="px-4 py-6 sm:p-8">
-          <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="grid max-w-2xl gap-x-6 gap-y-8 grid-cols-6">
             {children}
           </div>
         </div>

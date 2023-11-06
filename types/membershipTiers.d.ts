@@ -9,5 +9,5 @@ interface IMembershipTier {
   monthlyCost: number;
   default?: boolean;
   visible?: boolean;
-  permissions?: { name: string; permissions: string[]; default: boolean };
+  permissions?: { name: string; permissions: string[]; default: boolean }[];
 }
