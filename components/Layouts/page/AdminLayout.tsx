@@ -202,7 +202,7 @@ export const AdminLayout = (props: IProps) => {
                         >
                           <item.icon
                             className={twMerge(
-                              item.current
+                              isCurrent(item.href)
                                 ? 'text-white'
                                 : 'text-brand-200 group-hover:text-white',
                               'h-6 w-6 shrink-0',
