@@ -4,6 +4,7 @@ import updateUser from './mutations/updateUser';
 import getUserById from './queries/getUserById';
 import generateBetaTokens from './mutations/generateBetaTokens';
 import getAllBetaTokens from './queries/getBetaTokens';
+import createMembershipTier from './mutations/createMembershipTier';
 
 interface IProductInput {}
 
@@ -75,6 +76,7 @@ const resolvers = {
     createUser,
     updateUser,
     generateBetaTokens,
+    createMembershipTier,
   },
 };
 
