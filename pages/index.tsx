@@ -2,19 +2,16 @@ import MarketingLayout from '@/components/Layouts/page/MarketingLayout';
 import Footer from '@/components/footer/footer';
 import { MarketingCallToAction } from '@/components/marketing/cta';
 import { MarketingFeature } from '@/components/marketing/feature';
-import { MarketingHero } from '@/components/marketing/hero';
+import { HeroV2 } from '@/components/marketing/hero_v2';
 import React from 'react';
 
 const Index = () => {
   return (
     <MarketingLayout>
       <>
-        <MarketingHero
-          title="Culinary Creativity Unleashed!"
-          subtitle="Unlock the power of your kitchen with Roux, the app that redefines the way you cook. Whether you're a seasoned chef or a kitchen novice, our app empowers you to create, explore, and revisit your culinary adventures like never before."
-        />
+        <HeroV2 />
         <MarketingFeature
-          title=" Recipe History"
+          title="Features Include"
           subTitle="Cook, Create, Remember!"
           features={[
             {
