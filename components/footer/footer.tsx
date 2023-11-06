@@ -9,7 +9,7 @@ const navigation = {
     { name: 'Meal Planning', href: '#' },
   ],
   support: [
-    { name: 'Pricing', href: '#' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Documentation', href: '#' },
     { name: 'Guides', href: '#' },
   ],
