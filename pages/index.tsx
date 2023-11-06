@@ -30,30 +30,30 @@ const Index = () => {
             {
               id: 'customize',
               emoji: '👩‍🍳',
-              title: 'Customize and Personalize',
+              title: 'Customize and Personalize(Coming Soon)',
               description:
                 "Tweak recipes to perfection. Make notes, substitutions, and adjustments to every recipe, so it's truly your own.",
             },
             {
               id: 'meal-plan',
               emoji: '🍽️',
-              title: 'Meal Planning Made Easy',
+              title: 'Meal Planning Made Easy(Coming Soon)',
               description:
                 'Plan your weekly meals effortlessly. Remix recipes to design a diverse menu that keeps you excited about every meal.',
             },
             {
               id: 'culinary-inspiration',
               emoji: '🧑‍🍳',
-              title: 'Culinary Inspiration',
+              title: 'Culinary Inspiration(Coming Soon)',
               description:
                 'Get creative in the kitchen. Explore unique twists on classic dishes and new flavor combinations to awaken your taste buds.',
             },
             {
               id: 'upgrade',
               emoji: '🚀',
-              title: 'Upgrade Your Cooking Game',
+              title: 'Upgrade Your Cooking Game(Coming Soon)',
               description:
-                'Elevate your culinary skills and broaden your palate with Roux, your ultimate kitchen companion.',
+                'Elevate your culinary skills and broaden your palate with Kitchendry, your ultimate kitchen companion.',
             },
           ]}
         />
