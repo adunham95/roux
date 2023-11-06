@@ -45,11 +45,9 @@ export const StartingPoint = (props: IProps) => {
               </div>
               <div>
                 <h3 className="text-sm font-medium text-gray-900">
-                  <a href="#" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    <span>{item.title}</span>
-                    <span aria-hidden="true"> &rarr;</span>
-                  </a>
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  <span>{item.title}</span>
+                  <span aria-hidden="true"> &rarr;</span>
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">{item.description}</p>
               </div>

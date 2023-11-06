@@ -14,9 +14,13 @@ import {
 } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
 import { AppHead } from '@/components/appHead';
-import AccountNav from '@/components/nav/accountNav';
 import { Container } from '@/components/container';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+const AccountNav = dynamic(() => import('../../nav/accountNav'), {
+  ssr: false,
+});
 
 const navigation = [
   { name: 'Dashboard', href: '/console', icon: HomeIcon },
