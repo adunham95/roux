@@ -27,7 +27,11 @@ export const createUserTypeDefs = gql`
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function createUser(
   _: unknown,
-  { input, teamID }: { input: IUserInput; teamID?: string },
+  {
+    input,
+    teamID,
+    role = 'admin',
+  }: { input: IUserInput; teamID?: string; role?: string },
 ) {
   const betaTokenRequired = false;
   try {
@@ -49,8 +53,11 @@ async function createUser(
     if (!teamID) {
       const membershipTierData = await MembershipTier.findOne({
         default: true,
+        visible: true,
       }).sort({ monthlyCost: 1 });
-      console.log(membershipTierData);
+
+      role = membershipTierData.defaultPermission.name;
+
       const newMembership = new Membership({
         tierID: membershipTierData._id,
       });
@@ -68,9 +75,8 @@ async function createUser(
     const password = await Auth.hashPassword(input.password);
     const email = input.email.trim();
     const user = new User({ ...input, password, email });
-    //TODO set to dynamically generate get role
     const newTeamMember = new TeamMember({
-      role: 'admin',
+      role,
       teamID,
       userID: user._id,
     });

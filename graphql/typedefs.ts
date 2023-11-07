@@ -8,7 +8,7 @@ const typeDefs = gql`
   type MembershipTierPricing {
     name: String
     permissions: [String]
-    default: Boolean
+    locked: Boolean
   }
   type MembershipTierFeatures {
     title: String
@@ -25,7 +25,7 @@ const typeDefs = gql`
     monthlyCost: Int
     visible: Boolean
     default: Boolean
-    permissions: [MembershipTierPricing]
+    defaultPermission: MembershipTierPricing
   }
   #BetaToken
   type BetaToken {

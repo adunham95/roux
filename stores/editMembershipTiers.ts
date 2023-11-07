@@ -4,17 +4,12 @@ import { IBaseStore } from './baseStore';
 interface IEditMembershipStore extends IBaseStore, IMembershipTier {
   setValue: (value: string | boolean | number, key: string) => void;
   addFeature: () => void;
-  addPermission: () => void;
   updateMembershipFeature: (
     index: number,
     item: IMembershipTierFeature,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
-  updateMembershipPermission: (
-    index: number,
-    item: IMembershipTierPermission,
-    action?: 'update' | 'copy' | 'delete',
-  ) => void;
+  updateMembershipPermission: (item: IMembershipTierPermission) => void;
 }
 
 const defaultStore = {
@@ -23,7 +18,7 @@ const defaultStore = {
   maxRecipeCount: 1,
   maxTeamSize: 1,
   monthlyCost: 0,
-  permissions: [{ name: 'admin', permissions: [], default: true }],
+  defaultPermission: { name: 'admin', permissions: [], default: true },
   tierName: '',
   tierDescription: '',
   visible: true,
@@ -38,16 +33,6 @@ export const useEditMembershipTier = create<IEditMembershipStore>(
       set((state) => ({
         ...state,
         [key]: value,
-      }));
-    },
-    addPermission: () => {
-      const newItem = {
-        name: '',
-        permissions: [],
-        default: false,
-      };
-      set((state) => ({
-        permissions: [...(state.permissions || []), newItem],
       }));
     },
     addFeature: () => {
@@ -79,27 +64,8 @@ export const useEditMembershipTier = create<IEditMembershipStore>(
         }
       }
     },
-    updateMembershipPermission: (index, item, action) => {
-      const permissions = get().permissions || [];
-      if (index >= 0) {
-        switch (action) {
-          case 'copy':
-            set({
-              permissions: [...permissions, { ...permissions[index] }],
-            });
-            break;
-          case 'delete':
-            set({
-              permissions: permissions.filter((p) => p !== item),
-            });
-            break;
-          default:
-            console.log(item, index);
-            permissions[index] = item;
-            set({ permissions });
-        }
-      }
-    },
+    updateMembershipPermission: (defaultPermission) =>
+      set({ defaultPermission }),
     clear: () => set(defaultStore),
   }),
 );

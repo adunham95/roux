@@ -11,14 +11,14 @@ export interface IMembershipTierInput {
   monthlyCost: number;
   default?: boolean;
   visible?: boolean;
-  permissions?: { name: string; permissions: string[]; default: boolean };
+  defaultPermission?: { name: string; permissions: string[]; locked: boolean };
 }
 
 export const createMembershipTierTypeDefs = gql`
   input CreateMembershipTierPermission {
     name: String!
     permissions: [String]
-    default: Boolean
+    locked: Boolean
   }
 
   input CreateMembershipFeaturePermission {
@@ -36,7 +36,7 @@ export const createMembershipTierTypeDefs = gql`
     monthlyCost: Int!
     default: Boolean
     visible: Boolean
-    permissions: [CreateMembershipTierPermission]
+    defaultPermission: CreateMembershipTierPermission
   }
 `;
 
@@ -48,7 +48,6 @@ async function createMembershipTier(
   try {
     console.log(input);
     const newTier = new MembershipTier(input);
-    console.log(newTier);
     newTier.save();
     return newTier.toJSON();
   } catch (error) {

@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 export const MembershipTierPermissions = new Schema({
   name: String,
   permissions: [String],
-  default: {
+  locked: {
     type: Boolean,
     default: false,
   },
@@ -38,7 +38,7 @@ const MembershipTierSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  permissions: [MembershipTierPermissions],
+  defaultPermission: MembershipTierPermissions,
 });
 
 MembershipTierSchema.virtual('id').get(function () {

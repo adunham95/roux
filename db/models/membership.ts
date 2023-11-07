@@ -15,7 +15,7 @@ const MembershipSchema = new Schema({
   maxRecipeCount: {
     type: Number,
   },
-  permissions: [MembershipTierPermissions],
+  customPermissions: [MembershipTierPermissions],
 });
 
 MembershipSchema.virtual('id').get(function () {

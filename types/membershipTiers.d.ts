@@ -6,7 +6,7 @@ interface IMembershipTierFeature {
 interface IMembershipTierPermission {
   name: string;
   permissions: string[];
-  default?: boolean;
+  locked?: boolean;
 }
 
 interface IMembershipTier {
@@ -20,5 +20,6 @@ interface IMembershipTier {
   monthlyCost: number;
   default?: boolean;
   visible?: boolean;
-  permissions?: IMembershipTierPermission[];
+  defaultPermission?: IMembershipTierPermission;
+  customPermissions?: IMembershipTierPermission[];
 }
