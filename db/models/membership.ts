@@ -22,6 +22,13 @@ MembershipSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
+MembershipSchema.virtual('defaultPermission', {
+  ref: 'MembershipTier',
+  localField: 'tierID', // Of post collection
+  foreignField: '_id', // Of user collection
+  justOne: true,
+});
+
 MembershipSchema.set('toJSON', {
   virtuals: true,
 });

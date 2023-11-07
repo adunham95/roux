@@ -40,6 +40,13 @@ UserSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
+UserSchema.virtual('teamsRoles', {
+  ref: 'TeamMember',
+  localField: '_id', // Of post collection
+  foreignField: 'userID', // Of user collection
+  justOne: false,
+});
+
 // Ensure virtual fields are serialised.
 UserSchema.set('toJSON', {
   virtuals: true,

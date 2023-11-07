@@ -18,6 +18,7 @@ export const authOptions = {
         console.log({ credentials });
         connectDb();
         const user = await User.findOne({ email: credentials?.email });
+        //TODO get user permission based on
         if (!user) {
           console.log('no user found');
           return null;
