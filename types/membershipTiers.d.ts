@@ -6,7 +6,7 @@ interface IMembershipTierFeature {
 interface IMembershipTierPermission {
   name: string;
   permissions: string[];
-  default: boolean;
+  default?: boolean;
 }
 
 interface IMembershipTier {

@@ -23,7 +23,7 @@ const defaultStore = {
   maxRecipeCount: 1,
   maxTeamSize: 1,
   monthlyCost: 0,
-  permissions: [],
+  permissions: [{ name: 'admin', permissions: [], default: true }],
   tierName: '',
   tierDescription: '',
   visible: true,
