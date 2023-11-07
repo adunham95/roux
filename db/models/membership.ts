@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { MembershipTierPermissions } from './membershipTier';
+import membershipTier from './membershipTier';
 
 const MembershipSchema = new Schema({
   tierID: { type: Schema.Types.ObjectId, required: true },
@@ -15,7 +15,7 @@ const MembershipSchema = new Schema({
   maxRecipeCount: {
     type: Number,
   },
-  customPermissions: [MembershipTierPermissions],
+  customPermissions: { type: [Schema.Types.ObjectId] },
 });
 
 MembershipSchema.virtual('id').get(function () {
@@ -23,7 +23,7 @@ MembershipSchema.virtual('id').get(function () {
 });
 
 MembershipSchema.virtual('defaultPermission', {
-  ref: 'MembershipTier',
+  ref: membershipTier,
   localField: 'tierID', // Of post collection
   foreignField: '_id', // Of user collection
   justOne: true,

@@ -30,8 +30,8 @@ async function createUser(
   {
     input,
     teamID,
-    role = 'admin',
-  }: { input: IUserInput; teamID?: string; role?: string },
+    roleID,
+  }: { input: IUserInput; teamID?: string; roleID?: string },
 ) {
   const betaTokenRequired = false;
   try {
@@ -56,7 +56,9 @@ async function createUser(
         visible: true,
       }).sort({ monthlyCost: 1 });
 
-      role = membershipTierData.defaultPermission.name;
+      console.log(membershipTierData);
+
+      roleID = membershipTierData.defaultPermission;
 
       const newMembership = new Membership({
         tierID: membershipTierData._id,
@@ -76,7 +78,7 @@ async function createUser(
     const email = input.email.trim();
     const user = new User({ ...input, password, email });
     const newTeamMember = new TeamMember({
-      role,
+      roleID,
       teamID,
       userID: user._id,
     });

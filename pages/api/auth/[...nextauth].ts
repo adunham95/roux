@@ -16,25 +16,35 @@ export const authOptions = {
       },
       async authorize(credentials) {
         console.log({ credentials });
-        connectDb();
-        const user = await User.findOne({ email: credentials?.email });
-        //TODO get user permission based on
-        if (!user) {
-          console.log('no user found');
-          return null;
+        try {
+          connectDb();
+          const user = await User.findOne({
+            email: credentials?.email,
+          }).populate({
+            path: 'teamRoles',
+            populate: { path: 'permissions' },
+          });
+          console.log(user);
+          //TODO get user permission based on
+          if (!user) {
+            console.log('no user found');
+            return null;
+          }
+
+          const passwordMatch = await Auth.matchPasswords(
+            credentials?.password || '',
+            user.password,
+          );
+
+          if (!passwordMatch) {
+            console.log('password doesnt match');
+            return null;
+          }
+
+          return user.toJSON();
+        } catch (error) {
+          console.log(error);
         }
-
-        const passwordMatch = await Auth.matchPasswords(
-          credentials?.password || '',
-          user.password,
-        );
-
-        if (!passwordMatch) {
-          console.log('password doesnt match');
-          return null;
-        }
-
-        return user.toJSON();
       },
     }),
   ],
@@ -56,6 +66,7 @@ export const authOptions = {
           email: token.email,
           firstName: token.firstName,
           lastName: token.lastName,
+          teamRoles: token.teamRoles,
         };
       }
       if (user) {
@@ -65,6 +76,7 @@ export const authOptions = {
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
+          teamRoles: user.teamRoles,
         };
       }
       return session;
@@ -78,6 +90,7 @@ export const authOptions = {
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
+          teamRoles: user.teamRoles,
         };
       }
       return token;

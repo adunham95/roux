@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-
+import teamMember from './teamMember';
 const { Schema } = mongoose;
-
 mongoose.Promise = global.Promise;
 
 const UserSchema = new Schema(
@@ -40,11 +39,10 @@ UserSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
-UserSchema.virtual('teamsRoles', {
-  ref: 'TeamMember',
-  localField: '_id', // Of post collection
-  foreignField: 'userID', // Of user collection
-  justOne: false,
+UserSchema.virtual('teamRoles', {
+  ref: teamMember,
+  localField: '_id',
+  foreignField: 'userID',
 });
 
 // Ensure virtual fields are serialised.

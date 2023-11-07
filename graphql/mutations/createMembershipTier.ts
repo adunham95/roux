@@ -1,3 +1,4 @@
+import MembershipPermissions from '@/db/models/membershipPermissions';
 import MembershipTier from '@/db/models/membershipTier';
 import gql from 'graphql-tag';
 
@@ -48,8 +49,11 @@ async function createMembershipTier(
   try {
     console.log(input);
     const newTier = new MembershipTier(input);
+    const newPermission = new MembershipPermissions(input.defaultPermission);
+    newTier.defaultPermission = newPermission._id;
     newTier.save();
-    return newTier.toJSON();
+    newPermission.save();
+    return { ...newTier.toJSON(), defaultPermission: newPermission.toJSON() };
   } catch (error) {
     console.log({ error });
     throw error;

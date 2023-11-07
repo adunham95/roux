@@ -1,14 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
 
-export const MembershipTierPermissions = new Schema({
-  name: String,
-  permissions: [String],
-  locked: {
-    type: Boolean,
-    default: false,
-  },
-});
-
 const MembershipFeaturesSchema = new Schema({
   title: String,
   description: String,
@@ -38,7 +29,7 @@ const MembershipTierSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  defaultPermission: MembershipTierPermissions,
+  defaultPermission: Schema.Types.ObjectId,
 });
 
 MembershipTierSchema.virtual('id').get(function () {
