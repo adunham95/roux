@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const MembershipTierPermissions = new Schema({
+export const MembershipTierPermissions = new Schema({
   name: String,
   permissions: [String],
   default: {

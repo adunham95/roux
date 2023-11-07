@@ -1,8 +1,11 @@
+import MembershipTier from '@/db/models/membershipTier';
 import betaTokens from '@/db/models/betaTokens';
 import User from '@/db/models/user';
 import Auth from '@/services/auth.service';
 import gql from 'graphql-tag';
-
+import Membership from '@/db/models/membership';
+import Team from '@/db/models/teams';
+import TeamMember from '@/db/models/teamMember';
 export interface IUserInput {
   firstName: string;
   lastName: string;
@@ -22,12 +25,13 @@ export const createUserTypeDefs = gql`
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function createUser(_: unknown, { input }: { input: IUserInput }) {
-  const betaTokenRequired = true;
+async function createUser(
+  _: unknown,
+  { input, teamID }: { input: IUserInput; teamID?: string },
+) {
+  const betaTokenRequired = false;
   try {
-    console.log('input', input);
     const currentUsers = await User.find({ email: input.email.trim() });
-    console.log('currentUsers', currentUsers);
     if (currentUsers.length > 0) {
       throw new Error('User Already Exists');
     }
@@ -36,17 +40,42 @@ async function createUser(_: unknown, { input }: { input: IUserInput }) {
     }
     if (betaTokenRequired && input.betaToken) {
       const token = await betaTokens.findOne({ token: input.betaToken });
-      console.log({ token: input.betaToken, response: token });
       if (token.redeemed) {
         throw new Error('Beta token already redeemed');
       }
       token.set({ redeemed: true });
       token.save();
     }
+    if (!teamID) {
+      const membershipTierData = await MembershipTier.findOne({
+        default: true,
+      }).sort({ monthlyCost: 1 });
+      console.log(membershipTierData);
+      const newMembership = new Membership({
+        tierID: membershipTierData._id,
+      });
+
+      const newTeam = new Team({
+        name: `${input.firstName} ${input.lastName}'s Kitchen`,
+        membershipID: newMembership._id,
+      });
+
+      teamID = newTeam._id;
+      console.log({ newMembership, newTeam });
+      newMembership.save({ new: true });
+      newTeam.save({ new: true });
+    }
     const password = await Auth.hashPassword(input.password);
     const email = input.email.trim();
     const user = new User({ ...input, password, email });
+    //TODO set to dynamically generate get role
+    const newTeamMember = new TeamMember({
+      role: 'admin',
+      teamID,
+      userID: user._id,
+    });
     user.save({ new: true });
+    newTeamMember.save({ new: true });
 
     return user.toJSON();
   } catch (error) {

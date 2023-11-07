@@ -82,7 +82,7 @@ const typeDefs = gql`
     #BetaTokens
     generateBetaTokens(count: Int): [BetaToken]
     #Users
-    createUser(input: CreateUserInput): User
+    createUser(input: CreateUserInput!, teamID: String): User
     updateUser(input: UpdateUserInput): User
     #Products
     newProduct(input: ProductInput): Product
