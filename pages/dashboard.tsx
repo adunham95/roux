@@ -5,7 +5,6 @@ import { HeroSection } from '@/components/section/heroSection';
 import { Section } from '@/components/section/section';
 import { TabbedSection } from '@/components/section/tabbedSection';
 import { StatBar } from '@/components/statbar/statbar';
-import { StatusBar } from '@/components/statusBar';
 
 const options = [
   {
@@ -67,29 +66,7 @@ export default function Home() {
           description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo."
           cta="CTA"
         />
-        <DashboardCard title="Level up your kitchen skills">
-          <StatusBar
-            percentage={35}
-            labels={[
-              { title: 'Create Account', visiblePercentage: 0 },
-              { title: 'Create Recipe', visiblePercentage: 30 },
-              { title: 'Remix Recipe', visiblePercentage: 60 },
-              { title: 'Enjoy', visiblePercentage: 90 },
-            ]}
-          />
-          <div className="relative mt-5">
-            <div
-              className="absolute inset-0 flex items-center"
-              aria-hidden="true"
-            >
-              <div className="w-full border-t border-gray-300" />
-            </div>
-            <div className="relative flex justify-center">
-              <span className="bg-white px-2 text-sm text-gray-500">
-                Chef Stats
-              </span>
-            </div>
-          </div>
+        <DashboardCard title="Chef Stats">
           <StatBar
             stats={[
               { id: 'recipes', name: 'Recipes', stat: '1' },
@@ -108,7 +85,7 @@ export default function Home() {
           <TabbedSection
             tabs={[
               {
-                name: 'Available',
+                name: 'Upcoming',
                 count: 2,
                 children: (
                   <>
@@ -117,7 +94,7 @@ export default function Home() {
                 ),
               },
               {
-                name: 'Used',
+                name: 'Previous',
                 count: 6,
                 children: (
                   <>
