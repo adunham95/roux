@@ -84,7 +84,7 @@ export function NewInstructionItem({
           </div>
         }
       />
-      <div className="py-2">
+      <div className="py-2 relative">
         {instruction.ingredients.map((ing, i) => (
           <IngredientButton
             label={(ing.food.slice(0, 1), `${i}`)}
@@ -94,20 +94,6 @@ export function NewInstructionItem({
             isActive={ingredientIndex === i}
           />
         ))}
-        {/*
-        //   <IconButton
-        //     key={ing.id}
-        //     title="Plus"
-        //     onClick={() => setIngredientIndex(i)}
-        //     className={twMerge(
-        //       'rounded-full p-2 w-[2.5em] h-[2.5em] mr-1 mb-1',
-        //       ingredientIndex === i && 'bg-brand-600',
-        //     )}
-        //   >
-        //     <span>{ing.food.slice(0, 1) || i}</span>
-        //   </IconButton>
-        // ))
-        */}
         <IconButton
           onClick={() => {
             addIngredientItem();
@@ -123,13 +109,11 @@ export function NewInstructionItem({
       </div>
       <div>
         {instruction.ingredients[ingredientIndex || 0] && (
-          <>
-            <NewIngredientItem
-              ingredient={instruction.ingredients[ingredientIndex || 0]}
-              index={ingredientIndex || 0}
-              onChange={onIngredientChange}
-            />
-          </>
+          <NewIngredientItem
+            ingredient={instruction.ingredients[ingredientIndex || 0]}
+            index={ingredientIndex || 0}
+            onChange={onIngredientChange}
+          />
         )}
       </div>
     </div>
@@ -147,14 +131,18 @@ function IngredientButton({
   label: string;
   content: JSX.Element;
 }) {
-  const [isPopoverOpen, setPopoverOpen] = useState(false);
-  console.log(isPopoverOpen);
+  const [isPopoverOpen, setPopoverOpen] = useState(true);
   return (
     <Popover
+      padding={10} // adjust padding here!
+      reposition={false}
       isOpen={isPopoverOpen}
-      positions={['bottom', 'right', 'left', 'top']}
-      padding={2}
-      content={<div>Hello World</div>}
+      positions={['bottom']}
+      content={
+        <div className="p-1 bg-gray-400 text-white rounded text-sm">
+          {content}
+        </div>
+      }
     >
       <IconButton
         title="Plus"

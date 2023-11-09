@@ -63,11 +63,13 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
     }));
   },
   updateIngredientItem: (instructionID, item, action) => {
+    console.log(instructionID);
     const instructions = get().instructions;
     const instruction = instructions.find(({ id }) => id === instructionID);
     const instructionIndex = instructions.findIndex(
       ({ id }) => id === instructionID,
     );
+    console.log(instructionIndex);
     if (instructionIndex < 0) {
       return false;
     }
@@ -101,7 +103,11 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
           set({
             instructions: [
               ...instructions,
-              { ...instructions[index], id: generateID() },
+              {
+                ...instructions[index],
+                order: instructions.length,
+                id: generateID(),
+              },
             ],
           });
           break;
