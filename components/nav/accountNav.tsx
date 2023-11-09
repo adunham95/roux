@@ -2,16 +2,12 @@ import { Menu, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Button } from '../buttons/button';
-import { BellIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import {
+  BellIcon,
+  ChevronDownIcon,
+  UserCircleIcon,
+} from '@heroicons/react/24/outline';
 import { signOut, useSession } from 'next-auth/react';
-
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
-
 const userNavigation = [
   { name: 'Your Profile', href: '/settings/my-profile' },
   { name: 'Settings', href: '#' },
@@ -47,11 +43,8 @@ const AccountNav = (props: IProps) => {
             <Menu.Button className="relative flex rounded-full  focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 items-center p-1">
               <span className="absolute -inset-1.5" />
               <span className="sr-only">Open user menu</span>
-              <img
-                className="h-8 w-8 rounded-full"
-                src={user.imageUrl}
-                alt=""
-              />
+              <UserCircleIcon className="h-8 w-8 text-gray-400" />
+
               <span className="hidden lg:flex lg:items-center">
                 <span
                   className="ml-4 text-sm font-semibold leading-6 text-gray-900"

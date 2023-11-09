@@ -1,15 +1,8 @@
 import React from 'react';
-import { BellIcon } from '@heroicons/react/24/outline';
+import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Button } from '../buttons/button';
-
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
 
 const userNavigation = [
   { name: 'Your Profile', href: '/settings/my-profile' },
@@ -25,13 +18,9 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
   if (isLoggedIn && session) {
     return (
       <div className="pb-3 pt-4">
-        <div className="flex items-center px-4">
+        <div className="flex items-center">
           <div className="flex-shrink-0">
-            <img
-              className="h-10 w-10 rounded-full"
-              src={user.imageUrl}
-              alt=""
-            />
+            <UserCircleIcon className="h-10 w-10 text-gray-400" />
           </div>
           <div className="ml-3">
             <div className="text-base font-medium text-gray-800">
@@ -50,13 +39,13 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
             <BellIcon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="mt-3 space-y-1 px-2">
+        <div className="mt-3 space-y-1">
           {userNavigation.map((item) => (
             <Link
               key={item.name}
               as="a"
               href={item.href}
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+              className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             >
               {item.name}
             </Link>
@@ -64,7 +53,7 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
           <Button
             onClick={() => signOut()}
             variant="empty"
-            className="w-full text-left block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+            className="w-full text-left -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >
             Sign Out
           </Button>

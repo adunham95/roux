@@ -34,7 +34,10 @@ export default function NavBar() {
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
             <div className="relative flex h-16 justify-between">
               <div className="relative z-10 flex px-2 lg:px-0">
-                <Link href="/" className="flex flex-shrink-0 items-center">
+                <Link
+                  href="/"
+                  className="flex flex-shrink-0 items-center max-w-[300px]"
+                >
                   <img
                     className="h-8 w-auto"
                     src="/icon-wide.png"
