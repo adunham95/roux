@@ -4,7 +4,6 @@ import TextInput from '../inputs/text-input';
 import TextArea from '../inputs/text-area';
 import CoverImageUpload from '../inputs/cover-image-upload';
 import EmptyBlock from '../emptyBlock/emptyBlock';
-import { NewIngredientItem } from './newIngredientItem';
 import { Button } from '../buttons/button';
 import { NewInstructionItem } from './newInstructionItem';
 import { useNewRecipe } from '@/stores/newRecipeStore';
@@ -21,10 +20,10 @@ const NewRecipeForm = (props: IProps) => {
     setDescription,
     instructions,
     ingredients,
-    addIngredientItem,
     addInstruction,
-    updateIngredientItem,
     updateInstructionItem,
+    updateIngredientItem,
+    addIngredientItem,
   } = useNewRecipe();
 
   console.log({ instructions, ingredients });
@@ -60,7 +59,7 @@ const NewRecipeForm = (props: IProps) => {
           />
         </FieldSet>
 
-        <FieldSet title="Ingredients" subTitle="Add your list of ingredients">
+        {/* <FieldSet title="Ingredients" subTitle="Add your list of ingredients">
           {ingredients.length === 0 ? (
             <EmptyBlock
               title="No Ingredients"
@@ -98,7 +97,7 @@ const NewRecipeForm = (props: IProps) => {
               </Button>
             </>
           )}
-        </FieldSet>
+        </FieldSet> */}
 
         <FieldSet title="Instructions" subTitle="Add your list of instructions">
           {instructions.length === 0 ? (
@@ -126,6 +125,10 @@ const NewRecipeForm = (props: IProps) => {
                   onChange={updateInstructionItem}
                   onCopy={() => updateInstructionItem(inst, 'copy')}
                   onDelete={() => updateInstructionItem(inst, 'delete')}
+                  addIngredientItem={() => addIngredientItem(inst.id)}
+                  onIngredientChange={(ing) =>
+                    updateIngredientItem(inst.id, ing, 'update')
+                  }
                 />
               ))}
               <Button

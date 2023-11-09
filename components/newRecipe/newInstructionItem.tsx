@@ -2,35 +2,39 @@ import { IInstructionItem } from '@/types/instructionItem';
 import TextArea from '../inputs/text-area';
 import IconButton from '../buttons/iconButton';
 import { IIngredientItem } from '@/types/ingredinetItem';
-import { ChipToggle } from '../chipToggle/chipToggle';
+import { NewIngredientItem } from './newIngredientItem';
+import { Button } from '../buttons/button';
 
 export function NewInstructionItem({
   instruction,
-  availableIngredients,
   onChange,
   onDelete,
   onCopy,
+  onIngredientChange,
+  addIngredientItem,
 }: {
   instruction: IInstructionItem;
   availableIngredients: IIngredientItem[];
   onChange: (instruction: IInstructionItem) => void;
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
+  onIngredientChange: (ingredient: IIngredientItem) => void;
+  addIngredientItem: () => void;
 }) {
   function handleChange(value: unknown, key: string) {
     onChange({ ...instruction, [key]: value });
   }
 
-  function handleChecked(checked: boolean, id: string) {
-    if (checked) {
-      handleChange([...instruction.ingredients, id], 'ingredients');
-    } else {
-      handleChange(
-        instruction.ingredients.filter((ing) => ing !== id),
-        'ingredients',
-      );
-    }
-  }
+  // function handleChecked(checked: boolean, id: string) {
+  //   if (checked) {
+  //     handleChange([...instruction.ingredients, id], 'ingredients');
+  //   } else {
+  //     handleChange(
+  //       instruction.ingredients.filter((ing) => ing !== id),
+  //       'ingredients',
+  //     );
+  //   }
+  // }
   return (
     <div className="col-span-full  group">
       <TextArea
@@ -88,7 +92,22 @@ export function NewInstructionItem({
           </div>
         }
       />
-      <div className="flex pt-1 overflow-x-scroll hide-scrollbars">
+      <div>
+        {instruction.ingredients.map((ing, i) => (
+          <NewIngredientItem
+            key={ing.id}
+            ingredient={ing}
+            index={i}
+            onChange={onIngredientChange}
+            // onCopy={() => updateIngredientItem(ing, 'copy')}
+            // onDelete={() => updateIngredientItem(ing, 'delete')}
+          />
+        ))}
+        <Button onClick={addIngredientItem} size="lg" className="col-span-full">
+          Add Another Ingredient
+        </Button>
+      </div>
+      {/* <div className="flex pt-1 overflow-x-scroll hide-scrollbars">
         {availableIngredients.map((ing) => (
           <ChipToggle
             key={ing.id}
@@ -98,7 +117,7 @@ export function NewInstructionItem({
             onChange={(checked) => handleChecked(checked, ing.id)}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

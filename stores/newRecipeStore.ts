@@ -11,9 +11,10 @@ interface INewRecipeStore extends IBaseStore {
   description: string;
   setName: (name: string) => void;
   setDescription: (description: string) => void;
-  addIngredientItem: () => void;
+  addIngredientItem: (instructionID: string) => void;
   addInstruction: () => void;
   updateIngredientItem: (
+    instructionID: string,
     item: IIngredientItem,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
@@ -34,16 +35,20 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   ...defaultStore,
   setName: (name) => set({ name }),
   setDescription: (description) => set({ description }),
-  addIngredientItem: () => {
+  addIngredientItem: (instructionID) => {
+    const instructions = get().instructions;
+    const index = instructions.findIndex(({ id }) => id === instructionID);
     const newItem = {
       id: generateID(),
       count: 0,
       food: '',
       type: '',
     };
-    set((state) => ({
-      ingredients: [...state.ingredients, newItem],
-    }));
+    instructions[index].ingredients = [
+      ...instructions[index].ingredients,
+      newItem,
+    ];
+    set({ instructions });
   },
   addInstruction: () => {
     const instructions = get().instructions;
@@ -57,29 +62,35 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       instructions: [...state.instructions, newItem],
     }));
   },
-  updateIngredientItem: (item, action) => {
-    const ingredients = get().ingredients;
+  updateIngredientItem: (instructionID, item, action) => {
+    const instructions = get().instructions;
+    const instruction = instructions.find(({ id }) => id === instructionID);
+    const instructionIndex = instructions.findIndex(
+      ({ id }) => id === instructionID,
+    );
+    if (instructionIndex < 0) {
+      return false;
+    }
+    let ingredients = instruction?.ingredients || [];
     const index = ingredients.findIndex(({ id }) => id === item.id);
+
     if (index >= 0) {
       switch (action) {
         case 'copy':
-          set({
-            ingredients: [
-              ...ingredients,
-              { ...ingredients[index], id: generateID() },
-            ],
-          });
+          ingredients = [
+            ...ingredients,
+            { ...ingredients[index], id: generateID() },
+          ];
           break;
         case 'delete':
-          set({
-            ingredients: ingredients.filter(({ id }) => id !== item.id),
-          });
+          ingredients = ingredients.filter(({ id }) => id !== item.id);
           break;
         default:
           ingredients[index] = item;
-          set({ ingredients });
       }
     }
+    instructions[instructionIndex].ingredients = ingredients;
+    set({ instructions });
   },
   updateInstructionItem: (item, action) => {
     const instructions = get().instructions;

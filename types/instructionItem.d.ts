@@ -1,6 +1,8 @@
-export interface IInstructionItem {
+import { IIngredientItem } from './ingredinetItem';
+
+interface IInstructionItem {
   id: string;
   order: number;
   description: string;
-  ingredients: string[];
+  ingredients: IIngredientItem[];
 }
