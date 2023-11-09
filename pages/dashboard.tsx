@@ -1,63 +1,64 @@
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Container } from '@/components/container';
-import RecipeCardSmall from '@/components/recipe-card/recipe-card-small';
+import { Section } from '@/components/section/section';
+
+const options = [
+  {
+    key: '1',
+    imgSrc: '/images/sushi_placeholder.jpg',
+    title: 'Sushi',
+    category: 'Dinner',
+  },
+  {
+    key: '2',
+    imgSrc: '/images/pancake_placeholder.jpg',
+    title: 'Pancakes',
+    category: 'Breakfast',
+  },
+  {
+    key: '3',
+    imgSrc: '/images/seafood_placeholder.jpg',
+    title: 'Seafood',
+    category: 'Seafood',
+  },
+  {
+    key: '4',
+    imgSrc: '/images/charcuterieboard_placeholder.jpg',
+    title: 'Charcuterie Board',
+    category: 'Dinner',
+  },
+  {
+    key: '5',
+    imgSrc: '/images/sushi_placeholder.jpg',
+    title: 'Sushi',
+    category: 'Dinner',
+  },
+  {
+    key: '6',
+    imgSrc: '/images/pancake_placeholder.jpg',
+    title: 'Pancakes',
+    category: 'Breakfast',
+  },
+  {
+    key: '7',
+    imgSrc: '/images/seafood_placeholder.jpg',
+    title: 'Seafood',
+    category: 'Seafood',
+  },
+  {
+    key: '8',
+    imgSrc: '/images/charcuterieboard_placeholder.jpg',
+    title: 'Charcuterie Board',
+    category: 'Dinner',
+  },
+];
 
 export default function Home() {
   return (
     <DefaultLayout pageName="Dashboard">
       <Container>
         <Container className="pt-5">
-          <section className="grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            <RecipeCardSmall
-              imgSrc="/images/sushi_placeholder.jpg"
-              imgAlt="sushi"
-              title="Sushi"
-              category="Dinner"
-              tags={['Sushi', 'Quick Meal']}
-            />
-            <RecipeCardSmall
-              imgSrc="/images/pancake_placeholder.jpg"
-              imgAlt="pancake"
-              title="Pancakes"
-              category="Breakfast"
-            />
-            <RecipeCardSmall
-              imgSrc="/images/seafood_placeholder.jpg"
-              imgAlt="seafood"
-              title="Seafood"
-              category="Seafood"
-            />
-            <RecipeCardSmall
-              imgSrc="/images/charcuterieboard_placeholder.jpg"
-              imgAlt="charcuterie"
-              title="Charcuterie Board"
-              category="Dinner"
-            />
-            <RecipeCardSmall
-              imgSrc="/images/sushi_placeholder.jpg"
-              imgAlt="sushi"
-              title="Sushi"
-              category="Dinner"
-            />
-            <RecipeCardSmall
-              imgSrc="/images/pancake_placeholder.jpg"
-              imgAlt="pancake"
-              title="Pancakes"
-              category="Breakfast"
-            />
-            <RecipeCardSmall
-              imgSrc="/images/seafood_placeholder.jpg"
-              imgAlt="seafood"
-              title="Seafood"
-              category="Seafood"
-            />
-            <RecipeCardSmall
-              imgSrc="/images/charcuterieboard_placeholder.jpg"
-              imgAlt="charcuterie"
-              title="Charcuterie Board"
-              category="Dinner"
-            />
-          </section>
+          <Section title="Featured" options={options} />
         </Container>
       </Container>
     </DefaultLayout>
