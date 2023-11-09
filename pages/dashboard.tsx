@@ -67,7 +67,7 @@ export default function Home() {
           description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo."
           cta="CTA"
         />
-        <DashboardCard title="Become the chef of your dreams">
+        <DashboardCard title="Level up your kitchen skills">
           <StatusBar
             percentage={35}
             labels={[
@@ -108,7 +108,7 @@ export default function Home() {
           <TabbedSection
             tabs={[
               {
-                name: 'Avalible',
+                name: 'Available',
                 count: 2,
                 children: (
                   <>
