@@ -105,6 +105,9 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
               ...instructions,
               {
                 ...instructions[index],
+                ingredients: instructions[index].ingredients.map((ing) => {
+                  return { ...ing, id: generateID() };
+                }),
                 order: instructions.length,
                 id: generateID(),
               },
