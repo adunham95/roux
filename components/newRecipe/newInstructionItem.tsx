@@ -3,7 +3,9 @@ import TextArea from '../inputs/text-area';
 import IconButton from '../buttons/iconButton';
 import { IIngredientItem } from '@/types/ingredinetItem';
 import { NewIngredientItem } from './newIngredientItem';
-import { Button } from '../buttons/button';
+import { useState } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { Popover } from 'react-tiny-popover';
 
 export function NewInstructionItem({
   instruction,
@@ -21,20 +23,10 @@ export function NewInstructionItem({
   onIngredientChange: (ingredient: IIngredientItem) => void;
   addIngredientItem: () => void;
 }) {
+  const [ingredientIndex, setIngredientIndex] = useState<number | null>(null);
   function handleChange(value: unknown, key: string) {
     onChange({ ...instruction, [key]: value });
   }
-
-  // function handleChecked(checked: boolean, id: string) {
-  //   if (checked) {
-  //     handleChange([...instruction.ingredients, id], 'ingredients');
-  //   } else {
-  //     handleChange(
-  //       instruction.ingredients.filter((ing) => ing !== id),
-  //       'ingredients',
-  //     );
-  //   }
-  // }
   return (
     <div className="col-span-full  group">
       <TextArea
@@ -92,32 +84,90 @@ export function NewInstructionItem({
           </div>
         }
       />
-      <div>
+      <div className="py-2">
         {instruction.ingredients.map((ing, i) => (
-          <NewIngredientItem
+          <IngredientButton
+            label={(ing.food.slice(0, 1), `${i}`)}
             key={ing.id}
-            ingredient={ing}
-            index={i}
-            onChange={onIngredientChange}
-            // onCopy={() => updateIngredientItem(ing, 'copy')}
-            // onDelete={() => updateIngredientItem(ing, 'delete')}
+            onClick={() => setIngredientIndex(i)}
+            content={<div>{ing.food}</div>}
+            isActive={ingredientIndex === i}
           />
         ))}
-        <Button onClick={addIngredientItem} size="lg" className="col-span-full">
-          Add Another Ingredient
-        </Button>
+        {/*
+        //   <IconButton
+        //     key={ing.id}
+        //     title="Plus"
+        //     onClick={() => setIngredientIndex(i)}
+        //     className={twMerge(
+        //       'rounded-full p-2 w-[2.5em] h-[2.5em] mr-1 mb-1',
+        //       ingredientIndex === i && 'bg-brand-600',
+        //     )}
+        //   >
+        //     <span>{ing.food.slice(0, 1) || i}</span>
+        //   </IconButton>
+        // ))
+        */}
+        <IconButton
+          onClick={() => {
+            addIngredientItem();
+            setIngredientIndex(instruction.ingredients.length - 1);
+          }}
+          title="Plus"
+          className={
+            'rounded-full p-2 w-[2.5em] h-[2.5em] justify-center inline-flex items-center'
+          }
+        >
+          <span>+</span>
+        </IconButton>
       </div>
-      {/* <div className="flex pt-1 overflow-x-scroll hide-scrollbars">
-        {availableIngredients.map((ing) => (
-          <ChipToggle
-            key={ing.id}
-            id={`${instruction.id}-${ing.id}`}
-            label={ing.food}
-            checked={instruction.ingredients.includes(ing.id)}
-            onChange={(checked) => handleChecked(checked, ing.id)}
-          />
-        ))}
-      </div> */}
+      <div>
+        {instruction.ingredients[ingredientIndex || 0] && (
+          <>
+            <NewIngredientItem
+              ingredient={instruction.ingredients[ingredientIndex || 0]}
+              index={ingredientIndex || 0}
+              onChange={onIngredientChange}
+            />
+          </>
+        )}
+      </div>
     </div>
+  );
+}
+
+function IngredientButton({
+  onClick,
+  isActive = false,
+  label,
+  content,
+}: {
+  onClick: () => void;
+  isActive?: boolean;
+  label: string;
+  content: JSX.Element;
+}) {
+  const [isPopoverOpen, setPopoverOpen] = useState(false);
+  console.log(isPopoverOpen);
+  return (
+    <Popover
+      isOpen={isPopoverOpen}
+      positions={['bottom', 'right', 'left', 'top']}
+      padding={2}
+      content={<div>Hello World</div>}
+    >
+      <IconButton
+        title="Plus"
+        onClick={onClick}
+        onMouseEnter={() => setPopoverOpen(true)}
+        onMouseLeave={() => setPopoverOpen(false)}
+        className={twMerge(
+          'rounded-full p-2 w-[2.5em] h-[2.5em] mr-1 mb-1',
+          isActive && ' bg-purple-500',
+        )}
+      >
+        <span>{label}</span>
+      </IconButton>
+    </Popover>
   );
 }

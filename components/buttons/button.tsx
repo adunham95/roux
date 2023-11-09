@@ -11,6 +11,8 @@ export interface IButtonProps {
   variant?: 'filled' | 'outline' | 'text' | 'empty';
   color?: 'brand' | 'success' | 'danger' | 'warning';
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export const Button = (props: IButtonProps) => {
@@ -23,6 +25,8 @@ export const Button = (props: IButtonProps) => {
     color = 'brand',
     type = 'button',
     onClick,
+    onMouseEnter = () => null,
+    onMouseLeave = () => null,
   } = props;
 
   function getSize() {
@@ -68,6 +72,8 @@ export const Button = (props: IButtonProps) => {
       onClick={onClick}
       type={type}
       className={twMerge(getSize(), getVariant(), className)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </button>
