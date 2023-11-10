@@ -2,8 +2,30 @@ import { gql } from 'graphql-tag';
 import { createUserTypeDefs } from './mutations/createUser';
 import { updateUserTypeDefs } from './mutations/updateUser';
 import { createMembershipTierTypeDefs } from './mutations/createMembershipTier';
+import { createRecipeTypeDefs } from './mutations/createRecipe';
 
 const typeDefs = gql`
+  #Recipe
+  type Ingredient {
+    id: ID!
+    name: String!
+    type: String
+    count: Int!
+  }
+
+  type Instruction {
+    id: ID!
+    description: String!
+    order: Int!
+    ingredients: [Ingredient]
+  }
+
+  type Recipe {
+    id: ID!
+    name: String!
+    description: String
+    instructions: [Instruction]
+  }
   #MembershipTier
   type MembershipTierPricing {
     name: String
@@ -27,6 +49,11 @@ const typeDefs = gql`
     default: Boolean
     defaultPermission: MembershipTierPricing
   }
+  type TeamRole {
+    roleID: ID!
+    userID: ID!
+    teamID: ID!
+  }
   #BetaToken
   type BetaToken {
     id: ID!
@@ -42,6 +69,7 @@ const typeDefs = gql`
     createdAt: String
     updatedAt: String
     status: String
+    teamRoles: [TeamRole]
   }
 
   # Products
@@ -63,6 +91,7 @@ const typeDefs = gql`
   ${createUserTypeDefs}
   ${updateUserTypeDefs}
   ${createMembershipTierTypeDefs}
+  ${createRecipeTypeDefs}
 
   type Query {
     #MembershipTier
@@ -77,6 +106,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    #Recipe
+    createRecipe(input: CreateRecipeInput): Recipe
     #MembershipTiers
     createMembershipTier(input: CreateMembershipTierInput): MembershipTier
     #BetaTokens

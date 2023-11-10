@@ -58,7 +58,7 @@ export const authOptions = {
       user: any;
       token: any;
     }) {
-      console.log('session', { session, user, token });
+      // console.log('session', { session, user, token });
       if (token) {
         session.user = {
           ...session.user,
@@ -82,7 +82,7 @@ export const authOptions = {
       return session;
     },
     async jwt({ token, user }: { token: any; user: any }) {
-      console.log('jwt', { token, user });
+      // console.log('jwt', { token, user });
       if (user) {
         token = {
           ...token,
