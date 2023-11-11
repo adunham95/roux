@@ -27,7 +27,7 @@ const SidecarInstructionList = (props: IInstructionListProps) => {
                   <ChipToggle
                     key={`${ing.id}-${inst.id}`}
                     id={ing.id || ''}
-                    label={ing.food}
+                    label={ing.name}
                     checked
                     disabled
                   />

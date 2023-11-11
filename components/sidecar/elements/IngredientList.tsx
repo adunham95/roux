@@ -18,7 +18,7 @@ export const SidecarIngredientList = (props: IProps) => {
             <div className="min-w-0">
               <div className="flex items-start gap-x-3">
                 <p className="text-sm font-semibold leading-6 text-gray-900">
-                  {ing.food}
+                  {ing.name}
                 </p>
               </div>
               <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">

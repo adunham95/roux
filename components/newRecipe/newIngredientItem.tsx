@@ -30,7 +30,7 @@ export function NewIngredientItem({
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
 }) {
-  function handleChange(value: string, key: string) {
+  function handleChange(value: string | number, key: string) {
     onChange({ ...ingredient, [key]: value });
   }
 
@@ -41,8 +41,8 @@ export function NewIngredientItem({
           className="group/ingredientName col-span-1"
           label="Ingredient name"
           id={`ingredient-${index}-name`}
-          value={ingredient.food}
-          onChange={(value) => handleChange(value, 'food')}
+          value={ingredient.name}
+          onChange={(value) => handleChange(value, 'name')}
         />
         <TextInput
           className="col-span-1"
@@ -50,7 +50,7 @@ export function NewIngredientItem({
           id={`ingredient-${index}-count`}
           type="number"
           value={ingredient.count.toString()}
-          onChange={(value) => handleChange(value, 'count')}
+          onChange={(value) => handleChange(parseInt(value), 'count')}
         />
         <SelectInput
           className="col-span-1"

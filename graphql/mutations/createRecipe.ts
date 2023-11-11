@@ -4,19 +4,19 @@ import { Context } from '@/types/graphql';
 import { SessionGate } from '@/utils/authGate';
 import { UserPermissions } from '@/utils/permissions';
 
-interface ICreateIngredient {
+export interface ICreateIngredient {
   name: string;
   count: number;
   type: string;
 }
 
-interface ICreateInstruction {
+export interface ICreateInstruction {
   description: string;
   order: number;
   ingredients: ICreateIngredient[];
 }
 
-interface ICreateRecipe {
+export interface ICreateRecipe {
   name: string;
   description: string;
   instructions: ICreateInstruction[];

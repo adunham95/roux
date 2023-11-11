@@ -87,10 +87,10 @@ export function NewInstructionItem({
       <div className="py-2 relative">
         {instruction.ingredients.map((ing, i) => (
           <IngredientButton
-            label={ing.food.slice(0, 1) || `${i}`}
+            label={ing.name.slice(0, 1) || `${i}`}
             key={ing.id}
             onClick={() => setIngredientIndex(i)}
-            content={<div>{ing.food}</div>}
+            content={<div>{ing.name}</div>}
             isActive={ingredientIndex === i}
           />
         ))}

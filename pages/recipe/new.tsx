@@ -6,6 +6,7 @@ import React from 'react';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
 import { useNewRecipe } from '@/stores/newRecipeStore';
 import SidecarInstructionList from '@/components/sidecar/elements/InstructionList';
+import { useCreateRecipe } from '@/api/mutation/createRecipe';
 
 const NewRecipe = () => {
   const {
@@ -15,9 +16,28 @@ const NewRecipe = () => {
     getIngredients,
     getFormattedInstructions,
   } = useNewRecipe();
-  function saveRecipe() {
+  const { mutateAsync: createRecipeAsync } = useCreateRecipe();
+  async function saveRecipe() {
     const formattedInstructions = getFormattedInstructions();
     console.log(formattedInstructions);
+
+    await createRecipeAsync(
+      {
+        name,
+        description,
+        instructions: formattedInstructions,
+      },
+      {
+        onSuccess(data) {
+          console.log('SUCCESS');
+          console.log(data);
+        },
+        onError(error) {
+          console.log('ERROR');
+          console.log(error);
+        },
+      },
+    );
   }
   return (
     <SidecarLayout

@@ -3,6 +3,7 @@ import { IBaseStore } from './baseStore';
 import { IIngredientItem } from '@/types/ingredinetItem';
 import { IInstructionItem } from '@/types/instructionItem';
 import { generateID } from '@/utils/generateID';
+import { ICreateInstruction } from '@/graphql/mutations/createRecipe';
 
 interface INewRecipeStore extends IBaseStore {
   ingredients: IIngredientItem[];
@@ -23,7 +24,7 @@ interface INewRecipeStore extends IBaseStore {
     action?: 'update' | 'copy' | 'delete',
   ) => void;
   getIngredients: () => IIngredientItem[];
-  getFormattedInstructions: () => IInstructionItem[];
+  getFormattedInstructions: () => ICreateInstruction[];
 }
 
 const defaultStore = {
@@ -43,7 +44,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
     const newItem = {
       id: generateID(),
       count: 0,
-      food: '',
+      name: '',
       type: '',
     };
     instructions[index].ingredients = [
@@ -142,7 +143,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       });
       return int;
     });
-    return formattedInstructions;
+    return formattedInstructions as unknown as ICreateInstruction[];
   },
   clear: () => set(defaultStore),
 }));
