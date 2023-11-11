@@ -2,19 +2,27 @@ import { TwoColumnCard } from '@/components/Layouts/components/twoColumnCard';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Container } from '@/components/container';
 import TextInput from '@/components/inputs/text-input';
+import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
 const MyProfile = () => {
+  const { data } = useSession();
   const [account, setAccount] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
+    ...data?.user,
   });
+  const [team, setTeam] = useState({ name: '' });
 
   function handleChange(v: string, id: string) {
     const user = { ...account, [id]: v };
     setAccount(user);
+  }
+  function handleTeamChange(v: string, id: string) {
+    const newTeam = { ...team, [id]: v };
+    setTeam(newTeam);
   }
 
   return (
@@ -42,22 +50,31 @@ const MyProfile = () => {
             <TextInput
               className="col-span-6"
               label="Email Address"
-              id="emailAddress"
+              id="email"
               value={account.email}
               onChange={handleChange}
             />
-          </TwoColumnCard>
-          <TwoColumnCard title="Team" subTitle="Update Your Team">
-            <div></div>
+            <TextInput
+              className="col-span-6"
+              label="Update Password"
+              id="password"
+              value={account.password}
+              onChange={handleChange}
+            />
           </TwoColumnCard>
           <TwoColumnCard
-            title="Billing Info"
-            subTitle="Update Your billing information"
+            title="Team"
+            subTitle="Update Your Team"
+            className="pt-5"
           >
-            <div></div>
-          </TwoColumnCard>
-          <TwoColumnCard title="Delete Account" subTitle="Delete your account">
-            <div style={{ height: '200vh' }}></div>
+            <TextInput
+              className="col-span-6"
+              disabled
+              label="Team Name"
+              id="name"
+              value={team.name}
+              onChange={handleTeamChange}
+            />
           </TwoColumnCard>
         </div>
       </Container>

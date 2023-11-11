@@ -25,6 +25,7 @@ const TextInput = (props: ITextInputProps) => {
     ariaDescription,
     value,
     autoComplete,
+    disabled,
   } = props;
   const searchParams = useSearchParams();
   const queryValue = searchParams.get(id);
@@ -42,6 +43,7 @@ const TextInput = (props: ITextInputProps) => {
         id={id}
         value={value}
         autoComplete={autoComplete}
+        disabled={disabled}
         className={twMerge(
           'block w-full rounded-md border-0 py-1.5 px-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6',
           hasError &&

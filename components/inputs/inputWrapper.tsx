@@ -10,6 +10,7 @@ export interface IDefaultInputWrapperProps extends ILabelBarProps {
   hasError?: boolean;
   className?: string;
   inputWrapperClassName?: string;
+  disabled?: boolean;
 }
 
 interface IInputWrapperProps extends IDefaultInputWrapperProps {
