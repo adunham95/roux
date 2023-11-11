@@ -22,6 +22,8 @@ interface INewRecipeStore extends IBaseStore {
     item: IInstructionItem,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
+  getIngredients: () => IIngredientItem[];
+  getFormattedInstructions: () => IInstructionItem[];
 }
 
 const defaultStore = {
@@ -63,13 +65,12 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
     }));
   },
   updateIngredientItem: (instructionID, item, action) => {
-    console.log(instructionID);
     const instructions = get().instructions;
     const instruction = instructions.find(({ id }) => id === instructionID);
     const instructionIndex = instructions.findIndex(
       ({ id }) => id === instructionID,
     );
-    console.log(instructionIndex);
+
     if (instructionIndex < 0) {
       return false;
     }
@@ -124,6 +125,24 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
           set({ instructions });
       }
     }
+  },
+  getIngredients: () => {
+    const instructions = get().instructions;
+    const ingredients = instructions.map((int) => int.ingredients);
+
+    return ingredients.flat();
+  },
+  getFormattedInstructions: () => {
+    const instructions = get().instructions;
+    const formattedInstructions = instructions.map((int) => {
+      delete int.id;
+      int.ingredients = int.ingredients.map((ing) => {
+        delete ing.id;
+        return ing;
+      });
+      return int;
+    });
+    return formattedInstructions;
   },
   clear: () => set(defaultStore),
 }));

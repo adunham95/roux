@@ -26,8 +26,6 @@ const NewRecipeForm = (props: IProps) => {
     addIngredientItem,
   } = useNewRecipe();
 
-  console.log({ instructions, ingredients });
-
   return (
     <form>
       <div className="space-y-12">
@@ -85,9 +83,9 @@ const NewRecipeForm = (props: IProps) => {
                   onChange={updateInstructionItem}
                   onCopy={() => updateInstructionItem(inst, 'copy')}
                   onDelete={() => updateInstructionItem(inst, 'delete')}
-                  addIngredientItem={() => addIngredientItem(inst.id)}
+                  addIngredientItem={() => addIngredientItem(inst?.id || '')}
                   onIngredientChange={(ing) =>
-                    updateIngredientItem(inst.id, ing, 'update')
+                    updateIngredientItem(inst?.id || '', ing, 'update')
                   }
                 />
               ))}

@@ -27,7 +27,7 @@ const Sidecar = (props: ISidecarProps) => {
     options,
     defaultOpen = '',
     cta,
-    ctaOnClick = () => null,
+    ctaOnClick,
   } = props;
   return (
     <div
@@ -66,7 +66,7 @@ const Sidecar = (props: ISidecarProps) => {
           }
         })}
       </div>
-      {cta && (
+      {cta && ctaOnClick && (
         <div className="p-1">
           <Button size="lg" className="w-full" onClick={ctaOnClick}>
             {cta}

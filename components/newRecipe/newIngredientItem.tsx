@@ -3,6 +3,22 @@ import React from 'react';
 import TextInput from '../inputs/text-input';
 import SelectInput from '../inputs/select';
 
+const measurementTypes = [
+  { value: 'gal', label: 'Gallon' },
+  { value: 'qt', label: 'Quart' },
+  { value: 'pt', label: 'Pint' },
+  { value: 'cup', label: 'Cup' },
+  { value: 'tbsp', label: 'Tablespoon' },
+  { value: 'tsp', label: 'Teaspoon' },
+  { value: 'oz', label: 'Ounce' },
+  { value: 'fl oz', label: 'Fluid Ounce' },
+  { value: 'lb', label: 'Pound' },
+  { value: 'ml', label: 'Milliliter' },
+  { value: 'l', label: 'Liter' },
+  { value: 'g', label: 'Gram' },
+  { value: 'kg', label: 'Kilogram' },
+];
+
 export function NewIngredientItem({
   ingredient,
   index = 0,
@@ -42,10 +58,7 @@ export function NewIngredientItem({
           id={`ingredient-${index}-type`}
           value={ingredient.type}
           onChange={(value) => handleChange(value, 'type')}
-          options={[
-            { value: 'gallon', label: 'Gallon' },
-            { value: 'pint', label: 'Pint' },
-          ]}
+          options={[{ value: '', label: 'Select Type' }, ...measurementTypes]}
         />
       </div>
     </div>

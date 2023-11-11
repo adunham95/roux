@@ -40,7 +40,7 @@ export function NewInstructionItem({
             {onCopy && (
               <IconButton
                 title="Copy Items"
-                onClick={() => onCopy(instruction.id)}
+                onClick={() => onCopy(instruction?.id || '')}
                 className=" bg-gray-400 p-2 text-white rounded-full hover:bg-gray-500  focus-visible:outline-gray-600 md:scale-0 group-hover:scale-100 transition-transform duration-300"
               >
                 <svg
@@ -62,7 +62,7 @@ export function NewInstructionItem({
             {onDelete && (
               <IconButton
                 title="Delete"
-                onClick={() => onDelete(instruction.id)}
+                onClick={() => onDelete(instruction?.id || '')}
                 className="rounded-full bg-red-400 hover:bg-red-600 p-2 text-white focus-visible:outline-red-600 ml-1 md:scale-0 group-hover:scale-100  transition-transform  duration-300"
               >
                 <svg
@@ -87,7 +87,7 @@ export function NewInstructionItem({
       <div className="py-2 relative">
         {instruction.ingredients.map((ing, i) => (
           <IngredientButton
-            label={(ing.food.slice(0, 1), `${i}`)}
+            label={ing.food.slice(0, 1) || `${i}`}
             key={ing.id}
             onClick={() => setIngredientIndex(i)}
             content={<div>{ing.food}</div>}
@@ -151,7 +151,7 @@ function IngredientButton({
         onMouseLeave={() => setPopoverOpen(false)}
         className={twMerge(
           'rounded-full p-2 w-[2.5em] h-[2.5em] mr-1 mb-1',
-          isActive && ' bg-purple-500',
+          isActive && ' bg-brand-600',
         )}
       >
         <span>{label}</span>

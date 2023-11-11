@@ -1,10 +1,9 @@
-import { IIngredientItem } from '@/types/ingredinetItem';
+import { ChipToggle } from '@/components/chipToggle/chipToggle';
 import { IInstructionItem } from '@/types/instructionItem';
 import React from 'react';
 
 interface IInstructionListProps {
   instructions: IInstructionItem[];
-  ingredients: IIngredientItem[];
 }
 
 const SidecarInstructionList = (props: IInstructionListProps) => {
@@ -20,8 +19,19 @@ const SidecarInstructionList = (props: IInstructionListProps) => {
             <div className="min-w-0">
               <div className="flex items-start gap-x-3">
                 <p className="text-sm font-semibold leading-6 text-gray-900">
-                  {inst.description}
+                  {inst.order + 1}: {inst.description}
                 </p>
+              </div>
+              <div className="mt-1 flex items-center text-xs overflow-x-scroll hide-scrollbars">
+                {inst.ingredients.map((ing) => (
+                  <ChipToggle
+                    key={`${ing.id}-${inst.id}`}
+                    id={ing.id || ''}
+                    label={ing.food}
+                    checked
+                    disabled
+                  />
+                ))}
               </div>
             </div>
           </li>

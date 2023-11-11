@@ -8,7 +8,17 @@ import { useNewRecipe } from '@/stores/newRecipeStore';
 import SidecarInstructionList from '@/components/sidecar/elements/InstructionList';
 
 const NewRecipe = () => {
-  const { name, description, ingredients, instructions } = useNewRecipe();
+  const {
+    name,
+    description,
+    instructions,
+    getIngredients,
+    getFormattedInstructions,
+  } = useNewRecipe();
+  function saveRecipe() {
+    const formattedInstructions = getFormattedInstructions();
+    console.log(formattedInstructions);
+  }
   return (
     <SidecarLayout
       pageName="New Recipe"
@@ -17,6 +27,7 @@ const NewRecipe = () => {
           className="pt-2"
           defaultOpen="details"
           cta="Save Recipe"
+          ctaOnClick={saveRecipe}
           options={[
             {
               title: 'Details',
@@ -28,18 +39,13 @@ const NewRecipe = () => {
               title: 'Ingredients',
               key: 'ingredients',
               display: 'accordion',
-              child: <SidecarIngredientList ingredients={ingredients} />,
+              child: <SidecarIngredientList ingredients={getIngredients()} />,
             },
             {
               title: 'Instructions',
               key: 'instructions',
               display: 'accordion',
-              child: (
-                <SidecarInstructionList
-                  ingredients={ingredients}
-                  instructions={instructions}
-                />
-              ),
+              child: <SidecarInstructionList instructions={instructions} />,
             },
           ]}
         />
