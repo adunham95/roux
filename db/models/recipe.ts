@@ -13,6 +13,8 @@ const InstructionsSchema = new Schema({
 });
 
 const RecipeSchema = new Schema({
+  userID: Schema.Types.ObjectId,
+  teamID: Schema.Types.ObjectId,
   name: String,
   description: String,
   instructions: [InstructionsSchema],

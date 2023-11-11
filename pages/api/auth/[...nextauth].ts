@@ -22,13 +22,12 @@ export const authOptions = {
             email: credentials?.email,
           }).populate({
             path: 'teamRoles',
-            populate: { path: 'permissions' },
+            populate: { path: 'access' },
           });
           console.log(user);
-          //TODO get user permission based on
           if (!user) {
             console.log('no user found');
-            return null;
+            throw new Error('No User Found');
           }
 
           const passwordMatch = await Auth.matchPasswords(
@@ -38,6 +37,7 @@ export const authOptions = {
 
           if (!passwordMatch) {
             console.log('password doesnt match');
+            throw new Error('passwords dont match');
             return null;
           }
 

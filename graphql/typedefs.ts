@@ -5,6 +5,27 @@ import { createMembershipTierTypeDefs } from './mutations/createMembershipTier';
 import { createRecipeTypeDefs } from './mutations/createRecipe';
 
 const typeDefs = gql`
+  # User
+  type User {
+    id: ID
+    firstName: String
+    lastName: String
+    email: String
+    createdAt: String
+    updatedAt: String
+    status: String
+    teamRoles: [TeamRole]
+  }
+  # Team
+  type TeamRole {
+    roleID: ID!
+    userID: ID!
+    teamID: ID!
+  }
+  type Team {
+    id: ID!
+    name: String
+  }
   #Recipe
   type Ingredient {
     id: ID!
@@ -22,6 +43,10 @@ const typeDefs = gql`
 
   type Recipe {
     id: ID!
+    userID: ID!
+    teamID: ID!
+    user: User
+    team: Team
     name: String!
     description: String
     instructions: [Instruction]
@@ -49,27 +74,12 @@ const typeDefs = gql`
     default: Boolean
     defaultPermission: MembershipTierPricing
   }
-  type TeamRole {
-    roleID: ID!
-    userID: ID!
-    teamID: ID!
-  }
+
   #BetaToken
   type BetaToken {
     id: ID!
     token: String!
     redeemed: Boolean
-  }
-  # User
-  type User {
-    id: ID
-    firstName: String
-    lastName: String
-    email: String
-    createdAt: String
-    updatedAt: String
-    status: String
-    teamRoles: [TeamRole]
   }
 
   # Products

@@ -21,7 +21,7 @@ TeamMemberSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
-TeamMemberSchema.virtual('permissions', {
+TeamMemberSchema.virtual('access', {
   ref: membershipPermissions,
   localField: 'roleID',
   foreignField: '_id',

@@ -1,5 +1,8 @@
 import recipe from '@/db/models/recipe';
 import gql from 'graphql-tag';
+import { Context } from '@/types/graphql';
+import { SessionGate } from '@/utils/authGate';
+import { UserPermissions } from '@/utils/permissions';
 
 interface ICreateIngredient {
   name: string;
@@ -43,16 +46,17 @@ async function createRecipe(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   parent: unknown,
   { input }: { input: ICreateRecipe },
-  context: { session: unknown },
+  context: Context,
 ) {
   console.log('input', input);
   console.log('context', context.session);
   try {
-    // if (!_.session) {
-    //   throw new Error('Auth Required');
-    // }
-    const newRecipe = new recipe(input);
-    // await newRecipe.save();
+    const { teamID, userID } = SessionGate(
+      context?.session,
+      UserPermissions.CREATE_RECIPE,
+    );
+    const newRecipe = new recipe({ ...input, teamID, userID });
+    newRecipe.save();
     return newRecipe.toJSON();
   } catch (error) {
     console.log({ error });
