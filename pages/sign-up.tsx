@@ -1,5 +1,6 @@
 import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
+import NewPasswordInput from '@/components/inputs/newPassword-input';
 import TextInput from '@/components/inputs/text-input';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -51,6 +52,7 @@ const SignUp = () => {
                 id="firstName"
                 value={firstName}
                 type="text"
+                autoComplete="given-name"
                 onChange={setFirstName}
               />
             </div>
@@ -61,6 +63,7 @@ const SignUp = () => {
                 id="lastName"
                 value={lastName}
                 type="text"
+                autoComplete="family-name"
                 onChange={setLastName}
               />
             </div>
@@ -71,16 +74,18 @@ const SignUp = () => {
                 id="email"
                 value={email}
                 type="email"
+                autoComplete="email"
                 onChange={setEmail}
               />
             </div>
 
             <div className="col-span-2">
-              <TextInput
+              <NewPasswordInput
+                autoComplete="new-password"
                 id="password"
                 label="Password"
                 value={password}
-                type="password"
+                type="text"
                 onChange={setPassword}
               />
             </div>

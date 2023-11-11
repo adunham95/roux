@@ -1,5 +1,6 @@
 import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
+import PasswordInput from '@/components/inputs/password-input';
 import TextInput from '@/components/inputs/text-input';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
@@ -47,16 +48,18 @@ const Login = () => {
                 id="email"
                 value={email}
                 type="email"
+                autoComplete="email"
                 onChange={setEmail}
               />
             </div>
 
             <div>
-              <TextInput
+              <PasswordInput
                 id="password"
                 label="Password"
                 value={password}
                 type="password"
+                autoComplete="current-password"
                 onChange={setPassword}
               />
             </div>

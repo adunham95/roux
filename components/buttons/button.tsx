@@ -9,7 +9,7 @@ export interface IButtonProps {
   children: React.ReactNode;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'filled' | 'outline' | 'text' | 'empty';
-  color?: 'brand' | 'success' | 'danger' | 'warning';
+  color?: 'brand' | 'success' | 'danger' | 'warning' | 'transparent';
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -61,7 +61,15 @@ export const Button = (props: IButtonProps) => {
 
   if (href) {
     return (
-      <Link href={href} className={twMerge(getSize(), getVariant(), className)}>
+      <Link
+        href={href}
+        className={twMerge(
+          'cursor-pointer',
+          getSize(),
+          getVariant(),
+          className,
+        )}
+      >
         {children}
       </Link>
     );
@@ -71,7 +79,7 @@ export const Button = (props: IButtonProps) => {
     <button
       onClick={onClick}
       type={type}
-      className={twMerge(getSize(), getVariant(), className)}
+      className={twMerge('cursor-pointer', getSize(), getVariant(), className)}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -112,5 +120,13 @@ const colorItems = {
     hover: 'hover:bg-amber-500',
     hoverLight: 'hover:bg-amber-50',
     focusOutline: 'focus-visible:outline-amber-600',
+  },
+  transparent: {
+    background: 'transparent',
+    border: 'transparent',
+    text: 'transparent',
+    hover: '',
+    hoverLight: '',
+    focusOutline: 'focus-visible:outline-brand-600',
   },
 };
