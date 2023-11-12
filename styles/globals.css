@@ -2,12 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+    :root {
+      --brand-primary: 100 157 173;
+      --brand-primary-alt: 1;
+      --brand-primary-text: 1;
+      --brand-accent: 218 109 94;
+      --brand-accent-text: 1;
+      --background: 230 230 230;
+      --surface: 250 250 250;
+      --text-surface-1: 1;
+      --text-surface-2: 1;
+      --text-surface-3: 1;
+      --text-surface-4: 1;
+      --text-surface-5: 1;
+      --text-background-1: 1;
+      --text-background-2: 1;
+      --text-background-3: 1;
+      --text-background-4: 1;
+      --text-background-5: 1;
+      /* ... */
+    }
+  }
+
+
+
 #__next {
     height: 100%;
 }
 
 body{
-    background: #e6e6e6
+    background: var(--background);
+    background: #e6e6e6;
 }
 
 .hide-scrollbars {

@@ -13,7 +13,7 @@ export const DashboardCard = (props: IProps) => {
   return (
     <div
       className={twMerge(
-        'bg-white px-6 py-6 rounded-md sm:rounded-xl mb-5',
+        'bg-surface px-6 py-6 rounded-md sm:rounded-xl mb-5',
         className,
       )}
     >
