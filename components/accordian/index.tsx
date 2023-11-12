@@ -14,7 +14,7 @@ const Accordion = (props: IAccordionProps) => {
       <dt>
         <button
           type="button"
-          className="flex w-full items-start justify-between text-left text-gray-900"
+          className="flex w-full items-start justify-between text-left text-surface-1"
           aria-controls="faq-0"
           aria-expanded="false"
           onClick={() => setExpanded(!expanded)}

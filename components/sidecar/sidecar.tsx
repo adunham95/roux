@@ -32,23 +32,23 @@ const Sidecar = (props: ISidecarProps) => {
   return (
     <div
       className={twMerge(
-        'shadow-lg rounded-md bg-gray-100 sticky top-2',
+        'shadow-lg rounded-md bg-surface sticky top-2',
         className,
       )}
     >
       {(title || subTitle) && (
         <div className="p-2">
           {title && (
-            <h2 className="text-xl font-bold leading-7 tracking-tight text-gray-900">
+            <h2 className="text-xl font-bold leading-7 tracking-tight text-surface-">
               {title}
             </h2>
           )}
           {subTitle && (
-            <p className="text-base leading-1 text-gray-600">{subTitle}</p>
+            <p className="text-base leading-1 text-surface-2">{subTitle}</p>
           )}
         </div>
       )}
-      <div className="divide-y divide-gray-300">
+      <div className="divide-y divide-surface-5">
         {options.map((elm) => {
           switch (elm.display) {
             case 'accordion':

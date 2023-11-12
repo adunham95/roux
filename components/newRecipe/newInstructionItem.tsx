@@ -36,7 +36,7 @@ export function NewInstructionItem({
         placeholder="Cut the carrots, ..."
         onChange={(v) => handleChange(v, 'description')}
         labelHintSlot={
-          <div className="flex justify-end text-gray-500">
+          <div className="flex justify-end text-surface-3">
             {onCopy && (
               <IconButton
                 title="Copy Items"

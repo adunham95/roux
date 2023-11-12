@@ -17,11 +17,11 @@ export const DashboardCard = (props: IProps) => {
         className,
       )}
     >
-      <h3 className="mb-2 text-xl font-semibold leading-6 text-gray-900">
+      <h3 className="mb-2 text-xl font-semibold leading-6 text-surface-1">
         {title}
       </h3>
       {description && (
-        <p className="mb-2 text-base text-gray-500">{description}</p>
+        <p className="mb-2 text-base text-surface-3">{description}</p>
       )}
       {children}
     </div>

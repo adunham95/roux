@@ -35,7 +35,7 @@ const InputWrapper = (props: IInputWrapperProps) => {
       <div className={twMerge('mt-2', inputWrapperClassName)}>{children}</div>
       {helperText && !hasError && (
         <p
-          className="mt-2 text-sm text-gray-500"
+          className="mt-2 text-sm text-surface-3"
           id={`${name || id}-description`}
         >
           {helperText}

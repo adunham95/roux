@@ -45,7 +45,7 @@ const TextInput = (props: ITextInputProps) => {
         autoComplete={autoComplete}
         disabled={disabled}
         className={twMerge(
-          'block w-full rounded-md border-0 py-1.5 px-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6',
+          'block w-full rounded-md border-0 py-1.5 px-1 shadow-sm ring-1 ring-inset ring-surface-5 bg-surface placeholder:text-surface-3 text-surface-1 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6',
           hasError &&
             'ring-red-300 placeholder:text-red-300 focus:ring-red-500',
           inputClassName,
