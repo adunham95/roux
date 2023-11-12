@@ -12,7 +12,7 @@ export const MobileButton = (props: IProps) => {
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+      className="inline-flex items-center justify-center rounded-md p-2.5 text-surface-2"
     >
       <span className="sr-only">Open main menu</span>
       {open ? (

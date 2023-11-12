@@ -9,7 +9,7 @@ export interface IButtonProps {
   children: React.ReactNode;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'filled' | 'outline' | 'text' | 'empty';
-  color?: 'brand' | 'success' | 'danger' | 'warning' | 'transparent';
+  color?: 'brand' | 'accent' | 'success' | 'danger' | 'warning' | 'transparent';
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -96,6 +96,14 @@ const colorItems = {
     hoverLight: 'hover:bg-brand-50',
     focusOutline: 'focus-visible:outline-brand',
     border: 'border-brand',
+  },
+  accent: {
+    background: 'bg-accent',
+    text: 'text-accent',
+    hover: 'hover:bg-accent-300',
+    hoverLight: 'hover:bg-accent-50',
+    focusOutline: 'focus-visible:outline-accent',
+    border: 'border-accent',
   },
   success: {
     background: 'bg-green-600',

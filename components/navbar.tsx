@@ -31,7 +31,7 @@ export default function NavBar() {
     <Disclosure as="header" className="bg-surface shadow">
       {() => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-surface-5 lg:px-8">
             <div className="relative flex h-16 justify-between">
               <div className="relative z-10 flex px-2 lg:px-0">
                 <Link
@@ -63,9 +63,9 @@ export default function NavBar() {
                   href={item.href}
                   className={classNames(
                     isCurrent(item.href)
-                      ? 'border-brand hover:bg-brand-50'
-                      : 'border-b-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300',
-                    'inline-flex items-center border-b-2 px-3 py-2 font-medium rounded-t',
+                      ? 'border-brand hover:bg-brand-50 text-surface-3'
+                      : 'border-b-transparent text-surface-3 hover:bg-surface-5 hover:text-surface-3 hover:border-surface-3',
+                    'inline-flex items-center border-b-2 px-3 py-2 font-medium rounded-t transition-colors',
                   )}
                   aria-current={isCurrent(item.href) ? 'page' : undefined}
                 >

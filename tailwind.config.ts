@@ -50,16 +50,14 @@ const config: Config = {
         surface: {
           background: 'rgb(var(--background) / <alpha-value>)',
           DEFAULT: 'rgb(var(--surface) / <alpha-value>)',
+          '1': 'rgb(var(--text-surface-1) / <alpha-value>)',
+          '2': 'rgb(var(--text-surface-2) / <alpha-value>)',
+          '3': 'rgb(var(--text-surface-3) / <alpha-value>)',
+          '4': 'rgb(var(--text-surface-4) / <alpha-value>)',
+          '5': 'rgb(var(--text-surface-5) / <alpha-value>)',
         },
-        text: {
-          surface: {
-            '1': 'rgb(var(--text-surface-1) / <alpha-value>)',
-            '2': 'rgb(var(--text-surface-2) / <alpha-value>)',
-            '3': 'rgb(var(--text-surface-3) / <alpha-value>)',
-            '4': 'rgb(var(--text-surface-4) / <alpha-value>)',
-            '5': 'rgb(var(--text-surface-1) / <alpha-value>)',
-          },
-          background: {
+        background: {
+          text: {
             '1': 'rgb(var(--text-background-1) / <alpha-value>)',
             '2': 'rgb(var(--text-background-2) / <alpha-value>)',
             '3': 'rgb(var(--text-background-3) / <alpha-value>)',
