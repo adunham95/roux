@@ -54,7 +54,7 @@ export function TabbedSection(props: IProps) {
                     className={twMerge(
                       selectedTab === tab.name
                         ? 'bg-brand-100 text-brand-600'
-                        : 'bg-surface text-surface-1',
+                        : 'bg-surface-4 text-surface-1',
                       'ml-3 hidden rounded-full py-0.5 px-2.5 text-xs font-medium md:inline-block',
                     )}
                   >

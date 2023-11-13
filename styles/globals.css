@@ -17,12 +17,21 @@
       --text-surface-3: 82 82 91;
       --text-surface-4: 161 161 170;
       --text-surface-5: 228 228 231;
-      --text-background-1: 9 9 11;
-      --text-background-2: 39 39 42;
-      --text-background-3: 82 82 91;
-      --text-background-4: 161 161 170;    
-      --text-background-5: 228 228 231;
       /* ... */
+    }
+   
+   
+    @media (prefers-color-scheme: dark) {
+        :root {
+        --background: 30 30 30;
+        --surface: 62 62 66;
+        --text-surface-1: 226 232 240;
+        --text-surface-2: 161 161 170;
+        --text-surface-3: 156 163 175;
+        --text-surface-4: 39 39 42;
+        --text-surface-5: 9 9 11;
+        /* ... */
+        }
     }
   }
 
@@ -33,8 +42,8 @@
 }
 
 body{
-    background: var(--background);
     background: #e6e6e6;
+    background: rgb(var(--background) / 1 );
 }
 
 .hide-scrollbars {
