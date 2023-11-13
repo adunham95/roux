@@ -4,6 +4,7 @@ import type { Session } from 'next-auth';
 import { SessionProvider, useSession } from 'next-auth/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Toasts from '@/components/toast/toast';
 
 interface MyAppProps extends Omit<AppProps, 'Component'> {
   Component: AppProps['Component'] & { auth: boolean };
@@ -26,6 +27,7 @@ export default function App({
         ) : (
           <Component {...pageProps} />
         )}
+        <Toasts />
         <ReactQueryDevtools initialIsOpen={false} />
       </SessionProvider>
     </QueryClientProvider>
