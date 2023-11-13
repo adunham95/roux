@@ -57,7 +57,7 @@ const options = [
   },
 ];
 
-export default function Home() {
+function Home() {
   return (
     <DefaultLayout pageName="Dashboard">
       <Container className="py-5">
@@ -109,3 +109,7 @@ export default function Home() {
     </DefaultLayout>
   );
 }
+
+Home.auth = true;
+
+export default Home;

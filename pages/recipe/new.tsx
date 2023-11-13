@@ -79,4 +79,6 @@ const NewRecipe = () => {
   );
 };
 
+NewRecipe.auth = true;
+
 export default NewRecipe;
