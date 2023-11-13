@@ -62,9 +62,9 @@ function Home() {
     <DefaultLayout pageName="Dashboard">
       <Container className="py-5">
         <HeroSection
-          title="Title"
-          description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo."
-          cta="CTA"
+          title="Get Cooking Today!"
+          description="Unleash Your Culinary Creativity, One Recipe at a Time!"
+          cta="Learn More"
         />
         <DashboardCard title="Chef Stats">
           <StatBar

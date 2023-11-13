@@ -1,0 +1,50 @@
+{
+    "name": "Kitchendry",
+    "short_name": "Kitchendry",
+    "start_url": "/dashboard",
+    "icons": [
+        {
+            "src": "/favicon/staging/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/staging/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/staging/maskable_icon_x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/favicon/staging/maskable_icon_x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "theme_color": "#da6d5e",
+    "background_color": "#da6d5e",
+    "display": "standalone",
+    "display_override": ["fullscreen", "minimal-ui"],
+    "description": "Your kitchen adventures are about to get a whole lot tastier. Install and let's whip up something amazing together. Your kitchen, your rules",
+    "screenshots": [
+        {
+            "src": "/screenshots/iPhone.jpg",
+            "sizes": "640x1387",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Mobile View"
+        },
+        {
+            "src": "/screenshots/Dashboard.jpg",
+            "sizes": "1400x973",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Desktop View"
+        }
+    ]
+}
