@@ -103,6 +103,10 @@ const typeDefs = gql`
   ${createMembershipTierTypeDefs}
   ${createRecipeTypeDefs}
 
+  type Success {
+    success: Boolean
+  }
+
   type Query {
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
@@ -123,7 +127,7 @@ const typeDefs = gql`
     #BetaTokens
     generateBetaTokens(count: Int): [BetaToken]
     #Users
-    createUser(input: CreateUserInput!, teamID: String): User
+    createUser(input: CreateUserInput!, teamID: String, roleID: String): Success
     updateUser(input: UpdateUserInput): User
     #Products
     newProduct(input: ProductInput): Product

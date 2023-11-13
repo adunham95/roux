@@ -1,19 +1,37 @@
+import { useCreateUser } from '@/api/mutation/createUser';
 import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import NewPasswordInput from '@/components/inputs/newPassword-input';
 import TextInput from '@/components/inputs/text-input';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
-  const [betaToken, setBetaToken] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const { mutateAsync: createUser, isPending: isLoading } = useCreateUser();
+  const params = useSearchParams();
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    createUser(
+      {
+        input: { email, password, firstName, lastName },
+        teamID: params.get('teamid') || undefined,
+        roleID: params.get('roleid') || undefined,
+      },
+      {
+        onSuccess() {
+          console.log('Created user');
+        },
+        onError() {
+          console.log('Error creating the user');
+        },
+      },
+    );
   }
   return (
     <SplitImageLayout pageName="Sign Up">
@@ -34,18 +52,8 @@ const SignUp = () => {
         <div>
           <form
             onSubmit={onSubmit}
-            className="space-y-6 grid gap-1 grid-cols-2"
+            className=" grid gap-y-5 gap-x-2 grid-cols-2"
           >
-            <div className="col-span-2">
-              <TextInput
-                label="Early Access Token"
-                id="betaToken"
-                value={betaToken}
-                type="text"
-                onChange={setBetaToken}
-              />
-            </div>
-
             <div className="col-span-1">
               <TextInput
                 label="First Name"
@@ -102,7 +110,7 @@ const SignUp = () => {
             </div>
 
             <div>
-              <Button type="submit" className="w-full">
+              <Button disabled={isLoading} type="submit" className="w-full">
                 Create Account
               </Button>
             </div>

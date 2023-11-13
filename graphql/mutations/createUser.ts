@@ -1,17 +1,15 @@
 import MembershipTier from '@/db/models/membershipTier';
-import betaTokens from '@/db/models/betaTokens';
 import User from '@/db/models/user';
 import Auth from '@/services/auth.service';
 import gql from 'graphql-tag';
 import Membership from '@/db/models/membership';
 import Team from '@/db/models/teams';
 import TeamMember from '@/db/models/teamMember';
-export interface IUserInput {
+export interface ICreateUserInput {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  betaToken: string;
 }
 
 export const createUserTypeDefs = gql`
@@ -20,7 +18,6 @@ export const createUserTypeDefs = gql`
     lastName: String!
     email: String!
     password: String!
-    betaToken: String
   }
 `;
 
@@ -31,24 +28,12 @@ async function createUser(
     input,
     teamID,
     roleID,
-  }: { input: IUserInput; teamID?: string; roleID?: string },
+  }: { input: ICreateUserInput; teamID?: string; roleID?: string },
 ) {
-  const betaTokenRequired = false;
   try {
     const currentUsers = await User.find({ email: input.email.trim() });
     if (currentUsers.length > 0) {
       throw new Error('User Already Exists');
-    }
-    if (betaTokenRequired && !input.betaToken) {
-      throw new Error('Beta Token Require');
-    }
-    if (betaTokenRequired && input.betaToken) {
-      const token = await betaTokens.findOne({ token: input.betaToken });
-      if (token.redeemed) {
-        throw new Error('Beta token already redeemed');
-      }
-      token.set({ redeemed: true });
-      token.save();
     }
     if (!teamID) {
       const membershipTierData = await MembershipTier.findOne({
@@ -74,6 +59,9 @@ async function createUser(
       newMembership.save({ new: true });
       newTeam.save({ new: true });
     }
+    if (!teamID && !roleID) {
+      throw new Error('No team or role');
+    }
     const password = await Auth.hashPassword(input.password);
     const email = input.email.trim();
     const user = new User({ ...input, password, email });
@@ -82,10 +70,10 @@ async function createUser(
       teamID,
       userID: user._id,
     });
-    user.save({ new: true });
-    newTeamMember.save({ new: true });
+    await user.save({ new: true });
+    await newTeamMember.save({ new: true });
 
-    return user.toJSON();
+    return { success: true };
   } catch (error) {
     console.log({ error });
     throw error;

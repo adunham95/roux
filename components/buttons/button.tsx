@@ -7,6 +7,7 @@ export interface IButtonProps {
   type?: 'button' | 'submit';
   className?: string;
   children: React.ReactNode;
+  disabled?: boolean;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'filled' | 'outline' | 'text' | 'empty';
   color?: 'brand' | 'accent' | 'success' | 'danger' | 'warning' | 'transparent';
@@ -25,6 +26,7 @@ export const Button = (props: IButtonProps) => {
     color = 'brand',
     type = 'button',
     onClick,
+    disabled = false,
     onMouseEnter = () => null,
     onMouseLeave = () => null,
   } = props;
@@ -79,6 +81,7 @@ export const Button = (props: IButtonProps) => {
     <button
       onClick={onClick}
       type={type}
+      disabled={disabled}
       className={twMerge('cursor-pointer', getSize(), getVariant(), className)}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
