@@ -13,7 +13,7 @@ const SearchInput = (props: ISearchInput) => {
       <label htmlFor="search" className="sr-only">
         Search
       </label>
-      <div className="relative text-gray-400 focus-within:text-gray-600 border-solid rounded-md">
+      <div className="relative bg-surface text-surface-4 focus-within:text-surface-2 border-solid rounded-md">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <svg
             className="h-5 w-5"
@@ -30,7 +30,7 @@ const SearchInput = (props: ISearchInput) => {
         </div>
         <input
           id="search"
-          className="block w-full rounded-md border-0 bg-white py-3 pl-10 pr-5 text-gray-900 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 bg-surface py-3 pl-10 pr-5 text-surface-1 focus:ring-2 focus:ring-surface focus:ring-offset-2 focus:ring-offset-primary sm:text-sm sm:leading-6"
           placeholder={placeholderText}
           type="search"
           name="search"

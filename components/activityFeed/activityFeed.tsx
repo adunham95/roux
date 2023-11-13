@@ -66,7 +66,7 @@ export const ActivityFeed = (props: IProps) => {
               'absolute left-0 top-0 flex w-6 justify-center',
             )}
           >
-            <div className="w-px bg-gray-200" />
+            <div className="w-px bg-surface-5" />
           </div>
           {activityItem.type === 'commented' ? (
             <>
@@ -75,22 +75,22 @@ export const ActivityFeed = (props: IProps) => {
                 alt=""
                 className="relative mt-3 h-6 w-6 flex-none rounded-full bg-surface-background"
               />
-              <div className="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
+              <div className="flex-auto rounded-md p-3 ring-1 ring-inset ring-surface-5">
                 <div className="flex justify-between gap-x-4">
-                  <div className="py-0.5 text-xs leading-5 text-gray-500">
-                    <span className="font-medium text-gray-900">
+                  <div className="py-0.5 text-xs leading-5 text-surface-3">
+                    <span className="font-medium text-surface-1">
                       {activityItem.person.name}
                     </span>{' '}
                     commented
                   </div>
                   <time
                     dateTime={activityItem.dateTime}
-                    className="flex-none py-0.5 text-xs leading-5 text-gray-500"
+                    className="flex-none py-0.5 text-xs leading-5 text-surface-1"
                   >
                     {activityItem.date}
                   </time>
                 </div>
-                <p className="text-sm leading-6 text-gray-500">
+                <p className="text-sm leading-6 text-surface-1">
                   {activityItem.comment}
                 </p>
               </div>
@@ -100,22 +100,22 @@ export const ActivityFeed = (props: IProps) => {
               <div className="relative flex h-6 w-6 flex-none items-center justify-center bg-surface-background">
                 {activityItem.type === 'paid' ? (
                   <CheckCircleIcon
-                    className="h-6 w-6 text-indigo-600"
+                    className="h-6 w-6 text-brand"
                     aria-hidden="true"
                   />
                 ) : (
-                  <div className="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300" />
+                  <div className="h-1.5 w-1.5 rounded-full bg-surface-5 ring-1 ring-surface-4" />
                 )}
               </div>
-              <p className="flex-auto py-0.5 text-xs leading-5 text-gray-500">
-                <span className="font-medium text-gray-900">
+              <p className="flex-auto py-0.5 text-xs leading-5 text-surface-3">
+                <span className="font-medium text-brand-1">
                   {activityItem.person.name}
                 </span>{' '}
                 {activityItem.type} the invoice.
               </p>
               <time
                 dateTime={activityItem.dateTime}
-                className="flex-none py-0.5 text-xs leading-5 text-gray-500"
+                className="flex-none py-0.5 text-xs leading-5 text-surface-3"
               >
                 {activityItem.date}
               </time>

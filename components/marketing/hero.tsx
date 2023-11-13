@@ -18,15 +18,15 @@ export const MarketingHero = (props: IMarketingHero) => {
     <div className="relative isolate md:pt-14">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-32 lg:flex lg:items-center lg:gap-x-10">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
-          <h1 className="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className="mt-10 max-w-lg text-4xl font-bold tracking-tight text-surface-1 sm:text-6xl">
             {title}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">{subtitle}</p>
+          <p className="mt-6 text-lg leading-8 text-surface-2">{subtitle}</p>
           <div className="mt-10 flex items-center gap-x-6">
             {ctaLink && ctaTitle && (
               <Link
                 href={ctaLink}
-                className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-surface-5 shadow-sm hover:bg-primary-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {ctaTitle}
               </Link>
@@ -34,7 +34,7 @@ export const MarketingHero = (props: IMarketingHero) => {
             {secondaryLink && secondaryTitle && (
               <Link
                 href={secondaryLink}
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className="text-sm font-semibold leading-6 text-surface-1"
               >
                 {secondaryTitle} <span aria-hidden="true">→</span>
               </Link>

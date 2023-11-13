@@ -49,14 +49,14 @@ export default function MarketingTimeline() {
                 </svg>
                 {item.date}
                 <div
-                  className="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
+                  className="absolute -ml-2 h-px w-screen -translate-x-full bg-surface-1/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
                   aria-hidden="true"
                 />
               </time>
-              <p className="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">
+              <p className="mt-6 text-lg font-semibold leading-8 tracking-tight text-surface-1">
                 {item.name}
               </p>
-              <p className="mt-1 text-base leading-7 text-gray-600">
+              <p className="mt-1 text-base leading-7 text-surface-2">
                 {item.description}
               </p>
             </div>

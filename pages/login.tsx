@@ -25,10 +25,10 @@ const Login = () => {
             alt="Kitchendry logo"
           />
         </Link>
-        <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-surface-1">
           Sign in to your account
         </h2>
-        <p className="mt-2 text-sm leading-6 text-gray-500">
+        <p className="mt-2 text-sm leading-6 text-surface-2">
           Not a member?{' '}
           <Link
             href="/sign-up"
@@ -70,11 +70,11 @@ const Login = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-brand focus:ring-brand"
+                  className="h-4 w-4 rounded border-surface-4 text-brand focus:ring-brand"
                 />
                 <label
                   htmlFor="remember-me"
-                  className="ml-3 block text-sm leading-6 text-gray-700"
+                  className="ml-3 block text-sm leading-6 text-surface-2"
                 >
                   Remember me
                 </label>

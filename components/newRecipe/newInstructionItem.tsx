@@ -41,7 +41,7 @@ export function NewInstructionItem({
               <IconButton
                 title="Copy Items"
                 onClick={() => onCopy(instruction?.id || '')}
-                className=" bg-gray-400 p-2 text-white rounded-full hover:bg-gray-500  focus-visible:outline-gray-600 md:scale-0 group-hover:scale-100 transition-transform duration-300"
+                className=" bg-surface-3 p-2 text-white rounded-full hover:bg-surface-2  focus-visible:outline-surface-2 md:scale-0 group-hover:scale-100 transition-transform duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ function IngredientButton({
       isOpen={isPopoverOpen}
       positions={['bottom']}
       content={
-        <div className="p-1 bg-gray-400 text-white rounded text-sm">
+        <div className="p-1 bg-surface-3 text-white rounded text-sm">
           {content}
         </div>
       }

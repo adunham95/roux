@@ -25,16 +25,16 @@ export const MarketingFeature = (props: IMarketingFeatureProps) => {
             {tagline}
           </h2>
         )}
-        <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <p className="mt-2 text-3xl font-bold tracking-tight text-surface-1 sm:text-4xl">
           {title}
         </p>
-        <p className="mt-6 text-lg leading-8 text-gray-600">{subTitle}</p>
+        <p className="mt-6 text-lg leading-8 text-surface-3">{subTitle}</p>
       </div>
       <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
         <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-4 lg:gap-y-16 lg:max-w-none lg:grid-cols-3">
           {features.map((feat) => (
             <div className="flex flex-col" key={feat.id}>
-              <dt className="gap-x-3 text-base font-semibold leading-7 text-gray-900 flex lg:block items-baseline">
+              <dt className="gap-x-3 text-base font-semibold leading-7 text-surface-1 flex lg:block items-baseline">
                 {feat.emoji && (
                   <div className="mb-2 lg:mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-brand">
                     {feat.emoji}
@@ -42,7 +42,7 @@ export const MarketingFeature = (props: IMarketingFeatureProps) => {
                 )}
                 {feat.title}
               </dt>
-              <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-surface-3">
                 <p className="flex-auto">{feat.description}</p>
                 <p className="mt-6">
                   {feat.ctaLink && (

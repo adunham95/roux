@@ -28,7 +28,7 @@ const MyProfile = () => {
   return (
     <DefaultLayout pageName="My Profile">
       <Container className="py-4">
-        <div className="space-y-10 gap-y-1 divide-y divide-gray-900/10">
+        <div className="space-y-10 gap-y-1 divide-y divide-surface-1/10">
           <TwoColumnCard
             title="Profile"
             subTitle="Update Your personal account information"

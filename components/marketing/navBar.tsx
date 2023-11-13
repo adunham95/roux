@@ -44,7 +44,7 @@ export const MarketingNavBar = () => {
               className={twMerge(
                 isCurrent(nav.href)
                   ? 'text-brand hover:text-brand-500'
-                  : 'text-gray-900 hover:text-gray-600',
+                  : 'text-surface-1 hover:text-surface-2',
                 'text-sm font-semibold leading-6 ',
               )}
             >

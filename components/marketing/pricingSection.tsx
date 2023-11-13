@@ -25,7 +25,7 @@ const PricingSection = () => {
         <RadioGroup
           value={frequency}
           onChange={setFrequency}
-          className="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200"
+          className="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-surface-4"
         >
           <RadioGroup.Label className="sr-only">
             Payment frequency
@@ -36,7 +36,7 @@ const PricingSection = () => {
               value={option}
               className={({ checked }) =>
                 twMerge(
-                  checked ? 'bg-brand text-white' : 'text-gray-500',
+                  checked ? 'bg-brand text-white' : 'text-surface-3',
                   'cursor-pointer rounded-full px-2.5 py-1',
                 )
               }
@@ -47,39 +47,39 @@ const PricingSection = () => {
         </RadioGroup>
       </div>
       <div className="mt-20 flow-root">
-        <div className="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 divide-y divide-gray-100 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-3 lg:divide-x lg:divide-y-0 xl:-mx-4">
+        <div className="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 divide-y divide-surface-4 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-3 lg:divide-x lg:divide-y-0 xl:-mx-4">
           {data.map((tier) => (
             <div key={tier.id} className="pt-16 lg:px-8 lg:pt-0 xl:px-14">
               <h3
                 id={tier.id}
-                className="text-base font-semibold leading-7 text-gray-900"
+                className="text-base font-semibold leading-7 text-surface-1"
               >
                 {tier.tierName}
               </h3>
               <p className="mt-6 flex items-baseline gap-x-1">
                 {tier[frequency.value as 'yearlyCost' | 'monthlyCost'] > 0 ? (
                   <>
-                    <span className="text-4xl font-bold tracking-tight text-gray-900">
+                    <span className="text-4xl font-bold tracking-tight text-surface-1">
                       {formatAsDollars(
                         tier[frequency.value as 'yearlyCost' | 'monthlyCost'],
                       )}
                     </span>
-                    <span className="text-sm font-semibold leading-6 text-gray-600">
+                    <span className="text-sm font-semibold leading-6 text-surface-2">
                       {frequency.priceSuffix}
                     </span>
                   </>
                 ) : (
-                  <span className="text-4xl font-bold tracking-tight text-gray-900">
+                  <span className="text-4xl font-bold tracking-tight text-surface-1">
                     Free
                   </span>
                 )}
               </p>
-              <p className="mt-10 text-sm font-semibold leading-6 text-gray-900">
+              <p className="mt-10 text-sm font-semibold leading-6 text-surface-1">
                 {tier.tierDescription}
               </p>
               <ul
                 role="list"
-                className="mt-6 space-y-3 text-sm leading-6 text-gray-600"
+                className="mt-6 space-y-3 text-sm leading-6 text-surface-2"
               >
                 <li className="flex gap-x-3">
                   <CheckCircleIcon

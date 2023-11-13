@@ -5,7 +5,7 @@ interface IProps {
 export function StatBar(props: IProps) {
   const { stats } = props;
   return (
-    <dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden  md:grid-cols-3 md:divide-x md:divide-y-0">
+    <dl className="mt-5 grid grid-cols-1 divide-y divide-surface-4 overflow-hidden  md:grid-cols-3 md:divide-x md:divide-y-0">
       {stats.map((item) => (
         <div key={item.id} className="px-4">
           <dt className="text-base font-normal text-surface-2">{item.name}</dt>

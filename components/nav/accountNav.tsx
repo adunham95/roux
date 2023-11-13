@@ -33,7 +33,7 @@ const AccountNav = (props: IProps) => {
         </button>
 
         <div
-          className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200"
+          className="hidden lg:block lg:h-6 lg:w-px lg:bg-surface-4"
           aria-hidden="true"
         />
 

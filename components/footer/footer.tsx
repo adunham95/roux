@@ -92,7 +92,7 @@ const navigation = {
 
 const Footer = () => {
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
+    <footer className="bg-surface" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -100,7 +100,7 @@ const Footer = () => {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <img className="h-7" src="/icon-wide.png" alt="Company name" />
-            <p className="text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-surface-2">
               Inspire and enable individuals to explore, experiment, and
               redefine the world of cooking
             </p>
@@ -108,7 +108,7 @@ const Footer = () => {
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 text--surface-1">
                   Solutions
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -116,7 +116,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-surface-3 hover:text-surface-1"
                       >
                         {item.name}
                       </a>
@@ -125,7 +125,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 text-surface-1">
                   Support
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -133,7 +133,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-surface-3 hover:text-surface-1"
                       >
                         {item.name}
                       </a>
@@ -144,7 +144,7 @@ const Footer = () => {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 text-surface-1">
                   Company
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -152,7 +152,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-surface-3 hover:text-surface-1"
                       >
                         {item.name}
                       </a>
@@ -161,7 +161,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 text-surface-1">
                   Legal
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -169,7 +169,7 @@ const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-surface-3 hover:text-surface-1"
                       >
                         {item.name}
                       </a>
@@ -180,12 +180,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+        <div className="mt-16 border-t border-surface-1/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
           <div>
-            <h3 className="text-sm font-semibold leading-6 text-gray-900">
+            <h3 className="text-sm font-semibold leading-6 text-surface-1">
               Sign up for our beta announcement
             </h3>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
+            <p className="mt-2 text-sm leading-6 text-surface-3">
               We&apos;re gearing up for our beta launch, and we want you to be
               among the first to experience it
             </p>
@@ -200,7 +200,7 @@ const Footer = () => {
               id="email-address"
               autoComplete="email"
               required
-              className="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
+              className="w-full min-w-0 appearance-none rounded-md border-0 bg-surface px-3 py-1.5 text-base text-surface-1 shadow-sm ring-1 ring-inset ring-surface-4 placeholder:text-surface-3 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:w-56 sm:text-sm sm:leading-6"
               placeholder="Enter your email"
             />
             <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
@@ -210,20 +210,20 @@ const Footer = () => {
             </div>
           </form>
         </div>
-        <div className="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
+        <div className="mt-8 border-t border-surface-1/10 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-400 hover:text-brand"
+                className="text-surface-3 hover:text-brand"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
               </a>
             ))}
           </div>
-          <p className="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
+          <p className="mt-8 text-xs leading-5 text-surface-3 md:order-1 md:mt-0">
             &copy; {new Date().getFullYear()} Your Company, Inc. All rights
             reserved.
           </p>

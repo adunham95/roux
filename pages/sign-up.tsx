@@ -24,7 +24,7 @@ const SignUp = () => {
             src="/icon-wide.png"
             alt="Kitchendry logo"
           />
-          <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-surface-1">
             Create your account
           </h2>
         </Link>

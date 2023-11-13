@@ -20,7 +20,7 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
       style={{ minWidth: minWidth, maxWidth: minWidth }}
       className={twMerge(`group relative w-full`, className)}
     >
-      <div className="relative aspect-square w-full bg-gray-200 lg:aspect-none group-hover:opacity-75">
+      <div className="relative aspect-square w-full bg-surface-4 lg:aspect-none group-hover:opacity-75">
         <Image
           src={imgSrc}
           alt={imgAlt}
@@ -36,10 +36,10 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
       </div>
       <div className="mt-4 flex justify-between">
         <div>
-          <h3 className="text-base text-gray-700">
+          <h3 className="text-base text-surface-1">
             <a href="#">{title}</a>
           </h3>
-          <p className="mt-1 text-sm text-gray-500">{category}</p>
+          <p className="mt-1 text-sm text-surface-2">{category}</p>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@ interface IRecipeBadgeProps {
 function RecipeBadge(props: IRecipeBadgeProps) {
   const { className = '', title } = props;
   const defaultClass =
-    'h-2 w-2 opacity-50 bg-gray-500 mr-1 mb-1 rounded-full z-10 group-hover:h-5 group-hover:w-5 group-hover:opacity-100 transition-all';
+    'h-2 w-2 opacity-50 bg-surface-2 mr-1 mb-1 rounded-full z-10 group-hover:h-5 group-hover:w-5 group-hover:opacity-100 transition-all';
   const [isPopoverOpen, setPopoverOpen] = useState(false);
   if (title) {
     return (
@@ -63,7 +63,7 @@ function RecipeBadge(props: IRecipeBadgeProps) {
         positions={['bottom', 'right', 'left', 'top']}
         padding={2}
         content={
-          <div className="p-1 bg-gray-400 text-white rounded text-sm">
+          <div className="p-1 bg-surface-3 text-white rounded text-sm">
             {title}
           </div>
         }

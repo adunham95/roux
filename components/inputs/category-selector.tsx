@@ -8,7 +8,7 @@ interface ICategorySelectorProps {
 
 const checkedStyle = 'bg-primary text-white hover:bg-primary-light';
 const unCheckedStyle =
-  'ring-1 ring-inset ring-gray-300 bg-white text-gray-900 hover:bg-primary-extra-light';
+  'ring-1 ring-inset ring-surface-4 bg-surface text-surface-1 hover:bg-primary-extra-light';
 
 const CategorySelector = (props: ICategorySelectorProps) => {
   const { options, checked } = props;

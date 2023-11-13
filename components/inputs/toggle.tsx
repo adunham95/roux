@@ -12,11 +12,10 @@ export const Toggle = (props: IProps) => {
   return (
     <InputWrapper {...props} label="">
       <div className="flex items-center">
-        {/* <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" --> */}
         <button
           type="button"
           className={twMerge(
-            checked ? 'bg-brand' : 'bg-gray-200',
+            checked ? 'bg-brand' : 'bg-surface-4',
             'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2',
           )}
           role="switch"
@@ -28,12 +27,12 @@ export const Toggle = (props: IProps) => {
             aria-hidden="true"
             className={twMerge(
               checked ? 'translate-x-5' : 'translate-x-0',
-              ' pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+              ' pointer-events-none inline-block h-5 w-5 transform rounded-full bg-surface shadow ring-0 transition duration-200 ease-in-out',
             )}
           ></span>
         </button>
         <span className="ml-3 text-sm" id="annual-billing-label">
-          <span className="font-medium text-gray-900">{label}</span>
+          <span className="font-medium text-surface-1">{label}</span>
         </span>
       </div>
     </InputWrapper>

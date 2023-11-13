@@ -49,7 +49,6 @@ const Accordion = (props: IAccordionProps) => {
         </button>
       </dt>
       {expanded && <dd className={'my-1 pr-6'}>{children}</dd>}
-      {/* <div className="w-full border-t border-gray-300"></div> */}
     </div>
   );
 };

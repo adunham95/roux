@@ -15,11 +15,11 @@ export default function FourOhFour() {
           className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
         />
         <div className="mx-auto max-w-7xl px-6 py-40 text-center sm:py-56 lg:px-8">
-          <p className="text-2xl font-semibold leading-8 text-gray-500">404</p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-500 sm:text-5xl">
+          <p className="text-2xl font-semibold leading-8 text-surface-2">404</p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-surface-2 sm:text-5xl">
             Page not found
           </h1>
-          <p className="mt-4 text-xl text-gray-900/70 sm:mt-6">
+          <p className="mt-4 text-xl text-surface-1/70 sm:mt-6">
             You seem to missing an ingredient
           </p>
           <div className="mt-10 flex justify-center">

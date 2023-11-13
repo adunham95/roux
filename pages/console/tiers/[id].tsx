@@ -25,7 +25,7 @@ const TierID = () => {
 
   return (
     <AdminLayout>
-      <div className="space-y-10 gap-y-1 divide-y divide-gray-900/10 relative">
+      <div className="space-y-10 gap-y-1 divide-y divide-surface-1/10 relative">
         <TwoColumnCard title="Details" subTitle="Add the details for the tier">
           <TextInput
             className="col-span-6"
