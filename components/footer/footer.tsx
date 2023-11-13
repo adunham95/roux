@@ -224,7 +224,7 @@ const Footer = () => {
             ))}
           </div>
           <p className="mt-8 text-xs leading-5 text-surface-3 md:order-1 md:mt-0">
-            &copy; {new Date().getFullYear()} Your Company, Inc. All rights
+            &copy; {new Date().getFullYear()} Kitchendry, Inc. All rights
             reserved.
           </p>
         </div>

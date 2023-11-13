@@ -136,7 +136,7 @@ export const AdminLayout = (props: IProps) => {
                       <img
                         className="h-8 w-auto"
                         src="/icon-wide-light.png"
-                        alt="Your Company"
+                        alt="Kitchendry"
                       />
                     </div>
                     <nav className="flex flex-1 flex-col">
@@ -186,7 +186,7 @@ export const AdminLayout = (props: IProps) => {
               <img
                 className="h-8 w-auto"
                 src="/icon-wide-light.png"
-                alt="Your Company"
+                alt="Kitchendry"
               />
             </div>
             <nav className="flex flex-1 flex-col">
@@ -245,7 +245,7 @@ export const AdminLayout = (props: IProps) => {
               <img
                 className="h-10 w-auto"
                 src="/icon_square.png"
-                alt="Your Company"
+                alt="Kitchendry"
               />
             </div>
 

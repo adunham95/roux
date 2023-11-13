@@ -41,7 +41,7 @@ export default function NavBar() {
                   <img
                     className="h-8 w-auto"
                     src="/icon-wide.png"
-                    alt="Your Company"
+                    alt="Kitchendry"
                   />
                 </Link>
               </div>
