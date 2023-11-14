@@ -7,6 +7,7 @@ import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
 import { useNewRecipe } from '@/stores/newRecipeStore';
 import SidecarInstructionList from '@/components/sidecar/elements/InstructionList';
 import { useCreateRecipe } from '@/api/mutation/createRecipe';
+import { useToast } from '@/stores/toast';
 
 const NewRecipe = () => {
   const {
@@ -16,10 +17,10 @@ const NewRecipe = () => {
     getIngredients,
     getFormattedInstructions,
   } = useNewRecipe();
+  const { addToast } = useToast();
   const { mutateAsync: createRecipeAsync } = useCreateRecipe();
   async function saveRecipe() {
     const formattedInstructions = getFormattedInstructions();
-    console.log(formattedInstructions);
 
     await createRecipeAsync(
       {
@@ -29,10 +30,11 @@ const NewRecipe = () => {
       },
       {
         onSuccess(data) {
-          console.log('SUCCESS');
+          addToast('Recipe successfully created', 'success');
           console.log(data);
         },
         onError(error) {
+          addToast('Error saving recipe', 'danger');
           console.log('ERROR');
           console.log(error);
         },
