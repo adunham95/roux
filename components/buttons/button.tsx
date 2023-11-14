@@ -10,7 +10,14 @@ export interface IButtonProps {
   disabled?: boolean;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'filled' | 'outline' | 'text' | 'empty';
-  color?: 'brand' | 'accent' | 'success' | 'danger' | 'warning' | 'transparent';
+  color?:
+    | 'brand'
+    | 'accent'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'transparent'
+    | 'variable';
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -51,7 +58,7 @@ export const Button = (props: IButtonProps) => {
       case 'empty':
         return '';
       case 'filled':
-        return `font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${colorItems[color].background} ${colorItems[color].hover} ${colorItems[color].focusOutline}`;
+        return `font-semibold ${colorItems[color].onText} shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${colorItems[color].background} ${colorItems[color].hover} ${colorItems[color].focusOutline}`;
       case 'text':
         return `font-semibold ${colorItems[color].text}`;
       case 'outline':
@@ -99,6 +106,7 @@ const colorItems = {
     hoverLight: 'hover:bg-brand-50',
     focusOutline: 'focus-visible:outline-brand',
     border: 'border-brand',
+    onText: 'text-white',
   },
   accent: {
     background: 'bg-accent',
@@ -107,6 +115,7 @@ const colorItems = {
     hoverLight: 'hover:bg-accent-50',
     focusOutline: 'focus-visible:outline-accent',
     border: 'border-accent',
+    onText: 'text-white',
   },
   success: {
     background: 'bg-green-600',
@@ -115,6 +124,7 @@ const colorItems = {
     hover: 'hover:bg-green-500',
     hoverLight: 'hover:bg-green-50',
     focusOutline: 'focus-visible:outline-green-600',
+    onText: 'text-white',
   },
   danger: {
     background: 'bg-rose-600',
@@ -123,6 +133,7 @@ const colorItems = {
     hover: 'hover:bg-rose-500',
     hoverLight: 'hover:bg-rose-50',
     focusOutline: 'focus-visible:outline-rose-600',
+    onText: 'text-white',
   },
   warning: {
     background: 'bg-amber-600',
@@ -131,6 +142,7 @@ const colorItems = {
     hover: 'hover:bg-amber-500',
     hoverLight: 'hover:bg-amber-50',
     focusOutline: 'focus-visible:outline-amber-600',
+    onText: 'text-white',
   },
   transparent: {
     background: 'transparent',
@@ -139,5 +151,15 @@ const colorItems = {
     hover: '',
     hoverLight: '',
     focusOutline: 'focus-visible:outline-brand-600',
+    onText: 'text-white',
+  },
+  variable: {
+    background: 'bg-brand-variable',
+    text: 'text-brand-variable',
+    hover: 'hover:bg-brand-variable-alt',
+    hoverLight: 'hover:bg-brand-variable-alt',
+    focusOutline: 'focus-visible:outline-brand-variable',
+    border: 'border-brand-variable',
+    onText: 'text-brand-variable-text',
   },
 };
