@@ -7,6 +7,7 @@ import getAllBetaTokens from './queries/getBetaTokens';
 import createMembershipTier from './mutations/createMembershipTier';
 import getMembershipTiers from './queries/getMembershipTiers';
 import createRecipe from './mutations/createRecipe';
+import getRecipe from './queries/getRecipe';
 
 interface IProductInput {}
 
@@ -34,6 +35,7 @@ const resolvers = {
     getUserById,
     getAllBetaTokens,
     getMembershipTiers,
+    getRecipe,
   },
 
   Mutation: {

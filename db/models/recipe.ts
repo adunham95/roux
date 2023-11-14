@@ -1,4 +1,6 @@
 import { Schema, models, model } from 'mongoose';
+import teams from './teams';
+import user from './user';
 
 const IngredientsSchema = new Schema({
   name: String,
@@ -23,6 +25,18 @@ const RecipeSchema = new Schema({
 // Duplicate the ID field.
 RecipeSchema.virtual('id').get(function () {
   return this._id.toHexString();
+});
+RecipeSchema.virtual('team', {
+  ref: teams,
+  localField: 'teamID',
+  foreignField: '_id',
+  justOne: true,
+});
+RecipeSchema.virtual('user', {
+  ref: user,
+  localField: 'userID',
+  foreignField: '_id',
+  justOne: true,
 });
 IngredientsSchema.virtual('id').get(function () {
   return this._id.toHexString();

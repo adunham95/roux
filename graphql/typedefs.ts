@@ -6,6 +6,15 @@ import { createRecipeTypeDefs } from './mutations/createRecipe';
 
 const typeDefs = gql`
   # User
+  type BaseUser {
+    id: ID
+    firstName: String
+    lastName: String
+    email: String
+    createdAt: String
+    updatedAt: String
+    status: String
+  }
   type User {
     id: ID
     firstName: String
@@ -44,9 +53,9 @@ const typeDefs = gql`
   type Recipe {
     id: ID!
     userID: ID!
-    teamID: ID!
-    user: User
     team: Team
+    teamID: ID!
+    user: BaseUser
     name: String!
     description: String
     instructions: [Instruction]
@@ -108,6 +117,8 @@ const typeDefs = gql`
   }
 
   type Query {
+    #Recipe
+    getRecipe(id: ID!): Recipe
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Products
