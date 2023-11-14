@@ -2,6 +2,7 @@ import React from 'react';
 import { AppHead } from '../../appHead';
 import NavBar from '../../navbar';
 import Image from 'next/image';
+import SmallFooter from '@/components/footer/smallFooter';
 
 export interface IDefaultLayoutProps {
   pageName?: string;
@@ -40,6 +41,7 @@ export const DefaultLayout = (props: IDefaultLayoutProps) => {
       <main className={`${props.mainClass}`}>
         <>{props.children}</>
       </main>
+      <SmallFooter />
     </div>
   );
 };
