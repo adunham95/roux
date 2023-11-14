@@ -45,11 +45,11 @@ export default function NavBar() {
                   />
                 </Link>
               </div>
-              <div className="relative z-10 flex items-center lg:hidden">
+              <div className="relative flex items-center lg:hidden">
                 {/* Mobile menu button */}
                 <MobileButton open={open} onClick={() => setOpen(!open)} />
               </div>
-              <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
+              <div className="hidden lg:relative lg:ml-4 lg:flex lg:items-center">
                 <AccountNav />
               </div>
             </div>
