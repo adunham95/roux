@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import InputWrapper, { IDefaultInputWrapperProps } from './inputWrapper';
+import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
+
 interface ITextInputProps extends IDefaultInputWrapperProps {
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
@@ -69,25 +71,47 @@ const NewPasswordInput = (props: ITextInputProps) => {
         aria-describedby={ariaDescription || name || id}
         onChange={(e) => onChange(e.target.value, name || id, e)}
       />
-      <div className="grid grid-cols-2 text-sm gap-x-1 gap-y-1">
+      <div className="grid grid-cols-2 text-sm gap-x-1 gap-y-1 text-surface-2">
         {/* TODO convert to icons */}
         {uppercaseRequired && (
-          <p>
-            Uppercase Letters: {requirements.hasUppercase ? 'True' : 'False'}
-          </p>
+          <div className="flex items-center">
+            <span className="pr-1">Uppercase Letters:</span>
+            {requirements.hasUppercase ? (
+              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+            ) : (
+              <XMarkIcon className="h-4 w-4 text-rose-500" />
+            )}
+          </div>
         )}
         {lowercaseRequired && (
-          <p>
-            Lowercase Letters: {requirements.hasLowercase ? 'True' : 'False'}
-          </p>
+          <div className="flex items-center">
+            <span className="pr-1">Lowercase Letters:</span>{' '}
+            {requirements.hasLowercase ? (
+              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+            ) : (
+              <XMarkIcon className="h-4 w-4 text-rose-500" />
+            )}
+          </div>
         )}
         {numbersRequired && (
-          <p>Numbers: {requirements.hasNumbers ? 'True' : 'False'}</p>
+          <div className="flex items-center">
+            <span className="pr-1">Numbers:</span>
+            {requirements.hasNumbers ? (
+              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+            ) : (
+              <XMarkIcon className="h-4 w-4 text-rose-500" />
+            )}
+          </div>
         )}
         {length > 0 && (
-          <p>
-            Longer Than {length}: {requirements.longerThan ? 'True' : 'False'}
-          </p>
+          <div className="flex items-center">
+            <span className="pr-1">Longer Than {length}:</span>{' '}
+            {requirements.longerThan ? (
+              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+            ) : (
+              <XMarkIcon className="h-4 w-4 text-rose-500" />
+            )}
+          </div>
         )}
       </div>
     </InputWrapper>
