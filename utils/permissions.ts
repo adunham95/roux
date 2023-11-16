@@ -1,5 +1,6 @@
 export enum UserPermissions {
   CREATE_RECIPE = 'create_recipe',
+  VIEW_RECIPE = 'view_recipe',
 }
 
 export enum AdminPermissions {

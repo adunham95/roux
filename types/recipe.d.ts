@@ -1,6 +1,7 @@
 import { IInstructionItem } from '@/types/instructionItem';
 
 export interface IRecipe {
+  id: string;
   name: string;
   description?: string;
   image?: string;

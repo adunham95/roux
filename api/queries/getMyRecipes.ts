@@ -4,23 +4,21 @@ import { gql } from 'graphql-request';
 import { IRecipe } from '@/types/recipe';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useGetRecipe = (id: string, initialData: any) => {
+export const useGetMyRecipes = (initialData?: any) => {
   return useQuery({
-    queryKey: ['recipe', id],
-    queryFn: () => getRecipe(id),
+    queryKey: ['my-recipes'],
+    queryFn: () => getMyRecipes(),
     initialData,
   });
 };
 
-export async function getRecipe(id: string) {
+export async function getMyRecipes() {
   const client = getClient();
-  const variables = {
-    getRecipeId: id,
-  };
+  const variables = {};
 
   const query = gql`
-    query GetRecipe($getRecipeId: ID!) {
-      getRecipe(id: $getRecipeId) {
+    query GetMyRecipes {
+      getMyRecipes {
         id
         user {
           firstName
@@ -50,8 +48,8 @@ export async function getRecipe(id: string) {
     }
   `;
 
-  const { getRecipe } = await client.request<{
-    getRecipe: IRecipe;
+  const { getMyRecipes } = await client.request<{
+    getMyRecipes: IRecipe[];
   }>(query, variables);
-  return getRecipe;
+  return getMyRecipes;
 }

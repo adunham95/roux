@@ -10,6 +10,7 @@ import createRecipe from './mutations/createRecipe';
 import getRecipe from './queries/getRecipe';
 import forgotPassword from './mutations/forgotPassword';
 import resetPassword from './mutations/resetPassword';
+import getMyRecipes from './queries/getMyRecipes';
 
 interface IProductInput {}
 
@@ -38,6 +39,7 @@ const resolvers = {
     getAllBetaTokens,
     getMembershipTiers,
     getRecipe,
+    getMyRecipes,
   },
 
   Mutation: {

@@ -5,10 +5,10 @@ import { Popover } from 'react-tiny-popover';
 
 interface IRecipeCardSmallProps {
   className?: string;
-  imgSrc: string;
-  imgAlt: string;
+  imgSrc?: string;
+  imgAlt?: string;
   title: string;
-  category: string;
+  category?: string;
   tags?: string[];
   minWidth?: number;
 }
@@ -21,12 +21,16 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
       className={twMerge(`group relative w-full`, className)}
     >
       <div className="relative aspect-square w-full bg-surface-4 lg:aspect-none group-hover:opacity-75">
-        <Image
-          src={imgSrc}
-          alt={imgAlt}
-          fill
-          className="object-cover overflow-hidden rounded"
-        />
+        {imgSrc && imgAlt ? (
+          <Image
+            src={imgSrc}
+            alt={imgAlt}
+            fill
+            className="object-cover overflow-hidden rounded"
+          />
+        ) : (
+          <div className="object-cover overflow-hidden rounded bg-surface w-full h-full"></div>
+        )}
         <div className="absolute top-0 flex justify-end w-full p-2">
           <RecipeBadge className="bg-green-500" />
           <RecipeBadge className="bg-amber-500" />

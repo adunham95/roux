@@ -124,6 +124,7 @@ const typeDefs = gql`
   type Query {
     #Recipe
     getRecipe(id: ID!): Recipe
+    getMyRecipes: [Recipe]
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Products
