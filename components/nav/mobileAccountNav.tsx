@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '../buttons/button';
 
 const userNavigation = [
+  { name: 'Dashboard', href: '/dashboard' },
   { name: 'Your Profile', href: '/settings/my-profile' },
   { name: 'Settings', href: '#' },
 ];
