@@ -1,15 +1,35 @@
+import { useResetPassword } from '@/api/mutation/resetPassword';
 import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import NewPasswordInput from '@/components/inputs/newPassword-input';
+import { useToast } from '@/stores/toast';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
-  const isLoading = false;
+  const searchParams = useSearchParams();
+  const { mutateAsync: mutateResetPassword, isPending: isLoading } =
+    useResetPassword();
+  const { addToast } = useToast();
+
+  const resetCode = searchParams.get('code');
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!resetCode) {
+      addToast('No Reset Code', 'warning');
+      return '';
+    }
+    mutateResetPassword(
+      { resetCode, newPassword },
+      {
+        onSuccess() {
+          addToast('Password rest');
+        },
+      },
+    );
   }
 
   return (

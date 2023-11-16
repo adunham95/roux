@@ -1,15 +1,31 @@
+import { useForgotPassword } from '@/api/mutation/forgotPassword';
 import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import TextInput from '@/components/inputs/text-input';
+import { useToast } from '@/stores/toast';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
-  const isLoading = false;
+  const { mutateAsync: mutateForgotPassword, isPaused: isLoading } =
+    useForgotPassword();
+  const { addToast } = useToast();
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    mutateForgotPassword(
+      { email: email },
+      {
+        onSuccess() {
+          addToast(
+            'Password Rest',
+            'success',
+            'Check your email for a reset link',
+          );
+        },
+      },
+    );
   }
 
   return (

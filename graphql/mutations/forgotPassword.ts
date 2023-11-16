@@ -13,7 +13,7 @@ async function forgotPassword(_: unknown, { email }: { email: string }) {
     currentUser.status = 'RESET_REQUIRED';
     await currentUser.save();
     console.log(currentUser);
-    return { success: true, resetLink: `/reset?code=${resetCode}` };
+    return { success: true, resetLink: `/reset-password?code=${resetCode}` };
   } catch (error) {
     console.log(error);
     throw error;
