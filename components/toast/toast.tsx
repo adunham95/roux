@@ -17,29 +17,27 @@ export default function Toasts() {
       case 'danger':
         return (
           <ExclamationCircleIcon
-            className="h-6 w-6 text-rose-600"
+            className="h-6 w-6 text-error"
             aria-hidden="true"
           />
         );
       case 'warning':
         return (
           <ExclamationTriangleIcon
-            className="h-6 w-6 text-amber-600"
+            className="h-6 w-6 text-warning"
             aria-hidden="true"
           />
         );
       case 'success':
         return (
           <CheckCircleIcon
-            className="h-6 w-6 text-green-600"
+            className="h-6 w-6 text-success"
             aria-hidden="true"
           />
         );
 
       default:
-        return (
-          <BellIcon className="h-6 w-6 text-blue-400" aria-hidden="true" />
-        );
+        return <BellIcon className="h-6 w-6 text-info" aria-hidden="true" />;
     }
   }
 

@@ -11,7 +11,28 @@ const Test = () => {
           addToast('title', 'success');
         }}
       >
-        Add Toast
+        Toast Success
+      </Button>
+      <Button
+        onClick={() => {
+          addToast('title', 'danger');
+        }}
+      >
+        Toast Error
+      </Button>
+      <Button
+        onClick={() => {
+          addToast('title', 'warning');
+        }}
+      >
+        Toast Warning
+      </Button>
+      <Button
+        onClick={() => {
+          addToast('title', 'info');
+        }}
+      >
+        Toast Info
       </Button>
     </div>
   );
