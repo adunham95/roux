@@ -5,18 +5,22 @@
 
 @layer base {
     :root {
-      --brand-primary: 100 157 173;
-      --brand-primary-alt: 62 107 124;
-      --brand-primary-text: 255 255 255;
-      --brand-accent: 218 109 94;
-      --brand-accent-text: 255 255 255;
-      --background: 230 230 230;
-      --surface: 250 250 250;
-      --text-surface-1: 9 9 11;
-      --text-surface-2: 39 39 42;
-      --text-surface-3: 82 82 91;
-      --text-surface-4: 161 161 170;
-      --text-surface-5: 228 228 231;
+        --brand-primary: 100 157 173;
+        --brand-primary-alt: 62 107 124;
+        --brand-primary-text: 255 255 255;
+        --brand-accent: 218 109 94;
+        --brand-accent-text: 255 255 255;
+        --background: 230 230 230;
+        --surface: 250 250 250;
+        --text-surface-1: 9 9 11;
+        --text-surface-2: 39 39 42;
+        --text-surface-3: 82 82 91;
+        --text-surface-4: 161 161 170;
+        --text-surface-5: 228 228 231;
+        --success: 66 137 89;
+        --error: 199, 62, 29;
+        --warning: 241 143 1;
+        --info: 42 79 135;
       /* ... */
     }
    

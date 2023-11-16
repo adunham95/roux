@@ -42,7 +42,7 @@ const PasswordInput = (props: ITextInputProps) => {
           className={twMerge(
             'z-0 block w-full rounded-l-md border-0 py-1.5 px-1 shadow-sm  ring-surface-5 bg-surface placeholder:text-surface-3 text-surface-1 focus:ring-2  sm:text-sm sm:leading-6',
             hasError &&
-              'ring-red-300 placeholder:text-red-300 focus:ring-red-500',
+              'ring-error/10 placeholder:text-error/50 focus:ring-error',
             inputClassName,
           )}
           placeholder={placeholder}

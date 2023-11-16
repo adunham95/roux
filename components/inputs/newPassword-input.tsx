@@ -64,7 +64,7 @@ const NewPasswordInput = (props: ITextInputProps) => {
         className={twMerge(
           'block w-full rounded-md border-0 py-1.5 px-1 shadow-sm ring-1 ring-inset ring-surface-5 bg-surface placeholder:text-surface-3 text-surface-1 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6',
           hasError &&
-            'ring-red-300 placeholder:text-red-300 focus:ring-red-500',
+            'ring-error/10 placeholder:text-error/50 focus:ring-error',
           inputClassName,
         )}
         placeholder={placeholder}
@@ -72,14 +72,13 @@ const NewPasswordInput = (props: ITextInputProps) => {
         onChange={(e) => onChange(e.target.value, name || id, e)}
       />
       <div className="grid grid-cols-2 text-sm gap-x-1 gap-y-1 text-surface-2">
-        {/* TODO convert to icons */}
         {uppercaseRequired && (
           <div className="flex items-center">
             <span className="pr-1">Uppercase Letters:</span>
             {requirements.hasUppercase ? (
-              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+              <CheckCircleIcon className="h-4 w-4 text-success" />
             ) : (
-              <XMarkIcon className="h-4 w-4 text-rose-500" />
+              <XMarkIcon className="h-4 w-4 text-error" />
             )}
           </div>
         )}
@@ -87,9 +86,9 @@ const NewPasswordInput = (props: ITextInputProps) => {
           <div className="flex items-center">
             <span className="pr-1">Lowercase Letters:</span>{' '}
             {requirements.hasLowercase ? (
-              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+              <CheckCircleIcon className="h-4 w-4 text-success" />
             ) : (
-              <XMarkIcon className="h-4 w-4 text-rose-500" />
+              <XMarkIcon className="h-4 w-4 text-error" />
             )}
           </div>
         )}
@@ -97,9 +96,9 @@ const NewPasswordInput = (props: ITextInputProps) => {
           <div className="flex items-center">
             <span className="pr-1">Numbers:</span>
             {requirements.hasNumbers ? (
-              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+              <CheckCircleIcon className="h-4 w-4 text-success" />
             ) : (
-              <XMarkIcon className="h-4 w-4 text-rose-500" />
+              <XMarkIcon className="h-4 w-4 text-error" />
             )}
           </div>
         )}
@@ -107,9 +106,9 @@ const NewPasswordInput = (props: ITextInputProps) => {
           <div className="flex items-center">
             <span className="pr-1">Longer Than {length}:</span>{' '}
             {requirements.longerThan ? (
-              <CheckCircleIcon className="h-4 w-4 text-green-500" />
+              <CheckCircleIcon className="h-4 w-4 text-success" />
             ) : (
-              <XMarkIcon className="h-4 w-4 text-rose-500" />
+              <XMarkIcon className="h-4 w-4 text-error" />
             )}
           </div>
         )}

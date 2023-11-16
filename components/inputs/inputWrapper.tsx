@@ -42,7 +42,7 @@ const InputWrapper = (props: IInputWrapperProps) => {
         </p>
       )}
       {hasError && (
-        <p className="mt-2 text-sm text-red-600" id={`${name || id}-error`}>
+        <p className="mt-2 text-sm text-error" id={`${name || id}-error`}>
           {errorText || 'Error'}
         </p>
       )}
