@@ -8,6 +8,8 @@ import createMembershipTier from './mutations/createMembershipTier';
 import getMembershipTiers from './queries/getMembershipTiers';
 import createRecipe from './mutations/createRecipe';
 import getRecipe from './queries/getRecipe';
+import forgotPassword from './mutations/forgotPassword';
+import resetPassword from './mutations/resetPassword';
 
 interface IProductInput {}
 
@@ -83,6 +85,8 @@ const resolvers = {
     generateBetaTokens,
     createMembershipTier,
     createRecipe,
+    forgotPassword,
+    resetPassword,
   },
 };
 

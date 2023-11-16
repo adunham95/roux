@@ -30,6 +30,10 @@ const UserSchema = new Schema(
       default: 'ACTIVE',
       enum: ['ACTIVE', 'DISABLED', 'RESET_REQUIRED'],
     },
+    resetCode: {
+      type: String,
+      index: true,
+    },
   },
   { timestamps: true },
 );

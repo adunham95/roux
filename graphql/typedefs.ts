@@ -116,6 +116,11 @@ const typeDefs = gql`
     success: Boolean
   }
 
+  type PasswordReset {
+    success: Boolean
+    resetLink: String
+  }
+
   type Query {
     #Recipe
     getRecipe(id: ID!): Recipe
@@ -140,6 +145,8 @@ const typeDefs = gql`
     #Users
     createUser(input: CreateUserInput!, teamID: String, roleID: String): Success
     updateUser(input: UpdateUserInput): User
+    forgotPassword(email: String!): PasswordReset
+    resetPassword(resetCode: String!, newPassword: String!): Boolean
     #Products
     newProduct(input: ProductInput): Product
     updateProduct(id: ID!, input: ProductInput): Product
