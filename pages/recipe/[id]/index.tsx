@@ -22,7 +22,9 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
               </h2>
             </div>
             <div className="mt-4 flex md:ml-4 md:mt-0">
-              <Button color="variable">Edit</Button>
+              <Button href={`/recipe/${recipe.id}/edit`} color="variable">
+                Edit
+              </Button>
               <Button className="ml-2" color="variable">
                 Cook
               </Button>

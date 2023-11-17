@@ -132,6 +132,22 @@ function IngredientButton({
   content: JSX.Element;
 }) {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
+
+  return (
+    <IconButton
+      title="Plus"
+      onClick={onClick}
+      onMouseEnter={() => setPopoverOpen(true)}
+      onMouseLeave={() => setPopoverOpen(false)}
+      className={twMerge(
+        'rounded-full p-2 w-[2.5em] h-[2.5em] mr-1 mb-1',
+        isActive && ' bg-brand-600',
+      )}
+    >
+      <span>{label}</span>
+    </IconButton>
+  );
+
   return (
     <Popover
       padding={10} // adjust padding here!

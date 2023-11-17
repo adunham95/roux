@@ -4,12 +4,14 @@ import { IIngredientItem } from '@/types/ingredinetItem';
 import { IInstructionItem } from '@/types/instructionItem';
 import { generateID } from '@/utils/generateID';
 import { ICreateInstruction } from '@/graphql/mutations/createRecipe';
+import { IRecipe } from '@/types/recipe';
 
 interface INewRecipeStore extends IBaseStore {
   ingredients: IIngredientItem[];
   instructions: IInstructionItem[];
   name: string;
   description: string;
+  setRecipe: (recipe: IRecipe) => void;
   setName: (name: string) => void;
   setDescription: (description: string) => void;
   addIngredientItem: (instructionID: string) => void;
@@ -36,6 +38,7 @@ const defaultStore = {
 
 export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   ...defaultStore,
+  setRecipe: (recipe) => set(recipe),
   setName: (name) => set({ name }),
   setDescription: (description) => set({ description }),
   addIngredientItem: (instructionID) => {
