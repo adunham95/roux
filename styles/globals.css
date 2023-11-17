@@ -57,3 +57,16 @@ body{
 .hide-scrollbars::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
+
+.grid-template-auto{
+    --grid-template-min: 240px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-template-min), 1fr));
+}
+
+.grid-template-0{--grid-template-min: 0}
+.grid-template-1{--grid-template-min: 50px}
+.grid-template-2{--grid-template-min: 100px}
+.grid-template-3{--grid-template-min: 150px}
+.grid-template-4{--grid-template-min: 200px}
+.grid-template-5{--grid-template-min: 250px}
+.grid-template-6{--grid-template-min: 300px}

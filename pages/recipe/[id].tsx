@@ -7,6 +7,10 @@ import React from 'react';
 
 const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
   console.log(recipe);
+  function getIngredients() {
+    const ingredients = recipe.instructions.map((int) => int.ingredients);
+    return ingredients.flat();
+  }
   return (
     <DefaultLayout
       heroSlot={
@@ -27,22 +31,45 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
         </Container>
       }
     >
-      <Container>
-        <ul role="list" className="space-y-3 pt-5">
-          {recipe.instructions
-            .sort((a, b) => a.order - b.order)
-            .map((inst) => (
+      <Container className="grid grid-cols-1 md:grid-cols-3 gap-3 py-5 ">
+        <div className="bg-surface text-surface-1 px-4 py-4 shadow sm:rounded-md sm:px-6">
+          <h2 className="text-lg border-b border-b-brand-variable py-1 mb-2">
+            Ingredients
+          </h2>
+          <ul role="list">
+            {getIngredients().map((ing) => (
               <li
-                key={inst.id}
-                className="overflow-hidden bg-surface text-surface-1 px-4 py-4 shadow sm:rounded-md sm:px-6"
+                key={ing.id}
+                className="text-surface-1 flex justify-between pb-2"
               >
-                <div>
-                  <span className=" text-xl">{inst.order + 1}.</span>{' '}
-                  {inst.description}
-                </div>
+                <span>{ing.name}</span>
+                <span>
+                  {ing.count}
+                  {ing.type}
+                </span>
               </li>
             ))}
-        </ul>
+          </ul>
+        </div>
+
+        <div className=" col-span-2">
+          <h2 className="text-xl text-surface-1 pb-2">Instructions</h2>
+          <ul role="list" className="space-y-3">
+            {recipe.instructions
+              .sort((a, b) => a.order - b.order)
+              .map((inst) => (
+                <li
+                  key={inst.id}
+                  className="overflow-hidden bg-surface text-surface-1 px-4 py-4 shadow sm:rounded-md sm:px-6"
+                >
+                  <div>
+                    <span className=" text-xl">{inst.order + 1}.</span>{' '}
+                    {inst.description}
+                  </div>
+                </li>
+              ))}
+          </ul>
+        </div>
       </Container>
     </DefaultLayout>
   );

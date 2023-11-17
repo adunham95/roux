@@ -11,13 +11,22 @@ interface IRecipeCardSmallProps {
   category?: string;
   tags?: string[];
   minWidth?: number;
+  full?: boolean;
 }
 
 const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
-  const { imgSrc, imgAlt, title, category, className, minWidth = 150 } = props;
+  const {
+    imgSrc,
+    imgAlt,
+    title,
+    category,
+    className,
+    minWidth = 150,
+    full = false,
+  } = props;
   return (
     <div
-      style={{ minWidth: minWidth, maxWidth: minWidth }}
+      style={full ? {} : { minWidth: minWidth, maxWidth: minWidth }}
       className={twMerge(`group relative w-full`, className)}
     >
       <div className="relative aspect-square w-full bg-surface-4 lg:aspect-none group-hover:opacity-75">
