@@ -49,7 +49,7 @@ body{
     background: #e6e6e6;
     background: rgb(var(--background) / 1 );
     color: #00090B;
-    color: rgb(var(var(--text-surface-1)) / 1 )
+    color: rgb(var(--text-surface-1) / 1 )
 }
 
 .hide-scrollbars {
