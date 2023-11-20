@@ -10,14 +10,8 @@ import { IRecipe } from '@/types/recipe';
 import React, { useEffect } from 'react';
 
 const Edit = ({ recipe }: { recipe: IRecipe }) => {
-  const {
-    setRecipe,
-    name,
-    description,
-    instructions,
-    getIngredients,
-    getFormattedInstructions,
-  } = useNewRecipe();
+  const { setRecipe, name, description, instructions, getIngredients } =
+    useNewRecipe();
 
   useEffect(() => {
     setRecipe(recipe);
