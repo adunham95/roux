@@ -20,6 +20,8 @@ const NewRecipeForm = (props: IProps) => {
     setDescription,
     instructions,
     ingredients,
+    servings,
+    setServings,
     addInstruction,
     updateInstructionItem,
     updateIngredientItem,
@@ -54,6 +56,16 @@ const NewRecipeForm = (props: IProps) => {
             helperText="Upload an image to use as the cover image"
             value={coverImage}
             onChange={setCoverImage}
+          />
+
+          <TextInput
+            id="recipe-servings"
+            label="Servings"
+            type="number"
+            className="col-span-full"
+            value={servings}
+            onChange={setServings}
+            min={1}
           />
         </FieldSet>
 

@@ -6,11 +6,13 @@ import { useSearchParams } from 'next/navigation';
 interface ITextInputProps extends IDefaultInputWrapperProps {
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
-  value: string;
+  value: string | number;
   onChange: (text: string, name: string, e?: React.ChangeEvent) => void;
   inputClassName?: string;
   ariaDescription?: string;
   autoComplete?: string;
+  min?: number;
+  max?: number;
 }
 
 const TextInput = (props: ITextInputProps) => {
@@ -26,6 +28,8 @@ const TextInput = (props: ITextInputProps) => {
     value,
     autoComplete,
     disabled,
+    min,
+    max,
   } = props;
   const searchParams = useSearchParams();
   const queryValue = searchParams.get(id);
@@ -53,6 +57,8 @@ const TextInput = (props: ITextInputProps) => {
         placeholder={placeholder}
         aria-describedby={ariaDescription || name || id}
         onChange={(e) => onChange(e.target.value, name || id, e)}
+        min={min}
+        max={max}
       />
     </InputWrapper>
   );

@@ -49,6 +49,7 @@ export function NewIngredientItem({
           label="Ingredient Count"
           id={`ingredient-${index}-count`}
           type="number"
+          min={0}
           value={ingredient.count.toString()}
           onChange={(value) => handleChange(parseInt(value), 'count')}
         />

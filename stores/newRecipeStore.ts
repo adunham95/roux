@@ -11,8 +11,10 @@ interface INewRecipeStore extends IBaseStore {
   instructions: IInstructionItem[];
   name: string;
   description: string;
+  servings: number;
   setRecipe: (recipe: IRecipe) => void;
   setName: (name: string) => void;
+  setServings: (servings: string | number) => void;
   setDescription: (description: string) => void;
   addIngredientItem: (instructionID: string) => void;
   addInstruction: () => void;
@@ -34,6 +36,7 @@ const defaultStore = {
   instructions: [],
   name: '',
   description: '',
+  servings: 1,
 };
 
 export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
@@ -41,6 +44,12 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   setRecipe: (recipe) => set(recipe),
   setName: (name) => set({ name }),
   setDescription: (description) => set({ description }),
+  setServings: (servings) => {
+    if (typeof servings === 'string') {
+      servings = parseInt(servings);
+    }
+    set({ servings });
+  },
   addIngredientItem: (instructionID) => {
     const instructions = get().instructions;
     const index = instructions.findIndex(({ id }) => id === instructionID);
