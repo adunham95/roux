@@ -19,6 +19,7 @@ export interface ICreateInstruction {
 export interface ICreateRecipe {
   name: string;
   description: string;
+  servings: number;
   instructions: ICreateInstruction[];
 }
 
@@ -38,6 +39,7 @@ export const createRecipeTypeDefs = gql`
   input CreateRecipeInput {
     name: String!
     description: String
+    servings: Number
     instructions: [CreateInstructionInput]
   }
 `;

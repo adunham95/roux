@@ -33,6 +33,7 @@ export async function getMyRecipes() {
         }
         name
         description
+        servings
         instructions {
           id
           description

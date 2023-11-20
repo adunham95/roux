@@ -19,6 +19,7 @@ const RecipeSchema = new Schema({
   teamID: Schema.Types.ObjectId,
   name: String,
   description: String,
+  servings: { type: Number, default: 1 },
   instructions: [InstructionsSchema],
 });
 
