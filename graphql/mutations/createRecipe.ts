@@ -39,7 +39,7 @@ export const createRecipeTypeDefs = gql`
   input CreateRecipeInput {
     name: String!
     description: String
-    servings: Number
+    servings: Int
     instructions: [CreateInstructionInput]
   }
 `;

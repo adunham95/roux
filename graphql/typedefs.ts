@@ -57,7 +57,7 @@ const typeDefs = gql`
     teamID: ID!
     user: BaseUser
     name: String!
-    servings: Number
+    servings: Int
     description: String
     instructions: [Instruction]
   }
