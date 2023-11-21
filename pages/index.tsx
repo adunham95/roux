@@ -25,14 +25,14 @@ const Index = () => {
               emoji: '🕰️',
               title: 'Recipe History',
               description:
-                "Rediscover your culinary journey. Track every recipe you've ever tried, making it easy to remember those delicious dishes you want to recreate",
+                "Rediscover your culinary journey. Track every substitution and adjustment to every recipe, so it's truly your own.",
             },
             {
               id: 'customize',
               emoji: '👩‍🍳',
-              title: 'Customize and Personalize(Coming Soon)',
+              title: 'Cooking Mode(Coming Soon)',
               description:
-                "Tweak recipes to perfection. Make notes, substitutions, and adjustments to every recipe, so it's truly your own.",
+                'Let our cooking mode lead you through each recipe step, ensuring perfection with every dish.',
             },
             {
               id: 'meal-plan',
@@ -44,16 +44,16 @@ const Index = () => {
             {
               id: 'culinary-inspiration',
               emoji: '🧑‍🍳',
-              title: 'Culinary Inspiration(Coming Soon)',
+              title: 'Fork It!(Coming Soon)',
               description:
-                'Get creative in the kitchen. Explore unique twists on classic dishes and new flavor combinations to awaken your taste buds.',
+                'Get creative in the kitchen. Place your unique twists on classic dishes and new flavor combinations.',
             },
             {
-              id: 'upgrade',
-              emoji: '🚀',
-              title: 'Upgrade Your Cooking Game(Coming Soon)',
+              id: 'challenges',
+              emoji: '🔥',
+              title: 'Challenges(Coming Soon)',
               description:
-                'Elevate your culinary skills and broaden your palate with Kitchendry, your ultimate kitchen companion.',
+                'Impress our team with your culinary creations, and you could earn the recognition you deserve as a culinary maestro.',
             },
           ]}
         />

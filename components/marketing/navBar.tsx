@@ -10,10 +10,10 @@ const AccountNav = dynamic(() => import('../nav/accountNav'), {
   ssr: false,
 });
 
-const navigation = [
-  { name: 'Product', href: '/dashboard' },
-  { name: 'About', href: '/about' },
-  { name: 'Pricing', href: '/pricing' },
+const navigation: { name: string; href: string }[] = [
+  // { name: 'Product', href: '/dashboard' },
+  // { name: 'About', href: '/about' },
+  // { name: 'Pricing', href: '/pricing' },
 ];
 
 export const MarketingNavBar = () => {
