@@ -21,6 +21,10 @@
         --error: 199 62 29;
         --warning: 241 143 1;
         --info: 42 79 135;
+        --success-surface: 230 242 238;
+        --error-surface: 250 241 230;
+        --warning-surface: 255 249 230;
+        --info-surface: 225 239 247;
       /* ... */
     }
    

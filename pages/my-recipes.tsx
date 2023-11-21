@@ -1,15 +1,22 @@
 import { useGetMyRecipes } from '@/api/queries/getMyRecipes';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
+import { AlertPanel } from '@/components/alertPanel/alertPanel';
 import { Container } from '@/components/container';
 import { Loader } from '@/components/loader/loader';
 import RecipeCardSmall from '@/components/recipe-card/recipe-card-small';
 import { IRecipe } from '@/types/recipe';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const MyRecipes = () => {
-  const { data, isLoading } = useGetMyRecipes();
+  const { data, isLoading, isError } = useGetMyRecipes();
   console.log({ recipes: data });
+
+  useEffect(() => {
+    if (isError) {
+      console.warn('Error Loading my recipes');
+    }
+  }, [isError]);
 
   return (
     <DefaultLayout
@@ -19,6 +26,13 @@ const MyRecipes = () => {
     >
       <Container className="py-5">
         {isLoading && <Loader />}
+        {isError && (
+          <AlertPanel
+            style="danger"
+            title="Error"
+            subTitle="An unexpected error occurred while fetching your recipes. Please try again later."
+          />
+        )}
         {data && (
           <ul
             role="list"

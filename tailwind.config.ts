@@ -55,6 +55,10 @@ const config: Config = {
           '3': 'rgb(var(--text-surface-3) / <alpha-value>)',
           '4': 'rgb(var(--text-surface-4) / <alpha-value>)',
           '5': 'rgb(var(--text-surface-5) / <alpha-value>)',
+          success: `rgb(var(--success-surface) / <alpha-value>)`,
+          error: `rgb(var(--error-surface) / <alpha-value>)`,
+          warning: `rgb(var(--warning-surface) / <alpha-value>)`,
+          info: `rgb(var(--info-surface) / <alpha-value>)`,
         },
         background: {
           text: {
