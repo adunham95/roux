@@ -13,6 +13,7 @@ export function NewInstructionItem({
   onDelete,
   onCopy,
   onIngredientChange,
+  onIngredientDelete,
   addIngredientItem,
 }: {
   instruction: IInstructionItem;
@@ -21,6 +22,7 @@ export function NewInstructionItem({
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
   onIngredientChange: (ingredient: IIngredientItem) => void;
+  onIngredientDelete?: (ingredient: IIngredientItem) => void;
   addIngredientItem: () => void;
 }) {
   const [ingredientIndex, setIngredientIndex] = useState<number | null>(null);
@@ -113,6 +115,7 @@ export function NewInstructionItem({
             ingredient={instruction.ingredients[ingredientIndex || 0]}
             index={ingredientIndex || 0}
             onChange={onIngredientChange}
+            onDelete={onIngredientDelete}
           />
         )}
       </div>

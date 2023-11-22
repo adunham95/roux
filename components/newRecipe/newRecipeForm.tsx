@@ -96,6 +96,9 @@ const NewRecipeForm = (props: IProps) => {
                   onCopy={() => updateInstructionItem(inst, 'copy')}
                   onDelete={() => updateInstructionItem(inst, 'delete')}
                   addIngredientItem={() => addIngredientItem(inst?.id || '')}
+                  onIngredientDelete={(ing) =>
+                    updateIngredientItem(inst?.id || '', ing, 'delete')
+                  }
                   onIngredientChange={(ing) =>
                     updateIngredientItem(inst?.id || '', ing, 'update')
                   }
