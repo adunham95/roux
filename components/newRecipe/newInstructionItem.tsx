@@ -30,7 +30,7 @@ export function NewInstructionItem({
     onChange({ ...instruction, [key]: value });
   }
   return (
-    <div className="col-span-full  group">
+    <div className="col-span-full  group" data-instruction-id={instruction.id}>
       <TextArea
         label={`Instruction ${instruction.order + 1}`}
         id={`${instruction.id}-description`}

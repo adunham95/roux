@@ -156,12 +156,14 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   getFormattedInstructions: () => {
     const instructions = get().instructions;
     const formattedInstructions = instructions.map((int) => {
-      delete int.id;
-      int.ingredients = int.ingredients.map((ing) => {
-        delete ing.id;
-        return ing;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { id, ...rest } = int;
+      const newIngredients = int.ingredients.map((ing) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { id, ...rest } = ing;
+        return rest;
       });
-      return int;
+      return { ...rest, ingredients: newIngredients };
     });
     return formattedInstructions as unknown as ICreateInstruction[];
   },
