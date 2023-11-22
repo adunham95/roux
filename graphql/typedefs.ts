@@ -140,6 +140,7 @@ const typeDefs = gql`
   type Mutation {
     #Recipe
     createRecipe(input: CreateRecipeInput): Recipe
+    updateRecipe(recipe: CreateRecipeInput, id: String): Recipe
     #MembershipTiers
     createMembershipTier(input: CreateMembershipTierInput): MembershipTier
     #BetaTokens

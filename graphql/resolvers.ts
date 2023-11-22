@@ -11,6 +11,7 @@ import getRecipe from './queries/getRecipe';
 import forgotPassword from './mutations/forgotPassword';
 import resetPassword from './mutations/resetPassword';
 import getMyRecipes from './queries/getMyRecipes';
+import updateRecipe from './mutations/updateRecipe';
 
 interface IProductInput {}
 
@@ -89,6 +90,7 @@ const resolvers = {
     createRecipe,
     forgotPassword,
     resetPassword,
+    updateRecipe,
   },
 };
 

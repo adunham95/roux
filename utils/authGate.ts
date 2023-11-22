@@ -15,3 +15,13 @@ export function SessionGate(session: Session, permission: string) {
   }
   throw new Error('User does not have permission');
 }
+
+export function hasPermission(session: Session | null, permission: string) {
+  if (!session) {
+    return false;
+  }
+  if (session.user.teamRoles.length > 0) {
+    return session.user.teamRoles[0]?.access?.permissions.includes(permission);
+  }
+  return false;
+}

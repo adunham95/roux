@@ -3,10 +3,13 @@ import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
 import { IRecipe } from '@/types/recipe';
+import { hasPermission } from '@/utils/authGate';
+import { UserPermissions } from '@/utils/permissions';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 
 const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
-  console.log(recipe);
+  const { data: session } = useSession();
   function getIngredients() {
     const ingredients = recipe.instructions.map((int) => int.ingredients);
     return ingredients.flat();
@@ -22,9 +25,11 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
               </h2>
             </div>
             <div className="mt-4 flex md:ml-4 md:mt-0">
-              <Button href={`/recipe/${recipe.id}/edit`} color="variable">
-                Edit
-              </Button>
+              {hasPermission(session, UserPermissions.EDIT_RECIPE) && (
+                <Button href={`/recipe/${recipe.id}/edit`} color="variable">
+                  Edit
+                </Button>
+              )}
               <Button className="ml-2" color="variable">
                 Cook
               </Button>

@@ -7,7 +7,8 @@ import { useToast } from '@/stores/toast';
 import { RecipeSidecar } from '@/components/sidecar/sidecars/RecipeSidecar';
 
 const NewRecipe = () => {
-  const { name, description, getFormattedInstructions } = useNewRecipe();
+  const { name, description, servings, getFormattedInstructions } =
+    useNewRecipe();
   const { addToast } = useToast();
   const { mutateAsync: createRecipeAsync } = useCreateRecipe();
   async function saveRecipe() {
@@ -17,6 +18,7 @@ const NewRecipe = () => {
       {
         name,
         description,
+        servings,
         instructions: formattedInstructions,
       },
       {
