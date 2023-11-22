@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FieldSet from '../formElements/fieldSet';
 import TextInput from '../inputs/text-input';
 import TextArea from '../inputs/text-area';
-import CoverImageUpload from '../inputs/cover-image-upload';
 import EmptyBlock from '../emptyBlock/emptyBlock';
 import { Button } from '../buttons/button';
 import { NewInstructionItem } from './newInstructionItem';
@@ -12,7 +11,6 @@ interface IProps {}
 
 const NewRecipeForm = (props: IProps) => {
   const {} = props;
-  const [coverImage, setCoverImage] = useState('');
   const {
     name,
     setName,
@@ -47,15 +45,6 @@ const NewRecipeForm = (props: IProps) => {
             rows={3}
             value={description}
             onChange={setDescription}
-          />
-
-          <CoverImageUpload
-            id="recipe-image"
-            label="Recipe Image"
-            className="col-span-full"
-            helperText="Upload an image to use as the cover image"
-            value={coverImage}
-            onChange={setCoverImage}
           />
 
           <TextInput
