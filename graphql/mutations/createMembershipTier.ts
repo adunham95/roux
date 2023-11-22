@@ -47,7 +47,6 @@ async function createMembershipTier(
   { input }: { input: IMembershipTierInput },
 ) {
   try {
-    console.log(input);
     const newTier = new MembershipTier(input);
     const newPermission = new MembershipPermissions(input.defaultPermission);
     newTier.defaultPermission = newPermission._id;

@@ -14,8 +14,6 @@ const PricingSection = () => {
   const { data } = useGetMembershipTiers();
   const [frequency, setFrequency] = useState(frequencies[0]);
 
-  console.log(data);
-
   if (!data) {
     return <></>;
   }

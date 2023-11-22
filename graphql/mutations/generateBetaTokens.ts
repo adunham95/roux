@@ -11,8 +11,6 @@ async function generateBetaTokens(_: unknown, { count }: { count: number }) {
     array.push({ token });
   }
 
-  console.log(array);
-
   const data = await betaTokens.create(array);
   console.log(data);
   return data;

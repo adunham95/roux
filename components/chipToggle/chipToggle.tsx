@@ -25,7 +25,6 @@ export const ChipToggle = (props: IProps) => {
         disabled={disabled}
         checked={checked}
         onChange={(e) => {
-          console.log('changed');
           onChange(e.target.checked);
         }}
       ></input>

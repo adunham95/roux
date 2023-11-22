@@ -20,7 +20,6 @@ const AccountNav = (props: IProps) => {
   const {} = props;
   const { status, data: session } = useSession();
   const isLoggedIn = status === 'authenticated';
-  console.log(session);
   if (isLoggedIn && session) {
     return (
       <>

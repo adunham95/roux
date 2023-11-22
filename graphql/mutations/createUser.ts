@@ -41,8 +41,6 @@ async function createUser(
         visible: true,
       }).sort({ monthlyCost: 1 });
 
-      console.log(membershipTierData);
-
       roleID = membershipTierData.defaultPermission;
 
       const newMembership = new Membership({
@@ -55,7 +53,6 @@ async function createUser(
       });
 
       teamID = newTeam._id;
-      console.log({ newMembership, newTeam });
       newMembership.save({ new: true });
       newTeam.save({ new: true });
     }

@@ -50,8 +50,6 @@ async function createRecipe(
   { input }: { input: ICreateRecipe },
   context: Context,
 ) {
-  console.log('input', input);
-  console.log('context', context.session);
   try {
     const { teamID, userID } = SessionGate(
       context?.session,

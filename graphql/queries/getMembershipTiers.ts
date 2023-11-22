@@ -5,7 +5,6 @@ async function getMembershipTiers(
   _: unknown,
   { onlyVisible }: { onlyVisible: boolean },
 ) {
-  console.log('getMembershipTiers');
   try {
     if (onlyVisible) {
       return MembershipTier.find({ visible: true });
