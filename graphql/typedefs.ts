@@ -37,14 +37,14 @@ const typeDefs = gql`
   }
   #Recipe
   type Ingredient {
-    id: ID!
+    refId: String!
     name: String!
     type: String
     count: Int!
   }
 
   type Instruction {
-    id: ID!
+    refId: String!
     description: String!
     order: Int!
     ingredients: [Ingredient]

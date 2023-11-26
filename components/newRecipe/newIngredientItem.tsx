@@ -29,13 +29,13 @@ export function NewIngredientItem({
 }: {
   ingredient: IIngredientItem;
   index?: number;
-  onChange: (ingredient: IIngredientItem) => void;
-  onDelete?: (ingredient: IIngredientItem) => void;
-  onCopy?: (ingredient: IIngredientItem) => void;
+  onChange: (id: string, value: string | number, key: string) => void;
+  onDelete?: (id: string) => void;
+  onCopy?: (id: string) => void;
 }) {
-  function handleChange(value: string | number, key: string) {
-    onChange({ ...ingredient, [key]: value });
-  }
+  // function handleChange(value: string | number, key: string) {
+  //   onChange({ ...ingredient, [key]: value });
+  // }
 
   return (
     <div className="col-span-full  group">
@@ -45,7 +45,7 @@ export function NewIngredientItem({
           label="Ingredient name"
           id={`ingredient-${index}-name`}
           value={ingredient.name}
-          onChange={(value) => handleChange(value, 'name')}
+          onChange={(value) => onChange(ingredient.refId, value, 'name')}
         />
         <TextInput
           className="col-span-2"
@@ -54,20 +54,22 @@ export function NewIngredientItem({
           type="number"
           min={0}
           value={ingredient.count.toString()}
-          onChange={(value) => handleChange(parseInt(value), 'count')}
+          onChange={(value) =>
+            onChange(ingredient.refId, parseInt(value), 'count')
+          }
         />
         <SelectInput
           className="col-span-2"
           label="Ingredient type"
           id={`ingredient-${index}-type`}
           value={ingredient.type}
-          onChange={(value) => handleChange(value, 'type')}
+          onChange={(value) => onChange(ingredient.refId, value, 'type')}
           options={[{ value: '', label: 'Select Type' }, ...measurementTypes]}
         />
         <div className="flex items-end w-full md:col-span-1 col-span-2 pt-1">
           {onDelete && (
             <Button
-              onClick={() => onDelete(ingredient)}
+              onClick={() => onDelete(ingredient.refId)}
               className="bg-red-400 hover:bg-red-600 p-2 text-white focus-visible:outline-red-600 w-full flex items-end justify-center "
             >
               <p className="md:sr-only">Delete</p>

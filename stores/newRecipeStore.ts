@@ -34,6 +34,7 @@ interface INewRecipeStore extends IBaseStore {
 const defaultStore = {
   ingredients: [],
   instructions: [],
+  history: [],
   name: '',
   description: '',
   servings: 1,
@@ -52,9 +53,11 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   },
   addIngredientItem: (instructionID) => {
     const instructions = get().instructions;
-    const index = instructions.findIndex(({ id }) => id === instructionID);
+    const index = instructions.findIndex(
+      ({ refId }) => refId === instructionID,
+    );
     const newItem = {
-      id: generateID(),
+      refId: generateID(),
       count: 0,
       name: '',
       type: '',
@@ -68,7 +71,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   addInstruction: () => {
     const instructions = get().instructions;
     const newItem = {
-      id: generateID(),
+      refId: generateID(),
       order: instructions.length,
       description: ``,
       ingredients: [],
@@ -80,9 +83,11 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   updateIngredientItem: (instructionID, item, action) => {
     console.log('updateIngredientItem');
     const instructions = get().instructions;
-    const instruction = instructions.find(({ id }) => id === instructionID);
+    const instruction = instructions.find(
+      ({ refId }) => refId === instructionID,
+    );
     const instructionIndex = instructions.findIndex(
-      ({ id }) => id === instructionID,
+      ({ refId }) => refId === instructionID,
     );
 
     console.log('instructionIndex', {
@@ -95,18 +100,18 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       return false;
     }
     let ingredients = instruction?.ingredients || [];
-    const index = ingredients.findIndex(({ id }) => id === item.id);
+    const index = ingredients.findIndex(({ refId }) => refId === item.refId);
 
     if (index >= 0) {
       switch (action) {
         case 'copy':
           ingredients = [
             ...ingredients,
-            { ...ingredients[index], id: generateID() },
+            { ...ingredients[index], refId: generateID() },
           ];
           break;
         case 'delete':
-          ingredients = ingredients.filter(({ id }) => id !== item.id);
+          ingredients = ingredients.filter(({ refId }) => refId !== item.refId);
           break;
         default:
           ingredients[index] = item;
@@ -118,7 +123,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   },
   updateInstructionItem: (item, action) => {
     const instructions = get().instructions;
-    const index = instructions.findIndex(({ id }) => id === item.id);
+    const index = instructions.findIndex(({ refId }) => refId === item.refId);
     if (index >= 0) {
       switch (action) {
         case 'copy':
@@ -128,17 +133,19 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
               {
                 ...instructions[index],
                 ingredients: instructions[index].ingredients.map((ing) => {
-                  return { ...ing, id: generateID() };
+                  return { ...ing, refId: generateID() };
                 }),
                 order: instructions.length,
-                id: generateID(),
+                refId: generateID(),
               },
             ],
           });
           break;
         case 'delete':
           set({
-            instructions: instructions.filter(({ id }) => id !== item.id),
+            instructions: instructions.filter(
+              ({ refId }) => refId !== item.refId,
+            ),
           });
           break;
         default:
@@ -155,17 +162,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   },
   getFormattedInstructions: () => {
     const instructions = get().instructions;
-    const formattedInstructions = instructions.map((int) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { id, ...rest } = int;
-      const newIngredients = int.ingredients.map((ing) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { id, ...rest } = ing;
-        return rest;
-      });
-      return { ...rest, ingredients: newIngredients };
-    });
-    return formattedInstructions as unknown as ICreateInstruction[];
+    return instructions;
   },
   clear: () => set(defaultStore),
 }));

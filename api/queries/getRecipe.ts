@@ -36,11 +36,11 @@ export async function getRecipe(id: string) {
         name
         description
         instructions {
-          id
+          refId
           description
           order
           ingredients {
-            id
+            refId
             name
             type
             count

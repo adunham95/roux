@@ -1,7 +1,7 @@
 import { IIngredientItem } from './ingredinetItem';
 
 interface IInstructionItem {
-  id?: string;
+  refId: string;
   order: number;
   description: string;
   ingredients: IIngredientItem[];

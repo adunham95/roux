@@ -1,5 +1,5 @@
 export interface IIngredientItem {
-  id?: string;
+  refId: string;
   name: string;
   count: number;
   type: string;

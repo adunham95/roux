@@ -1,7 +1,7 @@
 import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import React from 'react';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
-import { useNewRecipe } from '@/stores/newRecipeStore';
+import { useNewRecipe } from '@/stores/recipeStore';
 import { useCreateRecipe } from '@/api/mutation/createRecipe';
 import { useToast } from '@/stores/toast';
 import { RecipeSidecar } from '@/components/sidecar/sidecars/RecipeSidecar';

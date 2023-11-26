@@ -1,7 +1,6 @@
 import { IInstructionItem } from '@/types/instructionItem';
 import TextArea from '../inputs/text-area';
 import IconButton from '../buttons/iconButton';
-import { IIngredientItem } from '@/types/ingredinetItem';
 import { NewIngredientItem } from './newIngredientItem';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -17,32 +16,37 @@ export function NewInstructionItem({
   addIngredientItem,
 }: {
   instruction: IInstructionItem;
-  availableIngredients: IIngredientItem[];
-  onChange: (instruction: IInstructionItem) => void;
+  onChange: (id: string, value: string | number, key: string) => void;
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
-  onIngredientChange: (ingredient: IIngredientItem) => void;
-  onIngredientDelete?: (ingredient: IIngredientItem) => void;
+  onIngredientChange: (
+    instructionID: string,
+    id: string,
+    value: string | number,
+    key: string,
+  ) => void;
+  onIngredientDelete?: (id: string) => void;
   addIngredientItem: () => void;
 }) {
   const [ingredientIndex, setIngredientIndex] = useState<number | null>(null);
-  function handleChange(value: unknown, key: string) {
-    onChange({ ...instruction, [key]: value });
-  }
+
   return (
-    <div className="col-span-full  group" data-instruction-id={instruction.id}>
+    <div
+      className="col-span-full  group"
+      data-instruction-id={instruction.refId}
+    >
       <TextArea
         label={`Instruction ${instruction.order + 1}`}
-        id={`${instruction.id}-description`}
+        id={`${instruction.refId}-description`}
         value={instruction.description}
         placeholder="Cut the carrots, ..."
-        onChange={(v) => handleChange(v, 'description')}
+        onChange={(v) => onChange(instruction.refId, v, 'description')}
         labelHintSlot={
           <div className="flex justify-end text-surface-3">
             {onCopy && (
               <IconButton
                 title="Copy Items"
-                onClick={() => onCopy(instruction?.id || '')}
+                onClick={() => onCopy(instruction.refId)}
                 className=" bg-surface-3 p-2 text-white rounded-full hover:bg-surface-2  focus-visible:outline-surface-2 md:scale-0 group-hover:scale-100 transition-transform duration-300"
               >
                 <svg
@@ -64,7 +68,7 @@ export function NewInstructionItem({
             {onDelete && (
               <IconButton
                 title="Delete"
-                onClick={() => onDelete(instruction?.id || '')}
+                onClick={() => onDelete(instruction.refId)}
                 className="rounded-full bg-red-400 hover:bg-red-600 p-2 text-white focus-visible:outline-red-600 ml-1 md:scale-0 group-hover:scale-100  transition-transform  duration-300"
               >
                 <svg
@@ -90,7 +94,7 @@ export function NewInstructionItem({
         {instruction.ingredients.map((ing, i) => (
           <IngredientButton
             label={ing.name.slice(0, 1) || `${i}`}
-            key={ing.id}
+            key={ing.refId}
             onClick={() => setIngredientIndex(i)}
             content={<div>{ing.name}</div>}
             isActive={ingredientIndex === i}
@@ -114,7 +118,7 @@ export function NewInstructionItem({
           <NewIngredientItem
             ingredient={instruction.ingredients[ingredientIndex || 0]}
             index={ingredientIndex || 0}
-            onChange={onIngredientChange}
+            onChange={() => onIngredientChange}
             onDelete={onIngredientDelete}
           />
         )}

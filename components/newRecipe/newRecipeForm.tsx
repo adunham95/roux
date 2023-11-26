@@ -5,7 +5,7 @@ import TextArea from '../inputs/text-area';
 import EmptyBlock from '../emptyBlock/emptyBlock';
 import { Button } from '../buttons/button';
 import { NewInstructionItem } from './newInstructionItem';
-import { useNewRecipe } from '@/stores/newRecipeStore';
+import { useNewRecipe } from '@/stores/recipeStore';
 
 interface IProps {}
 
@@ -17,7 +17,6 @@ const NewRecipeForm = (props: IProps) => {
     description,
     setDescription,
     instructions,
-    ingredients,
     servings,
     setServings,
     addInstruction,
@@ -78,18 +77,19 @@ const NewRecipeForm = (props: IProps) => {
             <>
               {instructions.map((inst) => (
                 <NewInstructionItem
-                  key={inst.id}
-                  availableIngredients={ingredients}
+                  key={inst.refId}
                   instruction={inst}
-                  onChange={updateInstructionItem}
-                  onCopy={() => updateInstructionItem(inst, 'copy')}
-                  onDelete={() => updateInstructionItem(inst, 'delete')}
-                  addIngredientItem={() => addIngredientItem(inst?.id || '')}
-                  onIngredientDelete={(ing) =>
-                    updateIngredientItem(inst?.id || '', ing, 'delete')
+                  onChange={(id, value, key) =>
+                    updateInstructionItem(id, key, value, 'update')
                   }
-                  onIngredientChange={(ing) =>
-                    updateIngredientItem(inst?.id || '', ing, 'update')
+                  onCopy={(id) => updateInstructionItem(id, '', '', 'copy')}
+                  onDelete={(id) => updateInstructionItem(id, '', '', 'delete')}
+                  addIngredientItem={() => addIngredientItem(inst.refId || '')}
+                  onIngredientDelete={(id) =>
+                    updateIngredientItem(inst.refId || '', id, '', '', 'delete')
+                  }
+                  onIngredientChange={(instID, id, value, key) =>
+                    updateIngredientItem(instID, id, key, value, 'update')
                   }
                 />
               ))}

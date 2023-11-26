@@ -3,7 +3,7 @@ import Sidecar from '../sidecar';
 import { RecipeMetaData } from '../elements/RecipeMetaData';
 import { SidecarIngredientList } from '../elements/IngredientList';
 import SidecarInstructionList from '../elements/InstructionList';
-import { useNewRecipe } from '@/stores/newRecipeStore';
+import { useNewRecipe } from '@/stores/recipeStore';
 
 interface IProps {
   onSave: () => void;
