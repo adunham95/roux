@@ -4,12 +4,7 @@ import { Container } from '@/components/container';
 import TextInput from '@/components/inputs/text-input';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import {
-  HexColorPicker,
-  HexColorInput,
-  RgbColorPicker,
-  RgbStringColorPicker,
-} from 'react-colorful';
+import { RgbColorPicker } from 'react-colorful';
 
 const MyProfile = () => {
   const [color, setColor] = useState({ r: 0, g: 0, b: 0 });
