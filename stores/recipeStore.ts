@@ -9,6 +9,7 @@ import { IRecipe } from '@/types/recipe';
 interface INewRecipeStore extends IBaseStore {
   ingredients: IIngredientItem[];
   instructions: IInstructionItem[];
+  history: RecipeHistory;
   name: string;
   description: string;
   servings: number;
@@ -19,12 +20,16 @@ interface INewRecipeStore extends IBaseStore {
   addIngredientItem: (instructionID: string) => void;
   addInstruction: () => void;
   updateIngredientItem: (
+    ingredientID: string,
     instructionID: string,
-    item: IIngredientItem,
+    key: string,
+    value: string,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
   updateInstructionItem: (
-    item: IInstructionItem,
+    instructionID: string,
+    key: string,
+    value: string,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
   getIngredients: () => IIngredientItem[];
@@ -34,7 +39,7 @@ interface INewRecipeStore extends IBaseStore {
 const defaultStore = {
   ingredients: [],
   instructions: [],
-  history: [],
+  history: { add: {}, update: {}, delete: [] },
   name: '',
   description: '',
   servings: 1,
@@ -80,7 +85,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       instructions: [...state.instructions, newItem],
     }));
   },
-  updateIngredientItem: (instructionID, item, action) => {
+  updateIngredientItem: (ingredientID, instructionID, value, key, action) => {
     console.log('updateIngredientItem');
     const instructions = get().instructions;
     const instruction = instructions.find(
@@ -90,17 +95,11 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       ({ refId }) => refId === instructionID,
     );
 
-    console.log('instructionIndex', {
-      instructionIndex,
-      instructions,
-      instruction,
-    });
-
     if (instructionIndex < 0) {
       return false;
     }
     let ingredients = instruction?.ingredients || [];
-    const index = ingredients.findIndex(({ refId }) => refId === item.refId);
+    const index = ingredients.findIndex(({ refId }) => refId === ingredientID);
 
     if (index >= 0) {
       switch (action) {
@@ -111,19 +110,23 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
           ];
           break;
         case 'delete':
-          ingredients = ingredients.filter(({ refId }) => refId !== item.refId);
+          ingredients = ingredients.filter(
+            ({ refId }) => refId !== ingredientID,
+          );
           break;
         default:
-          ingredients[index] = item;
+          ingredients[index] = { ...ingredients[index], [key]: value };
       }
     }
     console.log(ingredients);
     instructions[instructionIndex].ingredients = ingredients;
     set({ instructions });
   },
-  updateInstructionItem: (item, action) => {
+  updateInstructionItem: (instructionID, key, value, action) => {
     const instructions = get().instructions;
-    const index = instructions.findIndex(({ refId }) => refId === item.refId);
+    const index = instructions.findIndex(
+      ({ refId }) => refId === instructionID,
+    );
     if (index >= 0) {
       switch (action) {
         case 'copy':
@@ -144,12 +147,12 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
         case 'delete':
           set({
             instructions: instructions.filter(
-              ({ refId }) => refId !== item.refId,
+              ({ refId }) => refId !== instructionID,
             ),
           });
           break;
         default:
-          instructions[index] = item;
+          instructions[index] = { ...instructions[index], [key]: value };
           set({ instructions });
       }
     }
