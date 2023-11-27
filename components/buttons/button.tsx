@@ -17,7 +17,8 @@ export interface IButtonProps {
     | 'danger'
     | 'warning'
     | 'transparent'
-    | 'variable';
+    | 'variable'
+    | 'variable-accent';
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -161,5 +162,14 @@ const colorItems = {
     focusOutline: 'focus-visible:outline-brand-variable',
     border: 'border-brand-variable',
     onText: 'text-brand-variable-text',
+  },
+  'variable-accent': {
+    background: 'bg-accent-variable',
+    text: 'text-accent-variable',
+    hover: 'hover:bg-accent-variable-alt',
+    hoverLight: 'hover:bg-accent-variable-alt',
+    focusOutline: 'focus-visible:outline-accent-variable',
+    border: 'border-accent-variable',
+    onText: 'text-brand-accent-text',
   },
 };

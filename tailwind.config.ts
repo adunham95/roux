@@ -45,6 +45,7 @@ const config: Config = {
           '950': '#400c08',
           DEFAULT: ' #da6d5e',
           variable: 'rgb(var(--brand-accent) / <alpha-value>)',
+          'variable-alt': 'rgb(var(--brand-accent-alt) / <alpha-value>)',
           'variable-text': 'rgb(var(--brand-accent-text) / <alpha-value>)',
         },
         surface: {
