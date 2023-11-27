@@ -34,7 +34,6 @@ async function updateRecipe(
     }
     const {} = SessionGate(context?.session, UserPermissions.EDIT_RECIPE);
     const newRecipe = await recipe.findByIdAndUpdate(id, recipeData);
-    //TODO figure out differeance and save changes
     newRecipe.save();
     return newRecipe.toJSON();
   } catch (error) {

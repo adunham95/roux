@@ -13,7 +13,7 @@ export interface ICreateRecipeHistory {
 export const createRecipeHistoryTypeDefs = gql`
   input CreateRecipeUpdateHistory {
     key: String
-    value: String
+    value: JSON
   }
 
   input CreateRecipeHistory {
@@ -29,6 +29,9 @@ async function createRecipeHistory(
   context: Context,
 ) {
   try {
+    if (!id) {
+      throw new Error('Missing Recipe ID');
+    }
     const { teamID, userID } = SessionGate(
       context?.session,
       UserPermissions.EDIT_RECIPE,

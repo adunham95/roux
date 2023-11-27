@@ -46,6 +46,14 @@ export async function getRecipe(id: string) {
             count
           }
         }
+        history {
+          add
+          delete
+          update {
+            key
+            value
+          }
+        }
       }
     }
   `;

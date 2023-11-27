@@ -1,4 +1,4 @@
-import { useUpdateRecipe } from '@/api/mutation/updateRecipe';
+import { useCreateRecipeHistory } from '@/api/mutation/createHistory';
 import { getRecipe } from '@/api/queries/getRecipe';
 import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
@@ -9,25 +9,20 @@ import { IRecipe } from '@/types/recipe';
 import React, { useEffect } from 'react';
 
 const Edit = ({ recipe }: { recipe: IRecipe }) => {
-  const { setRecipe, getFormattedInstructions, name, description, servings } =
-    useNewRecipe();
-  const { mutateAsync: mutateRecipe } = useUpdateRecipe();
+  console.log({ recipe });
+  const { setRecipe, getFormattedHistory } = useNewRecipe();
+  const { mutateAsync: mutateRecipeHistory } = useCreateRecipeHistory();
   const { addToast } = useToast();
   useEffect(() => {
     setRecipe(recipe);
   }, [recipe]);
 
   function saveRecipe() {
-    const formattedInstructions = getFormattedInstructions();
-    mutateRecipe(
+    const formattedHistory = getFormattedHistory();
+    mutateRecipeHistory(
       {
         id: recipe.id,
-        recipe: {
-          name,
-          description,
-          servings,
-          instructions: formattedInstructions,
-        },
+        input: formattedHistory,
       },
       {
         onSuccess(data) {

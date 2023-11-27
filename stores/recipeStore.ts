@@ -33,6 +33,11 @@ interface INewRecipeStore extends IBaseStore {
   ) => void;
   getIngredients: () => IIngredientItem[];
   getFormattedInstructions: () => ICreateInstruction[];
+  getFormattedHistory: () => {
+    add: string[];
+    delete: string[];
+    update: { key: string; value: unknown }[];
+  };
   clearHistory: () => void;
 }
 
@@ -185,6 +190,16 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   getFormattedInstructions: () => {
     const instructions = get().instructions;
     return instructions;
+  },
+  getFormattedHistory: () => {
+    const history = get().history;
+    return {
+      add: history.add,
+      delete: history.delete,
+      update: Object.entries(history.update).map(([key, value]) => {
+        return { key, value };
+      }),
+    };
   },
   clearHistory: () => set({ history: defaultHistory }),
   clear: () => set(defaultStore),

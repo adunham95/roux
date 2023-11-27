@@ -1,3 +1,4 @@
+import GraphQLJSON from 'graphql-type-json';
 import createUser from './mutations/createUser';
 import updateUser from './mutations/updateUser';
 import getUserById from './queries/getUserById';
@@ -14,6 +15,7 @@ import updateRecipe from './mutations/updateRecipe';
 import createRecipeHistory from './mutations/createRecipeHistory';
 
 const resolvers = {
+  JSON: GraphQLJSON,
   Query: {
     getUserById,
     getAllBetaTokens,

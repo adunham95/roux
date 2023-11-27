@@ -6,6 +6,7 @@ import { createRecipeTypeDefs } from './mutations/createRecipe';
 import { createRecipeHistoryTypeDefs } from './mutations/createRecipeHistory';
 
 const typeDefs = gql`
+  scalar JSON
   # User
   type BaseUser {
     id: ID

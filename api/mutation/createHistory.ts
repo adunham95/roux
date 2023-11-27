@@ -18,11 +18,8 @@ async function createRecipeHistory({
   const variables = { input, id };
 
   const query = gql`
-    mutation CreateRecipeHistory(
-      $input: CreateRecipeHistory
-      $createRecipeHistoryId: String
-    ) {
-      createRecipeHistory(input: $input, id: $createRecipeHistoryId) {
+    mutation CreateRecipeHistory($input: CreateRecipeHistory, $id: String) {
+      createRecipeHistory(input: $input, id: $id) {
         add
         update {
           key
