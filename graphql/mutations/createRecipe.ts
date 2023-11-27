@@ -57,7 +57,7 @@ async function createRecipe(
   try {
     const { teamID, userID } = SessionGate(
       context?.session,
-      UserPermissions.CREATE_RECIPE,
+      UserPermissions.EDIT_RECIPE,
     );
     const newRecipe = new recipe({ ...input, teamID, userID });
     newRecipe.save();

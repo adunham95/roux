@@ -1,6 +1,7 @@
 import { Schema, models, model } from 'mongoose';
 import teams from './teams';
 import user from './user';
+import recipeHistory from './recipeHistory';
 
 const IngredientsSchema = new Schema({
   refId: String,
@@ -40,6 +41,11 @@ RecipeSchema.virtual('user', {
   localField: 'userID',
   foreignField: '_id',
   justOne: true,
+});
+RecipeSchema.virtual('history', {
+  ref: recipeHistory,
+  localField: '_id',
+  foreignField: 'recipeID',
 });
 RecipeSchema.set('toJSON', {
   virtuals: true,

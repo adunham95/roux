@@ -1,5 +1,4 @@
 export enum UserPermissions {
-  CREATE_RECIPE = 'create_recipe',
   VIEW_RECIPE = 'view_recipe',
   EDIT_RECIPE = 'edit_recipe',
 }

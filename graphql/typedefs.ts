@@ -3,6 +3,7 @@ import { createUserTypeDefs } from './mutations/createUser';
 import { updateUserTypeDefs } from './mutations/updateUser';
 import { createMembershipTierTypeDefs } from './mutations/createMembershipTier';
 import { createRecipeTypeDefs } from './mutations/createRecipe';
+import { createRecipeHistoryTypeDefs } from './mutations/createRecipeHistory';
 
 const typeDefs = gql`
   # User
@@ -36,6 +37,15 @@ const typeDefs = gql`
     name: String
   }
   #Recipe
+  type RecipeUpdateHistory {
+    key: String
+    value: String
+  }
+  type RecipeHistory {
+    add: [String]
+    delete: [String]
+    update: [RecipeUpdateHistory]
+  }
   type Ingredient {
     refId: String!
     name: String!
@@ -60,6 +70,7 @@ const typeDefs = gql`
     servings: Int
     description: String
     instructions: [Instruction]
+    history: [RecipeHistory]
   }
   #MembershipTier
   type MembershipTierPricing {
@@ -92,26 +103,11 @@ const typeDefs = gql`
     redeemed: Boolean
   }
 
-  # Products
-  type Product {
-    id: ID
-    name: String
-    productionCapacity: Int
-    price: Float
-    description: String
-  }
-
-  input ProductInput {
-    name: String!
-    productionCapacity: Int!
-    price: Float!
-    description: String
-  }
-
   ${createUserTypeDefs}
   ${updateUserTypeDefs}
   ${createMembershipTierTypeDefs}
   ${createRecipeTypeDefs}
+  ${createRecipeHistoryTypeDefs}
 
   type Success {
     success: Boolean
@@ -128,9 +124,6 @@ const typeDefs = gql`
     getMyRecipes: [Recipe]
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
-    #Products
-    getProducts: [Product]
-    getProduct(id: ID!): Product
     #Users
     getUserById(id: ID!): User
     #BetaTokens
@@ -141,6 +134,7 @@ const typeDefs = gql`
     #Recipe
     createRecipe(input: CreateRecipeInput): Recipe
     updateRecipe(recipe: CreateRecipeInput, id: String): Recipe
+    createRecipeHistory(input: CreateRecipeHistory, id: String): RecipeHistory
     #MembershipTiers
     createMembershipTier(input: CreateMembershipTierInput): MembershipTier
     #BetaTokens
@@ -150,10 +144,6 @@ const typeDefs = gql`
     updateUser(input: UpdateUserInput): User
     forgotPassword(email: String!): PasswordReset
     resetPassword(resetCode: String!, newPassword: String!): Boolean
-    #Products
-    newProduct(input: ProductInput): Product
-    updateProduct(id: ID!, input: ProductInput): Product
-    deleteProduct(id: ID!): String
   }
 `;
 
