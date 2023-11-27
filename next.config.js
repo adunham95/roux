@@ -14,11 +14,13 @@ const nextConfig = {
     });
     return config;
   },
-  pwa: {
-    disable: !isProduction,
-    dest: 'public',
-    runtimeCaching,
-  },
 };
 
-module.exports = nextConfig;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withPWA = require('next-pwa')({
+  disable: !isProduction,
+  dest: 'public',
+  runtimeCaching,
+});
+
+module.exports = withPWA(nextConfig);

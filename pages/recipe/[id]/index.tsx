@@ -46,7 +46,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
           <ul role="list">
             {getIngredients().map((ing) => (
               <li
-                key={ing.id}
+                key={ing.refId}
                 className="text-surface-1 flex justify-between pb-2"
               >
                 <span>{ing.name}</span>
@@ -66,7 +66,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
               .sort((a, b) => a.order - b.order)
               .map((inst) => (
                 <li
-                  key={inst.id}
+                  key={inst.refId}
                   className="overflow-hidden bg-surface text-surface-1 px-4 py-4 shadow sm:rounded-md sm:px-6"
                 >
                   <div>
