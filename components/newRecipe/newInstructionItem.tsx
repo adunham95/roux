@@ -118,7 +118,9 @@ export function NewInstructionItem({
           <NewIngredientItem
             ingredient={instruction.ingredients[ingredientIndex || 0]}
             index={ingredientIndex || 0}
-            onChange={() => onIngredientChange}
+            onChange={(ingredientID, value, key) =>
+              onIngredientChange(instruction.refId, ingredientID, value, key)
+            }
             onDelete={onIngredientDelete}
           />
         )}

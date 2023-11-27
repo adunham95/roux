@@ -7,7 +7,6 @@ import { ICreateInstruction } from '@/graphql/mutations/createRecipe';
 import { IRecipe } from '@/types/recipe';
 
 interface INewRecipeStore extends IBaseStore {
-  ingredients: IIngredientItem[];
   instructions: IInstructionItem[];
   history: RecipeHistory;
   name: string;
@@ -34,12 +33,14 @@ interface INewRecipeStore extends IBaseStore {
   ) => void;
   getIngredients: () => IIngredientItem[];
   getFormattedInstructions: () => ICreateInstruction[];
+  clearHistory: () => void;
 }
 
+const defaultHistory = { add: [], update: {}, delete: [] };
+
 const defaultStore = {
-  ingredients: [],
   instructions: [],
-  history: { add: {}, update: {}, delete: [] },
+  history: defaultHistory,
   name: '',
   description: '',
   servings: 1,
@@ -48,13 +49,23 @@ const defaultStore = {
 export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
   ...defaultStore,
   setRecipe: (recipe) => set(recipe),
-  setName: (name) => set({ name }),
-  setDescription: (description) => set({ description }),
+  setName: (name) => {
+    const history = get().history;
+    history.update.name = name;
+    set({ name, history });
+  },
+  setDescription: (description) => {
+    const history = get().history;
+    history.update.description = description;
+    set({ description });
+  },
   setServings: (servings) => {
+    const history = get().history;
     if (typeof servings === 'string') {
       servings = parseInt(servings);
     }
-    set({ servings });
+    history.update.servings = servings;
+    set({ servings, history });
   },
   addIngredientItem: (instructionID) => {
     const instructions = get().instructions;
@@ -85,9 +96,10 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       instructions: [...state.instructions, newItem],
     }));
   },
-  updateIngredientItem: (ingredientID, instructionID, value, key, action) => {
+  updateIngredientItem: (instructionID, ingredientID, key, value, action) => {
     console.log('updateIngredientItem');
     const instructions = get().instructions;
+    const history = get().history;
     const instruction = instructions.find(
       ({ refId }) => refId === instructionID,
     );
@@ -110,20 +122,23 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
           ];
           break;
         case 'delete':
+          history.delete.push(`${instructionID}.${ingredientID}`);
           ingredients = ingredients.filter(
             ({ refId }) => refId !== ingredientID,
           );
           break;
         default:
           ingredients[index] = { ...ingredients[index], [key]: value };
+          history.update[`${instructionID}.${ingredientID}.${key}`] = value;
       }
     }
-    console.log(ingredients);
+    console.log({ ingredients, history });
     instructions[instructionIndex].ingredients = ingredients;
-    set({ instructions });
+    set({ instructions, history });
   },
   updateInstructionItem: (instructionID, key, value, action) => {
     const instructions = get().instructions;
+    const history = get().history;
     const index = instructions.findIndex(
       ({ refId }) => refId === instructionID,
     );
@@ -131,6 +146,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       switch (action) {
         case 'copy':
           set({
+            history,
             instructions: [
               ...instructions,
               {
@@ -145,15 +161,18 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
           });
           break;
         case 'delete':
+          history.delete.push(instructionID);
           set({
+            history,
             instructions: instructions.filter(
               ({ refId }) => refId !== instructionID,
             ),
           });
           break;
         default:
+          history.update[`${instructionID}.${key}`] = value.toString();
           instructions[index] = { ...instructions[index], [key]: value };
-          set({ instructions });
+          set({ instructions, history });
       }
     }
   },
@@ -167,5 +186,6 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
     const instructions = get().instructions;
     return instructions;
   },
+  clearHistory: () => set({ history: defaultHistory }),
   clear: () => set(defaultStore),
 }));

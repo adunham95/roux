@@ -1,5 +1,5 @@
 interface RecipeHistory {
-  add: { [key: string]: string };
-  update: { [key: string]: string };
+  add: string[];
+  update: { [key: string]: unknown };
   delete: string[];
 }
