@@ -23,13 +23,13 @@ interface INewRecipeStore extends IBaseStore {
     ingredientID: string,
     instructionID: string,
     key: string,
-    value: string,
+    value: string | number,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
   updateInstructionItem: (
     instructionID: string,
     key: string,
-    value: string,
+    value: string | number,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
   getIngredients: () => IIngredientItem[];
