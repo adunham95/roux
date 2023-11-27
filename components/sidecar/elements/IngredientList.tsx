@@ -12,7 +12,7 @@ export const SidecarIngredientList = (props: IProps) => {
       <ul role="list" className="divide-y divide-surface-4 mt-3">
         {ingredients.map((ing) => (
           <li
-            key={ing.id}
+            key={ing.refId}
             className="flex items-center justify-between gap-x-6 py-3"
           >
             <div className="min-w-0">

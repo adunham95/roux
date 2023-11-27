@@ -13,7 +13,7 @@ const SidecarInstructionList = (props: IInstructionListProps) => {
       <ul role="list" className="divide-y divide-surface-4 mt-3">
         {instructions.map((inst) => (
           <li
-            key={inst.id}
+            key={inst.refId}
             className="flex items-center justify-between gap-x-6 py-3"
           >
             <div className="min-w-0">
@@ -25,8 +25,8 @@ const SidecarInstructionList = (props: IInstructionListProps) => {
               <div className="mt-1 flex items-center text-xs overflow-x-scroll hide-scrollbars">
                 {inst.ingredients.map((ing) => (
                   <ChipToggle
-                    key={`${ing.id}-${inst.id}`}
-                    id={ing.id || ''}
+                    key={`${ing.refId}-${inst.refId}`}
+                    id={ing.refId || ''}
                     label={ing.name}
                     checked
                     disabled
