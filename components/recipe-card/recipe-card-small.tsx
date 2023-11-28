@@ -41,10 +41,10 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
           <div className="object-cover overflow-hidden rounded bg-surface w-full h-full"></div>
         )}
         <div className="absolute top-0 flex justify-end w-full p-2">
-          <RecipeBadge className="bg-green-500" />
+          {/* <RecipeBadge className="bg-green-500" />
           <RecipeBadge className="bg-amber-500" />
           <RecipeBadge className="bg-blue-500" title="Original" />
-          <RecipeBadge title="Remixed x22" />
+          <RecipeBadge title="Remixed x22" /> */}
         </div>
       </div>
       <div className="mt-4 flex justify-between">
