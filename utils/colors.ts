@@ -42,5 +42,6 @@ export function shadeColor(R: number, G: number, B: number, percent: number) {
 export function useDarkText(r: number, g: number, b: number) {
   const contrastRatio =
     (0.2126 * r) / 255 + (0.7152 * g) / 255 + (0.0722 * b) / 255;
-  return contrastRatio >= 0.5;
+  console.log('contrastRatio', contrastRatio);
+  return contrastRatio >= 0.58;
 }

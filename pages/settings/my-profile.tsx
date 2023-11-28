@@ -3,14 +3,15 @@ import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
 import { ColorInput } from '@/components/inputs/color-input';
+import LabelBar from '@/components/inputs/labelBar';
 import TextInput from '@/components/inputs/text-input';
 import { getRGBFromString, shadeColor, useDarkText } from '@/utils/colors';
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MyProfile = () => {
-  const [color, setColor] = useState('rbg(0,0,0)');
-  const [accentColor, setAccentColor] = useState('rbg(0,0,0)');
+  const [color, setColor] = useState('rgb(100, 157, 173)');
+  const [accentColor, setAccentColor] = useState('rgb(218, 109, 94)');
   const { data } = useSession();
   const [account, setAccount] = useState({
     firstName: '',
@@ -29,6 +30,8 @@ const MyProfile = () => {
     const newTeam = { ...team, [id]: v };
     setTeam(newTeam);
   }
+
+  useEffect(() => {}, [color, accentColor]);
 
   const setStyle = () => {
     const { r, g, b } = getRGBFromString(color);
@@ -101,14 +104,14 @@ const MyProfile = () => {
               onChange={handleTeamChange}
             />
             <ColorInput
-              label="Primary Brand"
+              label="Primary Brand Color"
               id="brand-primary"
               className="col-span-6 md:col-span-3"
               value={color}
               onChange={setColor}
             />
             <ColorInput
-              label="Accent"
+              label="Accent Brand Color"
               id="brand-accent"
               className="col-span-6 md:col-span-3"
               value={accentColor}
@@ -116,12 +119,25 @@ const MyProfile = () => {
             />
             <div
               style={setStyle() as React.CSSProperties}
-              className="col-span-6 flex w-full border-t border-brand-variable pt-1"
+              className="col-span-6  pt-1"
             >
-              <Button className="mr-2" color="variable">
-                Button Text
-              </Button>
-              <Button color="variable-accent">Button Text</Button>
+              <LabelBar label="Color Viewer" />
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => null}
+                  className="w-full  hover:cursor-not-allowed"
+                  color="variable"
+                >
+                  Primary Color Button
+                </Button>
+                <Button
+                  onClick={() => null}
+                  className="w-full hover:cursor-not-allowed"
+                  color="variable-accent"
+                >
+                  Accent Color Button
+                </Button>
+              </div>
             </div>
           </TwoColumnCard>
         </div>
