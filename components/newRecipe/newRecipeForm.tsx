@@ -23,10 +23,10 @@ const NewRecipeForm = (props: IProps) => {
     updateInstructionItem,
     updateIngredientItem,
     addIngredientItem,
-    history,
+    currentHistory,
   } = useNewRecipe();
 
-  console.log({ history });
+  console.log({ currentHistory });
 
   return (
     <form>
