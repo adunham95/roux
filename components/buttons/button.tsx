@@ -170,6 +170,6 @@ const colorItems = {
     hoverLight: 'hover:bg-accent-variable-alt',
     focusOutline: 'focus-visible:outline-accent-variable',
     border: 'border-accent-variable',
-    onText: 'text-brand-accent-text',
+    onText: 'text-accent-variable-text',
   },
 };
