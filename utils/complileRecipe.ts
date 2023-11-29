@@ -1,14 +1,11 @@
 import { IIngredientItem } from '@/types/ingredinetItem';
-import { IInstructionItem } from '@/types/instructionItem';
 import { IRecipe } from '@/types/recipe';
 import { set } from 'lodash';
 
-interface IEditableInstruction extends Omit<IInstructionItem, 'ingredients'> {
+interface IEditableRecipe
+  extends Omit<IRecipe, 'instructions' | 'ingredients'> {
+  instructions: { [key: string]: IInstructionItem };
   ingredients: { [key: string]: IIngredientItem };
-}
-
-interface IEditableRecipe extends Omit<IRecipe, 'instructions'> {
-  instructions: { [key: string]: IEditableInstruction };
 }
 
 //TODO figure out how to make this run faster
@@ -17,15 +14,17 @@ export function compileRecipe(recipe: IRecipe) {
     const newRecipe = Object.assign({}, recipe) as unknown as IEditableRecipe;
     //Convert to An Object
     newRecipe.instructions = {};
-    recipe.instructions.forEach(({ refId, ingredients, ...inst }) => {
-      const ingredientObj = {} as { [key: string]: IIngredientItem };
-      ingredients.forEach((ingredient) => {
-        ingredientObj[ingredient.refId] = ingredient;
-      });
+    newRecipe.ingredients = {};
+    recipe.instructions.forEach(({ refId, ...inst }) => {
       newRecipe.instructions[refId] = {
         refId,
         ...inst,
-        ingredients: ingredientObj,
+      };
+    });
+    recipe.ingredients.forEach(({ refId, ...inst }) => {
+      newRecipe.ingredients[refId] = {
+        refId,
+        ...inst,
       };
     });
 
@@ -51,14 +50,8 @@ export function compileRecipe(recipe: IRecipe) {
 
     const formattedRecipe = {
       ...newRecipe,
-      instructions: Object.values(newRecipe.instructions).map(
-        ({ ingredients, ...inst }) => {
-          return {
-            ...inst,
-            ingredients: Object.values(ingredients),
-          };
-        },
-      ),
+      instructions: Object.values(newRecipe.instructions),
+      ingredients: Object.values(newRecipe.ingredients),
     };
     console.log('formattedRecipe', formattedRecipe);
     return formattedRecipe;

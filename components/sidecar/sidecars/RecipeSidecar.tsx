@@ -11,7 +11,7 @@ interface IProps {
 
 export const RecipeSidecar = (props: IProps) => {
   const { onSave } = props;
-  const { name, description, servings, instructions, getIngredients } =
+  const { name, description, servings, instructions, ingredients } =
     useNewRecipe();
   return (
     <Sidecar
@@ -36,13 +36,18 @@ export const RecipeSidecar = (props: IProps) => {
           title: 'Ingredients',
           key: 'ingredients',
           display: 'accordion',
-          child: <SidecarIngredientList ingredients={getIngredients()} />,
+          child: <SidecarIngredientList ingredients={ingredients} />,
         },
         {
           title: 'Instructions',
           key: 'instructions',
           display: 'accordion',
-          child: <SidecarInstructionList instructions={instructions} />,
+          child: (
+            <SidecarInstructionList
+              instructions={instructions}
+              ingredients={ingredients}
+            />
+          ),
         },
       ]}
     />

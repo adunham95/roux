@@ -1,13 +1,12 @@
 import { create } from 'zustand';
 import { IBaseStore } from './baseStore';
 import { IIngredientItem } from '@/types/ingredinetItem';
-import { IInstructionItem } from '@/types/instructionItem';
 import { generateID } from '@/utils/generateID';
-import { ICreateInstruction } from '@/graphql/mutations/createRecipe';
 import { IRecipe } from '@/types/recipe';
 
 interface INewRecipeStore extends IBaseStore {
   instructions: IInstructionItem[];
+  ingredients: IIngredientItem[];
   currentHistory: RecipeHistory;
   history: RecipeHistoryArray[];
   name: string;
@@ -17,23 +16,20 @@ interface INewRecipeStore extends IBaseStore {
   setName: (name: string) => void;
   setServings: (servings: string | number) => void;
   setDescription: (description: string) => void;
-  addIngredientItem: (instructionID: string) => void;
+  addIngredientItem: (instructionRefId: string) => void;
   addInstruction: () => void;
   updateIngredientItem: (
-    ingredientID: string,
-    instructionID: string,
+    ingredientId: string,
     key: string,
     value: string | number,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
   updateInstructionItem: (
-    instructionID: string,
+    ingredientRefId: string,
     key: string,
     value: string | number,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
-  getIngredients: () => IIngredientItem[];
-  getFormattedInstructions: () => ICreateInstruction[];
   getFormattedHistory: () => {
     add: string[];
     delete: string[];
@@ -46,6 +42,7 @@ const defaultHistory = { add: [], update: {}, delete: [] };
 
 const defaultStore = {
   instructions: [],
+  ingredients: [],
   currentHistory: defaultHistory,
   history: [],
   name: '',
@@ -74,22 +71,15 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
     currentHistory.update.servings = servings;
     set({ servings, currentHistory });
   },
-  addIngredientItem: (instructionID) => {
-    const instructions = get().instructions;
-    const index = instructions.findIndex(
-      ({ refId }) => refId === instructionID,
-    );
+  addIngredientItem: (instructionRefId) => {
     const newItem = {
+      instructionRefId,
       refId: generateID(),
       count: 0,
       name: '',
       type: '',
     };
-    instructions[index].ingredients = [
-      ...instructions[index].ingredients,
-      newItem,
-    ];
-    set({ instructions });
+    set((state) => ({ ingredients: [...state.ingredients, newItem] }));
   },
   addInstruction: () => {
     const instructions = get().instructions;
@@ -97,27 +87,16 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       refId: generateID(),
       order: instructions.length,
       description: ``,
-      ingredients: [],
     };
     set((state) => ({
       instructions: [...state.instructions, newItem],
     }));
   },
-  updateIngredientItem: (instructionID, ingredientID, key, value, action) => {
+  updateIngredientItem: (ingredientID, key, value, action) => {
     console.log('updateIngredientItem');
-    const instructions = get().instructions;
+    let ingredients = get().ingredients;
     const currentHistory = get().currentHistory;
-    const instruction = instructions.find(
-      ({ refId }) => refId === instructionID,
-    );
-    const instructionIndex = instructions.findIndex(
-      ({ refId }) => refId === instructionID,
-    );
 
-    if (instructionIndex < 0) {
-      return false;
-    }
-    let ingredients = instruction?.ingredients || [];
     const index = ingredients.findIndex(({ refId }) => refId === ingredientID);
 
     if (index >= 0) {
@@ -129,29 +108,25 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
           ];
           break;
         case 'delete':
-          currentHistory.delete.push(
-            `instructions.${instructionID}.ingredients.${ingredientID}`,
-          );
+          currentHistory.delete.push(`ingredients.${ingredientID}`);
           ingredients = ingredients.filter(
             ({ refId }) => refId !== ingredientID,
           );
           break;
         default:
           ingredients[index] = { ...ingredients[index], [key]: value };
-          currentHistory.update[
-            `instructions.${instructionID}.ingredients.${ingredientID}.${key}`
-          ] = value;
+          currentHistory.update[`ingredients.${ingredientID}.${key}`] = value;
       }
     }
-    console.log({ ingredients, currentHistory });
-    instructions[instructionIndex].ingredients = ingredients;
-    set({ instructions, currentHistory });
+    ingredients = ingredients;
+    set({ ingredients, currentHistory });
   },
-  updateInstructionItem: (instructionID, key, value, action) => {
+  updateInstructionItem: (instructionRefId, key, value, action) => {
     const instructions = get().instructions;
+    const ingredients = get().ingredients;
     const currentHistory = get().currentHistory;
     const index = instructions.findIndex(
-      ({ refId }) => refId === instructionID,
+      ({ refId }) => refId === instructionRefId,
     );
     if (index >= 0) {
       switch (action) {
@@ -162,42 +137,34 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
               ...instructions,
               {
                 ...instructions[index],
-                ingredients: instructions[index].ingredients.map((ing) => {
-                  return { ...ing, refId: generateID() };
-                }),
                 order: instructions.length,
                 refId: generateID(),
               },
             ],
+            ingredients: ingredients
+              .filter((ing) => ing.instructionRefId === instructionRefId)
+              .map((ing) => {
+                return { ...ing, refId: generateID() };
+              }),
           });
           break;
         case 'delete':
-          currentHistory.delete.push(instructionID);
+          currentHistory.delete.push(instructionRefId);
           set({
             currentHistory,
             instructions: instructions.filter(
-              ({ refId }) => refId !== instructionID,
+              ({ refId }) => refId !== instructionRefId,
             ),
           });
           break;
         default:
-          console.log(value, instructionID, key);
-          currentHistory.update[`instructions.${instructionID}.${key}`] =
+          console.log(value, instructionRefId, key);
+          currentHistory.update[`instructions.${instructionRefId}.${key}`] =
             value.toString();
           instructions[index] = { ...instructions[index], [key]: value };
           set({ instructions, currentHistory });
       }
     }
-  },
-  getIngredients: () => {
-    const instructions = get().instructions;
-    const ingredients = instructions.map((int) => int.ingredients);
-
-    return ingredients.flat();
-  },
-  getFormattedInstructions: () => {
-    const instructions = get().instructions;
-    return instructions;
   },
   getFormattedHistory: () => {
     const currentHistory = get().currentHistory;

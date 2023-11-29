@@ -39,12 +39,13 @@ export async function getRecipe(id: string) {
           refId
           description
           order
-          ingredients {
-            refId
-            name
-            type
-            count
-          }
+        }
+        ingredients {
+          instructionRefId
+          refId
+          name
+          type
+          count
         }
         history {
           add

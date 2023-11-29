@@ -5,6 +5,7 @@ import { SessionGate } from '@/utils/authGate';
 import { UserPermissions } from '@/utils/permissions';
 
 export interface ICreateIngredient {
+  instructionRefId: string;
   refId: string;
   name: string;
   count: number;
@@ -15,7 +16,6 @@ export interface ICreateInstruction {
   refId: string;
   description: string;
   order: number;
-  ingredients: ICreateIngredient[];
 }
 
 export interface ICreateRecipe {
@@ -23,10 +23,12 @@ export interface ICreateRecipe {
   description: string;
   servings: number;
   instructions: ICreateInstruction[];
+  ingredients: ICreateIngredient[];
 }
 
 export const createRecipeTypeDefs = gql`
   input CreateIngredientInput {
+    instructionRefId: String!
     refId: String!
     name: String!
     type: String
@@ -37,7 +39,6 @@ export const createRecipeTypeDefs = gql`
     refId: String!
     description: String!
     order: Int!
-    ingredients: [CreateIngredientInput]
   }
 
   input CreateRecipeInput {
@@ -45,6 +46,7 @@ export const createRecipeTypeDefs = gql`
     description: String
     servings: Int
     instructions: [CreateInstructionInput]
+    ingredients: [CreateIngredientInput]
   }
 `;
 

@@ -1,4 +1,5 @@
 import { IInstructionItem } from '@/types/instructionItem';
+import { IIngredientItem } from './ingredinetItem';
 
 export interface IRecipe {
   id: string;
@@ -9,6 +10,7 @@ export interface IRecipe {
   user?: BaseUser;
   team?: Team;
   instructions: IInstructionItem[];
+  ingredients: IIngredientItem[];
   categoryIds: string[];
   history: RecipeHistoryArray[];
 }

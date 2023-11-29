@@ -38,12 +38,13 @@ export async function getMyRecipes() {
           refId
           description
           order
-          ingredients {
-            refId
-            name
-            type
-            count
-          }
+        }
+        ingredients {
+          instructionRefId
+          refId
+          name
+          type
+          count
         }
       }
     }

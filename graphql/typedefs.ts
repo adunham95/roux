@@ -48,6 +48,7 @@ const typeDefs = gql`
     update: [RecipeUpdateHistory]
   }
   type Ingredient {
+    instructionRefId: String!
     refId: String!
     name: String!
     type: String
@@ -58,7 +59,6 @@ const typeDefs = gql`
     refId: String!
     description: String!
     order: Int!
-    ingredients: [Ingredient]
   }
 
   type Recipe {
@@ -71,6 +71,7 @@ const typeDefs = gql`
     servings: Int
     description: String
     instructions: [Instruction]
+    ingredients: [Ingredient]
     history: [RecipeHistory]
   }
   #MembershipTier

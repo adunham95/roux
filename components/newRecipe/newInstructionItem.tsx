@@ -1,13 +1,14 @@
-import { IInstructionItem } from '@/types/instructionItem';
 import TextArea from '../inputs/text-area';
 import IconButton from '../buttons/iconButton';
 import { NewIngredientItem } from './newIngredientItem';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Popover } from 'react-tiny-popover';
+import { IIngredientItem } from '@/types/ingredinetItem';
 
 export function NewInstructionItem({
   instruction,
+  ingredients,
   onChange,
   onDelete,
   onCopy,
@@ -16,15 +17,11 @@ export function NewInstructionItem({
   addIngredientItem,
 }: {
   instruction: IInstructionItem;
+  ingredients: IIngredientItem[];
   onChange: (id: string, value: string | number, key: string) => void;
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
-  onIngredientChange: (
-    instructionID: string,
-    id: string,
-    value: string | number,
-    key: string,
-  ) => void;
+  onIngredientChange: (id: string, value: string | number, key: string) => void;
   onIngredientDelete?: (id: string) => void;
   addIngredientItem: () => void;
 }) {
@@ -91,7 +88,7 @@ export function NewInstructionItem({
         }
       />
       <div className="py-2 relative">
-        {instruction.ingredients.map((ing, i) => (
+        {ingredients.map((ing, i) => (
           <IngredientButton
             label={ing.name.slice(0, 1) || `${i}`}
             key={ing.refId}
@@ -103,7 +100,7 @@ export function NewInstructionItem({
         <IconButton
           onClick={() => {
             addIngredientItem();
-            setIngredientIndex(instruction.ingredients.length - 1);
+            setIngredientIndex(ingredients.length - 1);
           }}
           title="Plus"
           className={
@@ -114,12 +111,12 @@ export function NewInstructionItem({
         </IconButton>
       </div>
       <div>
-        {instruction.ingredients[ingredientIndex || 0] && (
+        {ingredients[ingredientIndex || 0] && (
           <NewIngredientItem
-            ingredient={instruction.ingredients[ingredientIndex || 0]}
+            ingredient={ingredients[ingredientIndex || 0]}
             index={ingredientIndex || 0}
             onChange={(ingredientID, value, key) =>
-              onIngredientChange(instruction.refId, ingredientID, value, key)
+              onIngredientChange(ingredientID, value, key)
             }
             onDelete={onIngredientDelete}
           />

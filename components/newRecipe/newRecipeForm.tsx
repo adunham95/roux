@@ -24,6 +24,7 @@ const NewRecipeForm = (props: IProps) => {
     updateIngredientItem,
     addIngredientItem,
     currentHistory,
+    ingredients,
   } = useNewRecipe();
 
   console.log({ currentHistory });
@@ -82,6 +83,9 @@ const NewRecipeForm = (props: IProps) => {
                 <NewInstructionItem
                   key={inst.refId}
                   instruction={inst}
+                  ingredients={ingredients.filter(
+                    (ing) => ing.instructionRefId === inst.refId,
+                  )}
                   onChange={(id, value, key) =>
                     updateInstructionItem(id, key, value, 'update')
                   }
@@ -89,10 +93,10 @@ const NewRecipeForm = (props: IProps) => {
                   onDelete={(id) => updateInstructionItem(id, '', '', 'delete')}
                   addIngredientItem={() => addIngredientItem(inst.refId || '')}
                   onIngredientDelete={(id) =>
-                    updateIngredientItem(inst.refId || '', id, '', '', 'delete')
+                    updateIngredientItem(id, '', '', 'delete')
                   }
-                  onIngredientChange={(instID, id, value, key) =>
-                    updateIngredientItem(instID, id, key, value, 'update')
+                  onIngredientChange={(id, value, key) =>
+                    updateIngredientItem(id, key, value, 'update')
                   }
                 />
               ))}

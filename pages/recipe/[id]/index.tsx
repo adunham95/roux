@@ -10,10 +10,6 @@ import React from 'react';
 
 const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
   const { data: session } = useSession();
-  function getIngredients() {
-    const ingredients = recipe.instructions.map((int) => int.ingredients);
-    return ingredients.flat();
-  }
   return (
     <DefaultLayout
       heroSlot={
@@ -51,7 +47,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
             Ingredients
           </h2>
           <ul role="list">
-            {getIngredients().map((ing) => (
+            {recipe.ingredients.map((ing) => (
               <li
                 key={ing.refId}
                 className="text-surface-1 flex justify-between pb-2"

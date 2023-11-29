@@ -4,6 +4,7 @@ import user from './user';
 import recipeHistory from './recipeHistory';
 
 const IngredientsSchema = new Schema({
+  instructionRefId: String,
   refId: String,
   name: String,
   count: Number,
@@ -14,7 +15,6 @@ const InstructionsSchema = new Schema({
   refId: String,
   description: String,
   order: Number,
-  ingredients: [IngredientsSchema],
 });
 
 const RecipeSchema = new Schema({
@@ -24,6 +24,7 @@ const RecipeSchema = new Schema({
   description: String,
   servings: { type: Number, default: 1 },
   instructions: [InstructionsSchema],
+  ingredients: [IngredientsSchema],
 });
 
 // Duplicate the ID field.
