@@ -10,5 +10,5 @@ export interface IRecipe {
   team?: Team;
   instructions: IInstructionItem[];
   categoryIds: string[];
-  history: RecipeHistoryArray;
+  history: RecipeHistoryArray[];
 }
