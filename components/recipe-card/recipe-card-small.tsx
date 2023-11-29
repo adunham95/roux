@@ -64,6 +64,7 @@ interface IRecipeBadgeProps {
   title?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function RecipeBadge(props: IRecipeBadgeProps) {
   const { className = '', title } = props;
   const defaultClass =
