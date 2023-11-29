@@ -140,6 +140,14 @@ const MyProfile = () => {
               </div>
             </div>
           </TwoColumnCard>
+          <TwoColumnCard
+            id="membership"
+            title="Membership"
+            subTitle="View Membership Destails"
+            className="pt-5"
+          >
+            <h1>Membership Details</h1>
+          </TwoColumnCard>
         </div>
       </Container>
     </DefaultLayout>

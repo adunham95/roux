@@ -5,6 +5,7 @@ import { HeroSection } from '@/components/section/heroSection';
 import { Section } from '@/components/section/section';
 import { TabbedSection } from '@/components/section/tabbedSection';
 import { StatBar } from '@/components/statbar/statbar';
+import { UpSellBanner } from '@/components/upsell-banner/upsellBanner';
 
 const options = [
   {
@@ -66,6 +67,15 @@ function Home() {
           description="Unleash Your Culinary Creativity, One Recipe at a Time!"
           cta="Learn More"
         />
+        <div className="mb-5">
+          <UpSellBanner
+            type="membership"
+            title="Upgrade to Premium Membership Today"
+            description="Access the cooking flow, custom branding and other features"
+            cta="Upgrade"
+            ctaHref="/settings/my-profile#membership"
+          />
+        </div>
         <DashboardCard title="Chef Stats">
           <StatBar
             stats={[

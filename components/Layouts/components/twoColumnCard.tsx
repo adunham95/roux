@@ -3,6 +3,7 @@ import React, { FormEvent } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface IProps {
+  id?: string;
   title: string;
   subTitle?: string;
   children: React.ReactNode;
@@ -12,7 +13,8 @@ interface IProps {
 }
 
 export const TwoColumnCard = (props: IProps) => {
-  const { title, subTitle, children, onCancel, onSubmit, className } = props;
+  const { id, title, subTitle, children, onCancel, onSubmit, className } =
+    props;
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -21,6 +23,7 @@ export const TwoColumnCard = (props: IProps) => {
 
   return (
     <div
+      id={id}
       className={twMerge(
         'grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3',
         className,
