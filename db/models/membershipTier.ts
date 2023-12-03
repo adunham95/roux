@@ -30,6 +30,7 @@ const MembershipTierSchema = new Schema({
     default: false,
   },
   defaultPermission: Schema.Types.ObjectId,
+  stripeLookupKey: String,
 });
 
 MembershipTierSchema.virtual('id').get(function () {
