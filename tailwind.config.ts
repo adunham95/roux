@@ -103,6 +103,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/container-queries')],
+  plugins: [require('@tailwindcss/container-queries'), require("tailwindcss-animate")],
 };
 export default config;

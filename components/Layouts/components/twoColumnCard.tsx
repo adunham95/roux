@@ -10,11 +10,20 @@ interface IProps {
   onCancel?: () => void;
   onSubmit?: () => void;
   className?: string;
+  titleSlot?: React.ReactNode;
 }
 
 export const TwoColumnCard = (props: IProps) => {
-  const { id, title, subTitle, children, onCancel, onSubmit, className } =
-    props;
+  const {
+    id,
+    title,
+    subTitle,
+    children,
+    onCancel,
+    onSubmit,
+    className,
+    titleSlot = <></>,
+  } = props;
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -37,6 +46,7 @@ export const TwoColumnCard = (props: IProps) => {
           {subTitle && (
             <p className="mt-1 text-sm leading-6 text-surface-2">{subTitle}</p>
           )}
+          {titleSlot}
         </div>
       </div>
 

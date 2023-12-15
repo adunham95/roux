@@ -94,6 +94,30 @@ const MyProfile = () => {
             title="Team"
             subTitle="Update Your Team"
             className="pt-5"
+            titleSlot={
+              <div
+                className="bg-surface mt-1 p-4 sm:rounded-xl"
+                style={setStyle() as React.CSSProperties}
+              >
+                <LabelBar label="Theme Viewer" labelClassName="pb-2" />
+                <div className="flex gap-2">
+                  <Button
+                    onClick={() => null}
+                    className="w-full  hover:cursor-not-allowed"
+                    color="variable"
+                  >
+                    Primary Color Button
+                  </Button>
+                  <Button
+                    onClick={() => null}
+                    className="w-full hover:cursor-not-allowed"
+                    color="variable-accent"
+                  >
+                    Accent Color Button
+                  </Button>
+                </div>
+              </div>
+            }
           >
             <TextInput
               className="col-span-6"
@@ -117,28 +141,6 @@ const MyProfile = () => {
               value={accentColor}
               onChange={setAccentColor}
             />
-            <div
-              style={setStyle() as React.CSSProperties}
-              className="col-span-6  pt-1"
-            >
-              <LabelBar label="Color Viewer" />
-              <div className="flex gap-2">
-                <Button
-                  onClick={() => null}
-                  className="w-full  hover:cursor-not-allowed"
-                  color="variable"
-                >
-                  Primary Color Button
-                </Button>
-                <Button
-                  onClick={() => null}
-                  className="w-full hover:cursor-not-allowed"
-                  color="variable-accent"
-                >
-                  Accent Color Button
-                </Button>
-              </div>
-            </div>
           </TwoColumnCard>
           <TwoColumnCard
             id="membership"
