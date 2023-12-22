@@ -14,6 +14,8 @@ import getMyRecipes from './queries/getMyRecipes';
 import updateRecipe from './mutations/updateRecipe';
 import createRecipeHistory from './mutations/createRecipeHistory';
 import getViewer from './queries/viewer';
+import login from './mutations/login';
+import logout from './queries/logout';
 
 const resolvers = {
   JSON: GraphQLJSON,
@@ -24,6 +26,7 @@ const resolvers = {
     getRecipe,
     getMyRecipes,
     getViewer,
+    logout,
   },
 
   Mutation: {
@@ -36,6 +39,7 @@ const resolvers = {
     resetPassword,
     updateRecipe,
     createRecipeHistory,
+    login,
   },
 };
 

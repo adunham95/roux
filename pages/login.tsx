@@ -1,18 +1,37 @@
+import { useLogin } from '@/api/mutation/login';
 import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import PasswordInput from '@/components/inputs/password-input';
 import TextInput from '@/components/inputs/text-input';
-import { signIn } from 'next-auth/react';
+import { useToast } from '@/stores/toast';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { mutateAsync: asyncLogin } = useLogin();
+  const { addToast } = useToast();
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    signIn('credentials', { email, password, callbackUrl: '/dashboard' });
+    await asyncLogin(
+      {
+        password,
+        email,
+      },
+      {
+        onSuccess(data) {
+          addToast('Successfully Logged In', 'success');
+          console.log(data);
+        },
+        onError(error) {
+          addToast('Error logging in', 'danger');
+          console.log('ERROR');
+          console.log(error);
+        },
+      },
+    );
   }
 
   return (
@@ -40,8 +59,12 @@ const Login = () => {
       </div>
 
       <div className="mt-10">
-        <div>
-          <form onSubmit={onSubmit} className="space-y-6">
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-brand to-brand-600 shadow-md transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl group-hover:sm:rotate-0 transition" />
+          <form
+            onSubmit={onSubmit}
+            className="space-y-6 relative px-4 py-10 bg-surface shadow-lg sm:rounded-3xl sm:p-10"
+          >
             <div>
               <TextInput
                 label="Email Address"
@@ -66,7 +89,7 @@ const Login = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <input
+                {/* <input
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
@@ -77,7 +100,7 @@ const Login = () => {
                   className="ml-3 block text-sm leading-6 text-surface-2"
                 >
                   Remember me
-                </label>
+                </label> */}
               </div>
 
               <div className="text-sm leading-6">

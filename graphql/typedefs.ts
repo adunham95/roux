@@ -4,6 +4,7 @@ import { updateUserTypeDefs } from './mutations/updateUser';
 import { createMembershipTierTypeDefs } from './mutations/createMembershipTier';
 import { createRecipeTypeDefs } from './mutations/createRecipe';
 import { createRecipeHistoryTypeDefs } from './mutations/createRecipeHistory';
+import { loginUserTypeDefs } from './mutations/login';
 
 const typeDefs = gql`
   scalar JSON
@@ -105,6 +106,7 @@ const typeDefs = gql`
     redeemed: Boolean
   }
 
+  ${loginUserTypeDefs}
   ${createUserTypeDefs}
   ${updateUserTypeDefs}
   ${createMembershipTierTypeDefs}
@@ -134,6 +136,7 @@ const typeDefs = gql`
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Users
+    logout: Success
     getUserById(id: ID!): User
     getViewer: Session
     #BetaTokens
@@ -150,6 +153,7 @@ const typeDefs = gql`
     #BetaTokens
     generateBetaTokens(count: Int): [BetaToken]
     #Users
+    login(email: String!, password: String!): Session
     createUser(input: CreateUserInput!, teamID: String, roleID: String): Success
     updateUser(input: UpdateUserInput): User
     forgotPassword(email: String!): PasswordReset

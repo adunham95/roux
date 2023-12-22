@@ -64,7 +64,7 @@ async function createUser(
       throw new Error('No team or role');
     }
 
-    const email = input.email.trim();
+    const email = input.email.trim().toLowerCase();
     console.log({ email });
 
     const user = await auth.createUser({
