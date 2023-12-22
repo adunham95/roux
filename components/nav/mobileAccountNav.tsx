@@ -1,8 +1,9 @@
 import React from 'react';
 import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { Button } from '../buttons/button';
+import { useViewer } from '@/api/queries/getViewer';
 
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
@@ -14,9 +15,8 @@ interface IMobileAccountNavProps {}
 
 const MobileAccountNav = (props: IMobileAccountNavProps) => {
   const {} = props;
-  const { status, data: session } = useSession();
-  const isLoggedIn = status === 'authenticated';
-  if (isLoggedIn && session) {
+  const { data } = useViewer();
+  if (data) {
     return (
       <div className="pb-3 pt-4">
         <div className="flex items-center">
@@ -25,10 +25,10 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
           </div>
           <div className="ml-3">
             <div className="text-base font-medium text-surface-1">
-              {session.user.firstName} {session.user.lastName}
+              {data.user.firstName} {data.user.lastName}
             </div>
             <div className="text-sm font-medium text-surface-2">
-              {session.user.email}
+              {data.user.email}
             </div>
           </div>
           <button

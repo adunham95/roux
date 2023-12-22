@@ -7,7 +7,8 @@ import {
   ChevronDownIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
+import { useViewer } from '@/api/queries/getViewer';
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Your Profile', href: '/settings/my-profile' },
@@ -18,9 +19,8 @@ interface IProps {}
 
 const AccountNav = (props: IProps) => {
   const {} = props;
-  const { status, data: session } = useSession();
-  const isLoggedIn = status === 'authenticated';
-  if (isLoggedIn && session) {
+  const { data } = useViewer();
+  if (data) {
     return (
       <>
         <button
@@ -50,7 +50,7 @@ const AccountNav = (props: IProps) => {
                   className="ml-4 text-sm font-semibold leading-6 text-surface-1"
                   aria-hidden="true"
                 >
-                  {session.user.firstName} {session.user.lastName}
+                  {data.user.firstName} {data.user.lastName}
                 </span>
                 <ChevronDownIcon
                   className="ml-2 h-5 w-5 text-surface-4"
