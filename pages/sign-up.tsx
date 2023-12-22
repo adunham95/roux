@@ -3,6 +3,7 @@ import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import NewPasswordInput from '@/components/inputs/newPassword-input';
 import TextInput from '@/components/inputs/text-input';
+import { useToast } from '@/stores/toast';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
@@ -14,6 +15,7 @@ const SignUp = () => {
   const [lastName, setLastName] = useState('');
   const { mutateAsync: createUser, isPending: isLoading } = useCreateUser();
   const params = useSearchParams();
+  const { addToast } = useToast();
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,8 +28,10 @@ const SignUp = () => {
       {
         onSuccess() {
           console.log('Created user');
+          addToast('Account Created Successfully', 'success');
         },
         onError() {
+          addToast('Error Creating Account', 'danger');
           console.log('Error creating the user');
         },
       },

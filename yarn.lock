@@ -1369,6 +1369,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@lucia-auth/adapter-mongoose@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@lucia-auth/adapter-mongoose/-/adapter-mongoose-3.0.1.tgz#1fd7d4d433f403a1ccd32d3b6ff90a7c11a49fd5"
+  integrity sha512-l5UlZVYMUAtVpBwXsd14mE26QeSwcbAaWXLg1TXh394uytD5ednoAZhqFmQLUJufeDxhQ6FhRooJIXzCRupI8Q==
+
 "@mapbox/node-pre-gyp@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.11.tgz#417db42b7f5323d79e93b34a6d7a2a12c0df43fa"
@@ -4317,6 +4322,11 @@ lru-cache@^7.10.1, lru-cache@^7.14.1:
   version "7.18.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.18.3.tgz#f793896e0fd0e954a59dfdd82f0773808df6aa89"
   integrity sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==
+
+lucia@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/lucia/-/lucia-2.7.5.tgz#c8ee2e526e058eaeacdfc2a5967dfb4e2dc330f8"
+  integrity sha512-2e/Oezb+b2qjQLyP28CraBlad2s9GAp22bfPLn05IsXi99FEX/oTo2TGMM4Gn9nJT7ow15kEFkwL3lBUpknopA==
 
 lucide-react@^0.294.0:
   version "0.294.0"

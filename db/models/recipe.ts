@@ -18,7 +18,7 @@ const InstructionsSchema = new Schema({
 });
 
 const RecipeSchema = new Schema({
-  userID: Schema.Types.ObjectId,
+  userID: String,
   teamID: Schema.Types.ObjectId,
   name: String,
   description: String,

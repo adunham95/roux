@@ -5,6 +5,10 @@ mongoose.Promise = global.Promise;
 
 const UserSchema = new Schema(
   {
+    _id: {
+      type: String,
+      required: true,
+    },
     firstName: {
       type: String,
       required: true,
@@ -21,26 +25,18 @@ const UserSchema = new Schema(
       unique: true,
       index: true,
     },
-    password: {
-      type: String,
-      required: true,
-    },
     status: {
       type: String,
       default: 'ACTIVE',
       enum: ['ACTIVE', 'DISABLED', 'RESET_REQUIRED'],
     },
-    resetCode: {
-      type: String,
-      index: true,
-    },
   },
-  { timestamps: true },
+  { _id: false, timestamps: true },
 );
 
 // Duplicate the ID field.
-UserSchema.virtual('id').get(function () {
-  return this._id.toHexString();
+UserSchema.virtual('userId').get(function () {
+  return this._id.toString();
 });
 
 UserSchema.virtual('teamRoles', {

@@ -1,10 +1,11 @@
 import MembershipTier from '@/db/models/membershipTier';
 import User from '@/db/models/user';
-import Auth from '@/services/auth.service';
 import gql from 'graphql-tag';
 import Membership from '@/db/models/membership';
 import Team from '@/db/models/teams';
 import TeamMember from '@/db/models/teamMember';
+import { auth } from '@/auth/lucia';
+import { NextApiRequest, NextApiResponse } from 'next';
 export interface ICreateUserInput {
   firstName: string;
   lastName: string;
@@ -29,8 +30,11 @@ async function createUser(
     teamID,
     roleID,
   }: { input: ICreateUserInput; teamID?: string; roleID?: string },
+  { req, res }: { req: NextApiRequest; res: NextApiResponse },
 ) {
   try {
+    console.log('Create User');
+    const { password, firstName, lastName } = input;
     const currentUsers = await User.find({ email: input.email.trim() });
     if (currentUsers.length > 0) {
       throw new Error('User Already Exists');
@@ -59,15 +63,40 @@ async function createUser(
     if (!teamID && !roleID) {
       throw new Error('No team or role');
     }
-    const password = await Auth.hashPassword(input.password);
+
     const email = input.email.trim();
-    const user = new User({ ...input, password, email });
+    console.log({ email });
+
+    const user = await auth.createUser({
+      key: {
+        providerId: 'email', // auth method
+        providerUserId: email, // unique id when using "username" auth method
+        password, // hashed by Lucia
+      },
+      attributes: {
+        email,
+        firstName,
+        lastName,
+      },
+    });
+    console.log('user', user);
+    const session = await auth.createSession({
+      userId: user.userId,
+      attributes: {},
+    });
+    console.log({ session, user });
+    const authRequest = auth.handleRequest({
+      req,
+      res,
+    });
+    authRequest.setSession(session);
+
     const newTeamMember = new TeamMember({
       roleID,
       teamID,
-      userID: user._id,
+      userID: user.userId,
     });
-    await user.save({ new: true });
+
     await newTeamMember.save({ new: true });
 
     return { success: true };

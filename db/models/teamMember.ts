@@ -12,7 +12,7 @@ const TeamMemberSchema = new Schema({
     required: true,
   },
   userID: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true,
   },
 });

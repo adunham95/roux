@@ -9,7 +9,7 @@ const typeDefs = gql`
   scalar JSON
   # User
   type BaseUser {
-    id: ID
+    userId: ID
     firstName: String
     lastName: String
     email: String
@@ -18,7 +18,7 @@ const typeDefs = gql`
     status: String
   }
   type User {
-    id: ID
+    userId: ID
     firstName: String
     lastName: String
     email: String
@@ -120,6 +120,13 @@ const typeDefs = gql`
     resetLink: String
   }
 
+  type Session {
+    user: BaseUser
+    sessionId: String
+    state: String
+    fresh: Boolean
+  }
+
   type Query {
     #Recipe
     getRecipe(id: ID!): Recipe
@@ -128,6 +135,7 @@ const typeDefs = gql`
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Users
     getUserById(id: ID!): User
+    getViewer: Session
     #BetaTokens
     getAllBetaTokens: [BetaToken]
   }

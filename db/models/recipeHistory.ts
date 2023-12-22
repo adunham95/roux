@@ -2,7 +2,7 @@ import { Schema, model, models } from 'mongoose';
 
 const RecipeHistorySchema = new Schema({
   recipeID: Schema.Types.ObjectId,
-  userID: Schema.Types.ObjectId,
+  userID: String,
   teamID: Schema.Types.ObjectId,
   add: [String],
   delete: [String],
