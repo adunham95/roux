@@ -1,3 +1,4 @@
+import { auth } from '@/auth/lucia';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Container } from '@/components/container';
 import { DashboardCard } from '@/components/dashboardCard';
@@ -6,6 +7,35 @@ import { Section } from '@/components/section/section';
 import { TabbedSection } from '@/components/section/tabbedSection';
 import { StatBar } from '@/components/statbar/statbar';
 import { UpSellBanner } from '@/components/upsell-banner/upsellBanner';
+import type {
+  GetServerSidePropsContext,
+  GetServerSidePropsResult,
+  InferGetServerSidePropsType,
+} from 'next';
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext,
+): Promise<
+  GetServerSidePropsResult<{
+    userId: string;
+  }>
+> => {
+  const authRequest = auth.handleRequest(context);
+  const session = await authRequest.validate();
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      userId: session.user.userId,
+    },
+  };
+};
 
 const options = [
   {
@@ -58,7 +88,8 @@ const options = [
   },
 ];
 
-function Home() {
+function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const {} = props;
   return (
     <DefaultLayout pageName="Dashboard">
       <Container className="py-5">
@@ -119,7 +150,5 @@ function Home() {
     </DefaultLayout>
   );
 }
-
-Home.auth = true;
 
 export default Home;
