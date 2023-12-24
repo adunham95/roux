@@ -7,6 +7,7 @@ export const useLogout = () => {
   return useQuery({
     queryKey: [],
     queryFn: () => getLogout(),
+    enabled: false,
   });
 };
 

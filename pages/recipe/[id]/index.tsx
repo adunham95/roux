@@ -4,14 +4,10 @@ import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
 import { Card } from '@/components/ui/card';
 import { IRecipe } from '@/types/recipe';
-import { hasPermission } from '@/utils/authGate';
-import { UserPermissions } from '@/utils/permissions';
-import { useSession } from 'next-auth/react';
 import React from 'react';
 
 const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
   console.log(recipe);
-  const { data: session } = useSession();
   return (
     <DefaultLayout>
       <Container className="grid grid-cols-1 md:grid-cols-3 gap-3 py-5 ">
@@ -38,7 +34,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
               <Button className="ml-2" color="variable">
                 Fork
               </Button>
-              {hasPermission(session, UserPermissions.EDIT_RECIPE) && (
+              {/* {hasPermission(session, UserPermissions.EDIT_RECIPE) && (
                 <Button
                   href={`/recipe/${recipe.id}/edit`}
                   className="ml-2"
@@ -46,7 +42,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
                 >
                   Edit
                 </Button>
-              )}
+              )} */}
             </div>
           </div>
           <p className=" text-surface-2">{recipe.description}</p>

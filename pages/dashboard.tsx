@@ -17,7 +17,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext,
 ): Promise<
   GetServerSidePropsResult<{
-    userId: string;
+    user: IBaseUser;
   }>
 > => {
   const authRequest = auth.handleRequest(context);
@@ -32,7 +32,7 @@ export const getServerSideProps = async (
   }
   return {
     props: {
-      userId: session.user.userId,
+      user: session.user,
     },
   };
 };

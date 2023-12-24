@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { Button } from '../buttons/button';
-import { useViewer } from '@/api/queries/getViewer';
+import { useLogout } from '@/api/queries/logout';
+import { useSession } from '@/context/session';
 
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
@@ -15,8 +15,20 @@ interface IMobileAccountNavProps {}
 
 const MobileAccountNav = (props: IMobileAccountNavProps) => {
   const {} = props;
-  const { data } = useViewer();
-  if (data) {
+  const { data: logoutRes, refetch: logOut } = useLogout();
+  const { session, refreshSession } = useSession();
+
+  useEffect(() => {
+    if (logoutRes?.success) {
+      refreshSession();
+    }
+  }, [logoutRes]);
+
+  function signOut() {
+    logOut();
+  }
+
+  if (session) {
     return (
       <div className="pb-3 pt-4">
         <div className="flex items-center">
@@ -25,10 +37,10 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
           </div>
           <div className="ml-3">
             <div className="text-base font-medium text-surface-1">
-              {data.user.firstName} {data.user.lastName}
+              {session.user.firstName} {session.user.lastName}
             </div>
             <div className="text-sm font-medium text-surface-2">
-              {data.user.email}
+              {session.user.email}
             </div>
           </div>
           <button

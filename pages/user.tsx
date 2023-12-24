@@ -1,9 +1,9 @@
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/context/session';
 import React from 'react';
 
 const User = () => {
-  const { data: session, status } = useSession();
-  console.log({ session, status });
+  const { session } = useSession();
+  console.log({ session });
   return <div></div>;
 };
 

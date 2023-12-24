@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Button } from '../buttons/button';
 import {
@@ -7,8 +7,9 @@ import {
   ChevronDownIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
-import { signOut } from 'next-auth/react';
-import { useViewer } from '@/api/queries/getViewer';
+import { useLogout } from '@/api/queries/logout';
+import { useSession } from '@/context/session';
+
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Your Profile', href: '/settings/my-profile' },
@@ -19,8 +20,20 @@ interface IProps {}
 
 const AccountNav = (props: IProps) => {
   const {} = props;
-  const { data } = useViewer();
-  if (data) {
+  const { data: logoutRes, refetch: logOut } = useLogout();
+  const { session, refreshSession } = useSession();
+
+  useEffect(() => {
+    if (logoutRes?.success) {
+      refreshSession();
+    }
+  }, [logoutRes]);
+
+  function signOut() {
+    logOut();
+  }
+
+  if (session) {
     return (
       <>
         <button
@@ -50,7 +63,7 @@ const AccountNav = (props: IProps) => {
                   className="ml-4 text-sm font-semibold leading-6 text-surface-1"
                   aria-hidden="true"
                 >
-                  {data.user.firstName} {data.user.lastName}
+                  {session.user.firstName} {session.user.lastName}
                 </span>
                 <ChevronDownIcon
                   className="ml-2 h-5 w-5 text-surface-4"
@@ -86,7 +99,7 @@ const AccountNav = (props: IProps) => {
               ))}
               <Menu.Item>
                 <button
-                  onClick={() => signOut()}
+                  onClick={signOut}
                   className="block px-4 py-2 text-sm text-surface-3 hover:bg-surface-5 w-full text-left"
                 >
                   Sign Out

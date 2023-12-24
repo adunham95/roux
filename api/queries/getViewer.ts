@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { getClient } from '../client';
 import { gql } from 'graphql-request';
-import { ISession } from '@/types/graphql';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useViewer = () => {
+export const useViewer = (enabled = true) => {
   return useQuery({
     queryKey: ['viewer'],
     queryFn: () => getViewer(),
+    enabled,
   });
 };
 

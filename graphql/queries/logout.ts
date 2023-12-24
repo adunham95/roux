@@ -20,7 +20,7 @@ async function logout(
     await auth.invalidateSession(session.sessionId);
     // delete session cookie
     authRequest.setSession(null);
-    return { success: false };
+    return { success: true };
   } catch (error) {
     console.log(error);
   }

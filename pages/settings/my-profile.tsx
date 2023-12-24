@@ -6,19 +6,17 @@ import { ColorInput } from '@/components/inputs/color-input';
 import LabelBar from '@/components/inputs/labelBar';
 import TextInput from '@/components/inputs/text-input';
 import { getRGBFromString, shadeColor, useDarkText } from '@/utils/colors';
-import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 
 const MyProfile = () => {
   const [color, setColor] = useState('rgb(100, 157, 173)');
   const [accentColor, setAccentColor] = useState('rgb(218, 109, 94)');
-  const { data } = useSession();
   const [account, setAccount] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    ...data?.user,
+    // ...data?.user,
   });
   const [team, setTeam] = useState({ name: '' });
 

@@ -1,4 +1,5 @@
-import { useViewer } from '@/api/queries/getViewer';
+import { useSession } from '@/context/session';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 interface IProps {
@@ -6,8 +7,13 @@ interface IProps {
 }
 
 const AuthWrapper = ({ children }: IProps) => {
-  const { data } = useViewer();
-  console.log(data);
+  const { session } = useSession();
+  const router = useRouter();
+  console.log(session);
+  if (!session) {
+    typeof window !== 'undefined' ? router.push('/login') : null;
+    return 'Loading....';
+  }
   return <div>{children}</div>;
 };
 
