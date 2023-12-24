@@ -33,6 +33,13 @@ const typeDefs = gql`
     roleID: ID!
     userID: ID!
     teamID: ID!
+    access: Access
+  }
+  type Access {
+    id: ID!
+    name: String!
+    permissions: [String!]
+    locked: Boolean!
   }
   type Team {
     id: ID!
@@ -123,7 +130,7 @@ const typeDefs = gql`
   }
 
   type Session {
-    user: BaseUser
+    user: User
     sessionId: String
     state: String
     fresh: Boolean

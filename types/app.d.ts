@@ -8,5 +8,5 @@ declare namespace Lucia {
     lastName: string;
     status?: string;
   };
-  //   type DatabaseSessionAttributes = {};
+  // type DatabaseSessionAttributes = {};
 }

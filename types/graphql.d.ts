@@ -1,5 +1,5 @@
 interface ISession {
-  user: IBaseUser;
+  user: IUser;
   sessionId: string;
   state: string;
   fresh: boolean;

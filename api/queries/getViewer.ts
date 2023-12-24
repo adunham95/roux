@@ -24,6 +24,15 @@ export async function getViewer() {
           lastName
           status
           userId
+          teamRoles {
+            userID
+            teamID
+            roleID
+            access {
+              permissions
+              name
+            }
+          }
         }
         sessionId
         state

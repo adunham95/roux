@@ -1,4 +1,4 @@
-import { auth } from '@/auth/lucia';
+import { getSessionData } from '@/auth/lucia';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 async function getViewer(
@@ -9,10 +9,10 @@ async function getViewer(
   { req, res }: { req: NextApiRequest; res: NextApiResponse },
 ) {
   try {
-    const authRequest = auth.handleRequest({ req, res });
-    // check if user is authenticated
-    const session = await authRequest.validate();
-    console.log('session', session);
+    const session = getSessionData({ req, res });
+    if (!session) {
+      throw new Error('Not Authenticated');
+    }
     return session;
   } catch (error) {
     console.log(error);
