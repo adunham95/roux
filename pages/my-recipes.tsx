@@ -33,7 +33,7 @@ const MyRecipes = () => {
             subTitle="An unexpected error occurred while fetching your recipes. Please try again later."
           />
         )}
-        {data && (
+        {data.length > 0 && (
           <ul
             role="list"
             className="grid gap-6 grid-template-auto grid-template-3"
@@ -48,6 +48,8 @@ const MyRecipes = () => {
             ))}
           </ul>
         )}
+        {/* TODO Add placeholder */}
+        {data.length === 0 && !isLoading && <p>No Recipes</p>}
       </Container>
     </DefaultLayout>
   );
