@@ -9,7 +9,7 @@ import Link from 'next/link';
 import React, { useEffect } from 'react';
 
 const MyRecipes = () => {
-  const { data, isLoading, isError } = useGetMyRecipes();
+  const { data = [], isLoading, isError } = useGetMyRecipes();
   console.log({ recipes: data });
 
   useEffect(() => {
