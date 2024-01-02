@@ -120,6 +120,4 @@ function Home() {
   );
 }
 
-Home.auth = true;
-
 export default Home;

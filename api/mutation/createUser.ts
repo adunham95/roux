@@ -32,5 +32,7 @@ async function createUser(vars: {
 
   const response = await client.request(query, variables);
 
+  console.log('response', response);
+
   return response;
 }
