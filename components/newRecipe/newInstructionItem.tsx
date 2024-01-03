@@ -181,3 +181,71 @@ function IngredientButton({
     </Popover>
   );
 }
+
+// TODO Rebuild
+{
+  /* <li className="flex py-6 sm:py-10">
+  <div className="flex-shrink-0">
+    <img
+      src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg"
+      alt="Front of men's Basic Tee in sienna."
+      className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
+    />
+  </div>
+
+  <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+    <div className="relative pr-9">
+      <div className="">
+        <TextArea label="Instruction" value="" onChange={() => {}} id="null" />
+        <div className="mt-1 flex text-sm">
+          <p className="text-gray-500">Sienna</p>
+          <p className="ml-4 border-l border-surface-2 pl-4 text-gray-500">
+            Large
+          </p>
+          <Button
+            variant="text"
+            className="ml-4 border-l border-surface-2 rounded-none  p-0 pl-4"
+          >
+            Add Ingredient
+          </Button>
+        </div>
+      </div>
+
+      <div className="mt-4 sm:mt-0 sm:pr-9">
+        <div className="absolute right-0 top-0">
+          <button
+            type="button"
+            className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+          >
+            <span className="sr-only">Remove</span>
+            <svg
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p className="mt-4 flex space-x-2 text-sm text-gray-700">
+      <svg
+        className="h-5 w-5 flex-shrink-0 text-green-500"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fillRule="evenodd"
+          d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+          clipRule="evenodd"
+        ></path>
+      </svg>
+      <span>In stock</span>
+    </p>
+  </div>
+</li>; */
+}
