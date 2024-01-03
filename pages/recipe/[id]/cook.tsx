@@ -1,5 +1,5 @@
 import { getRecipe } from '@/api/queries/getRecipe';
-import NoHeaderLayout from '@/components/Layouts/page/NoHeaderLayout';
+import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Button } from '@/components/buttons/button';
 import { IRecipe } from '@/types/recipe';
 import React, { useState } from 'react';
@@ -27,12 +27,9 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
   }
 
   return (
-    <NoHeaderLayout>
+    <DefaultLayout>
       <div className=" py-4 px-4 sm:px-6 lg:px-8">
-        <h1 className="sr-only">Page title</h1>
-        {/* <!-- Main 3 column grid --> */}
         <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
-          {/* <!-- Left column --> */}
           <div className="grid grid-cols-1 gap-4 lg:col-span-2">
             <section aria-labelledby="section-1-title">
               <div className="overflow-hidden rounded-lg bg-surface shadow">
@@ -40,8 +37,8 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                   <h2 className="text-xl pb-2" id="section-1-title">
                     Step {stepNum + 1}
                   </h2>
-                  <div className="flex">
-                    <div className=" h-60 w-60 flex-none rounded-md object-cover object-center bg-gray-400 mr-2"></div>
+                  <div className="md:flex">
+                    <div className="w-full aspect-square md:h-60 md:w-60 flex-none rounded-md object-cover object-center bg-gray-400 mr-2"></div>
                     <div>
                       <p>{getInstruction()?.description}</p>
                       <ul>
@@ -62,7 +59,6 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
             </section>
           </div>
 
-          {/* <!-- Right column --> */}
           <div className="grid grid-cols-1 gap-4">
             <section aria-labelledby="section-2-title">
               <h2 className="sr-only" id="section-2-title">
@@ -71,8 +67,8 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
               <div className=" rounded-lg bg-surface shadow">
                 <div className="p-6">
                   <div>
-                    <h2 className=" text-lg pb-1">Recipe Name</h2>
-                    <p className="pb-1">Description text here</p>
+                    <h2 className=" text-lg pb-1">{recipe.name}</h2>
+                    <p className="pb-1">{recipe.description}</p>
                   </div>
                   <div className="overflow-hidden border-none rounded-full bg-surface-2">
                     <div
@@ -86,7 +82,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                   </div>
                   <ul
                     role="list"
-                    className="relative flex-auto divide-y divide-surface-3 "
+                    className="relative flex-auto divide-y divide-surface-3 py-2"
                   >
                     {recipe.instructions.map((instruction, index) => (
                       <li key={instruction.id}>
@@ -116,7 +112,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                       </li>
                     ))}
                   </ul>
-                  <div className="sticky bottom-0 pt-2">
+                  <div className="sticky bottom-2 pt-2">
                     <Button className="w-full" size="lg" onClick={goToNextStep}>
                       Next Step
                     </Button>
@@ -127,7 +123,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
           </div>
         </div>
       </div>
-    </NoHeaderLayout>
+    </DefaultLayout>
   );
 };
 
