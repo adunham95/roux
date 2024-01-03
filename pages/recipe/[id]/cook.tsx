@@ -27,7 +27,12 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout
+      crumbs={[
+        { name: recipe.name, href: `/recipe/${recipe.id}` },
+        { name: 'Cook', href: `/recipe/${recipe.id}/cook`, current: true },
+      ]}
+    >
       <div className=" py-4 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
           <div className="grid grid-cols-1 gap-4 lg:col-span-2">

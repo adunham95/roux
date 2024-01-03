@@ -5,6 +5,7 @@ import { MobileButton } from './nav/mobileButton';
 import { useState } from 'react';
 import { MobileNav } from './nav/mobileNav';
 import Link from 'next/link';
+import Breadcrumbs, { IBreadcrumbs } from './breadcrumbs/breadcrumbs';
 
 const AccountNav = dynamic(() => import('./nav/accountNav'), {
   ssr: false,
@@ -19,7 +20,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function NavBar() {
+export default function NavBar({ crumbs }: { crumbs?: IBreadcrumbs[] }) {
   const { pathname } = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -31,7 +32,7 @@ export default function NavBar() {
     <Disclosure as="header" className="bg-surface shadow">
       {() => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-surface-5 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-4  lg:px-8">
             <div className="relative flex h-16 justify-between">
               <div className="relative z-10 flex px-2 lg:px-0">
                 <Link
@@ -73,6 +74,7 @@ export default function NavBar() {
                 </a>
               ))}
             </nav>
+            {crumbs && <Breadcrumbs crumbs={crumbs} />}
           </div>
 
           <MobileNav
