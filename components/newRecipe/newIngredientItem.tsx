@@ -19,6 +19,10 @@ const measurementTypes = [
   { value: 'l', label: 'Liter' },
   { value: 'g', label: 'Gram' },
   { value: 'kg', label: 'Kilogram' },
+  { value: 'pinch', label: 'Pinch' },
+  { value: 'dash', label: 'Dash' },
+  { value: 'tad', label: 'Tad' },
+  { value: 'smidge', label: 'Smidgen' },
 ];
 
 export function NewIngredientItem({
