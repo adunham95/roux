@@ -5,8 +5,10 @@ import { useNewRecipe } from '@/stores/recipeStore';
 import { useCreateRecipe } from '@/api/mutation/createRecipe';
 import { useToast } from '@/stores/toast';
 import { RecipeSidecar } from '@/components/sidecar/sidecars/RecipeSidecar';
+import { useRouter } from 'next/router';
 
 const NewRecipe = () => {
+  const router = useRouter();
   const { name, description, servings, instructions, ingredients } =
     useNewRecipe();
   const { addToast } = useToast();
@@ -24,6 +26,10 @@ const NewRecipe = () => {
         onSuccess(data) {
           addToast('Recipe successfully created', 'success');
           console.log(data);
+          console.log(data.createRecipe.id);
+          setTimeout(() => {
+            router.push(`/recipe/${data.createRecipe.id}`);
+          }, 500);
         },
         onError(error) {
           addToast('Error saving recipe', 'danger');

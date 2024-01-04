@@ -20,7 +20,9 @@ async function createRecipe(input: ICreateRecipe) {
     }
   `;
 
-  const response = await client.request(query, variables);
+  const response = await client.request<{
+    createRecipe: { id: string };
+  }>(query, variables);
 
   return response;
 }
