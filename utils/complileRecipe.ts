@@ -44,6 +44,8 @@ export function compileRecipe(recipe: IRecipe) {
       return accumulator;
     }, actions);
 
+    console.log(history);
+
     history.update.map(({ key, value }) => {
       set(newRecipe, key, value);
     });
@@ -54,6 +56,7 @@ export function compileRecipe(recipe: IRecipe) {
       ingredients: Object.values(newRecipe.ingredients),
     };
     console.log('formattedRecipe', formattedRecipe);
+    // return recipe;
     return formattedRecipe;
   }
   return recipe;

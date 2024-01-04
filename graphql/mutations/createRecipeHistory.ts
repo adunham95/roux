@@ -1,3 +1,4 @@
+import Recipe from '@/db/models/recipe';
 import recipeHistory from '@/db/models/recipeHistory';
 import { Context } from '@/types/graphql';
 import { SessionGate } from '@/utils/authGate';
@@ -29,6 +30,7 @@ async function createRecipeHistory(
   context: Context,
 ) {
   try {
+    console.log(input);
     if (!id) {
       throw new Error('Missing Recipe ID');
     }
@@ -36,6 +38,8 @@ async function createRecipeHistory(
       context?.session,
       UserPermissions.EDIT_RECIPE,
     );
+    const recipe = Recipe.findById(id);
+    console.log(recipe);
     const newHistoryItem = new recipeHistory({
       ...input,
       recipeID: id,

@@ -41,15 +41,17 @@ export function NewIngredientItem({
     <div className="col-span-full  group">
       <div className="grid col-span-1 gap-x-2 gap-y-1 md:grid-cols-7">
         <TextInput
-          className="group/ingredientName col-span-2"
-          label="Ingredient name"
+          className={`group/ingredientName ${
+            onDelete ? 'col-span-2' : 'col-span-3'
+          }`}
+          label="Name"
           id={`ingredient-${index}-name`}
           value={ingredient.name}
           onChange={(value) => onChange(ingredient.refId, value, 'name')}
         />
         <TextInput
           className="col-span-2"
-          label="Ingredient Count"
+          label="Count"
           id={`ingredient-${index}-count`}
           type="number"
           min={0}
@@ -60,13 +62,17 @@ export function NewIngredientItem({
         />
         <SelectInput
           className="col-span-2"
-          label="Ingredient type"
+          label="Type"
           id={`ingredient-${index}-type`}
           value={ingredient.type}
           onChange={(value) => onChange(ingredient.refId, value, 'type')}
           options={[{ value: '', label: 'Select Type' }, ...measurementTypes]}
         />
-        <div className="flex items-end w-full md:col-span-1 col-span-2 pt-1">
+        <div
+          className={`flex items-end w-full ${
+            onDelete && 'md:col-span-1 col-span-2'
+          } pt-1`}
+        >
           {onDelete && (
             <Button
               onClick={() => onDelete(ingredient.refId)}

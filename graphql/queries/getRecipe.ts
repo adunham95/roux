@@ -8,6 +8,7 @@ async function getRecipe(_: unknown, { id }: { id: string }) {
       .populate({ path: 'user' })
       .populate({ path: 'history' })
       .populate({ path: 'team' });
+    console.log('recipe', recipe.history);
     return compileRecipe(recipe.toJSON());
   } catch (error) {
     console.log(error);
