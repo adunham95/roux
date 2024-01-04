@@ -66,7 +66,10 @@ export function NewIngredientItem({
           id={`ingredient-${index}-type`}
           value={ingredient.type}
           onChange={(value) => onChange(ingredient.refId, value, 'type')}
-          options={[{ value: '', label: 'Select Type' }, ...measurementTypes]}
+          options={[
+            { value: '', label: 'Select Measurement' },
+            ...measurementTypes,
+          ]}
         />
         <div
           className={`flex items-end w-full ${
