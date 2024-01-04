@@ -37,10 +37,6 @@ export function NewIngredientItem({
   onDelete?: (id: string) => void;
   onCopy?: (id: string) => void;
 }) {
-  // function handleChange(value: string | number, key: string) {
-  //   onChange({ ...ingredient, [key]: value });
-  // }
-
   return (
     <div className="col-span-full  group">
       <div className="grid col-span-1 gap-x-2 gap-y-1 md:grid-cols-7">
