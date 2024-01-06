@@ -2,17 +2,36 @@ import SplitImageLayout from '@/components/Layouts/page/SplitImageLayout';
 import { Button } from '@/components/buttons/button';
 import PasswordInput from '@/components/inputs/password-input';
 import TextInput from '@/components/inputs/text-input';
+import { useToast } from '@/stores/toast';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { addToast } = useToast();
+  const router = useRouter();
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    signIn('credentials', { email, password, callbackUrl: '/dashboard' });
+    const result = await signIn('credentials', {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      addToast('Error Signing In', 'danger');
+    }
+
+    if (result?.ok) {
+      addToast('Successfully signed in', 'success');
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 500);
+    }
   }
 
   return (
