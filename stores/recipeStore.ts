@@ -81,6 +81,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       name: 'Name',
       type: '',
     };
+    currentHistory.add.push(`ingredients.${refId}`);
     currentHistory.update[`ingredients.${refId}.refId`] = refId;
     currentHistory.update[`ingredients.${refId}.instructionRefId`] =
       instructionRefId;
@@ -101,9 +102,10 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       order: instructions.length,
       description: ``,
     };
-    currentHistory.update[`ingredients.${refId}.refId`] = refId;
-    currentHistory.update[`ingredients.${refId}.order`] = instructions.length;
-    currentHistory.update[`ingredients.${refId}.description`] = '';
+    currentHistory.add.push(`instructions.${refId}`);
+    currentHistory.update[`instructions.${refId}.refId`] = refId;
+    currentHistory.update[`instructions.${refId}.order`] = instructions.length;
+    currentHistory.update[`instructions.${refId}.description`] = '';
     set((state) => ({
       instructions: [...state.instructions, newItem],
     }));
@@ -119,6 +121,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       switch (action) {
         case 'copy':
           const refId = generateID();
+          currentHistory.add.push(`ingredients.${refId}`);
           currentHistory.update[`ingredients.${refId}.refId`] = refId;
           currentHistory.update[`ingredients.${refId}.instructionRefId`] =
             ingredients[index].instructionRefId;
@@ -151,6 +154,7 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       switch (action) {
         case 'copy':
           const newInstId = generateID();
+          currentHistory.add.push(`instructions.${newInstId}`);
           currentHistory.update[`instructions.${newInstId}.refId`] = newInstId;
           currentHistory.update[`instructions.${newInstId}.order`] =
             instructions.length;

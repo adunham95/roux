@@ -1,5 +1,6 @@
 import { getRecipe } from '@/api/queries/getRecipe';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
+import { ActivityFeed } from '@/components/activityFeed/activityFeed';
 import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
 import { Card } from '@/components/ui/card';
@@ -70,7 +71,29 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
             ))}
           </ul>
         </Card>
-        <Card className="w-full p-6 space-y-4 col-span-3 bg-surface text-surface-1">
+        <Card className="w-full p-6 space-y-4 col-span-1 bg-surface text-surface-1">
+          <h3 className="text-xl font-bold">History</h3>
+          <ActivityFeed
+            backgroundColor="bg-surface"
+            items={[
+              {
+                id: '0',
+                person: recipe.user,
+                type: 'created',
+                dateTime: new Date(parseInt(recipe.createdAt) || 0),
+              },
+              ...recipe.history.map((hist) => {
+                return {
+                  id: hist.id,
+                  person: hist.user,
+                  type: 'edited',
+                  dateTime: new Date(parseInt(hist.createdAt)),
+                };
+              }),
+            ]}
+          />
+        </Card>
+        <Card className="w-full p-6 space-y-4 col-span-2 bg-surface text-surface-1">
           <h3 className="text-xl font-bold">Instructions</h3>
           <ul className="list-none list-inside text-surface-2">
             {recipe.instructions

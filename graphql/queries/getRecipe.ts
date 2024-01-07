@@ -6,7 +6,7 @@ async function getRecipe(_: unknown, { id }: { id: string }) {
   try {
     const recipe = await Recipe.findById(id)
       .populate({ path: 'user' })
-      .populate({ path: 'history' })
+      .populate({ path: 'history', populate: { path: 'user' } })
       .populate({ path: 'team' });
     console.log('recipe', recipe.history);
     return compileRecipe(recipe.toJSON());

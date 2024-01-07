@@ -22,6 +22,7 @@ export async function getRecipe(id: string) {
     query GetRecipe($getRecipeId: ID!) {
       getRecipe(id: $getRecipeId) {
         id
+        createdAt
         user {
           firstName
           id
@@ -48,12 +49,19 @@ export async function getRecipe(id: string) {
           count
         }
         history {
+          id
+          user {
+            firstName
+            id
+            lastName
+          }
           add
           delete
           update {
             key
             value
           }
+          createdAt
         }
       }
     }

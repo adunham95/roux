@@ -43,9 +43,13 @@ const typeDefs = gql`
     value: String
   }
   type RecipeHistory {
+    id: ID
+    user: User
     add: [String]
     delete: [String]
     update: [RecipeUpdateHistory]
+    createdAt: String
+    updatedAt: String
   }
   type Ingredient {
     instructionRefId: String!
@@ -73,6 +77,8 @@ const typeDefs = gql`
     instructions: [Instruction]
     ingredients: [Ingredient]
     history: [RecipeHistory]
+    createdAt: String
+    updatedAt: String
   }
   #MembershipTier
   type MembershipTierPricing {

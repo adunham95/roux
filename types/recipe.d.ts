@@ -13,4 +13,5 @@ export interface IRecipe {
   ingredients: IIngredientItem[];
   categoryIds: string[];
   history: RecipeHistoryArray[];
+  createdAt: string;
 }
