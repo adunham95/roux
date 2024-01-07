@@ -17,15 +17,18 @@ const InstructionsSchema = new Schema({
   order: Number,
 });
 
-const RecipeSchema = new Schema({
-  userID: Schema.Types.ObjectId,
-  teamID: Schema.Types.ObjectId,
-  name: String,
-  description: String,
-  servings: { type: Number, default: 1 },
-  instructions: [InstructionsSchema],
-  ingredients: [IngredientsSchema],
-});
+const RecipeSchema = new Schema(
+  {
+    userID: Schema.Types.ObjectId,
+    teamID: Schema.Types.ObjectId,
+    name: String,
+    description: String,
+    servings: { type: Number, default: 1 },
+    instructions: [InstructionsSchema],
+    ingredients: [IngredientsSchema],
+  },
+  { timestamps: true },
+);
 
 // Duplicate the ID field.
 RecipeSchema.virtual('id').get(function () {

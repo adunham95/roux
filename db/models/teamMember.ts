@@ -2,20 +2,23 @@ import mongoose, { Schema } from 'mongoose';
 import membershipPermissions from './membershipPermissions';
 import teams from './teams';
 
-const TeamMemberSchema = new Schema({
-  roleID: {
-    type: Schema.Types.ObjectId,
-    required: true,
+const TeamMemberSchema = new Schema(
+  {
+    roleID: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
+    teamID: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
+    userID: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
   },
-  teamID: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
-  userID: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
-});
+  { timestamps: true },
+);
 
 TeamMemberSchema.virtual('id').get(function () {
   return this._id.toHexString();

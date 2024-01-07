@@ -1,22 +1,25 @@
 import mongoose, { Schema } from 'mongoose';
 import membershipTier from './membershipTier';
 
-const MembershipSchema = new Schema({
-  tierID: { type: Schema.Types.ObjectId, required: true },
-  cost: Number,
-  billingType: {
-    type: String,
-    default: 'MONTHLY',
-    enum: ['MONTHLY', 'YEARLY'],
+const MembershipSchema = new Schema(
+  {
+    tierID: { type: Schema.Types.ObjectId, required: true },
+    cost: Number,
+    billingType: {
+      type: String,
+      default: 'MONTHLY',
+      enum: ['MONTHLY', 'YEARLY'],
+    },
+    maxTeamSize: {
+      type: Number,
+    },
+    maxRecipeCount: {
+      type: Number,
+    },
+    customPermissions: { type: [Schema.Types.ObjectId] },
   },
-  maxTeamSize: {
-    type: Number,
-  },
-  maxRecipeCount: {
-    type: Number,
-  },
-  customPermissions: { type: [Schema.Types.ObjectId] },
-});
+  { timestamps: true },
+);
 
 MembershipSchema.virtual('id').get(function () {
   return this._id.toHexString();

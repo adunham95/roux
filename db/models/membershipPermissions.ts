@@ -1,13 +1,16 @@
 import mongoose, { Schema } from 'mongoose';
 
-export const MembershipPermissionsSchema = new Schema({
-  name: String,
-  permissions: [String],
-  locked: {
-    type: Boolean,
-    default: false,
+export const MembershipPermissionsSchema = new Schema(
+  {
+    name: String,
+    permissions: [String],
+    locked: {
+      type: Boolean,
+      default: false,
+    },
   },
-});
+  { timestamps: true },
+);
 
 MembershipPermissionsSchema.virtual('id').get(function () {
   return this._id.toHexString();

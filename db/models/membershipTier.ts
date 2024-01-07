@@ -5,33 +5,36 @@ const MembershipFeaturesSchema = new Schema({
   description: String,
 });
 
-const MembershipTierSchema = new Schema({
-  tierName: String,
-  tierDescription: String,
-  features: [MembershipFeaturesSchema],
-  maxTeamSize: {
-    type: Number,
+const MembershipTierSchema = new Schema(
+  {
+    tierName: String,
+    tierDescription: String,
+    features: [MembershipFeaturesSchema],
+    maxTeamSize: {
+      type: Number,
+    },
+    maxRecipeCount: {
+      type: Number,
+    },
+    yearlyCost: {
+      type: Number,
+    },
+    monthlyCost: {
+      type: Number,
+    },
+    default: {
+      type: Boolean,
+      default: false,
+    },
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+    defaultPermission: Schema.Types.ObjectId,
+    stripeLookupKey: String,
   },
-  maxRecipeCount: {
-    type: Number,
-  },
-  yearlyCost: {
-    type: Number,
-  },
-  monthlyCost: {
-    type: Number,
-  },
-  default: {
-    type: Boolean,
-    default: false,
-  },
-  visible: {
-    type: Boolean,
-    default: false,
-  },
-  defaultPermission: Schema.Types.ObjectId,
-  stripeLookupKey: String,
-});
+  { timestamps: true },
+);
 
 MembershipTierSchema.virtual('id').get(function () {
   return this._id.toHexString();
