@@ -74,7 +74,7 @@ export const Button = (props: IButtonProps) => {
       <Link
         href={href}
         className={twMerge(
-          'cursor-pointer',
+          'cursor-pointer text-center',
           getSize(),
           getVariant(),
           className,

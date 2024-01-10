@@ -69,7 +69,7 @@ export default function Document() {
   }
 
   return (
-    <Html lang="en" className="h-full">
+    <Html lang="en" className="h-full scroll-smooth">
       <Head>
         <link
           rel="apple-touch-icon"
