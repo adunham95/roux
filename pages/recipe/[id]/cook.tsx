@@ -45,7 +45,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         { name: 'Cook', href: `/recipe/${recipe.id}/cook`, current: true },
       ]}
       crumbsSlot={
-        <Flyout title="Instructions">
+        <Flyout title="All Instructions">
           <>
             <div className="mt-2 overflow-hidden border-none rounded-full bg-surface-2">
               <div
@@ -97,7 +97,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         <div className="-mt-px flex w-0 flex-1">
           <button
             onClick={goToPrevStep}
-            className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-surface-2 hover:border-surface-3 hover:text-surface-3"
+            className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-surface-2 hover:border-surface-3 hover:text-surface-3 rounded-b"
           >
             <ArrowLongLeftIcon
               className="mr-3 h-5 w-5 text-surface-2"
@@ -124,7 +124,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         <div className="-mt-px flex w-0 flex-1 justify-end">
           <button
             onClick={goToNextStep}
-            className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-surface-2 hover:border-surface-3 hover:text-surface-3"
+            className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-surface-2 hover:border-surface-3 hover:text-surface-3 rounded-b"
           >
             Next
             <ArrowLongRightIcon
@@ -136,7 +136,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
       </nav>
       <div className="py-4 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3 lg:gap-8">
-          <div className="grid grid-cols-1 gap-4 md:col-span-3">
+          <div className="grid grid-cols-1 gap-4 md:col-span-2">
             <section aria-labelledby="section-1-title">
               <div className="overflow-hidden rounded-lg bg-surface shadow">
                 <div className="p-6">
@@ -147,22 +147,49 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                     <div className="w-full aspect-square md:h-60 md:w-60 flex-none rounded-md object-cover object-center bg-gray-400 mr-2"></div>
                     <div>
                       <p>{getInstruction()?.description}</p>
-                      <ul>
-                        {/* {recipe.ingredients.filter(
-                          (ing) => ing.instructionRefId === '123',
-                        )} */}
-                        {getIngredients().map((ing) => (
-                          <li key={ing.refId}>
-                            {ing.count}
-                            {ing.type} {ing.name}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
+          </div>
+          <div className="grid grid-cols-1 ">
+            <div className="rounded-lg bg-surface shadow py-4 px-4">
+              <div className="text-lg font-semibold leading-6 text-gray-400">
+                Ingredients
+              </div>
+              <ul role="list" className="mt-2 space-y-1">
+                {getIngredients().map((item) => (
+                  <li key={item.name}>
+                    <div
+                      className={
+                        'text-brand-variable group flex gap-x-3 rounded-md  text-sm leading-6 font-semibold'
+                      }
+                    >
+                      <span
+                        className={
+                          'text-brand-variable border-brand-variable flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-surface'
+                        }
+                      >
+                        {item.name[0]}
+                      </span>
+                      <span>
+                        <span className="pr-1">
+                          {item.count}
+                          {item.type}
+                        </span>
+                        {item.name}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+                {getIngredients().length <= 0 && (
+                  <li className="text-sm leading-6">
+                    No Ingredients with this instruction
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
