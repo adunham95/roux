@@ -14,13 +14,17 @@ export interface IDefaultLayoutProps {
   heroTitle?: string;
   heroSlot?: React.ReactNode;
   crumbs?: IBreadcrumbs[];
+  crumbsSlot?: React.ReactNode;
+  removeFootingMargin?: boolean;
 }
 
 export const DefaultLayout = (props: IDefaultLayoutProps) => {
   return (
     <div>
       <AppHead pageName={props.pageName} />
-      {!props.hideNav && <NavBar crumbs={props.crumbs} />}
+      {!props.hideNav && (
+        <NavBar crumbs={props.crumbs} breadcrumbSlot={props.crumbsSlot} />
+      )}
       {props.heroImg && (
         <div className="relative mb-5 isolate overflow-hidden bg-surface-1 px-6 py-24 sm:py-32 lg:px-8">
           <Image
@@ -40,10 +44,10 @@ export const DefaultLayout = (props: IDefaultLayoutProps) => {
         </div>
       )}
       {props.heroSlot}
-      <main className={`${props.mainClass}`}>
+      <main className={`${props.mainClass} min-h-screen`}>
         <>{props.children}</>
       </main>
-      <SmallFooter />
+      <SmallFooter removeMargin={props.removeFootingMargin} />
     </div>
   );
 };

@@ -1,8 +1,12 @@
 import { legalText, navigation, version } from './links';
 
-export default function SmallFooter() {
+export default function SmallFooter({
+  removeMargin = false,
+}: {
+  removeMargin?: boolean;
+}) {
   return (
-    <footer className="bg-surface mt-2">
+    <footer className={`bg-surface ${removeMargin ? '' : 'mt-2'}`}>
       <div className="mx-auto max-w-7xl px-4 py-4 md:py-6 md:flex md:items-center md:justify-between lg:px-6">
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation.social.map((item) => (

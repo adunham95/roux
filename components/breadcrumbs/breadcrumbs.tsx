@@ -7,10 +7,16 @@ export interface IBreadcrumbs {
   current?: boolean;
 }
 
-export default function Breadcrumbs({ crumbs }: { crumbs: IBreadcrumbs[] }) {
+export default function Breadcrumbs({
+  crumbs,
+  slot = <></>,
+}: {
+  crumbs: IBreadcrumbs[];
+  slot?: React.ReactNode;
+}) {
   return (
     <nav
-      className="flex py-2 border-t border-surface-4 bg-surface"
+      className="flex-col md:flex-row flex py-2 border-t border-surface-4 bg-surface"
       aria-label="Breadcrumb"
     >
       <ol
@@ -47,6 +53,7 @@ export default function Breadcrumbs({ crumbs }: { crumbs: IBreadcrumbs[] }) {
           </li>
         ))}
       </ol>
+      <div>{slot}</div>
     </nav>
   );
 }

@@ -20,7 +20,13 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function NavBar({ crumbs }: { crumbs?: IBreadcrumbs[] }) {
+export default function NavBar({
+  crumbs,
+  breadcrumbSlot,
+}: {
+  crumbs?: IBreadcrumbs[];
+  breadcrumbSlot?: React.ReactNode;
+}) {
   const { pathname } = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -74,7 +80,7 @@ export default function NavBar({ crumbs }: { crumbs?: IBreadcrumbs[] }) {
                 </a>
               ))}
             </nav>
-            {crumbs && <Breadcrumbs crumbs={crumbs} />}
+            {crumbs && <Breadcrumbs crumbs={crumbs} slot={breadcrumbSlot} />}
           </div>
 
           <MobileNav
