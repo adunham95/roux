@@ -13,11 +13,16 @@
         --brand-accent-text: 0 0 0;
         --background: 230 230 230;
         --surface: 250 250 250;
-        --text-surface-1: 9 9 11;
-        --text-surface-2: 39 39 42;
-        --text-surface-3: 82 82 91;
-        --text-surface-4: 161 161 170;
-        --text-surface-5: 228 228 231;
+        --surface-1: 9 9 11;
+        --surface-2: 39 39 42;
+        --surface-3: 82 82 91;
+        --surface-4: 161 161 170;
+        --surface-5: 228 228 231;
+        --text-1: 9 9 11;
+        --text-2: 39 39 42;
+        --text-3: 82 82 91;
+        --text-4: 161 161 170;
+        --text-5: 228 228 231;
         --success: 66 137 89;
         --error: 199 62 29;
         --warning: 241 143 1;
@@ -34,11 +39,16 @@
         :root {
         --background: 30 30 30;
         --surface: 62 62 66;
-        --text-surface-1: 226 232 240;
-        --text-surface-2: 161 161 170;
-        --text-surface-3: 156 163 175;
-        --text-surface-4: 39 39 42;
-        --text-surface-5: 9 9 11;
+        --surface-1: 226 232 240;
+        --surface-2: 161 161 170;
+        --surface-3: 156 163 175;
+        --surface-4: 39 39 42;
+        --surface-5: 9 9 11;
+        --text-1: 226 232 240;
+        --text-2: 161 161 170;
+        --text-3: 156 163 175;
+        --text-4: 39 39 42;
+        --text-5: 9 9 11;
         /* ... */
         }
     }
@@ -54,7 +64,7 @@ body{
     background: #e6e6e6;
     background: rgb(var(--background) / 1 );
     color: #00090B;
-    color: rgb(var(--text-surface-1) / 1 )
+    color: rgb(var(--surface-1) / 1 )
 }
 
 .hide-scrollbars {
