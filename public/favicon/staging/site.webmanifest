@@ -26,8 +26,8 @@
             "purpose": "maskable"
         }
     ],
-    "theme_color": "#da6d5e",
-    "background_color": "#da6d5e",
+    "theme_color": "#c19ab7",
+    "background_color": "#c19ab7",
     "display": "standalone",
     "display_override": ["fullscreen", "minimal-ui"],
     "description": "Your kitchen adventures are about to get a whole lot tastier. Install and let's whip up something amazing together. Your kitchen, your rules",

@@ -134,7 +134,7 @@ export const AdminLayout = (props: IProps) => {
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-brand px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
                       <img
-                        className="h-8 w-auto"
+                        className="h-[52px] w-auto"
                         src="/icon-wide-light.png"
                         alt="Kitchendry"
                       />
@@ -184,7 +184,7 @@ export const AdminLayout = (props: IProps) => {
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-brand px-6 pb-4">
             <div className="flex py-3 shrink-0 items-center">
               <img
-                className="h-8 w-auto"
+                className="h-[52px] w-auto"
                 src="/icon-wide-light.png"
                 alt="Kitchendry"
               />

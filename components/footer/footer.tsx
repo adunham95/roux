@@ -11,8 +11,8 @@ const Footer = () => {
       </h2>
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
-            <img className="h-7" src="/icon-wide.png" alt="Company name" />
+          <div className="space-y-4">
+            <img className="h-9" src="/icon-wide.png" alt="Company name" />
             <p className="text-sm leading-6 text-surface-2">
               Inspire and enable individuals to explore, experiment, and
               redefine the world of cooking

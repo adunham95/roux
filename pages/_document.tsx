@@ -9,7 +9,7 @@ export default function Document() {
             <link
               rel="mask-icon"
               href={`/favicon/${process.env.NEXT_PUBLIC_ENV}/safari-pinned-tab.svg`}
-              color="#061A40"
+              color="#c4ffb2"
             />
             <link
               rel="shortcut icon"
@@ -17,12 +17,12 @@ export default function Document() {
             />
             <meta name="apple-mobile-web-app-title" content="Kitchendry Dev" />
             <meta name="application-name" content="Kitchendry Dev" />
-            <meta name="msapplication-TileColor" content="#061A40" />
+            <meta name="msapplication-TileColor" content="#c4ffb2" />
             <meta
               name="msapplication-config"
               content={`/favicon/${process.env.NEXT_PUBLIC_ENV}/browserconfig.xml`}
             />
-            <meta name="theme-color" content="#061A40"></meta>
+            <meta name="theme-color" content="#c4ffb2"></meta>
           </>
         );
       case 'staging':
@@ -30,7 +30,7 @@ export default function Document() {
           <link
             rel="mask-icon"
             href={`/favicon/${process.env.NEXT_PUBLIC_ENV}/safari-pinned-tab.svg`}
-            color="#061A40"
+            color="#c19ab7"
           />
           <link
             rel="shortcut icon"
@@ -38,12 +38,12 @@ export default function Document() {
           />
           <meta name="apple-mobile-web-app-title" content="Kitchendry" />
           <meta name="application-name" content="Kitchendry" />
-          <meta name="msapplication-TileColor" content="#061A40" />
+          <meta name="msapplication-TileColor" content="#c19ab7" />
           <meta
             name="msapplication-config"
             content={`/favicon/${process.env.NEXT_PUBLIC_ENV}/browserconfig.xml`}
           />
-          <meta name="theme-color" content="#061A40"></meta>
+          <meta name="theme-color" content="#c19ab7"></meta>
         </>;
       default:
         <>

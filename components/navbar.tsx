@@ -46,7 +46,7 @@ export default function NavBar({
                   className="flex flex-shrink-0 items-center max-w-[300px]"
                 >
                   <img
-                    className="h-8 w-auto"
+                    className="h-[40px] w-auto"
                     src="/icon-wide.png"
                     alt="Kitchendry"
                   />
