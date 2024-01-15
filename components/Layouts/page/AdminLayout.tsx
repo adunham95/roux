@@ -150,7 +150,7 @@ export const AdminLayout = (props: IProps) => {
                                   className={twMerge(
                                     isCurrent(item.href)
                                       ? 'bg-brand-700 text-tc-5'
-                                      : 'text-tc-4 hover:text-tc-5 hover:bg-brand-700',
+                                      : 'text-tc-5 hover:text-tc-5 hover:bg-brand-700',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                                   )}
                                 >

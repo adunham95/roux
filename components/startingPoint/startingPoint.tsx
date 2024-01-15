@@ -29,7 +29,7 @@ export const StartingPoint = (props: IProps) => {
           <li key={itemIdx} className="flow-root">
             <Link
               href={item.href}
-              className="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:ring-2 focus-within:ring-brand-500 hover:bg-surface-5"
+              className="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:ring-2 focus-within:ring-brand-500 hover:bg-surface-2"
             >
               <div
                 style={{ backgroundColor: item.color || '#649dad' }}
