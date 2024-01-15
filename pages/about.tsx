@@ -34,7 +34,7 @@ const About = () => {
           <Container className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-surface-1 px-3 py-1 text-sm ">
+                <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm ">
                   Our Values
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
@@ -72,7 +72,7 @@ const About = () => {
           <Container className="container px-4 md:px-6">
             <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
               <div className="space-y-4">
-                <div className="inline-block rounded-lg px-3 py-1 text-sm bg-surface-1">
+                <div className="inline-block rounded-lg px-3 py-1 text-sm bg-brand-500">
                   Our Team
                 </div>
                 <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
@@ -132,7 +132,7 @@ const About = () => {
                 </div>
               </div>
               <div className="flex flex-col items-start space-y-4">
-                <div className="inline-block rounded-lg bg-surface-1 px-3 py-1 text-sm ">
+                <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm ">
                   Our History
                 </div>
                 <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
@@ -176,7 +176,7 @@ const About = () => {
           <Container className="container px-4 md:px-6">
             <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
               <div className="space-y-4">
-                <div className="inline-block rounded-lg bg-surface-1 px-3 py-1 text-sm">
+                <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm">
                   Our Culture
                 </div>
                 <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
@@ -208,7 +208,7 @@ const About = () => {
                 </div>
               </div>
               <div className="flex flex-col items-start space-y-4">
-                <div className="inline-block rounded-lg bg-surface-1 px-3 py-1 text-sm">
+                <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm">
                   Testimonials
                 </div>
                 <blockquote className="text-lg font-semibold leading-snug lg:text-xl lg:leading-normal xl:text-2xl">
