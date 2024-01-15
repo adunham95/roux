@@ -7,6 +7,7 @@ import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
 } from '@heroicons/react/20/solid';
+import { Container } from '@/components/container';
 
 const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
   const [stepNum, setStepNum] = useState(0);
@@ -68,7 +69,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                     className={`flex space-x-6 py-6 px-2 w-full rounded bg-opacity-50 ${
                       index === stepNum
                         ? 'border-brand-variable bg-brand-variable hover:bg-brand-variable-alt'
-                        : 'border-transparent hover:bg-surface-2'
+                        : 'border-transparent hover:bg-surface-2 '
                     }`}
                   >
                     {/* <img
@@ -90,46 +91,48 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         </Flyout>
       }
     >
-      <nav className="bg-surface pb-2 flex items-center justify-between border-t border-surface-2 px-4 sm:px-2">
-        <div className="-mt-px flex w-0 flex-1">
-          <button
-            onClick={goToPrevStep}
-            className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
-          >
-            <ArrowLongLeftIcon
-              className="mr-3 h-5 w-5 text-tc-2"
-              aria-hidden="true"
-            />
-            Previous
-          </button>
-        </div>
-        <div className="hidden md:-mt-px md:flex">
-          {recipe.instructions.map((inst, index) => (
+      <nav className="bg-surface pb-2  border-t border-surface-2 px-4 sm:px-2">
+        <Container className="flex items-center justify-between">
+          <div className="-mt-px flex w-0 flex-1">
             <button
-              key={`goto-${index}`}
-              onClick={() => setStepNum(index)}
-              className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium  ${
-                index === stepNum
-                  ? 'border-brand-variable text-brand-variable'
-                  : 'border-transparent text-tc-2 hover:text-tc-3 hover:border-surface-3'
-              }`}
+              onClick={goToPrevStep}
+              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
             >
-              {index + 1}
+              <ArrowLongLeftIcon
+                className="mr-3 h-5 w-5 text-tc-2"
+                aria-hidden="true"
+              />
+              Previous
             </button>
-          ))}
-        </div>
-        <div className="-mt-px flex w-0 flex-1 justify-end">
-          <button
-            onClick={goToNextStep}
-            className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
-          >
-            Next
-            <ArrowLongRightIcon
-              className="ml-3 h-5 w-5 text-tc-2"
-              aria-hidden="true"
-            />
-          </button>
-        </div>
+          </div>
+          <div className="hidden md:-mt-px md:flex">
+            {recipe.instructions.map((inst, index) => (
+              <button
+                key={`goto-${index}`}
+                onClick={() => setStepNum(index)}
+                className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium  ${
+                  index === stepNum
+                    ? 'border-brand-variable text-brand-variable'
+                    : 'border-transparent text-tc-2 hover:text-tc-3 hover:border-surface-3'
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+          <div className="-mt-px flex w-0 flex-1 justify-end">
+            <button
+              onClick={goToNextStep}
+              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
+            >
+              Next
+              <ArrowLongRightIcon
+                className="ml-3 h-5 w-5 text-tc-2"
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+        </Container>
       </nav>
       <div className="py-4 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3 lg:gap-8">

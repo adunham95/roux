@@ -12,7 +12,7 @@ export default function Flyout({
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-brand-variable">
-        <span>{title}</span>
+        <span className=" md:whitespace-nowrap">{title}</span>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
       </Popover.Button>
 
