@@ -1,10 +1,12 @@
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { Container } from '@/components/container';
 import { DashboardCard } from '@/components/dashboardCard';
+import TextInput from '@/components/inputs/text-input';
 import { HeroSection } from '@/components/section/heroSection';
 import { Section } from '@/components/section/section';
 import { TabbedSection } from '@/components/section/tabbedSection';
 import { UpSellBanner } from '@/components/upsell-banner/upsellBanner';
+import { useState } from 'react';
 
 const options = [
   {
@@ -58,6 +60,7 @@ const options = [
 ];
 
 function Home() {
+  const [search, setSearch] = useState('');
   return (
     <DefaultLayout pageName="Dashboard">
       <Container className="py-5">
@@ -79,7 +82,17 @@ function Home() {
           title="Get Cooking"
           description="Find a recipe and get cooking"
         >
-          <h1></h1>
+          <TextInput
+            id="search"
+            placeholder="Search"
+            value={search}
+            onChange={setSearch}
+          />
+          <Section
+            className="mt-2"
+            options={options}
+            preCard={{ title: 'New Recipe', onClick: () => {} }}
+          />
         </DashboardCard>
         <DashboardCard
           title="Featured"
