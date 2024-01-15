@@ -11,6 +11,7 @@ import {
   CircleStackIcon,
   FolderIcon,
   Squares2X2Icon,
+  ArrowLeftOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
 import { AppHead } from '@/components/appHead';
@@ -23,6 +24,7 @@ const AccountNav = dynamic(() => import('../../nav/accountNav'), {
 });
 
 const navigation = [
+  { name: 'App', href: '/dashboard', icon: ArrowLeftOnRectangleIcon },
   { name: 'Dashboard', href: '/console', icon: HomeIcon },
   {
     name: 'Memberships',
