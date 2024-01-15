@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
+    "@ark-ui/react": "^1.2.1",
     "@as-integrations/next": "^2.0.2",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
