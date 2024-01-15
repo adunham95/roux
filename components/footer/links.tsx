@@ -19,7 +19,7 @@ export const navigation = {
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '#' },
     // { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
+    { name: 'Branding', href: '/branding' },
     // { name: 'Partners', href: '#' },
   ],
   legal: [

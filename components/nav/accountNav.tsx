@@ -25,7 +25,7 @@ const AccountNav = (props: IProps) => {
       <>
         <button
           type="button"
-          className="relative flex-shrink-0 rounded-full  p-1 text-surface-3 hover:text-surface-2 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+          className="relative flex-shrink-0 rounded-full  p-1 text-tc-3 hover:text-tc-2 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
         >
           <span className="absolute -inset-1.5" />
           <span className="sr-only">View notifications</span>
@@ -43,17 +43,17 @@ const AccountNav = (props: IProps) => {
             <Menu.Button className="relative flex rounded-full  focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 items-center p-1">
               <span className="absolute -inset-1.5" />
               <span className="sr-only">Open user menu</span>
-              <UserCircleIcon className="h-8 w-8 text-surface-3" />
+              <UserCircleIcon className="h-8 w-8 text-tc-3" />
 
               <span className="hidden lg:flex lg:items-center">
                 <span
-                  className="ml-4 text-sm font-semibold leading-6 text-surface-1"
+                  className="ml-4 text-sm font-semibold leading-6 text-tc-1"
                   aria-hidden="true"
                 >
                   {session.user.firstName} {session.user.lastName}
                 </span>
                 <ChevronDownIcon
-                  className="ml-2 h-5 w-5 text-surface-4"
+                  className="ml-2 h-5 w-5 text-tc-4"
                   aria-hidden="true"
                 />
               </span>
@@ -75,8 +75,8 @@ const AccountNav = (props: IProps) => {
                     <a
                       href={item.href}
                       className={twMerge(
-                        active ? 'bg-surface-5' : '',
-                        'block px-4 py-2 text-sm text-surface-3',
+                        active ? 'bg-surface-1' : '',
+                        'block px-4 py-2 text-sm text-tc-3',
                       )}
                     >
                       {item.name}
@@ -87,7 +87,7 @@ const AccountNav = (props: IProps) => {
               <Menu.Item>
                 <button
                   onClick={() => signOut()}
-                  className="block px-4 py-2 text-sm text-surface-3 hover:bg-surface-5 w-full text-left"
+                  className="block px-4 py-2 text-sm text-tc-3 hover:bg-surface-5 w-full text-left"
                 >
                   Sign Out
                 </button>
