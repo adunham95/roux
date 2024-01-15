@@ -43,7 +43,7 @@ export function TabbedSection(props: IProps) {
                 className={twMerge(
                   selectedTab === tab.name
                     ? 'border-brand-500 text-brand-600'
-                    : 'border-transparent text-surface-2 hover:border-surface-4 hover:text-surface-2',
+                    : 'border-transparent text-tc-2 hover:border-tc-4 hover:text-tc-2',
                   'flex whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium',
                 )}
                 aria-current={selectedTab === tab.name ? 'page' : undefined}
@@ -54,7 +54,7 @@ export function TabbedSection(props: IProps) {
                     className={twMerge(
                       selectedTab === tab.name
                         ? 'bg-brand-100 text-brand-600'
-                        : 'bg-surface-4 text-surface-1',
+                        : 'bg-surface-4 text-tc-1',
                       'ml-3 hidden rounded-full py-0.5 px-2.5 text-xs font-medium md:inline-block',
                     )}
                   >

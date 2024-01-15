@@ -13,11 +13,11 @@ const EmptyBlock = (props: IEmptyBlockProps) => {
   const { title, subTitle, buttonText, children, buttonClick } = props;
   return (
     <div className="text-center col-span-full">
-      <div className=" text-surface-5 fill-surface-5 mx-auto h-12 w-12 ">
+      <div className=" text-tc-5 fill-surface-5 mx-auto h-12 w-12 ">
         {children}
       </div>
-      <h3 className="mt-2 text-sm font-semibold text-surface-1">{title}</h3>
-      {subTitle && <p className="mt-1 text-sm text-surface-3">{subTitle}</p>}
+      <h3 className="mt-2 text-sm font-semibold text-tc-1">{title}</h3>
+      {subTitle && <p className="mt-1 text-sm text-tc-3">{subTitle}</p>}
       <div className="mt-6">
         {buttonText && (
           <Button className="inline-flex items-center" onClick={buttonClick}>

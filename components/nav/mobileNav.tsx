@@ -28,7 +28,7 @@ export const MobileNav = (props: IProps) => {
           </a>
           <button
             type="button"
-            className="-m-2.5 rounded-md p-2.5 text-surface-3"
+            className="-m-2.5 rounded-md p-2.5 text-tc-3"
             onClick={onClose}
           >
             <span className="sr-only">Close menu</span>
@@ -55,7 +55,7 @@ export const MobileNav = (props: IProps) => {
                 <a
                   key={nav.href}
                   href={nav.href}
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-surface-3 hover:bg-surface-5"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-tc-3 hover:bg-surface-5"
                 >
                   {nav.name}
                 </a>

@@ -79,15 +79,13 @@ function ToastElement(props: IToast) {
         <div className="flex items-start">
           <div className="flex-shrink-0">{getIcon(style)}</div>
           <div className="ml-3 w-0 flex-1 pt-0.5">
-            <p className="text-sm font-medium text-surface-1">{title}</p>
-            {subTitle && (
-              <p className="mt-1 text-sm text-surface-3">{subTitle}</p>
-            )}
+            <p className="text-sm font-medium text-tc-1">{title}</p>
+            {subTitle && <p className="mt-1 text-sm text-tc-3">{subTitle}</p>}
           </div>
           <div className="ml-4 flex flex-shrink-0">
             <button
               type="button"
-              className="inline-flex rounded-md bg-surface text-surface-1 hover:text-surface-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+              className="inline-flex rounded-md bg-surface text-tc-1 hover:text-tc-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
               onClick={() => {
                 removeToast(id);
               }}

@@ -32,7 +32,7 @@ export const Toggle = (props: IProps) => {
           ></span>
         </button>
         <span className="ml-3 text-sm" id="annual-billing-label">
-          <span className="font-medium text-surface-1">{label}</span>
+          <span className="font-medium text-tc-1">{label}</span>
         </span>
       </div>
     </InputWrapper>

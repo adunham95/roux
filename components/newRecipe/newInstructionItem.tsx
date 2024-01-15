@@ -60,7 +60,7 @@ export function NewInstructionItem({
                 {ingredients.map((ing) => (
                   <div
                     key={ing.refId}
-                    className={`text-surface-2 hover:text-surface-3 ml-4 border-l border-surface-2 flex items-center pl-4 rounded-none `}
+                    className={`text-tc-2 hover:text-tc-3 ml-4 border-l border-surface-2 flex items-center pl-4 rounded-none `}
                   >
                     <Button
                       variant="text"
@@ -124,7 +124,7 @@ export function NewInstructionItem({
               <button
                 type="button"
                 onClick={() => onCopy(instruction.refId)}
-                className="-m-2 inline-flex p-2 text-surface-2 hover:text-surface-3 md:scale-0 group-hover:scale-100 transition-transform duration-300"
+                className="-m-2 inline-flex p-2 text-tc-2 hover:text-tc-3 md:scale-0 group-hover:scale-100 transition-transform duration-300"
               >
                 <span className="sr-only">Copy</span>
                 <svg

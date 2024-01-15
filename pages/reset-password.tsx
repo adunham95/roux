@@ -41,7 +41,7 @@ const ResetPassword = () => {
             src="/icon-wide.png"
             alt="Kitchendry logo"
           />
-          <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-surface-1">
+          <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-tc-1">
             Forgot Password
           </h2>
         </Link>

@@ -14,11 +14,11 @@ export const MarkingHeader = (props: IProps) => {
         <h2 className="text-base font-semibold leading-7 text-brand">
           {label}
         </h2>
-        <p className="mt-2 text-4xl font-bold tracking-tight text-surface-1 sm:text-5xl">
+        <p className="mt-2 text-4xl font-bold tracking-tight text-tc-1 sm:text-5xl">
           {title}
         </p>
       </div>
-      <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-surface-2">
+      <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-tc-2">
         {description}
       </p>
     </>

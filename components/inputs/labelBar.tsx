@@ -28,7 +28,7 @@ const LabelBar = (props: ILabelBarProps) => {
         <label
           htmlFor={htmlFor}
           className={twMerge(
-            'block text-sm font-medium leading-6 text-surface-1',
+            'block text-sm font-medium leading-6 text-tc-1',
             labelClassName,
           )}
         >

@@ -11,11 +11,9 @@ const FieldSet = (props: IFieldSetProps) => {
   return (
     <fieldset className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-surface-1/10 pb-12 md:grid-cols-3">
       <div>
-        <h2 className="text-base font-semibold leading-7 text-surface-1">
-          {title}
-        </h2>
+        <h2 className="text-base font-semibold leading-7 text-tc-1">{title}</h2>
         {subTitle && (
-          <p className="mt-1 text-sm leading-6 text-surface-2">{subTitle}</p>
+          <p className="mt-1 text-sm leading-6 text-tc-2">{subTitle}</p>
         )}
       </div>
 

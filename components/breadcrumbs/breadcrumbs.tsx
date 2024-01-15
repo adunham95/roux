@@ -25,10 +25,7 @@ export default function Breadcrumbs({
       >
         <li className="flex">
           <div className="flex items-center">
-            <Link
-              href="/dashboard"
-              className="text-surface-3 hover:text-surface-1"
-            >
+            <Link href="/dashboard" className="text-tc-3 hover:text-tc-1">
               <span>Dashboard</span>
             </Link>
           </div>
@@ -37,13 +34,13 @@ export default function Breadcrumbs({
           <li key={page.name} className="flex">
             <div className="flex items-center">
               <ChevronRightIcon
-                className="h-5 w-5 flex-shrink-0 text-surface-3"
+                className="h-5 w-5 flex-shrink-0 text-tc-3"
                 aria-hidden="true"
               />
               <Link
                 href={page.href}
-                className={`ml-4 text-sm font-medium hover:text-surface-1 ${
-                  page.current ? 'text-brand-variable' : 'text-surface-3 '
+                className={`ml-4 text-sm font-medium hover:text-tc-1 ${
+                  page.current ? 'text-brand-variable' : 'text-tc-3 '
                 }`}
                 aria-current={page.current ? 'page' : undefined}
               >

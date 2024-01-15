@@ -11,11 +11,11 @@ export const PricingTable = (props: IProps) => {
           <h2 className="text-base font-semibold leading-7 text-indigo-600">
             Pricing
           </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-surface-1 sm:text-5xl">
+          <p className="mt-2 text-4xl font-bold tracking-tight text-tc-1 sm:text-5xl">
             Plans for teams of&nbsp;all&nbsp;sizes
           </p>
         </div>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-surface-2">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-tc-2">
           Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et
           quasi iusto modi velit ut non voluptas in. Explicabo id ut laborum.
         </p>
@@ -25,11 +25,11 @@ export const PricingTable = (props: IProps) => {
           <section className="p-8">
             <h3
               id="tier-basic"
-              className="text-sm font-semibold leading-6 text-surface-1"
+              className="text-sm font-semibold leading-6 text-tc-1"
             >
               Basic
             </h3>
-            <p className="mt-2 flex items-baseline gap-x-1 text-surface-1">
+            <p className="mt-2 flex items-baseline gap-x-1 text-tc-1">
               <span className="text-4xl font-bold">$9</span>
               <span className="text-sm font-semibold">/month</span>
             </p>
@@ -42,7 +42,7 @@ export const PricingTable = (props: IProps) => {
             </a>
             <ul
               role="list"
-              className="mt-10 space-y-4 text-sm leading-6 text-surface-1"
+              className="mt-10 space-y-4 text-sm leading-6 text-tc-1"
             >
               <li>
                 <ul role="list" className="space-y-4">
@@ -121,11 +121,11 @@ export const PricingTable = (props: IProps) => {
           <section className="p-8 rounded-xl bg-surface-3/5 ring-1 ring-inset ring-surface-4">
             <h3
               id="tier-essential"
-              className="text-sm font-semibold leading-6 text-surface-1"
+              className="text-sm font-semibold leading-6 text-tc-1"
             >
               Essential
             </h3>
-            <p className="mt-2 flex items-baseline gap-x-1 text-surface-1">
+            <p className="mt-2 flex items-baseline gap-x-1 text-tc-1">
               <span className="text-4xl font-bold">$29</span>
               <span className="text-sm font-semibold">/month</span>
             </p>
@@ -138,7 +138,7 @@ export const PricingTable = (props: IProps) => {
             </a>
             <ul
               role="list"
-              className="mt-10 space-y-4 text-sm leading-6 text-surface-1"
+              className="mt-10 space-y-4 text-sm leading-6 text-tc-1"
             >
               <li>
                 <ul role="list" className="space-y-4">
@@ -202,7 +202,7 @@ export const PricingTable = (props: IProps) => {
                     </svg>
                     <span>
                       Team members
-                      <span className="text-sm leading-6 text-surface-2">
+                      <span className="text-sm leading-6 text-tc-2">
                         (Up to 20 users)
                       </span>
                     </span>
@@ -297,11 +297,11 @@ export const PricingTable = (props: IProps) => {
           <section className="p-8">
             <h3
               id="tier-premium"
-              className="text-sm font-semibold leading-6 text-surface-1"
+              className="text-sm font-semibold leading-6 text-tc-1"
             >
               Premium
             </h3>
-            <p className="mt-2 flex items-baseline gap-x-1 text-surface-1">
+            <p className="mt-2 flex items-baseline gap-x-1 text-tc-1">
               <span className="text-4xl font-bold">$59</span>
               <span className="text-sm font-semibold">/month</span>
             </p>
@@ -314,7 +314,7 @@ export const PricingTable = (props: IProps) => {
             </a>
             <ul
               role="list"
-              className="mt-10 space-y-4 text-sm leading-6 text-surface-1"
+              className="mt-10 space-y-4 text-sm leading-6 text-tc-1"
             >
               <li>
                 <ul role="list" className="space-y-4">
@@ -378,7 +378,7 @@ export const PricingTable = (props: IProps) => {
                     </svg>
                     <span>
                       Team members
-                      <span className="text-sm leading-6 text-surface-2">
+                      <span className="text-sm leading-6 text-tc-2">
                         (Up to 50 users)
                       </span>
                     </span>
@@ -541,17 +541,17 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <td></td>
                   <th scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
-                    <div className="text-sm font-semibold leading-7 text-surface-1">
+                    <div className="text-sm font-semibold leading-7 text-tc-1">
                       Basic
                     </div>
                   </th>
                   <th scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
-                    <div className="text-sm font-semibold leading-7 text-surface-1">
+                    <div className="text-sm font-semibold leading-7 text-tc-1">
                       Essential
                     </div>
                   </th>
                   <th scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
-                    <div className="text-sm font-semibold leading-7 text-surface-1">
+                    <div className="text-sm font-semibold leading-7 text-tc-1">
                       Premium
                     </div>
                   </th>
@@ -563,7 +563,7 @@ export const PricingTable = (props: IProps) => {
                     <span className="sr-only">Price</span>
                   </th>
                   <td className="px-6 pt-2 xl:px-8">
-                    <div className="flex items-baseline gap-x-1 text-surface-1">
+                    <div className="flex items-baseline gap-x-1 text-tc-1">
                       <span className="text-4xl font-bold">$9</span>
                       <span className="text-sm font-semibold leading-6">
                         /month
@@ -577,7 +577,7 @@ export const PricingTable = (props: IProps) => {
                     </a>
                   </td>
                   <td className="px-6 pt-2 xl:px-8">
-                    <div className="flex items-baseline gap-x-1 text-surface-1">
+                    <div className="flex items-baseline gap-x-1 text-tc-1">
                       <span className="text-4xl font-bold">$29</span>
                       <span className="text-sm font-semibold leading-6">
                         /month
@@ -591,7 +591,7 @@ export const PricingTable = (props: IProps) => {
                     </a>
                   </td>
                   <td className="px-6 pt-2 xl:px-8">
-                    <div className="flex items-baseline gap-x-1 text-surface-1">
+                    <div className="flex items-baseline gap-x-1 text-tc-1">
                       <span className="text-4xl font-bold">$59</span>
                       <span className="text-sm font-semibold leading-6">
                         /month
@@ -609,7 +609,7 @@ export const PricingTable = (props: IProps) => {
                   <th
                     scope="colgroup"
                     colSpan={4}
-                    className="pb-4 text-sm font-semibold leading-6 text-surface-1 pt-8"
+                    className="pb-4 text-sm font-semibold leading-6 text-tc-1 pt-8"
                   >
                     Features
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/10"></div>
@@ -618,7 +618,7 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Integrations
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
@@ -672,7 +672,7 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Shared links
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
@@ -726,14 +726,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Importing and exporting
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -780,14 +780,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Team members
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -801,12 +801,12 @@ export const PricingTable = (props: IProps) => {
                     <span className="sr-only">Not included in Basic</span>
                   </td>
                   <td className="px-6 py-4 xl:px-8">
-                    <div className="text-center text-sm leading-6 text-surface-2">
+                    <div className="text-center text-sm leading-6 text-tc-2">
                       Up to 20 users
                     </div>
                   </td>
                   <td className="px-6 py-4 xl:px-8">
-                    <div className="text-center text-sm leading-6 text-surface-2">
+                    <div className="text-center text-sm leading-6 text-tc-2">
                       Up to 50 users
                     </div>
                   </td>
@@ -816,7 +816,7 @@ export const PricingTable = (props: IProps) => {
                   <th
                     scope="colgroup"
                     colSpan={4}
-                    className="pb-4 text-sm font-semibold leading-6 text-surface-1 pt-16"
+                    className="pb-4 text-sm font-semibold leading-6 text-tc-1 pt-16"
                   >
                     Reporting
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/10"></div>
@@ -825,7 +825,7 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Advanced analytics
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
@@ -879,14 +879,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Basic reports
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -933,14 +933,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Professional reports
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -955,7 +955,7 @@ export const PricingTable = (props: IProps) => {
                   </td>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -987,14 +987,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Custom report builder
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -1009,7 +1009,7 @@ export const PricingTable = (props: IProps) => {
                   </td>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -1043,7 +1043,7 @@ export const PricingTable = (props: IProps) => {
                   <th
                     scope="colgroup"
                     colSpan={4}
-                    className="pb-4 text-sm font-semibold leading-6 text-surface-1 pt-16"
+                    className="pb-4 text-sm font-semibold leading-6 text-tc-1 pt-16"
                   >
                     Support
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/10"></div>
@@ -1052,7 +1052,7 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     24/7 online support
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
@@ -1106,14 +1106,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Quarterly product workshops
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -1160,14 +1160,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     Priority phone support
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -1214,14 +1214,14 @@ export const PricingTable = (props: IProps) => {
                 <tr>
                   <th
                     scope="row"
-                    className="py-4 text-sm font-normal leading-6 text-surface-1"
+                    className="py-4 text-sm font-normal leading-6 text-tc-1"
                   >
                     1:1 onboarding tour
                     <div className="absolute inset-x-8 mt-4 h-px bg-surface-1/5"></div>
                   </th>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -1236,7 +1236,7 @@ export const PricingTable = (props: IProps) => {
                   </td>
                   <td className="px-6 py-4 xl:px-8">
                     <svg
-                      className="mx-auto h-5 w-5 text-surface-3"
+                      className="mx-auto h-5 w-5 text-tc-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"

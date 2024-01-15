@@ -53,10 +53,10 @@ export default function MarketingTimeline() {
                   aria-hidden="true"
                 />
               </time>
-              <p className="mt-6 text-lg font-semibold leading-8 tracking-tight text-surface-1">
+              <p className="mt-6 text-lg font-semibold leading-8 tracking-tight text-tc-1">
                 {item.name}
               </p>
-              <p className="mt-1 text-base leading-7 text-surface-2">
+              <p className="mt-1 text-base leading-7 text-tc-2">
                 {item.description}
               </p>
             </div>

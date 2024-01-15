@@ -70,8 +70,8 @@ export default function NavBar({
                   href={item.href}
                   className={classNames(
                     isCurrent(item.href)
-                      ? 'border-brand hover:bg-brand-50 text-surface-3'
-                      : 'border-b-transparent text-surface-3 hover:bg-surface-5 hover:text-surface-3 hover:border-surface-3',
+                      ? 'border-brand hover:bg-brand-50 text-tc-3'
+                      : 'border-b-transparent text-tc-3 hover:bg-surface-1 hover:text-tc-3 hover:border-surface-3',
                     'inline-flex items-center border-b-2 px-3 py-2 font-medium rounded-t transition-colors',
                   )}
                   aria-current={isCurrent(item.href) ? 'page' : undefined}

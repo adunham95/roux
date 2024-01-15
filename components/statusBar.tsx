@@ -12,7 +12,7 @@ export const StatusBar = (props: IProps) => {
   return (
     <div>
       <h4 className="sr-only">Status</h4>
-      {title && <p className="text-lg font-medium text-surface-1">{title}</p>}
+      {title && <p className="text-lg font-medium text-tc-1">{title}</p>}
       <div className="mt-6" aria-hidden="true">
         <div className="overflow-hidden rounded-full bg-surface">
           <div
@@ -20,7 +20,7 @@ export const StatusBar = (props: IProps) => {
             style={{ width: `${percentage}%` }}
           />
         </div>
-        <div className="mt-6 hidden grid-cols-4 text-sm font-medium text-surface-2 sm:flex justify-between">
+        <div className="mt-6 hidden grid-cols-4 text-sm font-medium text-tc-2 sm:flex justify-between">
           {labels.map((l, i, arr) => (
             <div
               key={l.title}

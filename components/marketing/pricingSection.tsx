@@ -34,7 +34,7 @@ const PricingSection = () => {
               value={option}
               className={({ checked }) =>
                 twMerge(
-                  checked ? 'bg-brand text-white' : 'text-surface-3',
+                  checked ? 'bg-brand text-white' : 'text-tc-3',
                   'cursor-pointer rounded-full px-2.5 py-1',
                 )
               }
@@ -50,34 +50,34 @@ const PricingSection = () => {
             <div key={tier.id} className="pt-16 lg:px-8 lg:pt-0 xl:px-14">
               <h3
                 id={tier.id}
-                className="text-base font-semibold leading-7 text-surface-1"
+                className="text-base font-semibold leading-7 text-tc-1"
               >
                 {tier.tierName}
               </h3>
               <p className="mt-6 flex items-baseline gap-x-1">
                 {tier[frequency.value as 'yearlyCost' | 'monthlyCost'] > 0 ? (
                   <>
-                    <span className="text-4xl font-bold tracking-tight text-surface-1">
+                    <span className="text-4xl font-bold tracking-tight text-tc-1">
                       {formatAsDollars(
                         tier[frequency.value as 'yearlyCost' | 'monthlyCost'],
                       )}
                     </span>
-                    <span className="text-sm font-semibold leading-6 text-surface-2">
+                    <span className="text-sm font-semibold leading-6 text-tc-2">
                       {frequency.priceSuffix}
                     </span>
                   </>
                 ) : (
-                  <span className="text-4xl font-bold tracking-tight text-surface-1">
+                  <span className="text-4xl font-bold tracking-tight text-tc-1">
                     Free
                   </span>
                 )}
               </p>
-              <p className="mt-10 text-sm font-semibold leading-6 text-surface-1">
+              <p className="mt-10 text-sm font-semibold leading-6 text-tc-1">
                 {tier.tierDescription}
               </p>
               <ul
                 role="list"
-                className="mt-6 space-y-3 text-sm leading-6 text-surface-2"
+                className="mt-6 space-y-3 text-sm leading-6 text-tc-2"
               >
                 <li className="flex gap-x-3">
                   <CheckCircleIcon

@@ -44,10 +44,10 @@ const Login = () => {
             alt="Kitchendry logo"
           />
         </Link>
-        <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-surface-1">
+        <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-tc-1">
           Sign in to your account
         </h2>
-        <p className="mt-2 text-sm leading-6 text-surface-2">
+        <p className="mt-2 text-sm leading-6 text-tc-2">
           Not a member?{' '}
           <Link
             href="/sign-up"
@@ -93,7 +93,7 @@ const Login = () => {
                 />
                 <label
                   htmlFor="remember-me"
-                  className="ml-3 block text-sm leading-6 text-surface-2"
+                  className="ml-3 block text-sm leading-6 text-tc-2"
                 >
                   Remember me
                 </label>

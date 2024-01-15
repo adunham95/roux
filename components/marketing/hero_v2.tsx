@@ -12,14 +12,14 @@ export const HeroV2 = (props: IProps) => {
         <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
           <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 className="text-4xl font-bold tracking-tight text-surface-1 sm:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tight text-tc-1 sm:text-6xl">
                 <span className="font-bold">Kitchendry</span>{' '}
               </h1>
-              <h2 className="text-2xl mt-6 text-surface-2 sm:text-3xl">
+              <h2 className="text-2xl mt-6 text-tc-2 sm:text-3xl">
                 [ <span className="font-bold">kich</span>-
                 <span className="italic">uh</span>n-dree ]
               </h2>
-              <p className="relative mt-6 text-lg leading-8 text-surface-2 sm:max-w-md lg:max-w-none">
+              <p className="relative mt-6 text-lg leading-8 text-tc-2 sm:max-w-md lg:max-w-none">
                 A term used to describe the art of enchanting one&apos;s skills
                 in the kitchen, where individuals enhance and refine their
                 culinary abilities. It involves developing expertise in cooking,

@@ -17,7 +17,7 @@ const CoverImageUpload = (props: ICoverImageUploadProps) => {
     >
       <div className="text-center">
         <svg
-          className="mx-auto h-12 w-12 text-surface-3"
+          className="mx-auto h-12 w-12 text-tc-3"
           viewBox="0 0 24 24"
           fill="currentColor"
           aria-hidden="true"
@@ -28,7 +28,7 @@ const CoverImageUpload = (props: ICoverImageUploadProps) => {
             clipRule="evenodd"
           />
         </svg>
-        <div className="mt-4 flex text-sm leading-6 text-surface-2">
+        <div className="mt-4 flex text-sm leading-6 text-tc-2">
           <label
             htmlFor={id || name}
             className="relative cursor-pointer rounded-md bg-transparent text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-dark focus-within:ring-offset-2 hover:text-primary-light"
@@ -38,9 +38,7 @@ const CoverImageUpload = (props: ICoverImageUploadProps) => {
           </label>
           <p className="pl-1">or drag and drop</p>
         </div>
-        <p className="text-xs leading-5 text-surface-2">
-          PNG, JPG, GIF up to 10MB
-        </p>
+        <p className="text-xs leading-5 text-tc-2">PNG, JPG, GIF up to 10MB</p>
       </div>
     </InputWrapper>
   );

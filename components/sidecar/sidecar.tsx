@@ -39,12 +39,12 @@ const Sidecar = (props: ISidecarProps) => {
       {(title || subTitle) && (
         <div className="p-2">
           {title && (
-            <h2 className="text-xl font-bold leading-7 tracking-tight text-surface-">
+            <h2 className="text-xl font-bold leading-7 tracking-tight text-tc1">
               {title}
             </h2>
           )}
           {subTitle && (
-            <p className="text-base leading-1 text-surface-2">{subTitle}</p>
+            <p className="text-base leading-1 text-tc-2">{subTitle}</p>
           )}
         </div>
       )}

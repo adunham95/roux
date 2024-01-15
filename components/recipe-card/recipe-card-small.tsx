@@ -29,7 +29,7 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
       style={full ? {} : { minWidth: minWidth, maxWidth: minWidth }}
       className={twMerge(`group relative w-full`, className)}
     >
-      <div className="relative aspect-square w-full bg-surface-4 lg:aspect-none group-hover:opacity-75">
+      <div className="relative aspect-square w-full bg-surface-4 rounded lg:aspect-none group-hover:opacity-75">
         {imgSrc && imgAlt ? (
           <Image
             src={imgSrc}
@@ -38,7 +38,7 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
             className="object-cover overflow-hidden rounded"
           />
         ) : (
-          <div className="object-cover overflow-hidden rounded bg-surface w-full h-full"></div>
+          <div className="object-cover overflow-hidden w-full h-full"></div>
         )}
         <div className="absolute top-0 flex justify-end w-full p-2">
           {/* <RecipeBadge className="bg-green-500" />
@@ -49,10 +49,10 @@ const RecipeCardSmall = (props: IRecipeCardSmallProps) => {
       </div>
       <div className="mt-4 flex justify-between">
         <div>
-          <h3 className="text-base text-surface-1">
+          <h3 className="text-base text-tc-1">
             <a href="#">{title}</a>
           </h3>
-          <p className="mt-1 text-sm text-surface-2">{category}</p>
+          <p className="mt-1 text-sm text-tc-2">{category}</p>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
   const { data: session } = useSession();
   return (
     <DefaultLayout>
-      <div className="bg-surface shadow-sm sticky top-0 md:hidden flex justify-between text-surface-1">
+      <div className="bg-surface shadow-sm sticky top-0 md:hidden flex justify-between text-tc-1">
         <div className="border-b border-gray-200 w-full">
           <nav
             className="-mb-px flex justify-center space-x-8"
@@ -35,7 +35,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
                 className={twMerge(
                   tab.current
                     ? 'border-brand-500 text-brand-500'
-                    : 'border-transparent text-surface-1 hover:border-surface-2 hover:test-surface-2',
+                    : 'border-transparent text-tc-1 hover:border-surface-2 hover:test-surface-2',
                   'whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium',
                 )}
                 aria-current={tab.current ? 'page' : undefined}
@@ -47,7 +47,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
         </div>
       </div>
       <Container className="grid grid-cols-1 md:grid-cols-3 gap-3 py-5 ">
-        <Card className="w-full items-center p-4 space-y-4 col-span-2 bg-surface text-surface-1">
+        <Card className="w-full items-center p-4 space-y-4 col-span-2 bg-surface text-tc-1">
           <div className="w-full h-56">
             <img
               alt="Finished dish"
@@ -88,9 +88,9 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
               )}
             </div>
           </div>
-          <p className=" text-surface-2">{recipe.description}</p>
+          <p className=" text-tc-2">{recipe.description}</p>
         </Card>
-        <Card className="w-full p-6 space-y-4 hidden md:block col-span-1 bg-surface text-surface-1">
+        <Card className="w-full p-6 space-y-4 hidden md:block col-span-1 bg-surface text-tc-1">
           <h3 className="text-xl font-bold">History</h3>
           <ActivityFeed
             backgroundColor="bg-surface"
@@ -114,10 +114,10 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
         </Card>
         <Card
           id="ingredients"
-          className="w-full p-6 space-y-4 col-span-2 md:col-span-1 bg-surface text-surface-1"
+          className="w-full p-6 space-y-4 col-span-2 md:col-span-1 bg-surface text-tc-1"
         >
           <h3 className="text-xl font-bold">Ingredients</h3>
-          <ul className="list-disc list-inside text-surface-2">
+          <ul className="list-disc list-inside text-tc-2">
             {recipe.ingredients.map((ing) => (
               <li key={ing.refId} className="">
                 <span>
@@ -133,10 +133,10 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
 
         <Card
           id="instructions"
-          className="w-full p-6 space-y-4 col-span-2 bg-surface text-surface-1"
+          className="w-full p-6 space-y-4 col-span-2 bg-surface text-tc-1"
         >
           <h3 className="text-xl font-bold">Instructions</h3>
-          <ul className="list-none list-inside text-surface-2">
+          <ul className="list-none list-inside text-tc-2">
             {recipe.instructions
               .sort((a, b) => a.order - b.order)
               .map((inst) => (
@@ -151,7 +151,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
         </Card>
         <Card
           id="history"
-          className="w-full p-6 space-y-4 block md:hidden col-span-2 bg-surface text-surface-1"
+          className="w-full p-6 space-y-4 block md:hidden col-span-2 bg-surface text-tc-1"
         >
           <h3 className="text-xl font-bold">History</h3>
           <ActivityFeed

@@ -34,10 +34,7 @@ const InputWrapper = (props: IInputWrapperProps) => {
       <LabelBar htmlFor={htmlFor || id || name} {...props} />
       <div className={twMerge('mt-2', inputWrapperClassName)}>{children}</div>
       {helperText && !hasError && (
-        <p
-          className="mt-2 text-sm text-surface-3"
-          id={`${name || id}-description`}
-        >
+        <p className="mt-2 text-sm text-tc-3" id={`${name || id}-description`}>
           {helperText}
         </p>
       )}

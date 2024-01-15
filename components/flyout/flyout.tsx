@@ -32,11 +32,11 @@ export default function Flyout({
                 key={item.name}
                 className="relative rounded-lg p-4 hover:bg-surface-4"
               >
-                <a href={item.href} className="font-semibold text-surface-1">
+                <a href={item.href} className="font-semibold text-tc-1">
                   {item.name}
                   <span className="absolute inset-0" />
                 </a>
-                <p className="mt-1 text-surface-2">{item.description}</p>
+                <p className="mt-1 text-tc-2">{item.description}</p>
               </div>
             ))} */}
             {children}

@@ -124,7 +124,7 @@ export const AdminLayout = (props: IProps) => {
                       >
                         <span className="sr-only">Close sidebar</span>
                         <XMarkIcon
-                          className="h-6 w-6 text-surface-5"
+                          className="h-6 w-6 text-tc-5"
                           aria-hidden="true"
                         />
                       </button>
@@ -149,16 +149,16 @@ export const AdminLayout = (props: IProps) => {
                                   href={item.href}
                                   className={twMerge(
                                     isCurrent(item.href)
-                                      ? 'bg-brand-700 text-surface-5'
-                                      : 'text-surface-4 hover:text-surface-5 hover:bg-brand-700',
+                                      ? 'bg-brand-700 text-tc-5'
+                                      : 'text-tc-4 hover:text-tc-5 hover:bg-brand-700',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                                   )}
                                 >
                                   <item.icon
                                     className={twMerge(
                                       isCurrent(item.href)
-                                        ? 'text-surface-5'
-                                        : 'text-brand-200 group-hover:text-surface-5',
+                                        ? 'text-tc-5'
+                                        : 'text-brand-200 group-hover:text-tc-5',
                                       'h-6 w-6 shrink-0',
                                     )}
                                     aria-hidden="true"
@@ -199,16 +199,16 @@ export const AdminLayout = (props: IProps) => {
                           href={item.href}
                           className={twMerge(
                             isCurrent(item.href)
-                              ? 'bg-brand-700 text-surface-5'
-                              : 'text-brand-200 hover:text-surface-5 hover:bg-brand-700',
+                              ? 'bg-brand-700 text-tc-5'
+                              : 'text-brand-200 hover:text-tc-5 hover:bg-brand-700',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                           )}
                         >
                           <item.icon
                             className={twMerge(
                               isCurrent(item.href)
-                                ? 'text-surface-5'
-                                : 'text-brand-200 group-hover:text-surface-5',
+                                ? 'text-tc-5'
+                                : 'text-brand-200 group-hover:text-tc-5',
                               'h-6 w-6 shrink-0',
                             )}
                             aria-hidden="true"
@@ -228,7 +228,7 @@ export const AdminLayout = (props: IProps) => {
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-surface-5 bg-surface px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button
               type="button"
-              className="-m-2.5 p-2.5 text-surface-2 lg:hidden"
+              className="-m-2.5 p-2.5 text-tc-2 lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>

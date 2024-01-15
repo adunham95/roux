@@ -65,10 +65,10 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                 <li key={instruction.id}>
                   <button
                     onClick={() => setStepNum(index)}
-                    className={`flex space-x-6 py-6 px-2 w-full rounded bg-opacity-50 p ${
+                    className={`flex space-x-6 py-6 px-2 w-full rounded bg-opacity-50 ${
                       index === stepNum
-                        ? 'border-brand-variable bg-brand-variable'
-                        : 'border-transparent'
+                        ? 'border-brand-variable bg-brand-variable hover:bg-brand-variable-alt'
+                        : 'border-transparent hover:bg-surface-2'
                     }`}
                   >
                     {/* <img
@@ -79,10 +79,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
                     <div className="h-20 w-20 flex-none rounded-md object-cover object-center bg-gray-400"></div>
                     <div className="flex flex-col justify-between space-y-4">
                       <div className="space-y-1 text-sm font-medium">
-                        {/* <h3 className="text-surface-1">{product.name}</h3> */}
-                        <p className="text-surface-2">
-                          {instruction.description}
-                        </p>
+                        <p className="text-tc-2">{instruction.description}</p>
                       </div>
                     </div>
                   </button>
@@ -97,10 +94,10 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         <div className="-mt-px flex w-0 flex-1">
           <button
             onClick={goToPrevStep}
-            className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-surface-2 hover:border-surface-3 hover:text-surface-3 rounded-b"
+            className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
           >
             <ArrowLongLeftIcon
-              className="mr-3 h-5 w-5 text-surface-2"
+              className="mr-3 h-5 w-5 text-tc-2"
               aria-hidden="true"
             />
             Previous
@@ -114,7 +111,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
               className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium  ${
                 index === stepNum
                   ? 'border-brand-variable text-brand-variable'
-                  : 'border-transparent text-surface-2 hover:text-surface-3 hover:border-surface-3'
+                  : 'border-transparent text-tc-2 hover:text-tc-3 hover:border-surface-3'
               }`}
             >
               {index + 1}
@@ -124,11 +121,11 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         <div className="-mt-px flex w-0 flex-1 justify-end">
           <button
             onClick={goToNextStep}
-            className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-surface-2 hover:border-surface-3 hover:text-surface-3 rounded-b"
+            className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
           >
             Next
             <ArrowLongRightIcon
-              className="ml-3 h-5 w-5 text-surface-2"
+              className="ml-3 h-5 w-5 text-tc-2"
               aria-hidden="true"
             />
           </button>

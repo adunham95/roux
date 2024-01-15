@@ -13,7 +13,7 @@ export default function SmallFooter({
             <a
               key={item.name}
               href={item.href}
-              className="text-surface-3 hover:text-brand"
+              className="text-tc-3 hover:text-brand"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -21,7 +21,7 @@ export default function SmallFooter({
           ))}
         </div>
         <div className="mt-4 md:order-1 md:mt-0">
-          <p className="text-center text-xs leading-5 text-surface-3">
+          <p className="text-center text-xs leading-5 text-tc-3">
             &copy;{legalText} <span>{version}</span>
           </p>
         </div>

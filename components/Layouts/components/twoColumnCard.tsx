@@ -40,11 +40,11 @@ export const TwoColumnCard = (props: IProps) => {
     >
       <div className="px-4 sm:px-0">
         <div className="sticky top-0">
-          <h2 className="text-base font-semibold leading-7 text-surface-1 ">
+          <h2 className="text-base font-semibold leading-7 text-tc-1 ">
             {title}
           </h2>
           {subTitle && (
-            <p className="mt-1 text-sm leading-6 text-surface-2">{subTitle}</p>
+            <p className="mt-1 text-sm leading-6 text-tc-2">{subTitle}</p>
           )}
           {titleSlot}
         </div>

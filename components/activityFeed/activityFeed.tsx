@@ -106,7 +106,7 @@ export const ActivityFeed = (props: IProps) => {
               <div className="flex-auto rounded-md self-end">
                 <details className="flex justify-between  items-center">
                   <summary className="flex justify-between gap-x-4 cursor-pointer">
-                    <div className="py-0.5 text-xs leading-5 text-surface-3">
+                    <div className="py-0.5 text-xs leading-5 text-tc-3">
                       <span className="font-medium ">
                         {activityItem.person.firstName}
                       </span>{' '}
@@ -114,12 +114,12 @@ export const ActivityFeed = (props: IProps) => {
                     </div>
                     <time
                       dateTime={activityItem.dateTime.toString()}
-                      className="flex-none py-0.5 text-xs leading-5 text-surface-3"
+                      className="flex-none py-0.5 text-xs leading-5 text-tc-3"
                     >
                       {dayjs(activityItem.dateTime).from(new Date())}
                     </time>
                   </summary>
-                  <p className="text-sm leading-6 text-surface-1">
+                  <p className="text-sm leading-6 text-tc-1">
                     Epcot is a theme park at Walt Disney World Resort featuring
                     exciting attractions, international pavilions, award-winning
                     fireworks and seasonal special events.
@@ -134,7 +134,7 @@ export const ActivityFeed = (props: IProps) => {
               >
                 <div className="h-1.5 w-1.5 rounded-full bg-brand-variable ring-1 ring-surface-4" />
               </div>
-              <p className="flex-auto py-0.5 text-xs leading-5 text-surface-3">
+              <p className="flex-auto py-0.5 text-xs leading-5 text-tc-3">
                 <span className="font-medium">
                   {activityItem.person.firstName}
                 </span>{' '}
@@ -142,7 +142,7 @@ export const ActivityFeed = (props: IProps) => {
               </p>
               <time
                 dateTime={activityItem.dateTime.toString()}
-                className="flex-none py-0.5 text-xs leading-5 text-surface-3"
+                className="flex-none py-0.5 text-xs leading-5 text-tc-3"
               >
                 {dayjs(activityItem.dateTime).from(new Date())}
               </time>

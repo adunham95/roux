@@ -19,7 +19,7 @@ const SidecarInstructionList = (props: IInstructionListProps) => {
           >
             <div className="min-w-0">
               <div className="flex items-start gap-x-3">
-                <p className="text-sm font-semibold leading-6 text-surface-1">
+                <p className="text-sm font-semibold leading-6 text-tc-1">
                   {inst.order + 1}: {inst.description}
                 </p>
               </div>

@@ -12,7 +12,7 @@ const Tiers = () => {
     <AdminLayout pageName="Membership Tiers">
       <div className="md:flex md:items-center md:justify-between">
         <div className="min-w-0 flex-1">
-          <h2 className="text-2xl font-bold leading-7 text-surface-1 sm:truncate sm:text-3xl sm:tracking-tight">
+          <h2 className="text-2xl font-bold leading-7 text-tc-1 sm:truncate sm:text-3xl sm:tracking-tight">
             Back End Developer
           </h2>
         </div>
@@ -28,7 +28,7 @@ const Tiers = () => {
           >
             <div className="min-w-0">
               <div className="flex items-start gap-x-3">
-                <p className="text-sm font-semibold leading-6 text-surface-1">
+                <p className="text-sm font-semibold leading-6 text-tc-1">
                   {tier.tierName}
                 </p>
                 <p
@@ -42,7 +42,7 @@ const Tiers = () => {
                   Visible
                 </p>
               </div>
-              <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-surface-2">
+              <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-tc-2">
                 <p className="whitespace-nowrap">
                   Team Size {tier.maxTeamSize}
                 </p>
@@ -55,7 +55,7 @@ const Tiers = () => {
             <div className="flex flex-none items-center gap-x-4">
               <Link
                 href={`/console/tiers/${tier.id}`}
-                className="rounded-md bg-surface px-2.5 py-1.5 text-sm font-semibold text-surface-1 shadow-sm ring-1 ring-inset ring-surface-3 hover:bg-surface-5 sm:block"
+                className="rounded-md bg-surface px-2.5 py-1.5 text-sm font-semibold text-tc-1 shadow-sm ring-1 ring-inset ring-surface-3 hover:bg-surface-5 sm:block"
               >
                 Edit Tier<span className="sr-only">, {tier.tierName}</span>
               </Link>

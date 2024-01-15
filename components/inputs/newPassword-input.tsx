@@ -62,7 +62,7 @@ const NewPasswordInput = (props: ITextInputProps) => {
         autoComplete={autoComplete}
         disabled={disabled}
         className={twMerge(
-          'block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-surface-5 bg-surface placeholder:text-surface-3 text-surface-1 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6',
+          'block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-surface-5 bg-surface placeholder:text-tc-3 text-tc-1 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6',
           hasError &&
             'ring-error/10 placeholder:text-error/50 focus:ring-error',
           inputClassName,
@@ -71,7 +71,7 @@ const NewPasswordInput = (props: ITextInputProps) => {
         aria-describedby={ariaDescription || name || id}
         onChange={(e) => onChange(e.target.value, name || id, e)}
       />
-      <div className="grid grid-cols-2 text-sm gap-x-1 gap-y-1 text-surface-2 pt-1">
+      <div className="grid grid-cols-2 text-sm gap-x-1 gap-y-1 text-tc-2 pt-1">
         {uppercaseRequired && (
           <div className="flex items-center">
             <span className="pr-1">Uppercase Letters:</span>

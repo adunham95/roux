@@ -76,7 +76,7 @@ const AccountNav = (props: IProps) => {
                       href={item.href}
                       className={twMerge(
                         active ? 'bg-surface-1' : '',
-                        'block px-4 py-2 text-sm text-tc-3',
+                        'block px-4 py-2 text-sm text-tc-3 hover:bg-surface-2 hover:text-tc-2',
                       )}
                     >
                       {item.name}
@@ -87,7 +87,7 @@ const AccountNav = (props: IProps) => {
               <Menu.Item>
                 <button
                   onClick={() => signOut()}
-                  className="block px-4 py-2 text-sm text-tc-3 hover:bg-surface-5 w-full text-left"
+                  className="block px-4 py-2 text-sm text-tc-3 hover:bg-surface-2 hover:text-tc-2 w-full text-left"
                 >
                   Sign Out
                 </button>
