@@ -14,6 +14,7 @@ const AccountNav = dynamic(() => import('./nav/accountNav'), {
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'New Recipe', href: '/recipe/new' },
+  { name: 'Find Recipe', href: '/search' },
 ];
 
 function classNames(...classes: string[]) {

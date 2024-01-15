@@ -4,7 +4,6 @@ import { DashboardCard } from '@/components/dashboardCard';
 import { HeroSection } from '@/components/section/heroSection';
 import { Section } from '@/components/section/section';
 import { TabbedSection } from '@/components/section/tabbedSection';
-import { StatBar } from '@/components/statbar/statbar';
 import { UpSellBanner } from '@/components/upsell-banner/upsellBanner';
 
 const options = [
@@ -76,18 +75,21 @@ function Home() {
             ctaHref="/settings/my-profile#membership"
           />
         </div>
-        <DashboardCard title="Chef Stats">
-          <StatBar
-            stats={[
-              { id: 'recipes', name: 'Recipes', stat: '1' },
-              { id: 'remix', name: 'Remixes', stat: '10' },
-              { id: 'meals', name: 'Meals Planned', stat: '1000' },
-            ]}
-          />
+        <DashboardCard
+          title="Get Cooking"
+          description="Find a recipe and get cooking"
+        >
+          <h1></h1>
         </DashboardCard>
         <DashboardCard
           title="Featured"
           description="Recipes hand picked by our food team"
+        >
+          <Section options={options} />
+        </DashboardCard>
+        <DashboardCard
+          title="Latest"
+          description="Latest recipes from kitchens you follow"
         >
           <Section options={options} />
         </DashboardCard>
