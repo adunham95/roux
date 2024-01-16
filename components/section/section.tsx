@@ -1,6 +1,6 @@
 import React from 'react';
-import RecipeCardSmall from '../recipe-card/recipe-card-small';
 import { twMerge } from 'tailwind-merge';
+import CardSmall from '../ui/cardSmall';
 
 interface IProps {
   className?: string;
@@ -10,8 +10,9 @@ interface IProps {
     onClick?: () => void;
   };
   options: {
+    onClick?: () => void;
     key: string;
-    imgSrc: string;
+    imgSrc?: string;
     imgAlt?: string;
     title: string;
     category: string;
@@ -28,27 +29,19 @@ export const Section = (props: IProps) => {
       )}
     >
       {preCard && (
-        <button className="min-w-[150px] flex flex-col justify-start w-full">
-          <div className="relative aspect-square w-full bg-brand-300 rounded lg:aspect-none group-hover:opacity-75">
-            <div className="object-cover overflow-hidden w-full h-full"></div>
-          </div>
-          <div className="mt-4 flex justify-between">
-            <div>
-              <h3 className="text-base text-tc-1">
-                <a href="#">{preCard.title}</a>
-              </h3>
-              {/* <p className="mt-1 text-sm text-tc-2">{category}</p> */}
-            </div>
-          </div>
-        </button>
+        <CardSmall
+          title={preCard.title}
+          imgBackground="bg-brand-300"
+          onClick={preCard.onClick}
+        />
       )}
       {options.map((opt) => (
-        <RecipeCardSmall
+        <CardSmall
           key={opt.key}
           imgSrc={opt.imgSrc}
           imgAlt={opt.imgAlt || opt.title}
           title={opt.title}
-          category={opt.category}
+          subTitle={opt.category}
         />
       ))}
     </section>
