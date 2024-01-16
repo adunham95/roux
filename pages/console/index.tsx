@@ -6,9 +6,9 @@ import {
   UsersIcon,
   UserGroupIcon,
   ChartBarIcon,
-  CircleStackIcon,
   FolderIcon,
   Squares2X2Icon,
+  DocumentIcon,
 } from '@heroicons/react/24/outline';
 
 const items = [
@@ -34,11 +34,11 @@ const items = [
     href: '/console/users',
   },
   {
-    title: 'Collections',
+    title: 'Content',
     description: 'Edit featured recipes and other content',
-    icon: CircleStackIcon,
+    icon: DocumentIcon,
     color: '#C93C20',
-    href: '/console/collections',
+    href: '/console/content',
   },
   {
     title: 'Membership Tiers',

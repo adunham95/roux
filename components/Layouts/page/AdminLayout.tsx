@@ -8,10 +8,10 @@ import {
   UsersIcon,
   UserGroupIcon,
   ChartBarIcon,
-  CircleStackIcon,
   FolderIcon,
   Squares2X2Icon,
   ArrowLeftOnRectangleIcon,
+  DocumentIcon,
 } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
 import { AppHead } from '@/components/appHead';
@@ -42,9 +42,9 @@ const navigation = [
     icon: UserCircleIcon,
   },
   {
-    name: 'Collections',
-    href: '/console/collections',
-    icon: CircleStackIcon,
+    name: 'Content',
+    href: '/console/content',
+    icon: DocumentIcon,
   },
   {
     name: 'Membership Tiers',
