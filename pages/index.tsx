@@ -30,7 +30,7 @@ const Index = () => {
             {
               id: 'customize',
               emoji: '👩‍🍳',
-              title: 'Cooking Mode(Coming Soon)',
+              title: 'Cooking Mode',
               description:
                 'Let our cooking mode lead you through each recipe step, ensuring perfection with every dish.',
             },
