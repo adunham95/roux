@@ -1,6 +1,7 @@
 import MarketingLayout from '@/components/Layouts/page/MarketingLayout';
 import { Container } from '@/components/container';
 import React from 'react';
+import { Avatar } from '@ark-ui/react';
 
 const About = () => {
   return (
@@ -13,7 +14,7 @@ const About = () => {
                 alt="Hero"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
                 height="310"
-                src="/placeholder.svg"
+                src="/images/family-cooking.jpg"
                 width="550"
               />
               <div className="flex flex-col justify-center space-y-4">
@@ -22,8 +23,7 @@ const About = () => {
                     About Kitchendry
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                    We provide high-quality services to help you achieve your
-                    goals.
+                    Empowering Culinary Excellence
                   </p>
                 </div>
               </div>
@@ -38,11 +38,11 @@ const About = () => {
                   Our Values
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-                  Innovation. Collaboration. Diversity.
+                  Innovation. Collaboration. .
                 </h2>
                 <p className="max-w-[900px] text-tc-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  We embrace these values to deliver exceptional results for our
-                  clients.
+                  Our mission is to revolutionize the culinary landscape through
+                  cutting-edge SaaS kitchen solutions.
                 </p>
               </div>
             </div>
@@ -51,7 +51,7 @@ const About = () => {
                 alt="Image"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                 height="310"
-                src="/placeholder.svg"
+                src="/images/food-truck.jpg"
                 width="550"
               />
               <div className="flex flex-col justify-center space-y-4">
@@ -60,8 +60,8 @@ const About = () => {
                     Our Mission
                   </h2>
                   <p className="max-w-[600px] text-tc-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
-                    To provide innovative solutions that help our clients
-                    achieve their goals.
+                    Our mission is to revolutionize the culinary landscape
+                    through cutting-edge the ability to innovate.
                   </p>
                 </div>
               </div>
@@ -85,20 +85,19 @@ const About = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-2">
                     <div className="flex items-center gap-2">
-                      <img
-                        alt="Avatar"
-                        className="rounded-full"
-                        height="40"
-                        src="/placeholder.svg"
-                        style={{
-                          aspectRatio: '40/40',
-                          objectFit: 'cover',
-                        }}
-                        width="40"
-                      />
+                      <Avatar.Root>
+                        <Avatar.Fallback className="rounded-full bg-brand-500 flex justify-center items-center">
+                          AD
+                        </Avatar.Fallback>
+                        <Avatar.Image
+                          src=""
+                          alt="avatar"
+                          className="rounded-full aspect-square object-cover w-10"
+                        />
+                      </Avatar.Root>
                       <div>
-                        <div className="font-medium">John Doe</div>
-                        <div className="text-sm text-tc-2">CEO</div>
+                        <div className="font-medium">Adrian Dunham</div>
+                        <div className="text-sm text-tc-2">Founder</div>
                       </div>
                     </div>
                     <p className="text-sm text-tc-2">
@@ -108,17 +107,16 @@ const About = () => {
                   </div>
                   <div className="flex flex-col space-y-2">
                     <div className="flex items-center gap-2">
-                      <img
-                        alt="Avatar"
-                        className="rounded-full"
-                        height="40"
-                        src="/placeholder.svg"
-                        style={{
-                          aspectRatio: '40/40',
-                          objectFit: 'cover',
-                        }}
-                        width="40"
-                      />
+                      <Avatar.Root>
+                        <Avatar.Fallback className="rounded-full bg-brand-500 flex justify-center items-center">
+                          AD
+                        </Avatar.Fallback>
+                        <Avatar.Image
+                          src=""
+                          alt="avatar"
+                          className="rounded-full aspect-square object-cover w-10"
+                        />
+                      </Avatar.Root>
                       <div>
                         <div className="font-medium">Jane Smith</div>
                         <div className="text-sm text-tc-2">CFO</div>
@@ -131,56 +129,12 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-start space-y-4">
-                <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm ">
-                  Our History
-                </div>
-                <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                  Our journey from startup to success.
-                </h2>
-                <p className="mx-auto max-w-[700px] text-tc-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Acme Inc was founded in 2010 with a vision to provide
-                  innovative solutions to our clients.
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col space-y-2">
-                    <div className="font-medium">2010</div>
-                    <p className="text-sm text-tc-2">
-                      Founded in Silicon Valley.
-                    </p>
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <div className="font-medium">2015</div>
-                    <p className="text-sm text-tc-2">
-                      Launched our first product.
-                    </p>
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <div className="font-medium">2020</div>
-                    <p className="text-sm text-tc-2">
-                      Opened our first international office.
-                    </p>
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <div className="font-medium">2021</div>
-                    <p className="text-sm text-tc-2">
-                      Received Series A funding.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 border-t">
-          <Container className="container px-4 md:px-6">
-            <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
               <div className="space-y-4">
                 <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm">
                   Our Culture
                 </div>
                 <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                  We value diversity and inclusion.
+                  We value collaboration and inclusion.
                 </h2>
                 <p className="mx-auto max-w-[900px] text-tc-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   We are committed to creating a diverse and inclusive workplace
@@ -207,7 +161,7 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-start space-y-4">
+              {/* <div className="flex flex-col items-start space-y-4">
                 <div className="inline-block rounded-lg bg-brand-500 px-3 py-1 text-sm">
                   Testimonials
                 </div>
@@ -219,7 +173,7 @@ const About = () => {
                   <div className="font-semibold">Jules Winnfield</div>
                   <div className="text-sm text-tc-2">CEO, Acme Inc</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </Container>
         </section>
