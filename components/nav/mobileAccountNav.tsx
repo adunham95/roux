@@ -7,7 +7,7 @@ import { Button } from '../buttons/button';
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Your Profile', href: '/settings/my-profile' },
-  { name: 'My Recipes', href: '/my-recipes' },
+  { name: 'My Recipes', href: '/kitchen' },
 ];
 
 interface IMobileAccountNavProps {}
@@ -44,7 +44,6 @@ const MobileAccountNav = (props: IMobileAccountNavProps) => {
           {userNavigation.map((item) => (
             <Link
               key={item.name}
-              as="a"
               href={item.href}
               className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-tc-3 hover:bg-surface-5"
             >

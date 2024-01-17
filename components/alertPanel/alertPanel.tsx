@@ -60,7 +60,7 @@ export const AlertPanel = (props: IProps) => {
   }
 
   return (
-    <div className={twMerge('rounded-md p-4', getStyle())}>
+    <div className={twMerge('rounded-md p-4 my-1', getStyle())}>
       <div className="flex">
         <div className="flex-shrink-0">{getIcon()}</div>
         <div className="ml-3">

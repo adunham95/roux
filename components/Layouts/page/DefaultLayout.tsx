@@ -4,6 +4,7 @@ import NavBar from '../../navbar';
 import Image from 'next/image';
 import SmallFooter from '@/components/footer/smallFooter';
 import { IBreadcrumbs } from '@/components/breadcrumbs/breadcrumbs';
+import { twMerge } from 'tailwind-merge';
 
 export interface IDefaultLayoutProps {
   pageName?: string;
@@ -16,6 +17,11 @@ export interface IDefaultLayoutProps {
   crumbs?: IBreadcrumbs[];
   crumbsSlot?: React.ReactNode;
   removeFootingMargin?: boolean;
+  hero?: {
+    img: string;
+    title?: string;
+    imgClassName?: string;
+  };
 }
 
 export const DefaultLayout = (props: IDefaultLayoutProps) => {
@@ -38,6 +44,27 @@ export const DefaultLayout = (props: IDefaultLayoutProps) => {
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                 {props.heroTitle}
+              </h2>
+            </div>
+          )}
+        </div>
+      )}
+      {props.hero && (
+        <div className="relative mb-5 isolate overflow-hidden bg-surface-1 px-6 py-24 sm:py-32 lg:px-8">
+          <Image
+            src={props.hero.img}
+            alt="Hero Image"
+            fill
+            className={twMerge(
+              'absolute inset-0 -z-10 h-full w-full object-cover object-top',
+              props.hero.imgClassName,
+            )}
+          />
+          <div className="absolute inset-0 -z-10 h-full w-full object-cover object-top bg-surface-3 opacity-70"></div>
+          {props.hero.title && (
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                {props.hero.title}
               </h2>
             </div>
           )}

@@ -11,7 +11,7 @@ import { signOut, useSession } from 'next-auth/react';
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Your Profile', href: '/settings/my-profile' },
-  { name: 'My Recipes', href: '/my-recipes' },
+  { name: 'My Recipes', href: '/kitchen' },
 ];
 
 interface IProps {}
