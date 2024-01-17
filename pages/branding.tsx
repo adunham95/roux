@@ -1,4 +1,5 @@
 import MarketingLayout from '@/components/Layouts/page/MarketingLayout';
+import Heading from '@/components/text/heading';
 import React from 'react';
 
 const colors = [
@@ -340,9 +341,12 @@ const Branding = () => {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="space-y-4 text-center  pb-6">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl/none">
+            <Heading
+              variant="h1"
+              className="text-4xl font-bold font-heading tracking-tighter sm:text-5xl md:text-6xl/none"
+            >
               Branding Guidelines
-            </h1>
+            </Heading>
             <p className="mx-auto max-w-[700px] text-tc-2 md:text-xl ">
               Our visual identity is a critical part of our brand. It represents
               our mission, values, and the quality of our services.
@@ -353,9 +357,9 @@ const Branding = () => {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-surface">
         <div className="container mx-auto px-4 md:px-6">
           <div className="space-y-4 text-center  pb-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <Heading className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Logo Usage
-            </h2>
+            </Heading>
             <p className="mx-auto max-w-[700px] text-tc-2 md:text-xl ">
               Our logo is a symbol of our brand and should be used thoughtfully
               and consistently.
@@ -433,9 +437,9 @@ const Branding = () => {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container max-xl: mx-auto px-4 md:px-6">
           <div className="space-y-4 text-center  pb-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <Heading className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Color Palette
-            </h2>
+            </Heading>
             <p className="mx-auto max-w-[700px] text-tc-2 md:text-xl ">
               Our color palette reflects our brand personality and should be
               used consistently across all visual elements.
@@ -466,7 +470,9 @@ const Branding = () => {
             }[];
             return (
               <div key={key} className="max-w-[1000px] mx-auto">
-                <h2 className="text-3xl font-bold mb-4 capitalize">{key}</h2>
+                <Heading className="text-3xl font-bold mb-4 capitalize">
+                  {key}
+                </Heading>
                 <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-8 ">
                   {colors.map((color) => (
                     <div key={`${key}-${color.id}`}>
@@ -485,9 +491,9 @@ const Branding = () => {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-surface">
         <div className="container mx-auto px-4 md:px-6">
           <div className="space-y-4 text-center pb-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <Heading className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Typography
-            </h2>
+            </Heading>
             <p className="mx-auto max-w-[700px] text-tc-2 md:text-xl ">
               Our typography is a key part of our visual identity and helps to
               create a consistent look and feel.
