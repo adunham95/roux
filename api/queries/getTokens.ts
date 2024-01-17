@@ -1,10 +1,10 @@
-import { gql } from "graphql-request";
-import { getClient } from "./../client";
-import { useQuery } from "@tanstack/react-query";
+import { gql } from 'graphql-request';
+import { getClient } from '../client';
+import { useQuery } from '@tanstack/react-query';
 
 export const useGetBetaTokens = () => {
   return useQuery({
-    queryKey: ["beta-tokens"],
+    queryKey: ['beta-tokens'],
     queryFn: () => getBetaTokens(),
   });
 };
