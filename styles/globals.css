@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
 @layer base {
+
+    html {
+        font-family:  "Open Sans", ui-sans-serif, system-ui, sans-serif;
+    }
+
     :root {
         --brand-primary: 100 157 173;
         --brand-primary-alt: 62 107 124;

@@ -495,16 +495,23 @@ const Branding = () => {
           </div>
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
             <div className="flex flex-col items-center space-y-4">
-              <h3 className="text-3xl font-bold">Roboto</h3>
+              <h3 className="text-3xl font-bold font-heading">
+                Libre Baskerville
+              </h3>
               <p className="text-center text-tc-2">
-                This is our primary font and should be used for all headings and
-                body text.
+                This is our primary font and should be used for all headings.
               </p>
             </div>
             <div className="flex flex-col items-center space-y-4">
               <h3 className="text-3xl font-bold">Open Sans</h3>
               <p className="text-center text-tc-2">
-                This is our secondary font and should be used for captions and
+                This is our secondary font and should be used body text.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-4">
+              <h3 className="text-3xl font-bold font-accent">Roboto</h3>
+              <p className="text-center text-tc-2">
+                This is our accent font and should be used for captions and
                 small text.
               </p>
             </div>
