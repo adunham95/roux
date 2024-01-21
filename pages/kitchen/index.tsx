@@ -1,7 +1,9 @@
 import { useGetMyRecipes } from '@/api/queries/getMyRecipes';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { AlertPanel } from '@/components/alertPanel/alertPanel';
+import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
+import TextInput from '@/components/inputs/text-input';
 import { Loader } from '@/components/loader/loader';
 import CardSmall from '@/components/ui/cardSmall';
 import { IRecipe } from '@/types/recipe';
@@ -9,6 +11,8 @@ import {
   UserGroupIcon,
   TrophyIcon,
   ArrowUpRightIcon,
+  UserCircleIcon,
+  PlusCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
@@ -17,6 +21,15 @@ import { twMerge } from 'tailwind-merge';
 const people = [
   {
     name: 'Jane Cooper',
+    title: 'Paradigm Representative',
+    role: 'Admin',
+    email: 'janecooper@example.com',
+    telephone: '+1-202-555-0170',
+    imageUrl:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+  {
+    name: 'Jame Cooper',
     title: 'Paradigm Representative',
     role: 'Admin',
     email: 'janecooper@example.com',
@@ -205,30 +218,47 @@ const Kitchen = () => {
         <h2 className="text-2xl font-bold leading-7 text-tc-1 pb-3 sm:truncate sm:text-3xl sm:tracking-tight">
           Kitchen Team
         </h2>
-        <ul
-          role="list"
-          className="grid gap-6 grid-template-auto grid-template-4"
-        >
+
+        <ul role="list" className="divide-y divide-tc-1">
           {people.map((person) => (
             <li
               key={person.email}
-              className="col-span-1 flex flex-col divide-y divide-surface-5 rounded-lg bg-surface text-center shadow"
+              className="flex justify-between gap-x-6 py-5"
             >
-              <div className="flex flex-1 flex-col p-8">
-                <img
-                  className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
+              <div className="flex min-w-0 gap-x-4">
+                {/* <img
+                  className=" bg-surface-1"
                   src={person.imageUrl}
                   alt=""
-                />
-                <h3 className="mt-6 text-sm font-medium text-tc-1">
-                  {person.name}
-                </h3>
+                /> */}
+                <UserCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
+                <div className="min-w-0 flex-auto">
+                  <p className="text-sm font-semibold leading-6 text-tc-1">
+                    {person.name}
+                  </p>
+                  <p className="mt-1 truncate text-xs leading-5 text-tc-2">
+                    {person.email}
+                  </p>
+                </div>
               </div>
             </li>
           ))}
-          {[...new Array(5)].map((_, i) => (
-            <li key={`placeholder-${i}`}></li>
-          ))}
+          <li className="flex justify-between gap-x-6 py-5">
+            <div className="flex min-w-0 gap-x-4">
+              <PlusCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
+            </div>
+            <div className="flex min-w-0 flex-auto items-center">
+              <TextInput
+                inputWrapperClassName="mt-0 w-full"
+                className="w-full flex items-center"
+                id="addEmail"
+                value={''}
+                placeholder="steve@email.com"
+                onChange={() => {}}
+              />
+              <Button className="ml-2">Add</Button>
+            </div>
+          </li>
         </ul>
       </Container>
       <Container id="badges" className="pb-5">

@@ -7,7 +7,7 @@ import { Button } from '../buttons/button';
 const userNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Your Profile', href: '/settings/my-profile' },
-  { name: 'My Recipes', href: '/kitchen' },
+  { name: 'My Kitchen', href: '/kitchen' },
 ];
 
 interface IMobileAccountNavProps {}
