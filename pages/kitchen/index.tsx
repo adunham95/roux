@@ -1,8 +1,10 @@
 import { useGetMyRecipes } from '@/api/queries/getMyRecipes';
+import { TwoColumnCard } from '@/components/Layouts/components/twoColumnCard';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { AlertPanel } from '@/components/alertPanel/alertPanel';
 import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
+import EditKitchen from '@/components/forms/editKitchen';
 import TextInput from '@/components/inputs/text-input';
 import { Loader } from '@/components/loader/loader';
 import CardSmall from '@/components/ui/cardSmall';
@@ -10,13 +12,11 @@ import { IRecipe } from '@/types/recipe';
 import {
   UserGroupIcon,
   TrophyIcon,
-  ArrowUpRightIcon,
   UserCircleIcon,
   PlusCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
-import { twMerge } from 'tailwind-merge';
 
 const people = [
   {
@@ -44,8 +44,7 @@ const badges = [
   {
     id: '123',
     name: 'Culinary Creater',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     color: '#FF2301',
     icon: (
       <svg
@@ -68,7 +67,7 @@ const badges = [
     id: '126',
     name: 'Culinary Creater',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
     color: '#DC9D00',
     icon: (
       <svg
@@ -90,8 +89,7 @@ const badges = [
   {
     id: '124',
     name: 'Culinary Creater',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed',
     color: '#6F4F28',
     icon: (
       <svg
@@ -118,8 +116,7 @@ const badges = [
   {
     id: '125',
     name: 'Culinary Creater',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     color: '#EA899A',
     icon: (
       <svg
@@ -184,98 +181,96 @@ const Kitchen = () => {
           </a>
         </div>
       </Container>
-      <Container className="py-5">
-        <h2 className="text-2xl font-bold leading-7 text-tc-1 pb-3 sm:truncate sm:text-3xl sm:tracking-tight">
-          Recipes
-        </h2>
-        {isLoading && <Loader />}
-        {isError && (
-          <AlertPanel
-            style="danger"
-            title="Error"
-            subTitle="An unexpected error occurred while fetching your recipes. Please try again later."
-          />
-        )}
-        {data.length > 0 && (
-          <ul
-            role="list"
-            className="grid gap-6 grid-template-auto grid-template-3"
+      <Container className="py-4">
+        <div className="space-y-10 gap-y-1 divide-y divide-surface-1/10">
+          <TwoColumnCard
+            title="Recipes"
+            subTitle="Update Your personal account information"
+            childrenClassName="block"
           >
-            {data.map((recipe: IRecipe) => (
-              <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
-                <CardSmall title={recipe.name} full />
-              </Link>
-            ))}
-            {[...new Array(7)].map((_, i) => (
-              <div key={`placeholder-${i}`}></div>
-            ))}
-          </ul>
-        )}
-        {/* TODO Add placeholder */}
-        {data.length === 0 && !isLoading && <p>No Recipes</p>}
-      </Container>
-      <Container id="team" className="pb-5">
-        <h2 className="text-2xl font-bold leading-7 text-tc-1 pb-3 sm:truncate sm:text-3xl sm:tracking-tight">
-          Kitchen Team
-        </h2>
-
-        <ul role="list" className="divide-y divide-tc-1">
-          {people.map((person) => (
-            <li
-              key={person.email}
-              className="flex justify-between gap-x-6 py-5"
-            >
-              <div className="flex min-w-0 gap-x-4">
-                {/* <img
+            {isLoading && <Loader />}
+            {isError && (
+              <AlertPanel
+                style="danger"
+                title="Error"
+                subTitle="An unexpected error occurred while fetching your recipes. Please try again later."
+                className="mb-1"
+              />
+            )}
+            {data.length > 0 && (
+              <>
+                <ul
+                  role="list"
+                  className="grid gap-6 grid-template-auto grid-template-3"
+                >
+                  {data.map((recipe: IRecipe) => (
+                    <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
+                      <CardSmall title={recipe.name} full />
+                    </Link>
+                  ))}
+                  {[...new Array(7)].map((_, i) => (
+                    <div key={`placeholder-${i}`}></div>
+                  ))}
+                </ul>
+              </>
+            )}
+            {/* TODO Add placeholder */}
+            {data.length === 0 && !isLoading && <p>No Recipes</p>}
+          </TwoColumnCard>
+          <TwoColumnCard
+            title="Kitchen team"
+            subTitle="Update Your personal account information"
+            childrenClassName="block"
+          >
+            <ul role="list" className="divide-y divide-tc-1">
+              {people.map((person) => (
+                <li
+                  key={person.email}
+                  className="flex justify-between gap-x-6 py-5"
+                >
+                  <div className="flex min-w-0 gap-x-4">
+                    {/* <img
                   className=" bg-surface-1"
                   src={person.imageUrl}
                   alt=""
                 /> */}
-                <UserCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
-                <div className="min-w-0 flex-auto">
-                  <p className="text-sm font-semibold leading-6 text-tc-1">
-                    {person.name}
-                  </p>
-                  <p className="mt-1 truncate text-xs leading-5 text-tc-2">
-                    {person.email}
-                  </p>
+                    <UserCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
+                    <div className="min-w-0 flex-auto">
+                      <p className="text-sm font-semibold leading-6 text-tc-1">
+                        {person.name}
+                      </p>
+                      <p className="mt-1 truncate text-xs leading-5 text-tc-2">
+                        {person.email}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+              <li className="flex justify-between gap-x-6 py-5">
+                <div className="flex min-w-0 gap-x-4">
+                  <PlusCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
                 </div>
-              </div>
-            </li>
-          ))}
-          <li className="flex justify-between gap-x-6 py-5">
-            <div className="flex min-w-0 gap-x-4">
-              <PlusCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
-            </div>
-            <div className="flex min-w-0 flex-auto items-center">
-              <TextInput
-                inputWrapperClassName="mt-0 w-full"
-                className="w-full flex items-center"
-                id="addEmail"
-                value={''}
-                placeholder="steve@email.com"
-                onChange={() => {}}
-              />
-              <Button className="ml-2">Add</Button>
-            </div>
-          </li>
-        </ul>
-      </Container>
-      <Container id="badges" className="pb-5">
-        <h2 className="text-2xl font-bold leading-7 text-tc-1 pb-3 sm:truncate sm:text-3xl sm:tracking-tight">
-          Badges
-        </h2>
-        <div className="mx-auto flow-root lg:mx-0 lg:max-w-none">
-          <div className="grid md:grid-cols-2">
-            {badges.map((badge, idx) => (
-              <div
-                key={badge.id}
-                className={twMerge(
-                  'pt-8 sm:inline-block sm:w-full sm:px-4',
-                  idx === 0 && 'col-span-2',
-                )}
-              >
-                <div className="rounded-2xl bg-surface p-8 text-sm leading-6 flex">
+                <div className="flex min-w-0 flex-auto items-center">
+                  <TextInput
+                    inputWrapperClassName="mt-0 w-full"
+                    className="w-full flex items-center"
+                    id="addEmail"
+                    value={''}
+                    placeholder="steve@email.com"
+                    onChange={() => {}}
+                  />
+                  <Button className="ml-2">Add</Button>
+                </div>
+              </li>
+            </ul>
+          </TwoColumnCard>
+          <TwoColumnCard title="Badges" childrenClassName="block">
+            <div className="mx-auto flow-root lg:mx-0 lg:max-w-none">
+              {badges.map((badge, idx) => (
+                <li
+                  key={`${badge.id}-${idx}`}
+                  className="flex items-center justify-start gap-x-6 py-5 group"
+                >
                   <div>
                     <div
                       className=" aspect-square bg-brand-600 rounded p-2"
@@ -284,18 +279,28 @@ const Kitchen = () => {
                       {badge.icon}
                     </div>
                   </div>
-                  <div className="ml-6 items-center gap-x-4">
-                    <div className="font-semibold text-tc-1">{badge.name}</div>
-                    <Link href={'#'} className="text-tc-2 flex items-center">
-                      View Recipe
-                      <ArrowUpRightIcon className="ml-1 h-3 w-3" />
-                    </Link>
-                    <p className="text-tc-2 ">{badge.description}</p>
+                  <div className="min-w-0 flex-grow">
+                    <div className="flex items-start gap-x-3">
+                      <p className="text-sm font-semibold leading-6 text-tc-1">
+                        {badge.name}
+                      </p>
+                    </div>
+                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-tc-2 ">
+                      <p className="truncate">{badge.description}</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                  <div className="flex flex-none items-center gap-x-4 justify-self-end">
+                    <Button color="variable" variant="text" href="/">
+                      View Recipe
+                    </Button>
+                  </div>
+                </li>
+              ))}
+            </div>
+          </TwoColumnCard>
+          <TwoColumnCard title="Badges" childrenClassName="block">
+            <EditKitchen />
+          </TwoColumnCard>
         </div>
       </Container>
     </DefaultLayout>

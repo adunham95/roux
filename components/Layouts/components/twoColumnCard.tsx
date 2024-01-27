@@ -10,6 +10,7 @@ interface IProps {
   onCancel?: () => void;
   onSubmit?: () => void;
   className?: string;
+  childrenClassName?: string;
   titleSlot?: React.ReactNode;
 }
 
@@ -23,6 +24,7 @@ export const TwoColumnCard = (props: IProps) => {
     onSubmit,
     className,
     titleSlot = <></>,
+    childrenClassName,
   } = props;
 
   function handleSubmit(e: FormEvent) {
@@ -55,7 +57,12 @@ export const TwoColumnCard = (props: IProps) => {
         className="bg-surface shadow-sm ring-1 ring-surface-1/5 sm:rounded-xl md:col-span-2"
       >
         <div className="px-4 py-6 sm:p-8">
-          <div className="grid max-w-2xl gap-x-6 gap-y-8 grid-cols-6">
+          <div
+            className={twMerge(
+              'grid gap-x-6 gap-y-8 grid-cols-6',
+              childrenClassName,
+            )}
+          >
             {children}
           </div>
         </div>

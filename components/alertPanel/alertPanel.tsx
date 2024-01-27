@@ -12,10 +12,11 @@ interface IProps {
   subTitle?: string;
   list?: string[];
   style?: 'danger' | 'success' | 'warning' | 'info';
+  className?: string;
 }
 
 export const AlertPanel = (props: IProps) => {
-  const { style, title, subTitle, list = [] } = props;
+  const { style, title, subTitle, list = [], className = '' } = props;
 
   function getIcon() {
     switch (style) {
@@ -60,7 +61,7 @@ export const AlertPanel = (props: IProps) => {
   }
 
   return (
-    <div className={twMerge('rounded-md p-4 my-1', getStyle())}>
+    <div className={twMerge('rounded-md p-4 my-1', getStyle(), className)}>
       <div className="flex">
         <div className="flex-shrink-0">{getIcon()}</div>
         <div className="ml-3">
