@@ -1,4 +1,4 @@
-import { useGetMyRecipes } from '@/api/queries/getMyRecipes';
+import { useGetKitchen } from '@/api/queries/getKitchen';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { AlertPanel } from '@/components/alertPanel/alertPanel';
 import { Container } from '@/components/container';
@@ -110,8 +110,8 @@ const badges = [
   },
 ];
 
-const KitchenById = () => {
-  const { data = [], isLoading, isError } = useGetMyRecipes();
+const KitchenById = ({ id }: { id: string }) => {
+  const { data = [], isLoading, isError } = useGetKitchen(id);
   console.log({ recipes: data });
 
   useEffect(() => {
@@ -175,5 +175,19 @@ const KitchenById = () => {
     </DefaultLayout>
   );
 };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getServerSideProps(context: any) {
+  const id = context?.params?.id;
+  // const kitchen = await getKitchen(id);
+
+  // if (!kitchen) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
+
+  return { props: { id } };
+}
 
 export default KitchenById;

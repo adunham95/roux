@@ -130,12 +130,15 @@ const typeDefs = gql`
     #Recipe
     getRecipe(id: ID!): Recipe
     getMyRecipes: [Recipe]
+    getRecipesByTeam(teamID: ID!): [Recipe]
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Users
     getUserById(id: ID!): User
     #BetaTokens
     getAllBetaTokens: [BetaToken]
+    #Team
+    getTeam(teamID: ID!): Team
   }
 
   type Mutation {
