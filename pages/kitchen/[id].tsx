@@ -1,51 +1,18 @@
 import { useGetMyRecipes } from '@/api/queries/getMyRecipes';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import { AlertPanel } from '@/components/alertPanel/alertPanel';
-import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
-import TextInput from '@/components/inputs/text-input';
 import { Loader } from '@/components/loader/loader';
 import CardSmall from '@/components/ui/cardSmall';
 import { IRecipe } from '@/types/recipe';
-import {
-  UserGroupIcon,
-  TrophyIcon,
-  ArrowUpRightIcon,
-  UserCircleIcon,
-  PlusCircleIcon,
-} from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
-import { twMerge } from 'tailwind-merge';
-
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Paradigm Representative',
-    role: 'Admin',
-    email: 'janecooper@example.com',
-    telephone: '+1-202-555-0170',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  {
-    name: 'Jame Cooper',
-    title: 'Paradigm Representative',
-    role: 'Admin',
-    email: 'janecooper@example.com',
-    telephone: '+1-202-555-0170',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  // More people...
-];
 
 const badges = [
   {
     id: '123',
     name: 'Culinary Creater',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     color: '#FF2301',
     icon: (
       <svg
@@ -54,7 +21,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -68,7 +35,7 @@ const badges = [
     id: '126',
     name: 'Culinary Creater',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
     color: '#DC9D00',
     icon: (
       <svg
@@ -77,7 +44,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -90,8 +57,7 @@ const badges = [
   {
     id: '124',
     name: 'Culinary Creater',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed',
     color: '#6F4F28',
     icon: (
       <svg
@@ -100,7 +66,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -118,8 +84,7 @@ const badges = [
   {
     id: '125',
     name: 'Culinary Creater',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     color: '#EA899A',
     icon: (
       <svg
@@ -128,7 +93,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -158,30 +123,23 @@ const KitchenById = () => {
     <DefaultLayout
       pageName="My Kitchen"
       hero={{
-        title: 'My Kitchen',
+        title: 'Johns Kitchen',
         img: '/images/empty-kitchen.jpg',
         imgClassName: 'object-center',
       }}
     >
       <Container>
         <div className="mt-1 flex flex-wrap space-x-6">
-          <a href="#team" className="mt-2 flex items-center text-sm text-tc-2">
-            <UserGroupIcon
-              className="mr-1.5 h-5 w-5 flex-shrink-0 text-tc-2"
-              aria-hidden="true"
-            />
-            Team
-          </a>
-          <a
-            href="#badges"
-            className="mt-2 flex items-center text-sm text-tc-2"
-          >
-            <TrophyIcon
-              className="mr-1.5 h-5 w-5 flex-shrink-0 text-tc-2"
-              aria-hidden="true"
-            />
-            Badges
-          </a>
+          {badges.map((badge) => (
+            <span
+              key={badge.id}
+              className="p-1 border inline-flex items-center rounded-full  px-2 py-1 text-xs font-medium "
+              style={{ borderColor: badge.color }}
+            >
+              <div className="w-[12px] aspect-square mr-1">{badge.icon}</div>
+              <span>{badge.name}</span>
+            </span>
+          ))}
         </div>
       </Container>
       <Container className="py-5">
@@ -213,90 +171,6 @@ const KitchenById = () => {
         )}
         {/* TODO Add placeholder */}
         {data.length === 0 && !isLoading && <p>No Recipes</p>}
-      </Container>
-      <Container id="team" className="pb-5">
-        <h2 className="text-2xl font-bold leading-7 text-tc-1 pb-3 sm:truncate sm:text-3xl sm:tracking-tight">
-          Kitchen Team
-        </h2>
-
-        <ul role="list" className="divide-y divide-tc-1">
-          {people.map((person) => (
-            <li
-              key={person.email}
-              className="flex justify-between gap-x-6 py-5"
-            >
-              <div className="flex min-w-0 gap-x-4">
-                {/* <img
-              className=" bg-surface-1"
-              src={person.imageUrl}
-              alt=""
-            /> */}
-                <UserCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
-                <div className="min-w-0 flex-auto">
-                  <p className="text-sm font-semibold leading-6 text-tc-1">
-                    {person.name}
-                  </p>
-                  <p className="mt-1 truncate text-xs leading-5 text-tc-2">
-                    {person.email}
-                  </p>
-                </div>
-              </div>
-            </li>
-          ))}
-          <li className="flex justify-between gap-x-6 py-5">
-            <div className="flex min-w-0 gap-x-4">
-              <PlusCircleIcon className="text-tc-3 h-12 w-12 flex-none rounded-full" />
-            </div>
-            <div className="flex min-w-0 flex-auto items-center">
-              <TextInput
-                inputWrapperClassName="mt-0 w-full"
-                className="w-full flex items-center"
-                id="addEmail"
-                value={''}
-                placeholder="steve@email.com"
-                onChange={() => {}}
-              />
-              <Button className="ml-2">Add</Button>
-            </div>
-          </li>
-        </ul>
-      </Container>
-      <Container id="badges" className="pb-5">
-        <h2 className="text-2xl font-bold leading-7 text-tc-1 pb-3 sm:truncate sm:text-3xl sm:tracking-tight">
-          Badges
-        </h2>
-        <div className="mx-auto flow-root lg:mx-0 lg:max-w-none">
-          <div className="grid md:grid-cols-2">
-            {badges.map((badge, idx) => (
-              <div
-                key={badge.id}
-                className={twMerge(
-                  'pt-8 sm:inline-block sm:w-full sm:px-4',
-                  idx === 0 && 'col-span-2',
-                )}
-              >
-                <div className="rounded-2xl bg-surface p-8 text-sm leading-6 flex">
-                  <div>
-                    <div
-                      className=" aspect-square bg-brand-600 rounded p-2"
-                      style={{ backgroundColor: badge.color }}
-                    >
-                      {badge.icon}
-                    </div>
-                  </div>
-                  <div className="ml-6 items-center gap-x-4">
-                    <div className="font-semibold text-tc-1">{badge.name}</div>
-                    <Link href={'#'} className="text-tc-2 flex items-center">
-                      View Recipe
-                      <ArrowUpRightIcon className="ml-1 h-3 w-3" />
-                    </Link>
-                    <p className="text-tc-2 ">{badge.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </Container>
     </DefaultLayout>
   );

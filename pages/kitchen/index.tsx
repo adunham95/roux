@@ -53,7 +53,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -76,7 +76,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -98,7 +98,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -125,7 +125,7 @@ const badges = [
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-full h-full"
       >
         <path
           strokeLinecap="round"
@@ -273,7 +273,7 @@ const Kitchen = () => {
                 >
                   <div>
                     <div
-                      className=" aspect-square bg-brand-600 rounded p-2"
+                      className="w-8 aspect-square bg-brand-600 rounded p-2"
                       style={{ backgroundColor: badge.color }}
                     >
                       {badge.icon}
