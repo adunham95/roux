@@ -1,6 +1,5 @@
 import { getRecipe } from '@/api/queries/getRecipe';
 import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
-import { ActivityFeed } from '@/components/activityFeed/activityFeed';
 import { Button } from '@/components/buttons/button';
 import { Container } from '@/components/container';
 import { Card } from '@/components/ui/card';
@@ -14,7 +13,7 @@ import { twMerge } from 'tailwind-merge';
 const tabs = [
   { name: 'Ingredients', href: '#ingredients', current: false },
   { name: 'Instructions', href: '#instructions', current: false },
-  { name: 'History', href: '#history', current: false },
+  { name: 'Related', href: '#related', current: false },
 ];
 
 const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
@@ -91,26 +90,7 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
           <p className=" text-tc-2">{recipe.description}</p>
         </Card>
         <Card className="w-full p-6 space-y-4 hidden md:block col-span-1 bg-surface text-tc-1">
-          <h3 className="text-xl font-bold">History</h3>
-          <ActivityFeed
-            backgroundColor="bg-surface"
-            items={[
-              {
-                id: '0',
-                person: recipe.user,
-                type: 'created',
-                dateTime: new Date(parseInt(recipe.createdAt) || 0),
-              },
-              ...recipe.history.map((hist) => {
-                return {
-                  id: hist.id,
-                  person: hist.user,
-                  type: 'edited',
-                  dateTime: new Date(parseInt(hist.createdAt)),
-                };
-              }),
-            ]}
-          />
+          <h3 className="text-xl font-bold">Related</h3>
         </Card>
         <Card
           id="ingredients"
@@ -150,29 +130,10 @@ const RecipeId = ({ recipe }: { recipe: IRecipe }) => {
           </ul>
         </Card>
         <Card
-          id="history"
+          id="related"
           className="w-full p-6 space-y-4 block md:hidden col-span-2 bg-surface text-tc-1"
         >
-          <h3 className="text-xl font-bold">History</h3>
-          <ActivityFeed
-            backgroundColor="bg-surface"
-            items={[
-              {
-                id: '0',
-                person: recipe.user,
-                type: 'created',
-                dateTime: new Date(parseInt(recipe.createdAt) || 0),
-              },
-              ...recipe.history.map((hist) => {
-                return {
-                  id: hist.id,
-                  person: hist.user,
-                  type: 'edited',
-                  dateTime: new Date(parseInt(hist.createdAt)),
-                };
-              }),
-            ]}
-          />
+          <h3 className="text-xl font-bold">Related</h3>
         </Card>
       </Container>
     </DefaultLayout>
