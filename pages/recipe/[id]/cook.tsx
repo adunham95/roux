@@ -55,11 +55,15 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
     if (stepNum > recipe.instructions.length - 1) {
       return (
         <Container className="grid grid-cols-1 md:grid-cols-3 gap-3 py-5 ">
-          <div className="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100 col-span-2">
+          <div className="col-span-2">
             <img
               alt="Finished dish"
-              className="object-cover object-center"
+              className="w-full h-full object-cover rounded-md"
               src="/images/cooking.jpg"
+              style={{
+                aspectRatio: '4/3',
+                objectFit: 'cover',
+              }}
             />
           </div>
           <div>
