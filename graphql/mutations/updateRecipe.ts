@@ -2,6 +2,7 @@ import { Context } from '@/types/graphql';
 import { SessionGate } from '@/utils/authGate';
 import { UserPermissions } from '@/utils/permissions';
 import recipe from '@/db/models/recipe';
+import recipeHistory from '@/db/models/recipeHistory';
 
 export interface IUpdateIngredient {
   name: string;
@@ -32,9 +33,20 @@ async function updateRecipe(
     if (!id) {
       throw new Error('No Recipe ID');
     }
-    const {} = SessionGate(context?.session, UserPermissions.EDIT_RECIPE);
+    const { teamID, userID } = SessionGate(
+      context?.session,
+      UserPermissions.EDIT_RECIPE,
+    );
     const newRecipe = await recipe.findByIdAndUpdate(id, recipeData);
+    const newRecipeHistory = new recipeHistory({
+      type: 'UPDATE',
+      recipeID: newRecipe._id,
+      teamID,
+      userID,
+      recipe: recipeData,
+    });
     newRecipe.save();
+    newRecipeHistory.save();
     return newRecipe.toJSON();
   } catch (error) {
     console.log({ error });

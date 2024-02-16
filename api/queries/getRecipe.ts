@@ -55,12 +55,7 @@ export async function getRecipe(id: string) {
             id
             lastName
           }
-          add
-          delete
-          update {
-            key
-            value
-          }
+          type
           createdAt
         }
       }

@@ -3,6 +3,7 @@ import { IBaseStore } from './baseStore';
 import { IIngredientItem } from '@/types/ingredinetItem';
 import { generateID } from '@/utils/generateID';
 import { IRecipe } from '@/types/recipe';
+import { ICreateRecipe } from '@/graphql/mutations/createRecipe';
 
 interface INewRecipeStore extends IBaseStore {
   instructions: IInstructionItem[];
@@ -13,6 +14,7 @@ interface INewRecipeStore extends IBaseStore {
   description: string;
   servings: number;
   setRecipe: (recipe: IRecipe) => void;
+  getRecipeData: () => ICreateRecipe;
   setName: (name: string) => void;
   setServings: (servings: string | number) => void;
   setDescription: (description: string) => void;
@@ -197,6 +199,20 @@ export const useNewRecipe = create<INewRecipeStore>((set, get) => ({
       update: Object.entries(currentHistory.update).map(([key, value]) => {
         return { key, value };
       }),
+    };
+  },
+  getRecipeData: () => {
+    const instructions = get().instructions;
+    const ingredients = get().ingredients;
+    const name = get().name;
+    const servings = get().servings;
+    const description = get().description;
+    return {
+      instructions,
+      ingredients,
+      name,
+      description,
+      servings,
     };
   },
   clearHistory: () => set({ currentHistory: defaultHistory }),

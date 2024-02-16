@@ -12,7 +12,6 @@ import forgotPassword from './mutations/forgotPassword';
 import resetPassword from './mutations/resetPassword';
 import getMyRecipes from './queries/getMyRecipes';
 import updateRecipe from './mutations/updateRecipe';
-import createRecipeHistory from './mutations/createRecipeHistory';
 import getTeam from './queries/getTeam';
 import getRecipesByTeam from './queries/getRecipesByTeam';
 
@@ -37,7 +36,6 @@ const resolvers = {
     forgotPassword,
     resetPassword,
     updateRecipe,
-    createRecipeHistory,
   },
 };
 

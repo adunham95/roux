@@ -24,6 +24,7 @@ const RecipeSchema = new Schema(
     name: String,
     description: String,
     servings: { type: Number, default: 1 },
+    isRemix: { type: Boolean, default: false },
     instructions: [InstructionsSchema],
     ingredients: [IngredientsSchema],
   },

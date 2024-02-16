@@ -3,7 +3,6 @@ import { createUserTypeDefs } from './mutations/createUser';
 import { updateUserTypeDefs } from './mutations/updateUser';
 import { createMembershipTierTypeDefs } from './mutations/createMembershipTier';
 import { createRecipeTypeDefs } from './mutations/createRecipe';
-import { createRecipeHistoryTypeDefs } from './mutations/createRecipeHistory';
 
 const typeDefs = gql`
   scalar JSON
@@ -38,16 +37,25 @@ const typeDefs = gql`
     name: String
   }
   #Recipe
-  type RecipeUpdateHistory {
-    key: String
-    value: String
+
+  type BaseRecipe {
+    id: ID!
+    userID: ID!
+    team: Team
+    teamID: ID!
+    user: BaseUser
+    name: String!
+    servings: Int
+    description: String
+    instructions: [Instruction]
+    ingredients: [Ingredient]
   }
+
   type RecipeHistory {
     id: ID
     user: User
-    add: [String]
-    delete: [String]
-    update: [RecipeUpdateHistory]
+    type: String
+    recipe: BaseRecipe
     createdAt: String
     updatedAt: String
   }
@@ -115,7 +123,6 @@ const typeDefs = gql`
   ${updateUserTypeDefs}
   ${createMembershipTierTypeDefs}
   ${createRecipeTypeDefs}
-  ${createRecipeHistoryTypeDefs}
 
   type Success {
     success: Boolean
@@ -145,7 +152,6 @@ const typeDefs = gql`
     #Recipe
     createRecipe(input: CreateRecipeInput): Recipe
     updateRecipe(recipe: CreateRecipeInput, id: String): Recipe
-    createRecipeHistory(input: CreateRecipeHistory, id: String): RecipeHistory
     #MembershipTiers
     createMembershipTier(input: CreateMembershipTierInput): MembershipTier
     #BetaTokens

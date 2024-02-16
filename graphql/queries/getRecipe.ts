@@ -1,5 +1,4 @@
 import Recipe from '@/db/models/recipe';
-import { compileRecipe } from '@/utils/complileRecipe';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function getRecipe(_: unknown, { id }: { id: string }) {
@@ -8,8 +7,8 @@ async function getRecipe(_: unknown, { id }: { id: string }) {
       .populate({ path: 'user' })
       .populate({ path: 'history', populate: { path: 'user' } })
       .populate({ path: 'team' });
-    console.log('recipe', recipe.history);
-    return compileRecipe(recipe.toJSON());
+    console.log('recipe', recipe);
+    return recipe.toJSON();
   } catch (error) {
     console.log(error);
     throw error;

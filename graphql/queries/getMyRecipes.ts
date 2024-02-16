@@ -10,7 +10,9 @@ async function getMyRecipes(_: unknown, {}, context: Context) {
       context?.session,
       UserPermissions.VIEW_RECIPE,
     );
-    const recipes = await Recipe.find({ teamID })
+    const recipes = await Recipe.find({
+      teamID,
+    })
       .populate({ path: 'user' })
       .populate({ path: 'team' });
     return recipes.map((rec) => rec.toJSON());

@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Context } from '@/types/graphql';
 import { SessionGate } from '@/utils/authGate';
 import { UserPermissions } from '@/utils/permissions';
+import recipeHistory from '@/db/models/recipeHistory';
 
 export interface ICreateIngredient {
   instructionRefId: string;
@@ -62,7 +63,15 @@ async function createRecipe(
       UserPermissions.EDIT_RECIPE,
     );
     const newRecipe = new recipe({ ...input, teamID, userID });
+    const newRecipeHistory = new recipeHistory({
+      type: 'CREATE',
+      recipeID: newRecipe._id,
+      teamID,
+      userID,
+      recipe: newRecipe,
+    });
     newRecipe.save();
+    newRecipeHistory.save();
     return newRecipe.toJSON();
   } catch (error) {
     console.log({ error });
