@@ -3,7 +3,7 @@ import Sidecar from '../sidecar';
 import { RecipeMetaData } from '../elements/RecipeMetaData';
 import { SidecarIngredientList } from '../elements/IngredientList';
 import SidecarInstructionList from '../elements/InstructionList';
-import { useNewRecipe } from '@/stores/recipeStore';
+import { useRecipe } from '@/stores/recipeStore';
 
 interface IProps {
   onSave: () => void;
@@ -12,7 +12,7 @@ interface IProps {
 export const RecipeSidecar = (props: IProps) => {
   const { onSave } = props;
   const { name, description, servings, instructions, ingredients } =
-    useNewRecipe();
+    useRecipe();
   return (
     <Sidecar
       className="pt-2"

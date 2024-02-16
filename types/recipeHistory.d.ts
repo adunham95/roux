@@ -7,8 +7,6 @@ interface RecipeHistory {
 interface RecipeHistoryArray {
   id: string;
   createdAt: string;
-  add: string[];
-  update: { key: string; value: unknown }[];
-  delete: string[];
+  recipe?: Recipe;
   user: BaseUser;
 }

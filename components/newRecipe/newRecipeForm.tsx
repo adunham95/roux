@@ -5,7 +5,7 @@ import TextArea from '../inputs/text-area';
 import EmptyBlock from '../emptyBlock/emptyBlock';
 import { Button } from '../buttons/button';
 import { NewInstructionItem } from './newInstructionItem';
-import { useNewRecipe } from '@/stores/recipeStore';
+import { useRecipe } from '@/stores/recipeStore';
 
 interface IProps {}
 
@@ -25,7 +25,7 @@ const NewRecipeForm = (props: IProps) => {
     addIngredientItem,
     currentHistory,
     ingredients,
-  } = useNewRecipe();
+  } = useRecipe();
 
   console.log({ currentHistory });
 

@@ -3,14 +3,14 @@ import { getRecipe } from '@/api/queries/getRecipe';
 import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
 import { RecipeSidecar } from '@/components/sidecar/sidecars/RecipeSidecar';
-import { useNewRecipe } from '@/stores/recipeStore';
+import { useRecipe } from '@/stores/recipeStore';
 import { useToast } from '@/stores/toast';
 import { IRecipe } from '@/types/recipe';
 import React, { useEffect } from 'react';
 
 const Edit = ({ recipe }: { recipe: IRecipe }) => {
   console.log({ recipe });
-  const { setRecipe, getRecipeData } = useNewRecipe();
+  const { setRecipe, getRecipeData } = useRecipe();
   const { mutateAsync: updateRecipe } = useUpdateRecipe();
   const { addToast } = useToast();
   useEffect(() => {

@@ -1,7 +1,7 @@
 import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import React from 'react';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
-import { useNewRecipe } from '@/stores/recipeStore';
+import { useRecipe } from '@/stores/recipeStore';
 import { useCreateRecipe } from '@/api/mutation/createRecipe';
 import { useToast } from '@/stores/toast';
 import { RecipeSidecar } from '@/components/sidecar/sidecars/RecipeSidecar';
@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 const NewRecipe = () => {
   const router = useRouter();
   const { name, description, servings, instructions, ingredients } =
-    useNewRecipe();
+    useRecipe();
   const { addToast } = useToast();
   const { mutateAsync: createRecipeAsync } = useCreateRecipe();
   async function saveRecipe() {

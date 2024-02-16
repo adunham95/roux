@@ -10,12 +10,12 @@ import {
 import { Container } from '@/components/container';
 import { Button } from '@/components/buttons/button';
 import Heading from '@/components/text/heading';
-import { useNewRecipe } from '@/stores/recipeStore';
+import { useRecipe } from '@/stores/recipeStore';
 import { useRouter } from 'next/router';
 
 const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
   const [stepNum, setStepNum] = useState(0);
-  const { setRecipe } = useNewRecipe();
+  const { setRecipe } = useRecipe();
   const router = useRouter();
 
   function createNewVersion() {
