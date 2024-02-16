@@ -8,6 +8,7 @@ import { ICreateRecipe } from '@/graphql/mutations/createRecipe';
 interface IRecipeStore extends IBaseStore {
   instructions: IInstructionItem[];
   ingredients: IIngredientItem[];
+  history: RecipeHistoryArray[];
   name: string;
   description: string;
   servings: number;
