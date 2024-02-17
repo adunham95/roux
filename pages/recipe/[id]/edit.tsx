@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 
 const Edit = ({ recipe }: { recipe: IRecipe }) => {
   console.log({ recipe });
-  const { setRecipe, getRecipeData } = useRecipe();
+  const { setRecipe, getRecipeData, getFormattedHistory } = useRecipe();
   const { mutateAsync: updateRecipe } = useUpdateRecipe();
   const { addToast } = useToast();
   useEffect(() => {
@@ -22,6 +22,7 @@ const Edit = ({ recipe }: { recipe: IRecipe }) => {
       {
         id: recipe.id,
         recipe: getRecipeData(),
+        elements: getFormattedHistory(),
       },
       {
         onSuccess(data) {

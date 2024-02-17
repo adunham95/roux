@@ -8,6 +8,7 @@ const RecipeHistorySchema = new Schema(
     teamID: Schema.Types.ObjectId,
     type: { type: String, default: 'UPDATE', enum: ['CREATE', 'UPDATE'] },
     recipe: Schema.Types.Mixed,
+    elements: [{ key: String, value: Schema.Types.Mixed }],
   },
   { timestamps: true },
 );

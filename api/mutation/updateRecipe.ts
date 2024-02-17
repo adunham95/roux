@@ -10,17 +10,23 @@ export const useUpdateRecipe = () => {
 async function updateRecipe({
   id,
   recipe,
+  elements,
 }: {
   id: string;
   recipe: ICreateRecipe;
+  elements?: RecipeHistory[];
 }) {
   const client = getClient();
 
-  const variables = { recipe, id };
+  const variables = { recipe, id, elements };
 
   const query = gql`
-    mutation CreateRecipe($recipe: CreateRecipeInput, $id: String) {
-      updateRecipe(recipe: $recipe, id: $id) {
+    mutation CreateRecipe(
+      $recipe: CreateRecipeInput
+      $id: String
+      $elements: [UpdateRecipeElementsInput]
+    ) {
+      updateRecipe(recipe: $recipe, id: $id, elements: $elements) {
         id
       }
     }

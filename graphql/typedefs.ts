@@ -3,6 +3,7 @@ import { createUserTypeDefs } from './mutations/createUser';
 import { updateUserTypeDefs } from './mutations/updateUser';
 import { createMembershipTierTypeDefs } from './mutations/createMembershipTier';
 import { createRecipeTypeDefs } from './mutations/createRecipe';
+import { updateRecipeTypeDefs } from './mutations/updateRecipe';
 
 const typeDefs = gql`
   scalar JSON
@@ -37,7 +38,10 @@ const typeDefs = gql`
     name: String
   }
   #Recipe
-
+  type RecipeUpdateHistory {
+    key: String
+    value: String
+  }
   type BaseRecipe {
     id: ID!
     userID: ID!
@@ -123,6 +127,7 @@ const typeDefs = gql`
   ${updateUserTypeDefs}
   ${createMembershipTierTypeDefs}
   ${createRecipeTypeDefs}
+  ${updateRecipeTypeDefs}
 
   type Success {
     success: Boolean
@@ -151,7 +156,11 @@ const typeDefs = gql`
   type Mutation {
     #Recipe
     createRecipe(input: CreateRecipeInput): Recipe
-    updateRecipe(recipe: CreateRecipeInput, id: String): Recipe
+    updateRecipe(
+      recipe: CreateRecipeInput
+      id: String
+      elements: [UpdateRecipeElementsInput]
+    ): Recipe
     #MembershipTiers
     createMembershipTier(input: CreateMembershipTierInput): MembershipTier
     #BetaTokens

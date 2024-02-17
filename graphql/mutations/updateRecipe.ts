@@ -3,6 +3,7 @@ import { SessionGate } from '@/utils/authGate';
 import { UserPermissions } from '@/utils/permissions';
 import recipe from '@/db/models/recipe';
 import recipeHistory from '@/db/models/recipeHistory';
+import { gql } from 'graphql-request';
 
 export interface IUpdateIngredient {
   name: string;
@@ -23,13 +24,25 @@ export interface IUpdateRecipe {
   instructions: IUpdateInstruction[];
 }
 
+export const updateRecipeTypeDefs = gql`
+  input UpdateRecipeElementsInput {
+    key: String
+    value: JSON
+  }
+`;
+
 async function updateRecipe(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   parent: unknown,
-  { recipe: recipeData, id }: { recipe: IUpdateRecipe; id: string },
+  {
+    recipe: recipeData,
+    id,
+    elements = [],
+  }: { recipe: IUpdateRecipe; elements: RecipeHistory[]; id: string },
   context: Context,
 ) {
   try {
+    console.log(elements);
     if (!id) {
       throw new Error('No Recipe ID');
     }
@@ -44,6 +57,7 @@ async function updateRecipe(
       teamID,
       userID,
       recipe: recipeData,
+      elements,
     });
     newRecipe.save();
     newRecipeHistory.save();

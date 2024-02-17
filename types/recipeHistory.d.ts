@@ -1,7 +1,5 @@
 interface RecipeHistory {
-  add: string[];
-  update: { [key: string]: unknown };
-  delete: string[];
+  [key: string]: unknown;
 }
 
 interface RecipeHistoryArray {
@@ -9,4 +7,5 @@ interface RecipeHistoryArray {
   createdAt: string;
   recipe?: Recipe;
   user: BaseUser;
+  elements: RecipeHistory[];
 }
