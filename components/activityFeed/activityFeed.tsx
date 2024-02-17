@@ -8,14 +8,14 @@ const activity = [
   {
     id: '1',
     type: 'created',
-    person: { firstName: 'Chelsea' },
+    user: { firstName: 'Chelsea' },
     date: '7d ago',
     dateTime: '2023-01-23T10:32',
   },
   {
     id: '2',
     type: 'edited',
-    person: {
+    user: {
       firstName: 'Chelsea',
     },
     date: '6d ago',
@@ -24,19 +24,19 @@ const activity = [
   {
     id: '3',
     type: 'sent',
-    person: { firstName: 'Chelsea' },
+    user: { firstName: 'Chelsea' },
     date: '6d ago',
     dateTime: '2023-01-23T11:24',
   },
   {
     id: '4',
     type: 'commented',
-    person: {
+    user: {
       firstName: 'Chelsea',
       imageUrl:
         'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
-    comment:
+    value:
       'Called client, they reassured me the invoice would be paid by the 25th.',
     date: '3d ago',
     dateTime: '2023-01-23T15:56',
@@ -44,14 +44,14 @@ const activity = [
   {
     id: '5',
     type: 'viewed',
-    person: { firstName: 'Alex' },
+    user: { firstName: 'Alex' },
     date: '2d ago',
     dateTime: '2023-01-24T09:12',
   },
   {
     id: '6',
     type: 'paid',
-    person: { firstName: 'Alex' },
+    user: { firstName: 'Alex' },
     date: '1d ago',
     dateTime: '2023-01-24T09:20',
   },
@@ -60,7 +60,7 @@ const activity = [
 interface ActivityItem {
   id: string;
   type: string | 'edited';
-  person: {
+  user: {
     name?: string;
     imageUrl?: string;
     firstName: string;
@@ -108,7 +108,7 @@ export const ActivityFeed = (props: IProps) => {
                   <summary className="flex justify-between gap-x-4 cursor-pointer">
                     <div className="py-0.5 text-xs leading-5 text-tc-3">
                       <span className="font-medium ">
-                        {activityItem.person.firstName}
+                        {activityItem.user.firstName}
                       </span>{' '}
                       edited
                     </div>
@@ -119,11 +119,7 @@ export const ActivityFeed = (props: IProps) => {
                       {dayjs(activityItem.dateTime).from(new Date())}
                     </time>
                   </summary>
-                  <p className="text-sm leading-6 text-tc-1">
-                    Epcot is a theme park at Walt Disney World Resort featuring
-                    exciting attractions, international pavilions, award-winning
-                    fireworks and seasonal special events.
-                  </p>
+                  <div>{activityItem?.value}</div>
                 </details>
               </div>
             </>
@@ -136,7 +132,7 @@ export const ActivityFeed = (props: IProps) => {
               </div>
               <p className="flex-auto py-0.5 text-xs leading-5 text-tc-3">
                 <span className="font-medium">
-                  {activityItem.person.firstName}
+                  {activityItem.user.firstName}
                 </span>{' '}
                 {activityItem.type}
               </p>

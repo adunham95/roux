@@ -2,7 +2,7 @@ import { useUpdateRecipe } from '@/api/mutation/updateRecipe';
 import { getRecipe } from '@/api/queries/getRecipe';
 import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
-import { RecipeSidecar } from '@/components/sidecar/sidecars/RecipeSidecar';
+import { EditRecipeSidecar } from '@/components/sidecar/sidecars/EditRecipeSidecar';
 import { useRecipe } from '@/stores/recipeStore';
 import { useToast } from '@/stores/toast';
 import { IRecipe } from '@/types/recipe';
@@ -44,7 +44,7 @@ const Edit = ({ recipe }: { recipe: IRecipe }) => {
       sideCarStyle="w-full md:ml-4 md:max-w-sm"
       heroImg="/images/foods.jpg"
       heroTitle="Edit Recipe"
-      sideCar={<RecipeSidecar onSave={saveRecipe} />}
+      sideCar={<EditRecipeSidecar onSave={saveRecipe} />}
     >
       <NewRecipeForm />
     </SidecarLayout>

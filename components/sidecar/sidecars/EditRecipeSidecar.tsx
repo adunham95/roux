@@ -4,14 +4,15 @@ import { RecipeMetaData } from '../elements/RecipeMetaData';
 import { SidecarIngredientList } from '../elements/IngredientList';
 import SidecarInstructionList from '../elements/InstructionList';
 import { useRecipe } from '@/stores/recipeStore';
+import { RecipeHistory } from '../elements/RecipeHistory';
 
 interface IProps {
   onSave: () => void;
 }
 
-export const RecipeSidecar = (props: IProps) => {
+export const EditRecipeSidecar = (props: IProps) => {
   const { onSave } = props;
-  const { name, description, servings, instructions, ingredients } =
+  const { name, description, servings, instructions, ingredients, history } =
     useRecipe();
 
   return (
@@ -49,6 +50,12 @@ export const RecipeSidecar = (props: IProps) => {
               ingredients={ingredients}
             />
           ),
+        },
+        {
+          title: 'History',
+          key: 'history',
+          display: 'accordion',
+          child: <RecipeHistory history={history} />,
         },
       ]}
     />

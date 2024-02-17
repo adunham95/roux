@@ -60,6 +60,7 @@ const typeDefs = gql`
     user: User
     type: String
     recipe: BaseRecipe
+    elements: [RecipeUpdateHistory]
     createdAt: String
     updatedAt: String
   }

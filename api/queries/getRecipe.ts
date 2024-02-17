@@ -55,6 +55,10 @@ export async function getRecipe(id: string) {
             id
             lastName
           }
+          elements {
+            key
+            value
+          }
           type
           createdAt
         }
