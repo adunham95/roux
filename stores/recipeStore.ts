@@ -8,7 +8,7 @@ import { ICreateRecipe } from '@/graphql/mutations/createRecipe';
 interface IRecipeStore extends IBaseStore {
   instructions: IInstructionItem[];
   ingredients: IIngredientItem[];
-  currentHistory: RecipeHistory;
+  currentHistory: RecipeHistoryObject;
   history: RecipeHistoryArray[];
   name: string;
   description: string;
@@ -51,12 +51,20 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
   setRecipe: (recipe) => set(recipe),
   setName: (name) => {
     const currentHistory = get().currentHistory;
-    currentHistory.name = name;
+    currentHistory.name = {
+      name,
+      displayName: 'Recipe Name',
+      display: `to ${name}`,
+    };
     set({ name, currentHistory });
   },
   setDescription: (description) => {
     const currentHistory = get().currentHistory;
-    currentHistory.description = description;
+    currentHistory.description = {
+      description,
+      displayName: 'Recipe Description',
+      display: `to ${description}`,
+    };
     set({ description });
   },
   setServings: (servings) => {
@@ -64,7 +72,11 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
     if (typeof servings === 'string') {
       servings = parseInt(servings);
     }
-    currentHistory.servings = servings;
+    currentHistory.servings = {
+      servings,
+      displayName: 'Recipe Servings',
+      display: `to ${servings}`,
+    };
     set({ servings, currentHistory });
   },
   addIngredientItem: (instructionRefId) => {
@@ -77,11 +89,11 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
       name: 'Name',
       type: '',
     };
-    currentHistory[`ingredients.${refId}.refId`] = refId;
-    currentHistory[`ingredients.${refId}.instructionRefId`] = instructionRefId;
-    currentHistory[`ingredients.${refId}.count`] = 0;
-    currentHistory[`ingredients.${refId}.name`] = '';
-    currentHistory[`ingredients.${refId}.type`] = '';
+
+    currentHistory[`ingredients.${refId}`] = {
+      action: 'ADD',
+      ...newItem,
+    };
     set((state) => ({
       ingredients: [...state.ingredients, newItem],
       currentHistory,
@@ -96,9 +108,11 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
       order: instructions.length,
       description: ``,
     };
-    currentHistory[`instructions.${refId}.refId`] = refId;
-    currentHistory[`instructions.${refId}.order`] = instructions.length;
-    currentHistory[`instructions.${refId}.description`] = '';
+    currentHistory[`instructions.${refId}`] = {
+      action: 'ADD',
+      displayName: `Instruction ${instructions.length + 1}`,
+      ...newItem,
+    };
     set((state) => ({
       instructions: [...state.instructions, newItem],
       currentHistory,
@@ -115,21 +129,28 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
         case 'copy':
           const refId = generateID();
           ingredients = [...ingredients, { ...ingredients[index], refId }];
-          currentHistory[`ingredients.${refId}.refId`] = refId;
-          currentHistory[`ingredients.${refId}.instructionRefId`] =
-            ingredients[index].instructionRefId;
-          currentHistory[`ingredients.${refId}.count`] = 0;
-          currentHistory[`ingredients.${refId}.name`] = '';
-          currentHistory[`ingredients.${refId}.type`] = '';
+          currentHistory[`ingredients.${refId}`] = {
+            action: 'ADD',
+            ...ingredients[index],
+            refId,
+          };
+
           break;
         case 'delete':
+          currentHistory[`ingredients.${ingredientID}`] = { action: 'DELETE' };
           ingredients = ingredients.filter(
             ({ refId }) => refId !== ingredientID,
           );
           break;
         default:
-          currentHistory[`ingredients.${ingredientID}.${key}`] = value;
-          ingredients[index] = { ...ingredients[index], [key]: value };
+          const newIng = { ...ingredients[index], [key]: value };
+          currentHistory[`ingredients.${ingredientID}`] = {
+            ...currentHistory[`ingredients.${ingredientID}`],
+            displayName: `Ingredient`,
+            display: `x${newIng.count} ${newIng.name}  ${newIng.type}`,
+            [key]: value,
+          };
+          ingredients[index] = newIng;
       }
     }
     ingredients = ingredients;
@@ -145,10 +166,13 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
       switch (action) {
         case 'copy':
           const newInstId = generateID();
-          currentHistory[`instructions.${newInstId}.refId`] = newInstId;
-          currentHistory[`instructions.${newInstId}.order`] =
-            instructions.length;
-          currentHistory[`instructions.${newInstId}.description`] = '';
+          currentHistory[`instructions.${newInstId}`] = {
+            action: 'ADD',
+            displayName: `Instruction ${instructions.length + 1}`,
+            ...instructions[index],
+            order: instructions.length,
+            refId: newInstId,
+          };
           set({
             currentHistory,
             instructions: [
@@ -162,16 +186,25 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
           });
           break;
         case 'delete':
+          currentHistory[`instructions.${instructionRefId}`] = {
+            action: 'DELETE',
+          };
           set({
+            currentHistory,
             instructions: instructions.filter(
               ({ refId }) => refId !== instructionRefId,
             ),
           });
           break;
         default:
-          currentHistory[`instructions.${instructionRefId}.${key}`] =
-            value.toString();
-          instructions[index] = { ...instructions[index], [key]: value };
+          const newInstruction = { ...instructions[index], [key]: value };
+          currentHistory[`instructions.${instructionRefId}`] = {
+            ...currentHistory[`instructions.${instructionRefId}`],
+            displayName: `Instruction ${index + 1}`,
+            display: `${key} to ${value}`,
+            [key]: value,
+          };
+          instructions[index] = newInstruction;
           set({ instructions, currentHistory });
       }
     }

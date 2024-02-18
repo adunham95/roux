@@ -1,4 +1,5 @@
 import { ActivityFeed } from '@/components/activityFeed/activityFeed';
+import { generateChangeLog } from '@/utils/generateChangeLog';
 import React from 'react';
 
 interface IProps {
@@ -20,9 +21,9 @@ export const RecipeHistory = (props: IProps) => {
             dateTime: new Date(parseInt(hist.createdAt)),
             value: (
               <ul>
-                {hist.elements.map((elm) => (
-                  <li key={elm.key as string} className=" text-tc-2 text-sm">
-                    {elm.key as string} - {elm.value as string}
+                {generateChangeLog(hist.elements).map((item) => (
+                  <li key={item as string} className=" text-tc-2 text-sm">
+                    {item}
                   </li>
                 ))}
               </ul>

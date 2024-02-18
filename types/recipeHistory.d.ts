@@ -1,5 +1,11 @@
 interface RecipeHistory {
-  [key: string]: unknown;
+  [key: string]: string;
+}
+
+interface RecipeHistoryObject {
+  action?: string;
+  displayName?: string;
+  [key: string]: object;
 }
 
 interface RecipeHistoryArray {
