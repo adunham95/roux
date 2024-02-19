@@ -81,7 +81,7 @@ export const ActivityFeed = (props: IProps) => {
   console.log(items);
 
   return (
-    <ul role="list" className="mt-6 space-y-6">
+    <ul role="list" className="mt-6 space-y-6 max-h-48 overflow-y-scroll">
       {items.map((activityItem, activityItemIdx) => (
         <li
           id={activityItem.id}
@@ -104,8 +104,41 @@ export const ActivityFeed = (props: IProps) => {
                 <div className="h-1.5 w-1.5 rounded-full bg-brand-variable ring-1 ring-surface-4" />
               </div>
               <div className="flex-auto rounded-md self-end">
-                <details className="flex justify-between  items-center">
-                  <summary className="flex justify-between gap-x-4 cursor-pointer">
+                {activityItem?.value ? (
+                  <details className="flex justify-between  items-center [&_svg]:open:-rotate-180">
+                    <summary className="flex justify-between gap-x-4 cursor-pointer">
+                      <div className="py-0.5 text-xs leading-5 text-tc-3 flex items-center">
+                        <span className="font-medium ">
+                          {activityItem.user.firstName}
+                        </span>{' '}
+                        edited
+                        <span>
+                          <svg
+                            className="rotate-0 transform text-tc-3 transition-all duration-300"
+                            fill="none"
+                            height="15"
+                            width="15"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </span>
+                      </div>
+                      <time
+                        dateTime={activityItem.dateTime.toString()}
+                        className="flex-none py-0.5 text-xs leading-5 text-tc-3"
+                      >
+                        {dayjs(activityItem.dateTime).from(new Date())}
+                      </time>
+                    </summary>
+                    <div>{activityItem?.value}</div>
+                  </details>
+                ) : (
+                  <div className="flex justify-between  items-center">
                     <div className="py-0.5 text-xs leading-5 text-tc-3">
                       <span className="font-medium ">
                         {activityItem.user.firstName}
@@ -118,9 +151,8 @@ export const ActivityFeed = (props: IProps) => {
                     >
                       {dayjs(activityItem.dateTime).from(new Date())}
                     </time>
-                  </summary>
-                  <div>{activityItem?.value}</div>
-                </details>
+                  </div>
+                )}
               </div>
             </>
           ) : (

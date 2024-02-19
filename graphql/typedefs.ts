@@ -63,6 +63,7 @@ const typeDefs = gql`
     elements: [RecipeUpdateHistory]
     createdAt: String
     updatedAt: String
+    changelog: [String]
   }
   type Ingredient {
     instructionRefId: String!

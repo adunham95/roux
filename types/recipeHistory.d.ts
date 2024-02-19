@@ -14,4 +14,5 @@ interface RecipeHistoryArray {
   recipe?: Recipe;
   user: BaseUser;
   elements: RecipeHistory[];
+  changelog: string[];
 }

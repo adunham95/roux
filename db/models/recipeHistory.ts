@@ -1,5 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 import user from './user';
+import { generateChangeLog } from '@/utils/generateChangeLog';
 
 const RecipeHistorySchema = new Schema(
   {
@@ -8,13 +9,16 @@ const RecipeHistorySchema = new Schema(
     teamID: Schema.Types.ObjectId,
     type: { type: String, default: 'UPDATE', enum: ['CREATE', 'UPDATE'] },
     recipe: Schema.Types.Mixed,
-    elements: [{ key: String, value: Schema.Types.Mixed }],
+    elements: [{ key: String, value: String }],
   },
   { timestamps: true },
 );
 
 RecipeHistorySchema.virtual('id').get(function () {
   return this._id.toHexString();
+});
+RecipeHistorySchema.virtual('changelog').get(function () {
+  return generateChangeLog(this.elements as { key: string; value: string }[]);
 });
 RecipeHistorySchema.virtual('user', {
   ref: user,

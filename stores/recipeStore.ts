@@ -147,7 +147,7 @@ export const useRecipe = create<IRecipeStore>((set, get) => ({
           currentHistory[`ingredients.${ingredientID}`] = {
             ...currentHistory[`ingredients.${ingredientID}`],
             displayName: `Ingredient`,
-            display: `x${newIng.count} ${newIng.name}  ${newIng.type}`,
+            display: `${newIng.count}${newIng.type} ${newIng.name}`,
             [key]: value,
           };
           ingredients[index] = newIng;

@@ -61,6 +61,7 @@ export async function getRecipe(id: string) {
           }
           type
           createdAt
+          changelog
         }
       }
     }
