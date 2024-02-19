@@ -108,9 +108,10 @@ export const ActivityFeed = (props: IProps) => {
                   <details className="flex justify-between  items-center [&_svg]:open:-rotate-180">
                     <summary className="flex justify-between gap-x-4 cursor-pointer">
                       <div className="py-0.5 text-xs leading-5 text-tc-3 flex items-center">
-                        <span className="font-medium ">
+                        <div className="font-medium ">
                           {activityItem.user.firstName}
-                        </span>{' '}
+                        </div>
+                        <div className="w-1"> </div>
                         edited
                         <span>
                           <svg

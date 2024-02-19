@@ -14,6 +14,7 @@ import getMyRecipes from './queries/getMyRecipes';
 import updateRecipe from './mutations/updateRecipe';
 import getTeam from './queries/getTeam';
 import getRecipesByTeam from './queries/getRecipesByTeam';
+import getRecipeHistory from './queries/getRecipeHistory';
 
 const resolvers = {
   JSON: GraphQLJSON,
@@ -25,6 +26,7 @@ const resolvers = {
     getMyRecipes,
     getRecipesByTeam,
     getTeam,
+    getRecipeHistory,
   },
 
   Mutation: {

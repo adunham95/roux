@@ -145,6 +145,7 @@ const typeDefs = gql`
     getRecipe(id: ID!): Recipe
     getMyRecipes: [Recipe]
     getRecipesByTeam(teamID: ID!): [Recipe]
+    getRecipeHistory(id: ID!): [RecipeHistory]
     #MembershipTier
     getMembershipTiers(onlyVisible: Boolean): [MembershipTier]
     #Users

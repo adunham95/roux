@@ -1,5 +1,6 @@
 import { useUpdateRecipe } from '@/api/mutation/updateRecipe';
 import { getRecipe } from '@/api/queries/getRecipe';
+import { useGetRecipeHistory } from '@/api/queries/getRecipeHistory';
 import SidecarLayout from '@/components/Layouts/page/SidecarLayout';
 import NewRecipeForm from '@/components/newRecipe/newRecipeForm';
 import { EditRecipeSidecar } from '@/components/sidecar/sidecars/EditRecipeSidecar';
@@ -10,12 +11,20 @@ import React, { useEffect } from 'react';
 
 const Edit = ({ recipe }: { recipe: IRecipe }) => {
   console.log({ recipe });
-  const { setRecipe, getRecipeData, getFormattedHistory } = useRecipe();
+  const { setRecipe, getRecipeData, getFormattedHistory, setHistory } =
+    useRecipe();
+  const { data: newHistory, refetch: refetchHistory } = useGetRecipeHistory(
+    recipe.id,
+  );
   const { mutateAsync: updateRecipe } = useUpdateRecipe();
   const { addToast } = useToast();
   useEffect(() => {
     setRecipe(recipe);
   }, [recipe]);
+
+  useEffect(() => {
+    setHistory(newHistory);
+  }, [newHistory]);
 
   function saveRecipe() {
     updateRecipe(
@@ -26,6 +35,7 @@ const Edit = ({ recipe }: { recipe: IRecipe }) => {
       },
       {
         onSuccess(data) {
+          refetchHistory();
           addToast('Recipe successfully updated', 'success');
           console.log(data);
         },

@@ -13,6 +13,7 @@ interface IRecipeStore extends IBaseStore {
   name: string;
   description: string;
   servings: number;
+  setHistory: (newHistory: RecipeHistoryArray[]) => void;
   setRecipe: (recipe: IRecipe) => void;
   getRecipeData: () => ICreateRecipe;
   setName: (name: string) => void;
@@ -32,7 +33,7 @@ interface IRecipeStore extends IBaseStore {
     value: string | number,
     action?: 'update' | 'copy' | 'delete',
   ) => void;
-  getFormattedHistory: () => { key: string; value: unknown }[];
+  getFormattedHistory: () => RecipeHistory[];
   clearHistory: () => void;
 }
 
@@ -49,6 +50,7 @@ const defaultStore = {
 export const useRecipe = create<IRecipeStore>((set, get) => ({
   ...defaultStore,
   setRecipe: (recipe) => set(recipe),
+  setHistory: (history) => set({ history }),
   setName: (name) => {
     const currentHistory = get().currentHistory;
     currentHistory.name = {
