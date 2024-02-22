@@ -14,6 +14,7 @@ export interface IDefaultLayoutProps {
   heroImg?: string;
   heroTitle?: string;
   heroSlot?: React.ReactNode;
+  footerSlot?: React.ReactNode;
   crumbs?: IBreadcrumbs[];
   crumbsSlot?: React.ReactNode;
   removeFootingMargin?: boolean;
@@ -74,6 +75,7 @@ export const DefaultLayout = (props: IDefaultLayoutProps) => {
       <main className={`${props.mainClass} min-h-screen`}>
         <>{props.children}</>
       </main>
+      {props.footerSlot}
       <SmallFooter removeMargin={props.removeFootingMargin} />
     </div>
   );

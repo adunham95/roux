@@ -3,10 +3,7 @@ import { DefaultLayout } from '@/components/Layouts/page/DefaultLayout';
 import Flyout from '@/components/flyout/flyout';
 import { IRecipe } from '@/types/recipe';
 import React, { useState } from 'react';
-import {
-  ArrowLongLeftIcon,
-  ArrowLongRightIcon,
-} from '@heroicons/react/20/solid';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { Container } from '@/components/container';
 import { Button } from '@/components/buttons/button';
 import Heading from '@/components/text/heading';
@@ -49,6 +46,13 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
     return recipe.ingredients.filter(
       (ing) => ing.instructionRefId === getInstruction()?.refId,
     );
+  }
+
+  function getDisplayText() {
+    if (stepNum > recipe.instructions.length - 1) {
+      return 'Done';
+    }
+    return `${stepNum + 1} / ${recipe.instructions.length}`;
   }
 
   function getContent() {
@@ -209,6 +213,35 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
   return (
     <DefaultLayout
       removeFootingMargin
+      footerSlot={
+        <div className="sticky bottom-0 w-full flex justify-between py-3 px-2">
+          <button
+            disabled={stepNum === 0}
+            onClick={goToPrevStep}
+            className="flex items-center rounded-full bg-brand-variable px-6 py-3 text-lg font-semibold text-brand-text shadow-sm hover:bg-brand-variable-alt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-variable flex-shrink-0 disabled:opacity-50"
+          >
+            <ChevronLeftIcon
+              className="md:mr-3 h-5 w-5 text-brand-text"
+              aria-hidden="true"
+            />
+            <span className="sr-only md:not-sr-only">Previous</span>
+          </button>
+          <div className="flex flex-shrink rounded-full bg-brand-variable px-6 py-3 text-lg font-semibold text-brand-text shadow-sm ">
+            {getDisplayText()}
+          </div>
+          <button
+            disabled={stepNum >= recipe.instructions.length}
+            onClick={goToNextStep}
+            className="flex items-center rounded-full bg-brand-variable px-6 py-3 text-lg font-semibold text-brand-text shadow-sm hover:bg-brand-variable-alt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-variable flex-shrink-0 disabled:opacity-50"
+          >
+            <span className="sr-only md:not-sr--only">Next</span>
+            <ChevronRightIcon
+              className="md:ml-3 h-5 w-5 text-brand-text"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+      }
       crumbs={[
         { name: recipe.name, href: `/recipe/${recipe.id}` },
         { name: 'Cook', href: `/recipe/${recipe.id}/cook`, current: true },
@@ -228,7 +261,7 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
             </div>
             <ul
               role="list"
-              className="relative flex-auto divide-y divide-surface-3 py-2"
+              className="relative flex-auto divide-y divide-surface-3 py-2 max-h-[300px] overflow-y-auto"
             >
               {recipe.instructions.map((instruction, index) => (
                 <li key={instruction.id}>
@@ -259,49 +292,6 @@ const StepIndex = ({ recipe }: { recipe: IRecipe }) => {
         </Flyout>
       }
     >
-      <nav className="bg-surface pb-2  border-t border-surface-2 px-4 sm:px-2">
-        <Container className="flex items-center justify-between">
-          <div className="-mt-px flex w-0 flex-1">
-            <button
-              onClick={goToPrevStep}
-              className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
-            >
-              <ArrowLongLeftIcon
-                className="mr-3 h-5 w-5 text-tc-2"
-                aria-hidden="true"
-              />
-              Previous
-            </button>
-          </div>
-          <div className="hidden md:-mt-px md:flex">
-            {recipe.instructions.map((inst, index) => (
-              <button
-                key={`goto-${index}`}
-                onClick={() => setStepNum(index)}
-                className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium  ${
-                  index === stepNum
-                    ? 'border-brand-variable text-brand-variable'
-                    : 'border-transparent text-tc-2 hover:text-tc-3 hover:border-surface-3'
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
-          <div className="-mt-px flex w-0 flex-1 justify-end">
-            <button
-              onClick={goToNextStep}
-              className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-tc-2 hover:border-surface-3 hover:text-tc-3 rounded-b"
-            >
-              Next
-              <ArrowLongRightIcon
-                className="ml-3 h-5 w-5 text-tc-2"
-                aria-hidden="true"
-              />
-            </button>
-          </div>
-        </Container>
-      </nav>
       <div className="py-4 px-4 sm:px-6 lg:px-8">
         <Container>{getContent()}</Container>
       </div>
