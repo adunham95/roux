@@ -20,9 +20,11 @@ const Edit = ({ recipe }: { recipe: IRecipe }) => {
   const { addToast } = useToast();
   useEffect(() => {
     setRecipe(recipe);
+    refetchHistory();
   }, [recipe]);
 
   useEffect(() => {
+    console.log('newHistory', newHistory);
     setHistory(newHistory);
   }, [newHistory]);
 
@@ -35,6 +37,7 @@ const Edit = ({ recipe }: { recipe: IRecipe }) => {
       },
       {
         onSuccess(data) {
+          //Clear key
           refetchHistory();
           addToast('Recipe successfully updated', 'success');
           console.log(data);

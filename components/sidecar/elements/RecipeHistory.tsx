@@ -16,7 +16,7 @@ export const RecipeHistory = (props: IProps) => {
           return {
             id: hist.id,
             user: hist.user,
-            type: 'edited',
+            type: hist.type === 'UPDATE' ? 'edited' : 'created',
             dateTime: new Date(parseInt(hist.createdAt)),
             value: hist.changelog.length > 0 && (
               <ul>

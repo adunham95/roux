@@ -9,6 +9,7 @@ export const useGetRecipeHistory = (id: string, initialData?: any) => {
     queryFn: () => getRecipeHistory(id),
     initialData,
     enabled: false,
+    staleTime: 0,
   });
 };
 

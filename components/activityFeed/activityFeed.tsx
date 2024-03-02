@@ -78,8 +78,6 @@ interface IProps {
 export const ActivityFeed = (props: IProps) => {
   const { backgroundColor = 'bg-surface-background', items = activity } = props;
 
-  console.log(items);
-
   return (
     <ul role="list" className="mt-6 space-y-6 max-h-48 overflow-y-scroll">
       {items.map((activityItem, activityItemIdx) => (

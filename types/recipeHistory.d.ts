@@ -15,4 +15,5 @@ interface RecipeHistoryArray {
   user: BaseUser;
   elements: RecipeHistory[];
   changelog: string[];
+  type: 'CREATE' | 'UPDATE';
 }

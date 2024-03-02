@@ -81,8 +81,15 @@ export const authOptions = {
       }
       return session;
     },
-    async jwt({ token, user }: { token: any; user: any }) {
-      // console.log('jwt', { token, user });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    async jwt({ token, user, trigger, session }) {
+      if (trigger === 'update' && session) {
+        token = {
+          ...token,
+          ...session,
+        };
+      }
       if (user) {
         token = {
           ...token,

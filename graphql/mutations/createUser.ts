@@ -60,7 +60,7 @@ async function createUser(
       throw new Error('No team or role');
     }
     const password = await Auth.hashPassword(input.password);
-    const email = input.email.trim();
+    const email = input.email.trim().toLowerCase();
     const user = new User({ ...input, password, email });
     const newTeamMember = new TeamMember({
       roleID,

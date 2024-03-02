@@ -15,6 +15,8 @@ export const EditRecipeSidecar = (props: IProps) => {
   const { name, description, servings, instructions, ingredients, history } =
     useRecipe();
 
+  console.log('EditRecipeSidecarhistory', history);
+
   return (
     <Sidecar
       className="pt-2"
@@ -55,7 +57,7 @@ export const EditRecipeSidecar = (props: IProps) => {
           title: 'History',
           key: 'history',
           display: 'accordion',
-          child: <RecipeHistory history={history} />,
+          child: <RecipeHistory history={history || []} />,
         },
       ]}
     />
